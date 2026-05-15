@@ -422,7 +422,198 @@
         font-size: 18px;
       }
 
+      /* Q&A Answer Slide Layout */
+      .qa-layout {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 30px;
+        flex-grow: 1;
+      }
+
+      .qa-reminder {
+        background: #fff8f2;
+        border-left: 4px solid #a38a70;
+        padding: 16px 30px;
+        border-radius: 0 6px 6px 0;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: #a38a70;
+        letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .qa-reminder i {
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .qa-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        flex-grow: 1;
+      }
+
+      .qa-card {
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 32px 36px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .qa-card-question {
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #a38a70;
+      }
+
+      .qa-card-answer {
+        font-family: "Playfair Display", serif;
+        font-size: 26px;
+        color: #1a1a1a;
+        line-height: 1.3;
+      }
+
+      .qa-card-detail {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border-top: 1px solid #f0eee9;
+        padding-top: 14px;
+        margin-top: 4px;
+      }
+
+      .qa-card-detail li {
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: #4a4a4a;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .qa-card-detail li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        background: #a38a70;
+        border-radius: 50%;
+      }
+
+      /* Q&A Answer Slide Layout */
+      .qa-layout {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 28px;
+        flex-grow: 1;
+      }
+
+      .qa-reminder {
+        background: #fff8f2;
+        border-left: 4px solid #a38a70;
+        padding: 16px 30px;
+        border-radius: 0 6px 6px 0;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        color: #a38a70;
+        letter-spacing: 0.3px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .qa-reminder i {
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .qa-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 30px;
+        flex-grow: 1;
+      }
+
+      .qa-card {
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 32px 36px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .qa-card-question {
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #a38a70;
+      }
+
+      .qa-card-answer {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        color: #1a1a1a;
+        line-height: 1.3;
+      }
+
+      .qa-card-detail {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border-top: 1px solid #f0eee9;
+        padding-top: 14px;
+        margin-top: 4px;
+      }
+
+      .qa-card-detail li {
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: #4a4a4a;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.5;
+      }
+
+      .qa-card-detail li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        background: #a38a70;
+        border-radius: 50%;
+      }
+
       /* Slide counter */
+
       .slide-counter {
         position: fixed;
         bottom: 28px;
@@ -983,31 +1174,90 @@
     </div>
 
     <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>
-        <!-- Page: Questions (final) -->
-        <div class="slide-container" id="slideQuestions">
-          <h2 class="slide-title">Questions</h2>
-          <div class="content-area" style="align-items: flex-start">
-            <div class="callout-box" style="padding: 40px 60px">
-              <div class="bullet-list">
-                <ul>
-                  <li>
-                    <i class="fa-solid fa-circle" style="font-size: 8px"></i>
-                    <strong style="color: #a38a70">What purpose does designing a construct-i-con (cncn) serve for our work?</strong>
+    <!-- Page: Questions (final) -->
+    <div class="slide-container" id="slideQuestions">
+      <h2 class="slide-title">Questions</h2>
+      <div class="content-area" style="align-items: flex-start">
+        <div class="callout-box" style="padding: 40px 60px">
+          <div class="bullet-list">
+            <ul>
+              <li>
+                <i class="fa-solid fa-circle" style="font-size: 8px"></i>
+                <strong style="color: #a38a70"
+                  >What purpose does designing a construct-i-con (cncn) serve
+                  for our work?</strong
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-circle" style="font-size: 8px"></i>
+                Are there projects that have already built CNCNs for different
+                languages?
+              </li>
+              <li>
+                <i class="fa-solid fa-circle" style="font-size: 8px"></i>
+                How to identify constructions?
+              </li>
+              <li>
+                <i class="fa-solid fa-circle" style="font-size: 8px"></i>
+                Is there a chasm between CxG and Processability Theory?
+              </li>
+              <li>
+                <i class="fa-solid fa-circle" style="font-size: 8px"></i>
+                Is there empirical (cognitive and psycholinguistic) evidence in
+                support of CxG?
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page: What purpose does cncn serve? -->
+    <div class="slide-container" id="slidePurpose">
+      <h2 class="slide-title" style="margin-bottom: 20px">
+        What Purpose Does a Cncn Serve?
+      </h2>
+      <div class="content-area" style="justify-content: flex-start">
+        <div class="qa-layout">
+          <div class="qa-reminder">
+            <i class="fa-solid fa-bookmark"></i>
+            Focus question: What purpose does designing a construct-i-con (cncn)
+            serve for our work?
+          </div>
 
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-circle" style="font-size: 8px"></i>
-                    Are there projects that have already built CNCNs for different languages?
-                  </li>
-                  <li>
-                    <i class="fa-solid fa-circle" style="font-size: 8px"></i>
-                    Is there empirical (cognitive and psycholinguistic) evidence in support of CxG?
-                  </li>
-                </ul>
-              </div>
+          <div class="qa-cards">
+            <!-- Card 1: What to learn? -->
+            <div class="qa-card">
+              <div class="qa-card-question">What to learn?</div>
+              <div class="qa-card-answer">Constructions.</div>
+            </div>
+
+            <!-- Card 2: Where from? -->
+            <div class="qa-card">
+              <div class="qa-card-question">Where from?</div>
+              <div class="qa-card-answer">A construct&#8209;i&#8209;con.</div>
+              <ul class="qa-card-detail">
+                <li>A structured network of constructions</li>
+                <li>
+                  Better than a flat pool &mdash; it encodes relationships
+                  between constructions
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Who is learning? -->
+            <div class="qa-card">
+              <div class="qa-card-question">Who is learning?</div>
+              <div class="qa-card-answer">A situated learner.</div>
+              <ul class="qa-card-detail">
+                <li>A particular knowledge of language</li>
+                <li>Specific preferences</li>
+                <li>An affective state</li>
+              </ul>
             </div>
           </div>
         </div>
+      </div>
+    </div>
     <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
     <div class="slide-counter" id="slide-counter"></div>
 
@@ -1017,7 +1267,7 @@
       let current = 0;
 
       function updateCounter() {
-        counter.textContent = (current + 1) + " / " + slides.length;
+        counter.textContent = current + 1 + " / " + slides.length;
       }
 
       slides[current].classList.add("active");
