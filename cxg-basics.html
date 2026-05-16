@@ -129,7 +129,7 @@
       .slide-container .slide-title {
         font-size: 44px;
         font-weight: 600;
-        margin-bottom: 40px;
+        margin-bottom: 28px;
         text-align: left;
         width: 100%;
         letter-spacing: -0.5px;
@@ -180,7 +180,7 @@
         padding: 0;
       }
       .bullet-list li {
-        margin-bottom: 25px;
+        margin-bottom: 16px;
         padding-left: 40px;
         position: relative;
       }
@@ -202,7 +202,7 @@
       .callout-box {
         background-color: #ffffff;
         border-left: 4px solid #a38a70;
-        padding: 50px 70px;
+        padding: 36px 56px;
         width: 100%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         border-radius: 0 8px 8px 0;
@@ -286,7 +286,7 @@
       .quote-box {
         background-color: #ffffff;
         border-left: 4px solid #a38a70;
-        padding: 40px 60px;
+        padding: 28px 50px;
         width: 100%;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
         border-radius: 0 8px 8px 0;
@@ -427,101 +427,6 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: 30px;
-        flex-grow: 1;
-      }
-
-      .qa-reminder {
-        background: #fff8f2;
-        border-left: 4px solid #a38a70;
-        padding: 16px 30px;
-        border-radius: 0 6px 6px 0;
-        font-family: "Inter", sans-serif;
-        font-size: 15px;
-        font-weight: 500;
-        color: #a38a70;
-        letter-spacing: 0.3px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-      }
-
-      .qa-reminder i {
-        font-size: 14px;
-        flex-shrink: 0;
-      }
-
-      .qa-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 30px;
-        flex-grow: 1;
-      }
-
-      .qa-card {
-        background: #ffffff;
-        border-radius: 8px;
-        padding: 32px 36px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .qa-card-question {
-        font-family: "Inter", sans-serif;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: #a38a70;
-      }
-
-      .qa-card-answer {
-        font-family: "Playfair Display", serif;
-        font-size: 26px;
-        color: #1a1a1a;
-        line-height: 1.3;
-      }
-
-      .qa-card-detail {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        border-top: 1px solid #f0eee9;
-        padding-top: 14px;
-        margin-top: 4px;
-      }
-
-      .qa-card-detail li {
-        font-family: "Inter", sans-serif;
-        font-size: 18px;
-        font-weight: 300;
-        color: #4a4a4a;
-        padding-left: 20px;
-        position: relative;
-        line-height: 1.5;
-      }
-
-      .qa-card-detail li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 10px;
-        width: 5px;
-        height: 5px;
-        background: #a38a70;
-        border-radius: 50%;
-      }
-
-      /* Q&A Answer Slide Layout */
-      .qa-layout {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
         gap: 28px;
         flex-grow: 1;
       }
@@ -630,64 +535,350 @@
     </style>
   </head>
   <body>
+    <!-- Title Page -->
+    <div class="slide-container" id="slide0">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+          gap: 0;
+        "
+      >
+        <!-- Eyebrow label -->
+        <div
+          style="
+            font-family: &quot;Inter&quot;, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #a38a70;
+            margin-bottom: 36px;
+          "
+        >
+          Theoretical Foundations Series
+        </div>
+
+        <!-- Main title -->
+        <h1
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+          "
+        >
+          <!-- AVM Block -->
+          <div
+            style="display: flex; align-items: stretch; justify-content: center"
+          >
+            <div
+              style="
+                font-size: 130px;
+                font-weight: 300;
+                color: #a38a70;
+                display: flex;
+                align-items: center;
+                line-height: 0.8;
+              "
+            >
+              [
+            </div>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: max-content auto;
+                column-gap: 32px;
+                row-gap: 12px;
+                padding: 10px 24px;
+                text-align: left;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #a38a70;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                Form
+              </div>
+              <div
+                style="font-size: 68px; line-height: 1; letter-spacing: -1px"
+              >
+                Construction
+              </div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #a38a70;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  display: flex;
+                  align-items: center;
+                "
+              >
+                Meaning
+              </div>
+              <div
+                style="
+                  font-size: 28px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  line-height: 1;
+                  display: flex;
+                  align-items: center;
+                  font-weight: 400;
+                "
+              >
+                Unit of language
+              </div>
+            </div>
+            <div
+              style="
+                font-size: 130px;
+                font-weight: 300;
+                color: #a38a70;
+                display: flex;
+                align-items: center;
+                line-height: 0.8;
+              "
+            >
+              ]
+            </div>
+          </div>
+
+          <span style="font-size: 56px; letter-spacing: -1px"
+            >Is All You Need</span
+          >
+        </h1>
+
+        <!-- Thin rule -->
+        <div
+          style="
+            width: 56px;
+            height: 2px;
+            background: #a38a70;
+            margin: 0 auto 28px;
+          "
+        ></div>
+
+        <!-- Subtitle -->
+        <p
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-style: italic;
+            font-size: 26px;
+            color: #7a7a7a;
+            margin: 0 0 64px 0;
+            font-weight: 400;
+          "
+        >
+          From constructions to a construct-i-con
+        </p>
+
+        <!-- Metadata -->
+        <div
+          style="
+            font-family: &quot;Inter&quot;, sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: #a38a70;
+            letter-spacing: 1px;
+          "
+        >
+          402Dev &nbsp;·&nbsp; May 2026
+        </div>
+      </div>
+    </div>
+
     <!-- Page 1: What are we doing? -->
     <div class="slide-container" id="slide1">
       <h2 class="slide-title">What are we doing?</h2>
       <div class="content-area" style="align-items: flex-start">
-        <div class="bullet-list">
-          <ul>
-            <li>
-              <i
-                class="fa-solid fa-square-full"
-                style="font-size: 8px; margin-top: 14px"
-              ></i
-              >we need a structured resource from which we can generate learning
-              material
-            </li>
-            <li>
-              <i
-                class="fa-solid fa-square-full"
-                style="font-size: 8px; margin-top: 14px"
-              ></i
-              >we need a representation of learner’s language level
-            </li>
-          </ul>
+        <div class="callout-box">
+          <i class="fa-solid fa-list decorative-icon"></i>
+          <div style="max-width: 920px">
+            <p
+              style="
+                font-size: 20px;
+                margin: 0 0 14px 0;
+                color: #1a1a1a;
+                font-weight: 600;
+              "
+            >
+              Our immediate needs
+            </p>
+            <ul style="margin: 12px 0 0 0; padding: 0; list-style: none">
+              <li
+                style="
+                  margin-bottom: 18px;
+                  padding-left: 26px;
+                  position: relative;
+                  font-size: 20px;
+                  color: #4a4a4a;
+                "
+              >
+                <i
+                  class="fa-solid fa-square-full"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    top: 6px;
+                    color: #a38a70;
+                    font-size: 8px;
+                  "
+                ></i>
+                A structured resource to generate learning materials
+              </li>
+              <li
+                style="
+                  margin-bottom: 0;
+                  padding-left: 26px;
+                  position: relative;
+                  font-size: 20px;
+                  color: #4a4a4a;
+                "
+              >
+                <i
+                  class="fa-solid fa-square-full"
+                  style="
+                    position: absolute;
+                    left: 0;
+                    top: 6px;
+                    color: #a38a70;
+                    font-size: 8px;
+                  "
+                ></i>
+                A representation of each learner’s language level
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Page 2: Lets start from the beginning. -->
     <div class="slide-container" id="slide2">
-      <h2 class="slide-title">Lets start from the beginning.</h2>
-      <div class="content-area" style="align-items: flex-start">
-        <div class="bullet-list">
-          <p
+      <h2 class="slide-title">Let's start from the beginning.</h2>
+      <div class="content-area">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+          "
+        >
+          <!-- Traditional model -->
+          <div
             style="
-              font-size: 36px;
-              font-weight: 600;
-              color: #1a1a1a;
-              margin-bottom: 30px;
-              font-family: &quot;Playfair Display&quot;, serif;
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 40px 48px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             "
           >
-            Language
-          </p>
-          <ul>
-            <li>
-              <i
-                class="fa-solid fa-square-full"
-                style="font-size: 8px; margin-top: 14px"
-              ></i
-              >Vocabulary + Grammar (dictionary and grammar model)
-            </li>
-            <li>
-              <i
-                class="fa-solid fa-square-full"
-                style="font-size: 8px; margin-top: 14px"
-              ></i
-              >Constructions
-            </li>
-          </ul>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin-bottom: 18px;
+              "
+            >
+              Traditional View
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 34px;
+                color: #1a1a1a;
+                margin-bottom: 14px;
+                line-height: 1.2;
+              "
+            >
+              Vocabulary + Grammar
+            </div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 20px;
+                color: #7a7a7a;
+                font-weight: 300;
+                line-height: 1.6;
+              "
+            >
+              A dictionary of words paired with a set of rules for combining
+              them into phrases.
+            </div>
+          </div>
+
+          <!-- CxG model -->
+          <div
+            style="
+              background: #ffffff;
+              border-left: 4px solid #a38a70;
+              border-radius: 0 8px 8px 0;
+              padding: 40px 48px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin-bottom: 18px;
+              "
+            >
+              Construction Grammar
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 34px;
+                color: #1a1a1a;
+                margin-bottom: 14px;
+                line-height: 1.2;
+              "
+            >
+              Constructions
+            </div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 20px;
+                color: #7a7a7a;
+                font-weight: 300;
+                line-height: 1.6;
+              "
+            >
+              Stored form–meaning pairs as the fundamental units of linguistic
+              knowledge.
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -703,7 +894,7 @@
           width: 100%;
           text-align: left;
           margin-top: 0;
-          margin-bottom: 40px;
+          margin-bottom: 16px;
           font-style: italic;
         "
       >
@@ -775,7 +966,7 @@
       <div class="content-area">
         <div class="callout-box">
           <i class="fa-solid fa-book-open decorative-icon"></i>
-          <p style="font-size: 28px; line-height: 1.8; color: #333">
+          <p style="font-size: 28px; line-height: 1.6; color: #333">
             <span style="color: #a38a70; font-weight: 500">-&gt;</span> The view
             where we assume the knowledge of language is comprised of knowing
             words and the rules how to combine them into phrases fails when we
@@ -802,7 +993,7 @@
               height: 2px;
               width: 60px;
               background-color: #a38a70;
-              margin: 40px auto;
+              margin: 20px auto;
             "
           ></div>
           <p
@@ -1072,7 +1263,7 @@
           style="
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 20px;
             width: 100%;
             max-width: 1050px;
           "
@@ -1244,14 +1435,45 @@
               </ul>
             </div>
 
-            <!-- Card 3: Who is learning? -->
-            <div class="qa-card">
+            <!-- Card 3: Who is learning? (highlighted — drives cncn architecture) -->
+            <div
+              class="qa-card"
+              style="
+                border: 2px solid #a38a70;
+                background: #fff8f2;
+                position: relative;
+              "
+            >
+              <div
+                style="
+                  position: absolute;
+                  top: -11px;
+                  right: 20px;
+                  background: #a38a70;
+                  color: #fff;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 1.5px;
+                  text-transform: uppercase;
+                  padding: 3px 12px;
+                  border-radius: 20px;
+                "
+              >
+                Design guide
+              </div>
               <div class="qa-card-question">Who is learning?</div>
               <div class="qa-card-answer">A situated learner.</div>
-              <ul class="qa-card-detail">
-                <li>A particular knowledge of language</li>
-                <li>Specific preferences</li>
-                <li>An affective state</li>
+              <ul class="qa-card-detail" style="border-top-color: #d4b99a">
+                <li style="font-weight: 400; color: #1a1a1a">
+                  A particular knowledge of language
+                </li>
+                <li style="font-weight: 400; color: #1a1a1a">
+                  Specific preferences
+                </li>
+                <li style="font-weight: 400; color: #1a1a1a">
+                  An affective state
+                </li>
               </ul>
             </div>
           </div>
