@@ -517,6 +517,154 @@
         border-radius: 50%;
       }
 
+      /* ─── Sidebar Navigation ─────────────────────────────── */
+      .sidebar-nav {
+        position: fixed;
+        left: -182px;
+        top: 0;
+        width: 202px;
+        height: 100%;
+        z-index: 200;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .sidebar-nav:hover {
+        left: 0;
+      }
+
+      .sidebar-content {
+        flex: 1;
+        background: rgba(249, 248, 246, 0.98);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 56px 0;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.07);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-content::-webkit-scrollbar {
+        width: 3px;
+      }
+      .sidebar-content::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .sidebar-content::-webkit-scrollbar-thumb {
+        background: #d4ccbf;
+        border-radius: 2px;
+      }
+
+      .sidebar-handle {
+        width: 20px;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .sidebar-handle::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 72px;
+        background: rgba(163, 138, 112, 0.22);
+        border-radius: 0 2px 2px 0;
+        transition: background 0.2s;
+      }
+
+      .sidebar-nav:hover .sidebar-handle::before {
+        background: rgba(163, 138, 112, 0.5);
+      }
+
+      .sidebar-section {
+        padding-bottom: 4px;
+        border-bottom: 1px solid #f0eee9;
+        margin-bottom: 2px;
+      }
+
+      .sidebar-section:last-child {
+        border-bottom: none;
+      }
+
+      .sidebar-section-label {
+        font-family: "Inter", sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: #a38a70;
+        padding: 14px 18px 5px;
+        cursor: pointer;
+        transition: color 0.15s;
+      }
+
+      .sidebar-section-label:hover {
+        color: #7a5c42;
+      }
+
+      .sidebar-section-label.active {
+        color: #1a1a1a;
+      }
+
+      .sidebar-item {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 300;
+        color: #7a7a7a;
+        padding: 5px 18px 5px 30px;
+        cursor: pointer;
+        position: relative;
+        transition:
+          color 0.15s,
+          background 0.15s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-decoration: none;
+        user-select: none;
+        line-height: 1.55;
+      }
+
+      .sidebar-item::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #d4ccbf;
+        transition: background 0.15s;
+      }
+
+      .sidebar-item:hover {
+        color: #1a1a1a;
+        background: rgba(163, 138, 112, 0.06);
+      }
+
+      .sidebar-item:hover::before {
+        background: #a38a70;
+      }
+
+      .sidebar-item.active {
+        color: #a38a70;
+        font-weight: 500;
+      }
+
+      .sidebar-item.active::before {
+        background: #a38a70;
+        width: 5px;
+        height: 5px;
+      }
+
       /* Slide counter */
 
       .slide-counter {
@@ -535,6 +683,106 @@
     </style>
   </head>
   <body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-content">
+        <div class="sidebar-section">
+          <div
+            class="sidebar-section-label"
+            data-slide="0"
+            onclick="goToSlide(0)"
+          >
+            Foundations
+          </div>
+          <a class="sidebar-item" data-slide="1" onclick="goToSlide(1)"
+            >What are we doing?</a
+          >
+          <a class="sidebar-item" data-slide="2" onclick="goToSlide(2)"
+            >Starting point</a
+          >
+          <a class="sidebar-item" data-slide="3" onclick="goToSlide(3)"
+            >What speakers know</a
+          >
+          <a class="sidebar-item" data-slide="4" onclick="goToSlide(4)"
+            >Why not dict+grammar?</a
+          >
+          <a class="sidebar-item" data-slide="5" onclick="goToSlide(5)"
+            >Enter CxG</a
+          >
+          <a class="sidebar-item" data-slide="6" onclick="goToSlide(6)"
+            >Define terms</a
+          >
+        </div>
+        <div class="sidebar-section">
+          <div
+            class="sidebar-section-label"
+            data-slide="7"
+            onclick="goToSlide(7)"
+          >
+            The Levels
+          </div>
+          <a class="sidebar-item" data-slide="7" onclick="goToSlide(7)"
+            >1. Morpheme</a
+          >
+          <a class="sidebar-item" data-slide="8" onclick="goToSlide(8)"
+            >2. Word</a
+          >
+          <a class="sidebar-item" data-slide="9" onclick="goToSlide(9)"
+            >3. Fixed Idiom</a
+          >
+          <a class="sidebar-item" data-slide="10" onclick="goToSlide(10)"
+            >4. Partially Filled</a
+          >
+          <a class="sidebar-item" data-slide="11" onclick="goToSlide(11)"
+            >5. Abstract Syntax</a
+          >
+        </div>
+        <div class="sidebar-section">
+          <div
+            class="sidebar-section-label"
+            data-slide="12"
+            onclick="goToSlide(12)"
+          >
+            Constructicon
+          </div>
+          <a class="sidebar-item" data-slide="12" onclick="goToSlide(12)"
+            >The Constructicon</a
+          >
+          <a class="sidebar-item" data-slide="13" onclick="goToSlide(13)"
+            >Addressing Needs</a
+          >
+        </div>
+        <div class="sidebar-section">
+          <div
+            class="sidebar-section-label"
+            data-slide="14"
+            onclick="goToSlide(14)"
+          >
+            Q &amp; A
+          </div>
+          <a class="sidebar-item" data-slide="14" onclick="goToSlide(14)"
+            >Questions</a
+          >
+          <a class="sidebar-item" data-slide="15" onclick="goToSlide(15)"
+            >What purpose?</a
+          >
+        </div>
+        <div class="sidebar-section">
+          <div
+            class="sidebar-section-label"
+            data-slide="16"
+            onclick="goToSlide(16)"
+          >
+            Part II — Anatomy
+          </div>
+          <a class="sidebar-item" data-slide="17" onclick="goToSlide(17)"
+            >Feature categories</a
+          >
+        </div>
+      </div>
+      <div class="sidebar-handle"></div>
+    </nav>
+
     <!-- Title Page -->
     <div class="slide-container" id="slide0">
       <div
@@ -2254,20 +2502,37 @@
     <script>
       const slides = document.querySelectorAll(".slide-container");
       const counter = document.getElementById("slide-counter");
+      const sidebarNodes = document.querySelectorAll("[data-slide]");
       let current = 0;
 
       function updateCounter() {
         counter.textContent = current + 1 + " / " + slides.length;
       }
 
+      function updateSidebar() {
+        sidebarNodes.forEach((el) => {
+          el.classList.toggle("active", parseInt(el.dataset.slide) === current);
+        });
+      }
+
+      function goToSlide(index) {
+        slides[current].classList.remove("active");
+        current = index;
+        slides[current].classList.add("active");
+        updateCounter();
+        updateSidebar();
+      }
+
       slides[current].classList.add("active");
       updateCounter();
+      updateSidebar();
 
       function changeSlide(dir) {
         slides[current].classList.remove("active");
         current = (current + dir + slides.length) % slides.length;
         slides[current].classList.add("active");
         updateCounter();
+        updateSidebar();
       }
 
       document.addEventListener("keydown", (e) => {
