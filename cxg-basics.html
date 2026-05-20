@@ -520,9 +520,9 @@
       /* ─── Sidebar Navigation ─────────────────────────────── */
       .sidebar-nav {
         position: fixed;
-        left: -182px;
+        left: -272px;
         top: 0;
-        width: 202px;
+        width: 296px;
         height: 100%;
         z-index: 200;
         display: flex;
@@ -531,18 +531,19 @@
         transition: left 0.28s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .sidebar-nav:hover {
+      .sidebar-nav:hover,
+      .sidebar-nav.pinned {
         left: 0;
       }
 
       .sidebar-content {
-        flex: 1;
         background: rgba(249, 248, 246, 0.98);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex: 1;
         overflow-y: auto;
         overflow-x: hidden;
-        padding: 56px 0;
+        padding: 18px 0 22px;
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.07);
         display: flex;
         flex-direction: column;
@@ -559,10 +560,82 @@
         border-radius: 2px;
       }
 
+      .sidebar-top {
+        padding: 0 18px 18px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #f0eee9;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .sidebar-top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .sidebar-eyebrow {
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: #a38a70;
+      }
+
+      .sidebar-pin-btn {
+        border: none;
+        background: transparent;
+        color: #a38a70;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.15s,
+          color 0.15s,
+          transform 0.15s;
+      }
+
+      .sidebar-pin-btn:hover,
+      .sidebar-pin-btn.active {
+        background: rgba(163, 138, 112, 0.12);
+        color: #7a5c42;
+      }
+
+      .sidebar-pin-btn.active i {
+        transform: rotate(25deg);
+      }
+
+      .sidebar-current-section {
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #a38a70;
+      }
+
+      .sidebar-current-title {
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        line-height: 1.3;
+        color: #1a1a1a;
+      }
+
       .sidebar-handle {
-        width: 20px;
+        width: 24px;
         flex-shrink: 0;
         position: relative;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
       }
 
       .sidebar-handle::before {
@@ -571,78 +644,210 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        width: 3px;
-        height: 72px;
+        width: 4px;
+        height: 86px;
         background: rgba(163, 138, 112, 0.22);
         border-radius: 0 2px 2px 0;
         transition: background 0.2s;
       }
 
-      .sidebar-nav:hover .sidebar-handle::before {
+      .sidebar-nav:hover .sidebar-handle::before,
+      .sidebar-nav.pinned .sidebar-handle::before {
         background: rgba(163, 138, 112, 0.5);
       }
 
       .sidebar-section {
-        padding-bottom: 4px;
-        border-bottom: 1px solid #f0eee9;
-        margin-bottom: 2px;
+        margin: 0 10px 8px;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0);
+        transition:
+          background 0.18s,
+          border-color 0.18s;
       }
 
-      .sidebar-section:last-child {
-        border-bottom: none;
+      .sidebar-section[open] {
+        background: transparent;
+        border-color: transparent;
       }
 
-      .sidebar-section-label {
+      .sidebar-section.active {
+        background: transparent;
+        border-color: transparent;
+      }
+
+      .sidebar-section-summary,
+      .sidebar-subsection-summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        user-select: none;
+        border-radius: 8px;
+      }
+
+      .sidebar-section-summary {
+        padding: 12px 14px;
+      }
+
+      .sidebar-subsection-summary {
+        padding: 10px 12px 10px 14px;
+      }
+
+      .sidebar-section-summary:hover,
+      .sidebar-subsection-summary:hover {
+        background: rgba(163, 138, 112, 0.05);
+      }
+
+      .sidebar-section-summary::-webkit-details-marker,
+      .sidebar-subsection-summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .sidebar-section-meta,
+      .sidebar-subsection-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+      }
+
+      .sidebar-section-kicker {
         font-family: "Inter", sans-serif;
         font-size: 9px;
         font-weight: 600;
-        letter-spacing: 2.5px;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        color: #a38a70;
-        padding: 14px 18px 5px;
-        cursor: pointer;
-        transition: color 0.15s;
+        color: #c0b8ae;
       }
 
-      .sidebar-section-label:hover {
+      .sidebar-section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        line-height: 1.1;
+        color: #1a1a1a;
+      }
+
+      .sidebar-subsection-title {
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #a38a70;
+      }
+
+      .sidebar-summary-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      .sidebar-count {
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: #7a7a7a;
+        background: #f3f0ea;
+        border-radius: 999px;
+        min-width: 28px;
+        padding: 4px 8px;
+        text-align: center;
+      }
+
+      .sidebar-chevron {
+        color: #b7a690;
+        font-size: 11px;
+        transition:
+          transform 0.18s,
+          color 0.18s;
+      }
+
+      .sidebar-section[open] > .sidebar-section-summary .sidebar-chevron,
+      .sidebar-subsection[open] > .sidebar-subsection-summary .sidebar-chevron {
+        transform: rotate(180deg);
+        color: #a38a70;
+      }
+
+      .sidebar-section.active > .sidebar-section-summary .sidebar-section-title,
+      .sidebar-subsection.active
+        > .sidebar-subsection-summary
+        .sidebar-subsection-title {
         color: #7a5c42;
       }
 
-      .sidebar-section-label.active {
-        color: #1a1a1a;
+      .sidebar-section.active
+        > .sidebar-section-summary
+        .sidebar-section-kicker {
+        color: #a38a70;
+      }
+
+      .sidebar-section.active > .sidebar-section-summary .sidebar-count,
+      .sidebar-subsection.active > .sidebar-subsection-summary .sidebar-count {
+        background: #ece2d4;
+        color: #7a5c42;
+      }
+
+      .sidebar-section-items {
+        padding: 0 0 8px;
+      }
+
+      .sidebar-subsection {
+        margin: 0 12px 8px 18px;
+        border-left: 1px solid #ece7df;
+      }
+
+      .sidebar-subsection[open] {
+        border-left-color: #d8cbb9;
+      }
+
+      .sidebar-subsection-items {
+        padding-bottom: 4px;
       }
 
       .sidebar-item {
         display: block;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
         font-family: "Inter", sans-serif;
         font-size: 13px;
-        font-weight: 300;
-        color: #7a7a7a;
-        padding: 5px 18px 5px 30px;
+        font-weight: 400;
+        color: #6f6f6f;
+        padding: 8px 18px 8px 34px;
         cursor: pointer;
         position: relative;
         transition:
           color 0.15s,
           background 0.15s;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        text-decoration: none;
+        white-space: normal;
         user-select: none;
-        line-height: 1.55;
+        line-height: 1.45;
       }
 
       .sidebar-item::before {
         content: "";
         position: absolute;
         left: 16px;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 14px;
         width: 4px;
         height: 4px;
         border-radius: 50%;
         background: #d4ccbf;
         transition: background 0.15s;
+      }
+
+      .sidebar-item.subitem {
+        padding-left: 48px;
+      }
+
+      .sidebar-item.subitem::before {
+        left: 31px;
+        background: #c9b59d;
       }
 
       .sidebar-item:hover {
@@ -657,6 +862,7 @@
       .sidebar-item.active {
         color: #a38a70;
         font-weight: 500;
+        background: rgba(163, 138, 112, 0.08);
       }
 
       .sidebar-item.active::before {
@@ -686,101 +892,302 @@
     <!-- Sidebar Navigation -->
     <nav class="sidebar-nav" id="sidebarNav">
       <div class="sidebar-content">
-        <div class="sidebar-section">
-          <div
-            class="sidebar-section-label"
-            data-slide="0"
-            onclick="goToSlide(0)"
-          >
+        <div class="sidebar-top">
+          <div class="sidebar-top-row">
+            <div class="sidebar-eyebrow">Contents</div>
+            <button
+              class="sidebar-pin-btn"
+              id="sidebarPinBtn"
+              type="button"
+              onclick="toggleSidebarPin()"
+              aria-label="Pin table of contents"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-thumbtack"></i>
+            </button>
+          </div>
+          <div class="sidebar-current-section" id="sidebar-current-section">
             Foundations
           </div>
-          <a class="sidebar-item" data-slide="1" onclick="goToSlide(1)"
-            >What are we doing?</a
-          >
-          <a class="sidebar-item" data-slide="2" onclick="goToSlide(2)"
-            >Starting point</a
-          >
-          <a class="sidebar-item" data-slide="3" onclick="goToSlide(3)"
-            >What speakers know</a
-          >
-          <a class="sidebar-item" data-slide="4" onclick="goToSlide(4)"
-            >Why not dict+grammar?</a
-          >
-          <a class="sidebar-item" data-slide="5" onclick="goToSlide(5)"
-            >Enter CxG</a
-          >
-          <a class="sidebar-item" data-slide="6" onclick="goToSlide(6)"
-            >Define terms</a
-          >
-        </div>
-        <div class="sidebar-section">
-          <div
-            class="sidebar-section-label"
-            data-slide="7"
-            onclick="goToSlide(7)"
-          >
-            The Levels
+          <div class="sidebar-current-title" id="sidebar-current-title">
+            Cover
           </div>
-          <a class="sidebar-item" data-slide="7" onclick="goToSlide(7)"
-            >1. Morpheme</a
-          >
-          <a class="sidebar-item" data-slide="8" onclick="goToSlide(8)"
-            >2. Word</a
-          >
-          <a class="sidebar-item" data-slide="9" onclick="goToSlide(9)"
-            >3. Fixed Idiom</a
-          >
-          <a class="sidebar-item" data-slide="10" onclick="goToSlide(10)"
-            >4. Partially Filled</a
-          >
-          <a class="sidebar-item" data-slide="11" onclick="goToSlide(11)"
-            >5. Abstract Syntax</a
-          >
         </div>
-        <div class="sidebar-section">
-          <div
-            class="sidebar-section-label"
-            data-slide="12"
-            onclick="goToSlide(12)"
-          >
-            Constructicon
+
+        <details class="sidebar-section" data-section-title="Foundations" open>
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Part I</span>
+              <span class="sidebar-section-title">Foundations</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">7</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button
+              class="sidebar-item"
+              data-slide="0"
+              onclick="goToSlide(0)"
+              type="button"
+            >
+              Cover
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="1"
+              onclick="goToSlide(1)"
+              type="button"
+            >
+              What are we doing?
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="2"
+              onclick="goToSlide(2)"
+              type="button"
+            >
+              Starting point
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="3"
+              onclick="goToSlide(3)"
+              type="button"
+            >
+              What speakers know
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="4"
+              onclick="goToSlide(4)"
+              type="button"
+            >
+              Why not dict+grammar?
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="5"
+              onclick="goToSlide(5)"
+              type="button"
+            >
+              Enter CxG
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="6"
+              onclick="goToSlide(6)"
+              type="button"
+            >
+              Define terms
+            </button>
           </div>
-          <a class="sidebar-item" data-slide="12" onclick="goToSlide(12)"
-            >The Constructicon</a
-          >
-          <a class="sidebar-item" data-slide="13" onclick="goToSlide(13)"
-            >Addressing Needs</a
-          >
-        </div>
-        <div class="sidebar-section">
-          <div
-            class="sidebar-section-label"
-            data-slide="14"
-            onclick="goToSlide(14)"
-          >
-            Q &amp; A
+        </details>
+
+        <details class="sidebar-section" data-section-title="The Levels">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Part I</span>
+              <span class="sidebar-section-title">The Levels</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">5</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button
+              class="sidebar-item"
+              data-slide="7"
+              onclick="goToSlide(7)"
+              type="button"
+            >
+              1. Morpheme
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="8"
+              onclick="goToSlide(8)"
+              type="button"
+            >
+              2. Word
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="9"
+              onclick="goToSlide(9)"
+              type="button"
+            >
+              3. Fixed Idiom
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="10"
+              onclick="goToSlide(10)"
+              type="button"
+            >
+              4. Partially Filled
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="11"
+              onclick="goToSlide(11)"
+              type="button"
+            >
+              5. Abstract Syntax
+            </button>
           </div>
-          <a class="sidebar-item" data-slide="14" onclick="goToSlide(14)"
-            >Questions</a
-          >
-          <a class="sidebar-item" data-slide="15" onclick="goToSlide(15)"
-            >What purpose?</a
-          >
-        </div>
-        <div class="sidebar-section">
-          <div
-            class="sidebar-section-label"
-            data-slide="16"
-            onclick="goToSlide(16)"
-          >
-            Part II — Anatomy
+        </details>
+
+        <details class="sidebar-section" data-section-title="Constructicon">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Part I</span>
+              <span class="sidebar-section-title">Constructicon</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button
+              class="sidebar-item"
+              data-slide="12"
+              onclick="goToSlide(12)"
+              type="button"
+            >
+              The Constructicon
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="13"
+              onclick="goToSlide(13)"
+              type="button"
+            >
+              Addressing needs
+            </button>
           </div>
-          <a class="sidebar-item" data-slide="17" onclick="goToSlide(17)"
-            >Feature categories</a
-          >
-        </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Discussion">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Part I</span>
+              <span class="sidebar-section-title">Discussion</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button
+              class="sidebar-item"
+              data-slide="14"
+              onclick="goToSlide(14)"
+              type="button"
+            >
+              Questions
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="15"
+              onclick="goToSlide(15)"
+              type="button"
+            >
+              What purpose?
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Part II — Anatomy">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Part II</span>
+              <span class="sidebar-section-title">The Anatomy</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">10</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button
+              class="sidebar-item"
+              data-slide="16"
+              onclick="goToSlide(16)"
+              type="button"
+            >
+              Chapter opener
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="17"
+              onclick="goToSlide(17)"
+              type="button"
+            >
+              Feature categories
+            </button>
+
+            <details class="sidebar-subsection" data-section-title="Form">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Form</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count">5</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items">
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="18"
+                  onclick="goToSlide(18)"
+                  type="button"
+                >
+                  What is Form?
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="19"
+                  data-slides="19,20,21"
+                  onclick="goToSlide(19)"
+                  type="button"
+                >
+                  Component Registry
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="22"
+                  data-slides="22,23,24"
+                  onclick="goToSlide(22)"
+                  type="button"
+                >
+                  Topological Mapping
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="25"
+                  data-slides="25,26"
+                  onclick="goToSlide(25)"
+                  type="button"
+                >
+                  Elision
+                </button>
+              </div>
+            </details>
+          </div>
+        </details>
       </div>
-      <div class="sidebar-handle"></div>
+      <button
+        class="sidebar-handle"
+        type="button"
+        onclick="toggleSidebarPin()"
+        aria-label="Toggle table of contents"
+      ></button>
     </nav>
 
     <!-- Title Page -->
@@ -2496,26 +2903,2724 @@
       </div>
     </div>
 
+    <!-- Slide: What is Form? -->
+    <div class="slide-container" id="slideFormDefinition">
+      <h2 class="slide-title">What is Form?</h2>
+      <div
+        class="content-area"
+        style="justify-content: flex-start; gap: 24px; align-items: flex-start"
+      >
+        <!-- Definition panel -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+          "
+        >
+          <!-- Left: coloured anchor -->
+          <div
+            style="
+              background: #a38a70;
+              padding: 28px 24px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 6px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 60px;
+                font-weight: 600;
+                color: #ffffff;
+                line-height: 1;
+              "
+            >
+              01
+            </div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 9px;
+                font-weight: 600;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.65);
+              "
+            >
+              Category
+            </div>
+          </div>
+
+          <!-- Right: definition text -->
+          <div
+            style="
+              padding: 28px 44px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              gap: 10px;
+              border-left: 1px solid #f0eee9;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 27px;
+                font-weight: 400;
+                font-style: italic;
+                color: #1a1a1a;
+                line-height: 1.4;
+              "
+            >
+              The physical or structural side of a linguistic sign.
+            </div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 300;
+                color: #7a7a7a;
+                line-height: 1.6;
+              "
+            >
+              Every construction has a Form side &mdash; what it looks, sounds,
+              and is structured like.
+            </div>
+          </div>
+        </div>
+
+        <!-- Three element cards -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+            min-height: 0;
+          "
+        >
+          <!-- Phonology -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 28px 32px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 5px;
+                "
+              >
+                Form &rsaquo; 01
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  line-height: 1;
+                "
+              >
+                Phonology
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <p
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 17px;
+                font-weight: 300;
+                color: #4a4a4a;
+                line-height: 1.6;
+                margin: 0;
+              "
+            >
+              How the construction sounds &mdash; its phonemic shape, stress
+              pattern, and intonation.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #a38a70;
+                border-left: 2px solid #e5e0d8;
+                padding-left: 14px;
+                line-height: 1.5;
+              "
+            >
+              /ˈwɔːtər/ &nbsp;&middot;&nbsp; stress &nbsp;&middot;&nbsp;
+              intonation
+            </div>
+          </div>
+
+          <!-- Morphology -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 28px 32px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 5px;
+                "
+              >
+                Form &rsaquo; 02
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  line-height: 1;
+                "
+              >
+                Morphology
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <p
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 17px;
+                font-weight: 300;
+                color: #4a4a4a;
+                line-height: 1.6;
+                margin: 0;
+              "
+            >
+              How words within the construction are formed, derived, or
+              inflected.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #a38a70;
+                border-left: 2px solid #e5e0d8;
+                padding-left: 14px;
+                line-height: 1.5;
+              "
+            >
+              walk &rarr; walked &nbsp;&middot;&nbsp; book + &#8209;s
+            </div>
+          </div>
+
+          <!-- Syntax -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 28px 32px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 5px;
+                "
+              >
+                Form &rsaquo; 03
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  line-height: 1;
+                "
+              >
+                Syntax
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <p
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 17px;
+                font-weight: 300;
+                color: #4a4a4a;
+                line-height: 1.6;
+                margin: 0;
+              "
+            >
+              The order of words and their structural arrangement within the
+              construction.
+            </p>
+            <div
+              style="
+                margin-top: auto;
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 20px;
+                font-style: italic;
+                color: #a38a70;
+                border-left: 2px solid #e5e0d8;
+                padding-left: 14px;
+                line-height: 1.5;
+              "
+            >
+              [Subject] [Verb] [Object]
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Component Registry slides ──────────────────── -->
+
+    <!-- Slide: Component Registry — Feature Definition -->
+    <div class="slide-container" id="slideCompReg1">
+      <h2 class="slide-title">Feature: The Component Registry</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <!-- Definition banner -->
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            Anchors &amp; Slots &mdash; The Root Array
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Schema location: <strong>Whole Construction</strong>. A declarative
+            list of every node required by the construction&mdash;defined before
+            any word-order template is applied.
+          </p>
+        </div>
+
+        <!-- Two-column: data types + node cards -->
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: DB schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                component_registry
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;Object&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                The root array. Each item is one node of the construction.
+              </div>
+            </div>
+
+            <div
+              style="
+                border-left: 2px solid #f0eee9;
+                padding-left: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 16px; color: #1a1a1a">
+                  node_type
+                  <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; margin-top: 2px">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >FIXED_ANCHOR</code
+                  >
+                  or
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >OPEN_SLOT</code
+                  >
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 500; font-size: 16px; color: #1a1a1a">
+                  expected_value
+                  <span style="font-weight: 400; color: #7a7a7a">[String]</span>
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; margin-top: 2px">
+                  Anchor: literal lemma&nbsp;&mdash;&nbsp;e.g.
+                  <em>&ldquo;zien&rdquo;</em>. Slot: syntactic
+                  category&nbsp;&mdash;&nbsp;e.g. <em>Noun_Phrase</em>.
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 500; font-size: 16px; color: #1a1a1a">
+                  node_id
+                  <span style="font-weight: 400; color: #7a7a7a"
+                    >[UUID / Integer]</span
+                  >
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; margin-top: 2px">
+                  Unique ID so downstream rules (word-order, agreement) can
+                  target this node precisely.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: visual node-type legend -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <!-- FIXED_ANCHOR card -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 11px;
+                  font-weight: 700;
+                  background: #a38a70;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                FIXED_ANCHOR
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  A hardcoded word
+                </div>
+                <div
+                  style="
+                    font-size: 15px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                  "
+                >
+                  Lexically fixed; its presence and form do not vary across
+                  instantiations of the construction.
+                </div>
+              </div>
+            </div>
+
+            <!-- OPEN_SLOT card -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 11px;
+                  font-weight: 700;
+                  background: #6b8ea3;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                OPEN_SLOT
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  A variable blank
+                </div>
+                <div
+                  style="
+                    font-size: 15px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                  "
+                >
+                  Accepts any lexical item that satisfies the declared syntactic
+                  category constraint.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Component Registry — Multilingual Examples -->
+    <div class="slide-container" id="slideCompReg2">
+      <h2 class="slide-title">Component Registry &mdash; Multilingual</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 20px;
+        "
+      >
+        <!-- Three language columns -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- English -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 26px 28px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Way-Construction
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;He hacked his way through&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Subject_NP</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Verb_Action</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Possessive_Pronoun</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #a38a70;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >ANCHOR</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #1a1a1a;
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-style: italic;
+                  "
+                  >&ldquo;way&rdquo;</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Directional_PP</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Dutch -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 26px 28px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Evaluative Frame
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Het ziet er goed uit&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Subject_NP</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #a38a70;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >ANCHOR</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #1a1a1a;
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-style: italic;
+                  "
+                  >&ldquo;zien&rdquo;</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #a38a70;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >ANCHOR</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #1a1a1a;
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-style: italic;
+                  "
+                  >&ldquo;er&rdquo;</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Adjective_Phrase</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #a38a70;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >ANCHOR</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #1a1a1a;
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-style: italic;
+                  "
+                  >&ldquo;uit&rdquo;</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Farsi -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 26px 28px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Specific Accusative
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Ali ketab ra khund&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Subject_NP</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Object_NP</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #a38a70;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >ANCHOR</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #1a1a1a;
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-style: italic;
+                  "
+                  >&ldquo;ra&rdquo;</span
+                >
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 8px">
+                <span
+                  style="
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #6b8ea3;
+                    color: #fff;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    flex-shrink: 0;
+                  "
+                  >OPEN</span
+                >
+                <span
+                  style="
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Verb</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Component Registry — Organizational Utility -->
+    <div class="slide-container" id="slideCompReg3">
+      <h2 class="slide-title">Component Registry &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- General CxG -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Defines the API Contract
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                The registry tells your LLM parser exactly how many JSON keys to
+                extract. If the registry declares 5 nodes, the parser must
+                return 5 nodes &mdash; no guessing, no key&nbsp;dropping.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Calculates Schematicity on the Fly
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                No dedicated &ldquo;abstractness&rdquo; column needed. Query the
+                ratio of
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                  "
+                  >OPEN_SLOT</code
+                >
+                to
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                  "
+                  >FIXED_ANCHOR</code
+                >
+                in the array instead.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Topology-Agnostic
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                The same registry can be inherited by different word-order
+                templates&nbsp;&mdash; Main Clause, Subordinate,
+                Question&nbsp;&mdash; without duplicating lexical data.
+              </div>
+            </div>
+          </div>
+
+          <!-- Construct-i-con / Pedagogical -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              Pedagogical Engine
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Dynamic UI Generation
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                The front-end reads the Component Registry and dynamically
+                renders exactly the right number of drag-and-drop blanks and
+                pre-filled text blocks for&nbsp;&ldquo;Flash
+                Card&nbsp;2.0&rdquo; exercises &mdash; straight from the schema,
+                with zero hardcoding.
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #f9f8f6;
+                border-radius: 8px;
+                padding: 20px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0b8ae;
+                "
+              >
+                Schema &rarr; UI
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: #6b8ea3;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 6px 14px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >[ _____ ]</span
+                >
+                <span
+                  style="
+                    background: #a38a70;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 6px 14px;
+                    font-size: 13px;
+                    font-family: monospace;
+                  "
+                  >&ldquo;way&rdquo;</span
+                >
+                <span
+                  style="
+                    background: #6b8ea3;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 6px 14px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >[ _____ ]</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: #7a7a7a;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                "
+              >
+                Blue = open slot &nbsp;&middot;&nbsp; Tan = fixed anchor
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Topological Mapping Matrix slides ──────────────────── -->
+
+    <!-- Slide: Topological Mapping — Feature Definition -->
+    <div class="slide-container" id="slideTopoMap1">
+      <h2 class="slide-title">Feature: The Topological Mapping Matrix</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <!-- Definition banner -->
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            Spatial Sequencing &mdash; Where a Node May Legally Exist
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Schema location: <strong>Constituent Slot level</strong>, governed
+            by the overarching Topological Template. Decouples
+            <em>existence</em> (Component Registry) from <em>position</em> (this
+            matrix).
+          </p>
+        </div>
+
+        <!-- Two-column: DB fields + rigidity legend -->
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                topological_zone
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[String / Enum]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                The designated spatial field — e.g.
+                <em>Pre-Verbal</em>, <em>Mittelfeld</em>,
+                <em>Terminal_Anchor</em>.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                positional_rigidity
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  border-left: 2px solid #f0eee9;
+                  padding-left: 16px;
+                  margin-top: 8px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >ABSOLUTE</code
+                  >
+                  &mdash; node occupies an exact, hard-indexed position (e.g.,
+                  English subject).
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >FLEXIBLE_INTRA_ZONE</code
+                  >
+                  &mdash; node can scramble with others inside the same zone
+                  (e.g., Dutch Mittelfeld).
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                adjacent_constraints
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;String&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Optional. Forces physical adjacency regardless of zone — e.g.
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 13px;
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                  "
+                  >must_precede: Slot_ID_2</code
+                >.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: rigidity cards -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 11px;
+                  font-weight: 700;
+                  background: #a38a70;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                ABSOLUTE
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Fixed position
+                </div>
+                <div
+                  style="
+                    font-size: 15px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                  "
+                >
+                  The node occupies exactly one slot in the linear string.
+                  Scrambling this node is a grammatical violation.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 9px;
+                  font-weight: 700;
+                  background: #6b8ea3;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                FLEX_INTRA_ZONE
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Free inside a zone
+                </div>
+                <div
+                  style="
+                    font-size: 15px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                  "
+                >
+                  The node can reorder relative to sibling nodes within its zone
+                  without violating the construction.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Topological Mapping — Multilingual Examples -->
+    <div class="slide-container" id="slideTopoMap2">
+      <h2 class="slide-title">Topological Mapping &mdash; Multilingual</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 20px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- English -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Rigid Indexing
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;She handed the reviewer the code.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 7px">
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #e8e2d8;
+                    color: #6b5a42;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Pre-Verbal</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">Subject_NP</div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #e8e2d8;
+                    color: #6b5a42;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Verbal</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">Verb</div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #e8e2d8;
+                    color: #6b5a42;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Post-Verbal_1</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">
+                    Recipient_NP
+                  </div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #e8e2d8;
+                    color: #6b5a42;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Post-Verbal_2</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">Theme_NP</div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dutch -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Field Model
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;&hellip;dat de ingenieur het script snel
+                optimaliseert.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 7px">
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #ddeedd;
+                    color: #3b6b3d;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Left_Bracket</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">
+                    Complementizer
+                    <em style="color: #7a7a7a">&ldquo;dat&rdquo;</em>
+                  </div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #ddeedd;
+                    color: #3b6b3d;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Mittelfeld</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">
+                    Subject, Object, Adverb
+                  </div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #6b8ea3;
+                    "
+                  >
+                    FLEX_INTRA_ZONE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #ddeedd;
+                    color: #3b6b3d;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Right_Bracket</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">Verb</div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Farsi -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Terminal Anchoring
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Ali ketab ra be man dad.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 7px">
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #ede5f5;
+                    color: #6b4e7a;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Pre-Verbal</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">
+                    Subject, Object, Indirect_Obj
+                  </div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #6b8ea3;
+                    "
+                  >
+                    FLEX_INTRA_ZONE
+                  </div>
+                </div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px">
+                <span
+                  style="
+                    font-size: 9px;
+                    background: #ede5f5;
+                    color: #6b4e7a;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    flex-shrink: 0;
+                    margin-top: 1px;
+                  "
+                  >Terminal</span
+                >
+                <div>
+                  <div style="font-size: 13px; color: #4a4a4a">Verb</div>
+                  <div
+                    style="
+                      font-family: monospace;
+                      font-size: 9px;
+                      color: #a38a70;
+                    "
+                  >
+                    ABSOLUTE
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Topological Mapping — Organizational Utility -->
+    <div class="slide-container" id="slideTopoMap3">
+      <h2 class="slide-title">Topological Mapping &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- General CxG -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Separation of Concerns
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                Decoupling <em>existence</em> (Component Registry) from
+                <em>position</em> (this matrix) avoids combinatorial explosion.
+                No separate row is needed for every legal scrambled variation of
+                a Farsi sentence.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Dimensionality Reduction
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                Abstract topological templates&nbsp;&mdash; e.g., the Dutch V2
+                rule&nbsp;&mdash; are stored exactly once and inherited by
+                thousands of distinct lexical frames, creating a highly
+                normalised relational structure.
+              </div>
+            </div>
+          </div>
+
+          <!-- LLM / Parsing -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              LLM Parsing &amp; Analysis
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Algorithmic Error Diagnosis
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                When a parser hits a syntax error, the matrix lets it isolate
+                the variable and report precisely: &ldquo;The required
+                components are present, but a node violated its
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                  "
+                  >positional_rigidity</code
+                >
+                constraint.&rdquo;
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Pragmatic Feature Extraction
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                In flexible-zone languages (Farsi, Russian), the parser
+                validates the syntax via the matrix, then compares the actual
+                word order to the default to extract pragmatic
+                metadata&nbsp;&mdash; e.g., tagging a fronted node as
+                <em>&ldquo;Topicalized Focus.&rdquo;</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Slot Elision Profile -->
+    <div class="slide-container" id="slideElisionProfile">
+      <h2 class="slide-title">Feature: Slot Elision Profile</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 10px; color: #1a1a1a">
+            Schema Mapping (Null Instantiation)
+          </h3>
+          <p style="font-size: 18px; margin: 0">
+            Applies at the <strong>Constituent Slot level</strong>. Not a global
+            feature&mdash;each individual slot within a construction must define
+            its own elision rules.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Database Types -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0 0 15px 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types Needed
+            </h4>
+
+            <div style="margin-bottom: 15px">
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                elision_allowed
+                <span style="font-weight: 400; color: #7a7a7a">[Boolean]</span>
+              </div>
+              <div style="font-size: 16px; color: #4a4a4a; margin-top: 4px">
+                Can this specific slot be empty in the physical text?
+              </div>
+            </div>
+
+            <div style="margin-bottom: 15px">
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                elision_type
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div style="font-size: 16px; color: #4a4a4a; margin-top: 4px">
+                E.g. Lexical, Grammatical, Pro-Drop, Conversational.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                recovery_method
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Enum/String]</span
+                >
+              </div>
+              <div style="font-size: 16px; color: #4a4a4a; margin-top: 4px">
+                How the parser infers missing data (Morphology, Context,
+                Hardcoded Default).
+              </div>
+            </div>
+          </div>
+
+          <!-- Edge Cases -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0 0 15px 0;
+                letter-spacing: 2px;
+              "
+            >
+              Multilingual Examples
+            </h4>
+
+            <div
+              style="
+                margin-bottom: 15px;
+                border-bottom: 1px solid #f0eee9;
+                padding-bottom: 15px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                "
+              >
+                English (Imperative)
+              </div>
+              <div
+                style="
+                  font-size: 17px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-bottom: 6px;
+                "
+              >
+                "Push it to main." &rarr; Target: Subject Noun Phrase
+              </div>
+              <div
+                style="
+                  font-size: 15px;
+                  background: #f9f8f6;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                "
+              >
+                elision_allowed: TRUE &nbsp;|&nbsp; type: Grammatical
+                &nbsp;|&nbsp; recovery: Default ("You")
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-bottom: 15px;
+                border-bottom: 1px solid #f0eee9;
+                padding-bottom: 15px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                "
+              >
+                Farsi (Pro-Drop)
+              </div>
+              <div
+                style="
+                  font-size: 17px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-bottom: 6px;
+                "
+              >
+                "Ketab ro khundam." &rarr; Target: Subject Noun Phrase
+              </div>
+              <div
+                style="
+                  font-size: 15px;
+                  background: #f9f8f6;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                "
+              >
+                elision_allowed: TRUE &nbsp;|&nbsp; type: Pro-Drop &nbsp;|&nbsp;
+                recovery: Verb Suffix
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                "
+              >
+                Dutch (Vorfeld Deletion)
+              </div>
+              <div
+                style="
+                  font-size: 17px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-bottom: 6px;
+                "
+              >
+                "Heb ik al gezien." &rarr; Target: Vorfeld (Topic)
+              </div>
+              <div
+                style="
+                  font-size: 15px;
+                  background: #f9f8f6;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                "
+              >
+                elision_allowed: TRUE &nbsp;|&nbsp; type: Conversational
+                &nbsp;|&nbsp; recovery: Context
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Organisational Utility & Construct-i-con Use Case -->
+    <div class="slide-container" id="slideElisionUtility">
+      <h2 class="slide-title">Organisational Utility & Construct-i-con Case</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <div style="display: flex; flex-direction: column; gap: 20px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 10px;
+                "
+              >
+                The DRY Principle
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 15px">
+                General CxG Organization
+              </h3>
+
+              <div style="margin-bottom: 20px">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Solves Combinatorial Bloat
+                </div>
+                <div style="font-size: 17px; line-height: 1.5; color: #4a4a4a">
+                  Without this, a database stores two separate rows for every
+                  transitive verb in pro&#8209;drop languages. Moving elision to
+                  the slot level collapses variations into a single, elegant
+                  topological row.
+                </div>
+              </div>
+
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Schema Stability for AI
+                </div>
+                <div style="font-size: 17px; line-height: 1.5; color: #4a4a4a">
+                  Forces the LLM parser to output uniform, fixed&#8209;dimension
+                  JSON. Instead of dropping missing keys, the LLM outputs NULL
+                  values tagged with the exact Elision Reason.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 10px;
+                "
+              >
+                Pedagogical Engine
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 15px">
+                The Construct-i-con Use Case
+              </h3>
+
+              <div style="margin-bottom: 20px">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Fluency vs. Grammar
+                </div>
+                <div style="font-size: 17px; line-height: 1.5; color: #4a4a4a">
+                  Native speakers omit words; textbook learners
+                  over&#8209;articulate. By logging Elision Profiles, the
+                  pedagogical engine tracks a user's pragmatic mastery.
+                </div>
+              </div>
+
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Targeted Feedback
+                </div>
+                <div style="font-size: 17px; line-height: 1.5; color: #4a4a4a">
+                  If a student inputs
+                  <span style="font-style: italic">"Yo quiero el agua"</span>,
+                  the engine queries the Spanish Transitive frame, sees the
+                  Subject slot has
+                  <code
+                    style="
+                      font-family: monospace;
+                      font-size: 15px;
+                      background: #f9f8f6;
+                      padding: 2px 4px;
+                      border-radius: 3px;
+                    "
+                    >elision_allowed: TRUE</code
+                  >, and actively coaches on natural speech patterns.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
     <div class="slide-counter" id="slide-counter"></div>
 
     <script>
       const slides = document.querySelectorAll(".slide-container");
       const counter = document.getElementById("slide-counter");
-      const sidebarNodes = document.querySelectorAll("[data-slide]");
+      const sidebarNodes = document.querySelectorAll(
+        ".sidebar-item[data-slide]",
+      );
+      const sidebarNav = document.getElementById("sidebarNav");
+      const sidebarPinBtn = document.getElementById("sidebarPinBtn");
+      const sidebarSections = document.querySelectorAll(".sidebar-section");
+      const sidebarSubsections = document.querySelectorAll(
+        ".sidebar-subsection",
+      );
+      const sidebarCurrentSection = document.getElementById(
+        "sidebar-current-section",
+      );
+      const sidebarCurrentTitle = document.getElementById(
+        "sidebar-current-title",
+      );
       let current = 0;
 
       function updateCounter() {
         counter.textContent = current + 1 + " / " + slides.length;
       }
 
-      function updateSidebar() {
-        sidebarNodes.forEach((el) => {
-          el.classList.toggle("active", parseInt(el.dataset.slide) === current);
-        });
+      function setSidebarPinned(isPinned) {
+        sidebarNav.classList.toggle("pinned", isPinned);
+        sidebarPinBtn.classList.toggle("active", isPinned);
+        sidebarPinBtn.setAttribute("aria-pressed", String(isPinned));
       }
 
-      function goToSlide(index) {
+      function toggleSidebarPin() {
+        setSidebarPinned(!sidebarNav.classList.contains("pinned"));
+      }
+
+      function updateSidebar() {
+        let activeNode = null;
+
+        sidebarNodes.forEach((el) => {
+          const targetSlides = (el.dataset.slides || el.dataset.slide)
+            .split(",")
+            .map((value) => parseInt(value.trim(), 10))
+            .filter((value) => !Number.isNaN(value));
+          const isActive = targetSlides.includes(current);
+          el.classList.toggle("active", isActive);
+          el.setAttribute("aria-current", isActive ? "true" : "false");
+
+          if (isActive) {
+            activeNode = el;
+          }
+        });
+
+        sidebarSections.forEach((section) => {
+          const isActive = activeNode ? section.contains(activeNode) : false;
+          section.classList.toggle("active", isActive);
+          section.open = isActive;
+        });
+
+        sidebarSubsections.forEach((subsection) => {
+          const isActive = activeNode ? subsection.contains(activeNode) : false;
+          subsection.classList.toggle("active", isActive);
+          subsection.open = isActive;
+        });
+
+        if (!activeNode) {
+          return;
+        }
+
+        const activeSection = activeNode.closest(".sidebar-section");
+        const activeSubsection = activeNode.closest(".sidebar-subsection");
+        const sectionParts = [];
+
+        if (activeSection) {
+          sectionParts.push(activeSection.dataset.sectionTitle);
+        }
+
+        if (activeSubsection) {
+          sectionParts.push(activeSubsection.dataset.sectionTitle);
+        }
+
+        sidebarCurrentSection.textContent = sectionParts.join(" / ");
+        sidebarCurrentTitle.textContent = activeNode.textContent.trim();
+      }
+
+      function setActiveSlide(index) {
+        if (index < 0 || index >= slides.length) {
+          return;
+        }
+
         slides[current].classList.remove("active");
         current = index;
         slides[current].classList.add("active");
@@ -2523,21 +5628,35 @@
         updateSidebar();
       }
 
+      function goToSlide(index) {
+        setActiveSlide(index);
+      }
+
       slides[current].classList.add("active");
       updateCounter();
       updateSidebar();
 
       function changeSlide(dir) {
-        slides[current].classList.remove("active");
-        current = (current + dir + slides.length) % slides.length;
-        slides[current].classList.add("active");
-        updateCounter();
-        updateSidebar();
+        setActiveSlide((current + dir + slides.length) % slides.length);
       }
 
       document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sidebarNav.classList.contains("pinned")) {
+          setSidebarPinned(false);
+        }
+
         if (e.key === "ArrowRight" || e.key === "ArrowDown") changeSlide(1);
         if (e.key === "ArrowLeft" || e.key === "ArrowUp") changeSlide(-1);
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!sidebarNav.classList.contains("pinned")) {
+          return;
+        }
+
+        if (!sidebarNav.contains(e.target)) {
+          setSidebarPinned(false);
+        }
       });
     </script>
   </body>
