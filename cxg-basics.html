@@ -1109,7 +1109,7 @@
               <span class="sidebar-section-title">The Anatomy</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">10</span>
+              <span class="sidebar-count">13</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1137,7 +1137,7 @@
                   <span class="sidebar-subsection-title">Form</span>
                 </span>
                 <span class="sidebar-summary-right">
-                  <span class="sidebar-count">5</span>
+                  <span class="sidebar-count">6</span>
                   <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
                 </span>
               </summary>
@@ -1171,8 +1171,17 @@
                 <button
                   class="sidebar-item subitem"
                   data-slide="25"
-                  data-slides="25,26"
+                  data-slides="25,26,27"
                   onclick="goToSlide(25)"
+                  type="button"
+                >
+                  Intonation &amp; Stress
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="28"
+                  data-slides="28,29"
+                  onclick="goToSlide(28)"
                   type="button"
                 >
                   Elision
@@ -5128,6 +5137,935 @@
                 word order to the default to extract pragmatic
                 metadata&nbsp;&mdash; e.g., tagging a fronted node as
                 <em>&ldquo;Topicalized Focus.&rdquo;</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Intonation & Stress Profile slides ──────────────────── -->
+
+    <!-- Slide: Intonation & Stress — Feature Definition -->
+    <div class="slide-container" id="slideIntonation1">
+      <h2 class="slide-title">Feature: The Intonation &amp; Stress Profile</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <!-- Definition banner -->
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            Acoustic Shape &mdash; Dual-Level Schema
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Applies to the <strong>Whole Construction</strong> (global pitch)
+            <em>or</em> to a specific
+            <strong>Constituent Slot</strong> (localised emphasis). Pitch and
+            stress are not decoration &mdash; they are grammatically contrastive
+            features.
+          </p>
+        </div>
+
+        <!-- Two-column: DB fields + field cards -->
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                global_pitch
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Overarching acoustic melody for the whole construction &mdash;
+                e.g.
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >TERMINAL_RISE</code
+                >,
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >TERMINAL_FALL</code
+                >,
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >FLAT</code
+                >.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                stressed_node_id
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[FK / Integer]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Pointer to the specific component in the Registry that takes the
+                heaviest acoustic hit.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                stress_type
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  border-left: 2px solid #f0eee9;
+                  padding-left: 16px;
+                  margin-top: 8px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 7px;
+                "
+              >
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >DEFAULT</code
+                  >
+                  &mdash; neutral, unremarkable prosody.
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >CONTRASTIVE</code
+                  >
+                  &mdash; sets up an A&nbsp;vs.&nbsp;B comparison.
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >EMPHATIC</code
+                  >
+                  &mdash; emotional intensity; overrides literal semantics.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: visual pitch diagram -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <!-- TERMINAL_FALL -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 20px 26px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                border-left: 4px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-size: 28px;
+                  color: #a38a70;
+                  line-height: 1;
+                  flex-shrink: 0;
+                "
+              >
+                &#x2198;
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: monospace;
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #a38a70;
+                    letter-spacing: 1px;
+                  "
+                >
+                  TERMINAL_FALL
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 18px;
+                    color: #1a1a1a;
+                    margin-top: 2px;
+                  "
+                >
+                  Declarative / Statement
+                </div>
+              </div>
+            </div>
+
+            <!-- TERMINAL_RISE -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 20px 26px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-size: 28px;
+                  color: #6b8ea3;
+                  line-height: 1;
+                  flex-shrink: 0;
+                "
+              >
+                &#x2197;
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: monospace;
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #6b8ea3;
+                    letter-spacing: 1px;
+                  "
+                >
+                  TERMINAL_RISE
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 18px;
+                    color: #1a1a1a;
+                    margin-top: 2px;
+                  "
+                >
+                  Information Request / Open Uncertainty
+                </div>
+              </div>
+            </div>
+
+            <!-- FLAT -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 20px 26px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                border-left: 4px solid #7a9e7e;
+              "
+            >
+              <div
+                style="
+                  font-size: 28px;
+                  color: #7a9e7e;
+                  line-height: 1;
+                  flex-shrink: 0;
+                "
+              >
+                &rarr;
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: monospace;
+                    font-size: 11px;
+                    font-weight: 700;
+                    color: #7a9e7e;
+                    letter-spacing: 1px;
+                  "
+                >
+                  FLAT
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 18px;
+                    color: #1a1a1a;
+                    margin-top: 2px;
+                  "
+                >
+                  Listing / Background Enumeration
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Intonation & Stress — Multilingual Examples -->
+    <div class="slide-container" id="slideIntonation2">
+      <h2 class="slide-title">Intonation &amp; Stress &mdash; Multilingual</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 20px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- Farsi -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Global Pitch as Syntax
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Ali raft.&rdquo; &mdash; identical text, two
+                constructions
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 6px;
+                  padding: 12px 14px;
+                "
+              >
+                <div
+                  style="
+                    font-size: 11px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    margin-bottom: 4px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                  "
+                >
+                  Declarative
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <span style="font-size: 20px; color: #a38a70">&#x2198;</span>
+                  <code
+                    style="
+                      font-family: monospace;
+                      font-size: 12px;
+                      background: #f3f0ea;
+                      padding: 2px 8px;
+                      border-radius: 3px;
+                      color: #a38a70;
+                    "
+                    >global_pitch: TERMINAL_FALL</code
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  background: #f0f4f8;
+                  border-radius: 6px;
+                  padding: 12px 14px;
+                "
+              >
+                <div
+                  style="
+                    font-size: 11px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    margin-bottom: 4px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                  "
+                >
+                  Interrogative
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <span style="font-size: 20px; color: #6b8ea3">&#x2197;</span>
+                  <code
+                    style="
+                      font-family: monospace;
+                      font-size: 12px;
+                      background: #dce8f0;
+                      padding: 2px 8px;
+                      border-radius: 3px;
+                      color: #4a6e85;
+                    "
+                    >global_pitch: TERMINAL_RISE</code
+                  >
+                </div>
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: #7a7a7a;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-style: italic;
+                  padding-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Pitch is the <em>only</em> differentiating feature between these
+                two database entries.
+              </div>
+            </div>
+          </div>
+
+          <!-- English -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Incredulity Frame
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;You paid a thousand dollars for&nbsp;<strong
+                  style="color: #1a1a1a"
+                  >THAT</strong
+                >?&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; gap: 8px; font-size: 13px">
+                <span style="color: #7a7a7a; white-space: nowrap"
+                  >global_pitch</span
+                >
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 12px;
+                    background: #dce8f0;
+                    padding: 1px 7px;
+                    border-radius: 3px;
+                    color: #4a6e85;
+                  "
+                  >TERMINAL_RISE</code
+                >
+              </div>
+              <div style="display: flex; gap: 8px; font-size: 13px">
+                <span style="color: #7a7a7a; white-space: nowrap"
+                  >stressed_node_id</span
+                >
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 12px;
+                    background: #f3f0ea;
+                    padding: 1px 7px;
+                    border-radius: 3px;
+                    color: #6b5a42;
+                  "
+                  >&rarr;&nbsp;Object_NP</code
+                >
+              </div>
+              <div style="display: flex; gap: 8px; font-size: 13px">
+                <span style="color: #7a7a7a; white-space: nowrap"
+                  >stress_type</span
+                >
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 12px;
+                    background: #f3f0ea;
+                    padding: 1px 7px;
+                    border-radius: 3px;
+                    color: #6b5a42;
+                  "
+                  >EMPHATIC</code
+                >
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: #7a7a7a;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-style: italic;
+                  padding-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                EMPHATIC stress overrides literal question semantics &rarr; maps
+                to
+                <em>&ldquo;Emotional Shock / Rejection&rdquo;</em> meaning.
+              </div>
+            </div>
+          </div>
+
+          <!-- Dutch -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Contrastive Focus
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Ik heb dat aan
+                <strong style="color: #1a1a1a">HEM</strong> gegeven.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; gap: 8px; font-size: 13px">
+                <span style="color: #7a7a7a; white-space: nowrap"
+                  >stressed_node_id</span
+                >
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 12px;
+                    background: #f3f0ea;
+                    padding: 1px 7px;
+                    border-radius: 3px;
+                    color: #6b5a42;
+                  "
+                  >&rarr;&nbsp;Indirect_Object</code
+                >
+              </div>
+              <div style="display: flex; gap: 8px; font-size: 13px">
+                <span style="color: #7a7a7a; white-space: nowrap"
+                  >stress_type</span
+                >
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 12px;
+                    background: #f3f0ea;
+                    padding: 1px 7px;
+                    border-radius: 3px;
+                    color: #6b5a42;
+                  "
+                  >CONTRASTIVE</code
+                >
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: #7a7a7a;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-style: italic;
+                  padding-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                CONTRASTIVE stress acts as a grammatical override &mdash; makes
+                an otherwise illegal word order perfectly valid.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Intonation & Stress — Organizational Utility -->
+    <div class="slide-container" id="slideIntonation3">
+      <h2 class="slide-title">Intonation &amp; Stress &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- General CxG -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Resolving the Homograph Problem
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                Without this feature, saving a Farsi statement and question
+                side-by-side throws a Duplicate Entry error &mdash; their
+                vocabulary and topology are 100% identical. The Intonation
+                Profile acts as part of the
+                <strong>Composite Primary Key</strong>, ensuring distinct
+                cognitive templates remain distinct in the database.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Abstract Inheritance
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                A &ldquo;Rising Pitch&rdquo; is itself a construction &mdash; an
+                abstract Form&ndash;Meaning pair that means &ldquo;Information
+                Request.&rdquo; Thousands of distinct textual constructions can
+                draw a single inheritance edge up to this one acoustic node.
+              </div>
+            </div>
+          </div>
+
+          <!-- LLM Strategy -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              LLM Parsing Strategy
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Contextual Inference
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                An LLM reads flat text, but this schema forces it to read
+                the&nbsp;&ldquo;shadows&rdquo;&nbsp;&mdash; punctuation (<code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 5px;
+                    border-radius: 3px;
+                  "
+                  >?!</code
+                >), capitalisation, prior chat context&nbsp;&mdash; and infer
+                the acoustic shape. It turns a flat string into a fully realised
+                semantic object.
+              </div>
+            </div>
+
+            <!-- Visual callout -->
+            <div
+              style="
+                margin-top: auto;
+                background: #f9f8f6;
+                border-radius: 8px;
+                padding: 20px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0b8ae;
+                "
+              >
+                Flat text &rarr; 3D semantic object
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 15px;
+                    color: #4a4a4a;
+                  "
+                  >&ldquo;Ali raft.&rdquo;</span
+                >
+                <span style="color: #c0b8ae">&rarr;</span>
+                <span
+                  style="
+                    background: #a38a70;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 5px 12px;
+                    font-size: 13px;
+                    font-family: monospace;
+                  "
+                  >TERMINAL_FALL</span
+                >
+                <span
+                  style="
+                    background: #6b8ea3;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 5px 12px;
+                    font-size: 13px;
+                    font-family: monospace;
+                  "
+                  >TERMINAL_RISE</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  color: #7a7a7a;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                "
+              >
+                Same text &nbsp;&middot;&nbsp; two distinct constructions
               </div>
             </div>
           </div>
