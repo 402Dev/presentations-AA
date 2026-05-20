@@ -1109,7 +1109,7 @@
               <span class="sidebar-section-title">The Anatomy</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">13</span>
+              <span class="sidebar-count">21</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1137,7 +1137,7 @@
                   <span class="sidebar-subsection-title">Form</span>
                 </span>
                 <span class="sidebar-summary-right">
-                  <span class="sidebar-count">6</span>
+                  <span class="sidebar-count">9</span>
                   <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
                 </span>
               </summary>
@@ -1182,6 +1182,33 @@
                   data-slide="28"
                   data-slides="28,29"
                   onclick="goToSlide(28)"
+                  type="button"
+                >
+                  Nesting &amp; Recursion
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="30"
+                  data-slides="30,31,32"
+                  onclick="goToSlide(30)"
+                  type="button"
+                >
+                  Morphosyntactic Flexibility
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="33"
+                  data-slides="33,34,35"
+                  onclick="goToSlide(33)"
+                  type="button"
+                >
+                  Collostructional Gravity
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="36"
+                  data-slides="36,37"
+                  onclick="goToSlide(36)"
                   type="button"
                 >
                   Elision
@@ -6066,6 +6093,2327 @@
                 "
               >
                 Same text &nbsp;&middot;&nbsp; two distinct constructions
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Nesting & Recursion Profile slides ──────────────────── -->
+
+    <!-- Slide: Nesting & Recursion — Feature Definition -->
+    <div class="slide-container" id="slideNesting1">
+      <h2 class="slide-title">Feature: Nesting &amp; Recursion Profile</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <!-- Definition banner -->
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            Syntactic Scope &mdash; The Network API Constraint
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Schema location: <strong>Whole Construction</strong>. Governs how a
+            construction may connect to the broader dependency network &mdash;
+            whether it anchors the graph, embeds inside another node, or folds
+            recursively into itself.
+          </p>
+        </div>
+
+        <!-- Two-column: DB fields + node-type cards -->
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                is_root_only
+                <span style="font-weight: 400; color: #7a7a7a">[Boolean]</span>
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                If
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >TRUE</code
+                >, this construction can only exist at the absolute top of the
+                dependency graph. It cannot be a child node &mdash; e.g.,
+                English direct questions, Dutch V2&nbsp;clauses.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                embeddable_domains
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;String&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                When
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >is_root_only: FALSE</code
+                >, lists the slot types this construction is legally permitted
+                to fill &mdash; e.g.
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >[&ldquo;Nominal_Slot&rdquo;,
+                  &ldquo;Adverbial_Slot&rdquo;]</code
+                >.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                recursive_allowed
+                <span style="font-weight: 400; color: #7a7a7a">[Boolean]</span>
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Can this construction embed instances of itself? Enables
+                genitive chains, nested relative clauses, and other self-similar
+                structures.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: scope cards -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <!-- Root Only -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #a38a70;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                ROOT ONLY
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Anchors the graph
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  Cannot be placed inside any other node. Attempting an illegal
+                  edge is a hard grammatical violation.
+                </div>
+              </div>
+            </div>
+
+            <!-- Embeddable -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #6b8ea3;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                EMBEDDABLE
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Fills a slot
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  Can occupy specific slot types in a parent construction as
+                  defined by
+                  <code
+                    style="
+                      font-family: monospace;
+                      font-size: 12px;
+                      background: #f3f0ea;
+                      padding: 1px 5px;
+                      border-radius: 3px;
+                    "
+                    >embeddable_domains</code
+                  >.
+                </div>
+              </div>
+            </div>
+
+            <!-- Recursive -->
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #9b7daa;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #9b7daa;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                RECURSIVE
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Embeds itself
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  The same construction template can appear inside one of its
+                  own slots &mdash; genitive chains, nested relative clauses,
+                  centre-embedding.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Nesting & Recursion — Organizational Utility -->
+    <div class="slide-container" id="slideNesting2">
+      <h2 class="slide-title">Nesting &amp; Recursion &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- General CxG -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Graph Pruning
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                A language network is a massive multi-dimensional graph. By
+                declaring
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 5px;
+                    border-radius: 3px;
+                  "
+                  >is_root_only: TRUE</code
+                >, entire branches of the decision tree are pruned instantly.
+                The parser mathematically knows not to attempt embedding root
+                structures into subordinate slots.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Allo-constructions
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                A query for the &ldquo;Interrogative&rdquo; semantic family
+                returns two competing forms: the Direct Question (<code
+                  style="
+                    font-family: monospace;
+                    font-size: 13px;
+                    background: #f3f0ea;
+                    padding: 1px 5px;
+                    border-radius: 3px;
+                  "
+                  >is_root_only: TRUE</code
+                >) and the Indirect Question (<code
+                  style="
+                    font-family: monospace;
+                    font-size: 13px;
+                    background: #f3f0ea;
+                    padding: 1px 5px;
+                    border-radius: 3px;
+                  "
+                  >embeddable: TRUE</code
+                >). The Nesting Profile algorithmically selects the correct form
+                based on context.
+              </div>
+            </div>
+          </div>
+
+          <!-- Error Diagnosis -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              LLM Error Diagnosis
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Isolating Structural Violations
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                When a parser encounters a construction used in an illegal
+                position, the Nesting Profile surfaces the exact failure:
+                &ldquo;A ROOT-ONLY construction was placed inside a Subordinate
+                slot.&rdquo; The error class is unambiguous &mdash; no feature
+                guessing required.
+              </div>
+            </div>
+
+            <!-- Visual: legal vs illegal edge -->
+            <div
+              style="
+                margin-top: auto;
+                background: #f9f8f6;
+                border-radius: 8px;
+                padding: 20px 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0b8ae;
+                "
+              >
+                Legal vs. Illegal Graph Edge
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: #6b8ea3;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 6px 12px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Subordinate&nbsp;slot</span
+                >
+                <span style="color: #c0b8ae; font-size: 18px">←</span>
+                <span
+                  style="
+                    background: #e8d8cc;
+                    color: #7a4a30;
+                    border-radius: 4px;
+                    padding: 6px 12px;
+                    font-size: 13px;
+                    font-family: monospace;
+                    text-decoration: line-through;
+                  "
+                  >ROOT&nbsp;ONLY</span
+                >
+                <span
+                  style="
+                    font-size: 13px;
+                    color: #c0705a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >&#x2715;&nbsp;Illegal edge</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: #6b8ea3;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 6px 12px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >Subordinate&nbsp;slot</span
+                >
+                <span style="color: #c0b8ae; font-size: 18px">←</span>
+                <span
+                  style="
+                    background: #c8dde8;
+                    color: #2e5a73;
+                    border-radius: 4px;
+                    padding: 6px 12px;
+                    font-size: 13px;
+                    font-family: monospace;
+                  "
+                  >EMBEDDABLE</span
+                >
+                <span
+                  style="
+                    font-size: 13px;
+                    color: #5a8a6a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >&#x2713;&nbsp;Legal edge</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Morphosyntactic Flexibility Index slides ───────────── -->
+
+    <!-- Slide: Morphosyntactic Flexibility — Feature Definition -->
+    <div class="slide-container" id="slideFlexibility1">
+      <h2 class="slide-title">Feature: Morphosyntactic Flexibility Index</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            The &ldquo;Frozenness&rdquo; State &mdash; API Limits on Mutation
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Schema location: <strong>Whole Construction</strong>. Defines which
+            syntactic operations are mathematically permitted on this
+            construction and which would destroy its meaning.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                is_fully_frozen
+                <span style="font-weight: 400; color: #7a7a7a">[Boolean]</span>
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                If
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >TRUE</code
+                >, the construction is an absolute invariant string &mdash; no
+                morphological changes permitted at all (e.g.,
+                <em>&ldquo;by and large&rdquo;</em>).
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                blocked_transformations
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;Enum&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                When partially frozen, lists the specific operations that
+                destroy meaning &mdash; e.g.
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 12px;
+                  "
+                  >[PASSIVIZATION, PLURALIZATION, CLEFTING]</code
+                >.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                allowed_transformations
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;Enum&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Operations that remain legally safe &mdash; e.g.
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 13px;
+                  "
+                  >[TENSE_SHIFT]</code
+                >.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: frozenness spectrum -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #c0705a;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #c0705a;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                FULLY FROZEN
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Absolute invariant
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  Zero mutations allowed. Any morphological change severs the
+                  idiomatic meaning entirely.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #a38a70;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                PARTIALLY FROZEN
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Selective constraints
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  Specific operations blocked, others permitted. The most common
+                  state for idiomatic expressions.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 10px;
+                  font-weight: 700;
+                  background: #6b8ea3;
+                  color: #fff;
+                  padding: 4px 10px;
+                  border-radius: 4px;
+                  white-space: nowrap;
+                  margin-top: 2px;
+                  letter-spacing: 1px;
+                "
+              >
+                FULLY FLEXIBLE
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    color: #1a1a1a;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Open to all operations
+                </div>
+                <div
+                  style="
+                    font-size: 14px;
+                    color: #7a7a7a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-weight: 300;
+                    line-height: 1.5;
+                  "
+                >
+                  Compositional constructions with no lexical anchors; any
+                  standard transformation applies.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Morphosyntactic Flexibility — Multilingual Examples -->
+    <div class="slide-container" id="slideFlexibility2">
+      <h2 class="slide-title">Flexibility Index &mdash; Multilingual</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 20px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- English -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Idiomatic Passivization Block
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;He kicked the bucket.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  font-size: 13px;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    color: #5a8a6a;
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #d8edd8;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                  "
+                  >ALLOWED</span
+                >
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 11px;
+                  "
+                  >TENSE_SHIFT</code
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  font-size: 13px;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    color: #c0705a;
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #f5ddd8;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                  "
+                  >BLOCKED</span
+                >
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 11px;
+                  "
+                  >PASSIVIZATION</code
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  font-size: 13px;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    color: #c0705a;
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #f5ddd8;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                  "
+                  >BLOCKED</span
+                >
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 11px;
+                  "
+                  >PLURALIZATION</code
+                >
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-size: 13px;
+                color: #7a7a7a;
+                font-style: italic;
+                line-height: 1.5;
+              "
+            >
+              Parser reads &ldquo;The bucket was kicked by him&rdquo; &rarr;
+              passivization blocked for idiomatic frame &rarr; routes to
+              <em>literal action</em> meaning, not &ldquo;death.&rdquo;
+            </div>
+          </div>
+
+          <!-- Farsi -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Light Verb Compound
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Dast andakhtan&rdquo; &mdash; to tease
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  font-size: 13px;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    color: #c0705a;
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #f5ddd8;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                  "
+                  >BLOCKED</span
+                >
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 11px;
+                  "
+                  >PLURALIZATION</code
+                >
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-size: 13px;
+                color: #7a7a7a;
+                font-style: italic;
+                line-height: 1.5;
+              "
+            >
+              Pluralizing the anchor noun <em>dast</em> &rarr;
+              <em>&ldquo;dast-ha andakht&rdquo;</em> destroys the idiomatic
+              meaning. Schema prevents the engine from generating this
+              impossible form.
+            </div>
+          </div>
+
+          <!-- Dutch -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 18px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Lexical Integrity
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Op hete kolen zitten&rdquo; &mdash; to be anxious
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  font-size: 13px;
+                  align-items: center;
+                "
+              >
+                <span
+                  style="
+                    color: #c0705a;
+                    font-family: monospace;
+                    font-size: 10px;
+                    background: #f5ddd8;
+                    padding: 2px 7px;
+                    border-radius: 3px;
+                    white-space: nowrap;
+                  "
+                  >BLOCKED</span
+                >
+                <code
+                  style="
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                    font-family: monospace;
+                    font-size: 11px;
+                  "
+                  >TOPICALIZATION</code
+                >
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-size: 13px;
+                color: #7a7a7a;
+                font-style: italic;
+                line-height: 1.5;
+              "
+            >
+              Scrambling the phrase to front-position makes it grammatically
+              absurd. The index locks the topology in place for this specific
+              meaning.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Morphosyntactic Flexibility — Utility -->
+    <div class="slide-container" id="slideFlexibility3">
+      <h2 class="slide-title">Flexibility Index &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Disambiguation Engine -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Disambiguation Engine
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                Many strings look identical but have different abstract parents
+                &mdash; Literal vs. Idiomatic. By tracking which transformations
+                are blocked, the database gives the parser a
+                <strong>mathematical key</strong> to distinguish meaning based
+                purely on syntactic environment.
+              </div>
+            </div>
+          </div>
+
+          <!-- Preventing Hallucinations -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              LLM Generation
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Preventing Algorithmic Hallucinations
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                A generative system naturally assumes it can apply a generic
+                Active&rarr;Passive function to any transitive sentence. This
+                feature acts as a
+                <code
+                  style="
+                    font-family: monospace;
+                    font-size: 14px;
+                    background: #f3f0ea;
+                    padding: 1px 6px;
+                    border-radius: 3px;
+                  "
+                  >TypeError</code
+                >
+                constraint &mdash; it stops the engine from producing impossible
+                sentences before they are ever generated.
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #f9f8f6;
+                border-radius: 8px;
+                padding: 18px 22px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0b8ae;
+                "
+              >
+                Blocked at schema level
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    font-style: italic;
+                  "
+                  >&ldquo;He kicked the bucket&rdquo;</span
+                >
+                <span style="color: #c0b8ae">&rarr;</span>
+                <span
+                  style="
+                    background: #f5ddd8;
+                    color: #c0705a;
+                    border-radius: 4px;
+                    padding: 5px 12px;
+                    font-size: 12px;
+                    font-family: monospace;
+                    text-decoration: line-through;
+                  "
+                  >PASSIVIZATION</span
+                >
+                <span
+                  style="
+                    font-size: 13px;
+                    color: #c0705a;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >&#x2715; blocked</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Collostructional Gravity Vector slides ──────────────────── -->
+
+    <!-- Slide: Collostructional Gravity — Feature Definition -->
+    <div class="slide-container" id="slideGravity1">
+      <h2 class="slide-title">Feature: Collostructional Gravity Vector</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #a38a70;
+            padding: 25px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+          "
+        >
+          <h3 style="font-size: 24px; margin-bottom: 8px; color: #1a1a1a">
+            Statistical Affinity &mdash; Weighted Edges on the Lexicon
+          </h3>
+          <p style="font-size: 18px; margin: 0; color: #4a4a4a">
+            Schema location: <strong>Constituent Slot</strong>. Maps the
+            Bayesian probability of specific vocabulary docking into a blank
+            space &mdash; turning a binary grammar into a probabilistic graph.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Left: schema -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 18px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: #a38a70;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                attracted_collexemes
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;Object&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Highest-probability lemmas for this slot. Each entry:
+              </div>
+              <div
+                style="
+                  border-left: 2px solid #f0eee9;
+                  padding-left: 16px;
+                  margin-top: 8px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 7px;
+                "
+              >
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                      font-size: 12px;
+                    "
+                    >lemma_id</code
+                  >
+                  &mdash; UUID pointer to the lexical entry.
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a">
+                  <code
+                    style="
+                      background: #f3f0ea;
+                      padding: 1px 6px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                      font-size: 12px;
+                    "
+                    >log_likelihood_score</code
+                  >
+                  &mdash; Float; higher = stronger gravitational pull.
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 18px; color: #1a1a1a">
+                repelled_collexemes
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array&lt;UUID&gt;]</span
+                >
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
+                Lemmas that are grammatically valid but statistically banned by
+                native speaker intuition.
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: gravity metaphor -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #6b8ea3;
+                  margin-bottom: 10px;
+                "
+              >
+                Attracted &mdash; high likelihood
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 6px">
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <div
+                    style="
+                      height: 6px;
+                      background: #6b8ea3;
+                      border-radius: 3px;
+                      width: 80%;
+                    "
+                  ></div>
+                  <span
+                    style="font-size: 13px; color: #4a4a4a; white-space: nowrap"
+                    >lemma A</span
+                  >
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <div
+                    style="
+                      height: 6px;
+                      background: #6b8ea3;
+                      border-radius: 3px;
+                      width: 60%;
+                      opacity: 0.7;
+                    "
+                  ></div>
+                  <span
+                    style="font-size: 13px; color: #4a4a4a; white-space: nowrap"
+                    >lemma B</span
+                  >
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px">
+                  <div
+                    style="
+                      height: 6px;
+                      background: #6b8ea3;
+                      border-radius: 3px;
+                      width: 40%;
+                      opacity: 0.45;
+                    "
+                  ></div>
+                  <span
+                    style="font-size: 13px; color: #4a4a4a; white-space: nowrap"
+                    >lemma C</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 22px 28px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #c0705a;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0705a;
+                  margin-bottom: 10px;
+                "
+              >
+                Repelled &mdash; statistically banned
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px">
+                <div
+                  style="
+                    height: 6px;
+                    background: #f5ddd8;
+                    border-radius: 3px;
+                    width: 20%;
+                  "
+                ></div>
+                <span
+                  style="
+                    font-size: 13px;
+                    color: #c0705a;
+                    text-decoration: line-through;
+                    white-space: nowrap;
+                  "
+                  >lemma X</span
+                >
+                <span
+                  style="
+                    font-size: 12px;
+                    color: #c0b8ae;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >grammatically valid, culturally impossible</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Collostructional Gravity — Multilingual Examples -->
+    <div class="slide-container" id="slideGravity2">
+      <h2 class="slide-title">Collostructional Gravity &mdash; Multilingual</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 20px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- English -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #a38a70;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Caused-Motion Vector
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;To set [Noun] on fire&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #6b8ea3;
+                margin-bottom: 2px;
+              "
+            >
+              Attracted
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #6b8ea3;
+                    border-radius: 2px;
+                    width: 75%;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >building&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >15.2</span
+                  ></span
+                >
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #6b8ea3;
+                    border-radius: 2px;
+                    width: 60%;
+                    opacity: 0.75;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >car&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >12.8</span
+                  ></span
+                >
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #6b8ea3;
+                    border-radius: 2px;
+                    width: 45%;
+                    opacity: 0.5;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >world&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >9.4</span
+                  ></span
+                >
+              </div>
+            </div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #c0705a;
+                margin-top: 4px;
+                margin-bottom: 2px;
+              "
+            >
+              Repelled
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap">
+              <span
+                style="
+                  background: #f5ddd8;
+                  color: #c0705a;
+                  border-radius: 3px;
+                  padding: 2px 8px;
+                  font-size: 12px;
+                  text-decoration: line-through;
+                "
+                >water</span
+              >
+              <span
+                style="
+                  background: #f5ddd8;
+                  color: #c0705a;
+                  border-radius: 3px;
+                  padding: 2px 8px;
+                  font-size: 12px;
+                  text-decoration: line-through;
+                "
+                >concept</span
+              >
+            </div>
+          </div>
+
+          <!-- Dutch -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Emphatic Adverb Affinity
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;Zich [Adverb] vergissen&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #6b8ea3;
+                margin-bottom: 2px;
+              "
+            >
+              Attracted
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #7a9e7e;
+                    border-radius: 2px;
+                    width: 80%;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >lelijk&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >20.1</span
+                  ></span
+                >
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #7a9e7e;
+                    border-radius: 2px;
+                    width: 65%;
+                    opacity: 0.75;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >deerlijk&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >18.5</span
+                  ></span
+                >
+              </div>
+            </div>
+            <div
+              style="height: 1px; background: #f0eee9; margin-top: 4px"
+            ></div>
+            <div
+              style="
+                font-size: 13px;
+                color: #7a7a7a;
+                font-style: italic;
+                line-height: 1.5;
+              "
+            >
+              A learner says
+              <em>&ldquo;zich slecht vergissen&rdquo;</em> &mdash; syntactically
+              perfect, but the gravity vector flags the adverb as a
+              low-probability mismatch for this slot.
+            </div>
+          </div>
+
+          <!-- Farsi -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 8px;
+              padding: 24px 26px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 17px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Support Verb Collocations
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 2px;
+                "
+              >
+                &ldquo;[Noun] zadan&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #6b8ea3;
+                margin-bottom: 2px;
+              "
+            >
+              Attracted to <em>zadan</em>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #9b7daa;
+                    border-radius: 2px;
+                    width: 85%;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >harf&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >25.0</span
+                  ></span
+                >
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px">
+                <div
+                  style="
+                    height: 5px;
+                    background: #9b7daa;
+                    border-radius: 2px;
+                    width: 70%;
+                    opacity: 0.8;
+                  "
+                ></div>
+                <span
+                  style="font-size: 13px; color: #4a4a4a; font-style: italic"
+                  >zang&nbsp;<span style="color: #9aa; font-size: 11px"
+                    >22.1</span
+                  ></span
+                >
+              </div>
+            </div>
+            <div
+              style="height: 1px; background: #f0eee9; margin-top: 4px"
+            ></div>
+            <div
+              style="
+                font-size: 13px;
+                color: #7a7a7a;
+                font-style: italic;
+                line-height: 1.5;
+              "
+            >
+              Farsi builds verbs by pairing nouns with a generic light verb. The
+              vector maps exactly which nouns are fused to <em>zadan</em> vs.
+              <em>kardan</em>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Collostructional Gravity — Utility -->
+    <div class="slide-container" id="slideGravity3">
+      <h2 class="slide-title">Collostructional Gravity &mdash; Utility</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 30px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 40px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- Probabilistic Graph -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              General CxG Organization
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Mapping the Fuzzy Edges
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                Language is not binary. It operates on statistical likelihood.
+                This feature turns a rigid relational database into a
+                <strong>probabilistic graph</strong>, connecting abstract slots
+                to the literal lexicon with weighted edges that accurately
+                represent native-speaker cognitive biases.
+              </div>
+            </div>
+          </div>
+
+          <!-- Naturalness Grader -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 30px;
+              border-radius: 8px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              flex-grow: 1;
+              border-top: 3px solid #a38a70;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #a38a70;
+              "
+            >
+              LLM Application
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                The &ldquo;Naturalness&rdquo; Grader
+              </div>
+              <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                The hardest thing to teach is idiomatic naturalness. This vector
+                lets a parser report:
+                <em
+                  >&ldquo;Your sentence is grammatically correct, but scores low
+                  on the Gravity Vector. Native speakers don&rsquo;t pair those
+                  two words together &mdash; try this lemma instead.&rdquo;</em
+                >
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #f9f8f6;
+                border-radius: 8px;
+                padding: 18px 22px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #c0b8ae;
+                "
+              >
+                Grammar&nbsp;&check; &nbsp; Naturalness&nbsp;&#x2715;
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  flex-wrap: wrap;
+                "
+              >
+                <span
+                  style="
+                    background: #d8edd8;
+                    color: #3b6b3d;
+                    border-radius: 4px;
+                    padding: 5px 10px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >&#x2713;&nbsp;syntax valid</span
+                >
+                <span style="color: #c0b8ae">&nbsp;+&nbsp;</span>
+                <span
+                  style="
+                    background: #f5ddd8;
+                    color: #c0705a;
+                    border-radius: 4px;
+                    padding: 5px 10px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >&#x2715;&nbsp;score: 0.4</span
+                >
+                <span style="color: #c0b8ae">&rarr;</span>
+                <span
+                  style="
+                    background: #e8e2d8;
+                    color: #6b5a42;
+                    border-radius: 4px;
+                    padding: 5px 10px;
+                    font-size: 13px;
+                    font-family: &quot;Inter&quot;, sans-serif;
+                  "
+                  >suggest alternate</span
+                >
               </div>
             </div>
           </div>
