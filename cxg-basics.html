@@ -1109,7 +1109,7 @@
               <span class="sidebar-section-title">The Anatomy</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">32</span>
+              <span class="sidebar-count">35</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1222,7 +1222,7 @@
                   <span class="sidebar-subsection-title">Meaning</span>
                 </span>
                 <span class="sidebar-summary-right">
-                <span class="sidebar-count">10</span>
+                  <span class="sidebar-count">13</span>
                   <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
                 </span>
               </summary>
@@ -1261,6 +1261,15 @@
                   type="button"
                 >
                   Macro-Event Proposition
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="48"
+                  data-slides="48,49,50"
+                  onclick="goToSlide(48)"
+                  type="button"
+                >
+                  Pragmatic Intent &amp; Speech Act
                 </button>
               </div>
             </details>
@@ -2766,7 +2775,7 @@
             <li
               style="
                 font-family: &quot;Inter&quot;, sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 300;
                 color: #4a4a4a;
                 padding-left: 16px;
@@ -2778,19 +2787,19 @@
                 style="
                   position: absolute;
                   left: 0;
-                  top: 7px;
+                  top: 6px;
                   width: 5px;
                   height: 5px;
                   background: #6b8ea3;
                   border-radius: 50%;
                 "
               ></span>
-              Semantic content
+              Semantic Frame Anchor
             </li>
             <li
               style="
                 font-family: &quot;Inter&quot;, sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 300;
                 color: #4a4a4a;
                 padding-left: 16px;
@@ -2802,19 +2811,19 @@
                 style="
                   position: absolute;
                   left: 0;
-                  top: 7px;
+                  top: 6px;
                   width: 5px;
                   height: 5px;
                   background: #6b8ea3;
                   border-radius: 50%;
                 "
               ></span>
-              Pragmatic function
+              Event Shape Profile
             </li>
             <li
               style="
                 font-family: &quot;Inter&quot;, sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 300;
                 color: #4a4a4a;
                 padding-left: 16px;
@@ -2826,39 +2835,38 @@
                 style="
                   position: absolute;
                   left: 0;
-                  top: 7px;
+                  top: 6px;
                   width: 5px;
                   height: 5px;
                   background: #6b8ea3;
                   border-radius: 50%;
                 "
               ></span>
-              Discourse role
+              Macro-Event Proposition
             </li>
             <li
               style="
                 font-family: &quot;Inter&quot;, sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 300;
-                color: #c8c0b8;
+                color: #4a4a4a;
                 padding-left: 16px;
                 position: relative;
                 line-height: 1.4;
-                font-style: italic;
               "
             >
               <span
                 style="
                   position: absolute;
                   left: 0;
-                  top: 7px;
+                  top: 6px;
                   width: 5px;
                   height: 5px;
-                  background: #e0dcd5;
+                  background: #8a7050;
                   border-radius: 50%;
                 "
               ></span>
-              ···
+              Pragmatic Intent
             </li>
           </ul>
         </div>
@@ -10795,9 +10803,7 @@
 
     <!-- Slide: Event Shape Profile — Multilingual -->
     <div class="slide-container" id="slideEventShape2">
-      <h2 class="slide-title">
-        Event Shape Profile &mdash; Multilingual
-      </h2>
+      <h2 class="slide-title">Event Shape Profile &mdash; Multilingual</h2>
       <div
         class="content-area"
         style="
@@ -11169,10 +11175,10 @@
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
                   The morphology maps to two distinct temporal realities:
-                  <em>was writing</em> (continuous past) or <em>used to
-                  write</em> (habitual routine). The schema forces downstream
-                  NLP tasks to query pragmatic context to resolve the exact
-                  shape of the timeline.
+                  <em>was writing</em> (continuous past) or
+                  <em>used to write</em> (habitual routine). The schema forces
+                  downstream NLP tasks to query pragmatic context to resolve the
+                  exact shape of the timeline.
                 </div>
               </div>
             </div>
@@ -11183,9 +11189,7 @@
 
     <!-- Slide: Event Shape Profile — Utility -->
     <div class="slide-container" id="slideEventShape3">
-      <h2 class="slide-title">
-        Event Shape Profile &mdash; Utility
-      </h2>
+      <h2 class="slide-title">Event Shape Profile &mdash; Utility</h2>
       <div
         class="content-area"
         style="
@@ -11373,8 +11377,8 @@
                   <div
                     style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
                   >
-                    <strong>&ldquo;The system built the
-                    database&rdquo;</strong>&nbsp;
+                    <strong>&ldquo;The system built the database&rdquo;</strong
+                    >&nbsp;
                     <code
                       style="
                         background: #edf3ed;
@@ -11386,8 +11390,10 @@
                       >boundary_state: REACHED</code
                     >
                     &rarr; product exists.<br />
-                    <strong>&ldquo;The system was building the
-                    database&rdquo;</strong>&nbsp;
+                    <strong
+                      >&ldquo;The system was building the
+                      database&rdquo;</strong
+                    >&nbsp;
                     <code
                       style="
                         background: #f5ede4;
@@ -11700,8 +11706,8 @@
                   "
                   >proposition_template</code
                 >
-                is the final output payload template. It converts a raw
-                sentence into a structured logical statement.
+                is the final output payload template. It converts a raw sentence
+                into a structured logical statement.
               </p>
             </div>
 
@@ -11811,9 +11817,7 @@
 
     <!-- Slide: Macro-Event Proposition — Multilingual -->
     <div class="slide-container" id="slideMacroEvent2">
-      <h2 class="slide-title">
-        Macro-Event Proposition &mdash; Multilingual
-      </h2>
+      <h2 class="slide-title">Macro-Event Proposition &mdash; Multilingual</h2>
       <div
         class="content-area"
         style="
@@ -11892,7 +11896,7 @@
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
-            <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-direction: column; gap: 12px">
               <div>
                 <div
                   style="
@@ -11901,7 +11905,7 @@
                     text-transform: uppercase;
                     color: #6b7faa;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
                   "
                 >
                   Proposition
@@ -11910,15 +11914,15 @@
                   style="
                     background: #f0f2f8;
                     border-radius: 6px;
-                    padding: 10px 12px;
+                    padding: 12px 14px;
                     font-family: monospace;
                     font-size: 12px;
                     color: #3a4a7a;
-                    line-height: 1.65;
+                    line-height: 1.8;
                   "
                 >
-                  &AElig;FFECTOR makes RECIPIENT<br />carry out
-                  &AElig;FFECTED-ACTION
+                  &AElig;FFECTOR makes RECIPIENT<br />
+                  &nbsp;&nbsp;carry out &AElig;FFECTED-ACTION
                 </div>
               </div>
               <div>
@@ -11929,7 +11933,64 @@
                     text-transform: uppercase;
                     color: #6b7faa;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Causal direction
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #dde2f0;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #3a4a7a;
+                      font-weight: 600;
+                    "
+                    >A_CAUSES_B</code
+                  >
+                  <span style="font-size: 13px; color: #7a7a7a"
+                    >Effector &rarr; Recipient &rarr; Action</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #6b7faa;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #f4f5fb;
+                    border-left: 3px solid #6b7faa;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #3a4a7a;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  RECIPIENT is now obligated to carry out &AElig;FFECTED-ACTION
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #6b7faa;
+                    font-weight: 600;
+                    margin-bottom: 6px;
                   "
                 >
                   Data impact
@@ -12003,7 +12064,7 @@
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
-            <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-direction: column; gap: 12px">
               <div>
                 <div
                   style="
@@ -12012,7 +12073,7 @@
                     text-transform: uppercase;
                     color: #7a9e7e;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
                   "
                 >
                   Proposition
@@ -12021,14 +12082,15 @@
                   style="
                     background: #edf3ed;
                     border-radius: 6px;
-                    padding: 10px 12px;
+                    padding: 12px 14px;
                     font-family: monospace;
                     font-size: 12px;
                     color: #2e4a32;
-                    line-height: 1.65;
+                    line-height: 1.8;
                   "
                 >
-                  ACTOR creates PATH through<br />OBSTACLE via ACTION
+                  ACTOR creates PATH through<br />
+                  &nbsp;&nbsp;OBSTACLE via ACTION
                 </div>
               </div>
               <div>
@@ -12039,7 +12101,64 @@
                     text-transform: uppercase;
                     color: #7a9e7e;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Causal direction
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #d6e8d6;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #2e4a32;
+                      font-weight: 600;
+                    "
+                    >A_CAUSES_B</code
+                  >
+                  <span style="font-size: 13px; color: #7a7a7a"
+                    >Actor &rarr; Path &rarr; Traversal</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #edf3ed;
+                    border-left: 3px solid #7a9e7e;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #2e4a32;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  ACTOR has successfully TRAVERSED OBSTACLE
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 6px;
                   "
                 >
                   Data impact
@@ -12114,7 +12233,7 @@
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
-            <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; flex-direction: column; gap: 12px">
               <div>
                 <div
                   style="
@@ -12123,7 +12242,7 @@
                     text-transform: uppercase;
                     color: #9b7daa;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
                   "
                 >
                   Proposition
@@ -12132,14 +12251,15 @@
                   style="
                     background: #f1ecf5;
                     border-radius: 6px;
-                    padding: 10px 12px;
+                    padding: 12px 14px;
                     font-family: monospace;
                     font-size: 12px;
                     color: #4a2d66;
-                    line-height: 1.65;
+                    line-height: 1.8;
                   "
                 >
-                  ACTOR causes PATIENT<br />to enter STATE
+                  ACTOR causes PATIENT<br />
+                  &nbsp;&nbsp;to enter STATE
                 </div>
               </div>
               <div>
@@ -12150,7 +12270,64 @@
                     text-transform: uppercase;
                     color: #9b7daa;
                     font-weight: 600;
-                    margin-bottom: 4px;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Causal direction
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #ecdff5;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #4a2d66;
+                      font-weight: 600;
+                    "
+                    >A_CAUSES_B</code
+                  >
+                  <span style="font-size: 13px; color: #7a7a7a"
+                    >Actor &rarr; Patient &rarr; State</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #f1ecf5;
+                    border-left: 3px solid #9b7daa;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #4a2d66;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  PATIENT is now in TARGET-STATE (broken)
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 6px;
                   "
                 >
                   Data impact
@@ -12170,9 +12347,7 @@
 
     <!-- Slide: Macro-Event Proposition — Utility -->
     <div class="slide-container" id="slideMacroEvent3">
-      <h2 class="slide-title">
-        Macro-Event Proposition &mdash; Utility
-      </h2>
+      <h2 class="slide-title">Macro-Event Proposition &mdash; Utility</h2>
       <div
         class="content-area"
         style="
@@ -12371,7 +12546,8 @@
                   <div
                     style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
                   >
-                    User query: <strong>&ldquo;Does he have a cake?&rdquo;</strong>
+                    User query:
+                    <strong>&ldquo;Does he have a cake?&rdquo;</strong>
                   </div>
                 </div>
 
@@ -12409,6 +12585,1211 @@
                     Answer: <strong style="color: #3a4a7a">Yes.</strong> The
                     schema provides the logical proof without requiring the
                     model to infer it.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Pragmatic Intent & Speech Act Profile — Feature Definition -->
+    <div class="slide-container" id="slidePragmaticIntent1">
+      <h2 class="slide-title" style="font-size: 38px; margin-bottom: 10px">
+        Feature: The Pragmatic Intent &amp; Speech Act Profile
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 14px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #8a7050;
+            padding: 14px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            border-radius: 0 8px 8px 0;
+          "
+        >
+          <h3 style="font-size: 20px; margin-bottom: 4px; color: #1a1a1a">
+            The Behavioral Layer
+          </h3>
+          <p
+            style="
+              font-size: 15px;
+              margin: 0;
+              color: #4a4a4a;
+              line-height: 1.45;
+            "
+          >
+            Schema location: <strong>Whole Construction</strong>. Acts as the
+            behavioral metadata wrapper around the semantic equation &mdash;
+            logging not <em>what</em> happened, but
+            <em>what the speaker was socially doing</em> by uttering the
+            sentence.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 20px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Database data types -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #8a7050;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <!-- illocutionary_force -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                illocutionary_force
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                The primary social action the speaker is performing.
+              </div>
+            </div>
+            <div
+              style="
+                border-left: 2px solid #e8dece;
+                padding-left: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  DIRECTIVE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Command &mdash; speaker wants the listener to act.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  COMMISSIVE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Promise &mdash; speaker commits to a future action.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  EXPRESSIVE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Social / emotional display: gratitude, regret, affection.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  DECLARATION
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Reality-changing utterance. &ldquo;You are fired.&rdquo;
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 1px; background: #f0eee9"></div>
+
+            <!-- epistemic_stance -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                epistemic_stance
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                The speaker&rsquo;s encoded degree of certainty.
+              </div>
+            </div>
+            <div
+              style="
+                border-left: 2px solid #e8dece;
+                padding-left: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  ABSOLUTE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Stated as certain fact.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  DUBITATIVE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Expressed with doubt.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  EVIDENTIAL
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Based on hearsay or reported evidence.
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 1px; background: #f0eee9"></div>
+
+            <!-- pragmatic_polarity -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                pragmatic_polarity
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Modifiers for social friction and register.
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap">
+              <div
+                style="
+                  padding: 6px 11px;
+                  border-radius: 999px;
+                  background: #ede7d8;
+                  color: #4a3820;
+                  font-size: 12px;
+                  font-weight: 500;
+                "
+              >
+                MITIGATED
+              </div>
+              <div
+                style="
+                  padding: 6px 11px;
+                  border-radius: 999px;
+                  background: #f5e8e8;
+                  color: #6b2020;
+                  font-size: 12px;
+                  font-weight: 500;
+                "
+              >
+                AGGRAVATED
+              </div>
+              <div
+                style="
+                  padding: 6px 11px;
+                  border-radius: 999px;
+                  background: #e8f0e8;
+                  color: #205020;
+                  font-size: 12px;
+                  font-weight: 500;
+                "
+              >
+                DEFERENTIAL
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #f5f0e8;
+                border: 1px solid rgba(138, 112, 80, 0.15);
+                border-radius: 8px;
+                padding: 12px 14px;
+                font-size: 14px;
+                color: #4a3820;
+                line-height: 1.5;
+              "
+            >
+              The same syntactic form can perform completely different social
+              acts. This profile captures the gap.
+            </div>
+          </div>
+
+          <!-- RIGHT: Concept cards -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #f5f0e8 0%, #ede7d8 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #8a7050;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #8a7050;
+                  margin-bottom: 6px;
+                "
+              >
+                The Speech Act
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                What is the speaker socially doing?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0">
+                The
+                <code
+                  style="
+                    background: #e8dece;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >illocutionary_force</code
+                >
+                is the primary social contract: a command, a promise, an
+                expression of feeling, or a reality-altering declaration.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 6px;
+                "
+              >
+                The Social Register
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                How aggressively is the act performed?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0 0 10px 0">
+                Two commands can carry the same logical payload but entirely
+                different social weight. The
+                <code
+                  style="
+                    background: #e8dece;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >pragmatic_polarity</code
+                >
+                encodes that friction.
+              </p>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #ede7d8;
+                    color: #4a3820;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  MITIGATED
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #f5e8e8;
+                    color: #6b2020;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  AGGRAVATED
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #e8f0e8;
+                    color: #205020;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  DEFERENTIAL
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 14px 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #8a7050;
+              "
+            >
+              <div style="font-size: 14px; line-height: 1.5; color: #4a4a4a">
+                A dictionary cannot tell you that &ldquo;Can you pass the
+                salt?&rdquo; is a command, not a question about physical
+                capability. The Speech Act Profile can.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Pragmatic Intent & Speech Act Profile — Multilingual -->
+    <div class="slide-container" id="slidePragmaticIntent2">
+      <h2 class="slide-title">
+        Pragmatic Intent &amp; Speech Act &mdash; Multilingual
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- FARSI -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #8a6050;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #8a6050;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Ta&lsquo;arof Protocol
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #8a6050;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Literal Override
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;Ghorbunet beram.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #8a6050;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Profile
+                </div>
+                <div
+                  style="
+                    background: #f5edea;
+                    border-radius: 6px;
+                    padding: 12px 14px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #4a2018;
+                    line-height: 1.8;
+                  "
+                >
+                  illocutionary_force: EXPRESSIVE<br />
+                  pragmatic_polarity: MAXIMAL_DEFERENCE
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #8a6050;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Speech Act
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #ead6d0;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #4a2018;
+                      font-weight: 600;
+                    "
+                    >Cultural Affection Token</code
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #8a6050;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #f5edea;
+                    border-left: 3px solid #8a6050;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #4a2018;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  NOT a physical proposition &mdash; a hardcoded social ritual
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #8a6050;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The schema logs this not as a physical event (death /
+                  sacrifice), but as a hardcoded social token of affection or
+                  gratitude. It preserves the cultural reality in the knowledge
+                  graph.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUTCH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #4a7a8a;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #4a7a8a;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Command Mitigator
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #4a7a8a;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Modal Particles
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;Kijk eens even naar die code.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #4a7a8a;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Profile
+                </div>
+                <div
+                  style="
+                    background: #eaf2f5;
+                    border-radius: 6px;
+                    padding: 12px 14px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #1a3a46;
+                    line-height: 1.8;
+                  "
+                >
+                  illocutionary_force: DIRECTIVE<br />
+                  pragmatic_polarity: MITIGATED
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #4a7a8a;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Speech Act
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #d0e5eb;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #1a3a46;
+                      font-weight: 600;
+                    "
+                    >Softened Command</code
+                  >
+                  <span style="font-size: 13px; color: #7a7a7a"
+                    >Suggestion, not order</span
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #4a7a8a;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #eaf2f5;
+                    border-left: 3px solid #4a7a8a;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #1a3a46;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  Classify as &ldquo;Suggestion,&rdquo; not &ldquo;Military
+                  Order&rdquo;
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #4a7a8a;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The physical topology is a strict Imperative. By logging the
+                  <code
+                    style="
+                      background: #d0e5eb;
+                      padding: 1px 5px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                      font-size: 12px;
+                    "
+                    >pragmatic_polarity</code
+                  >, the database structurally decouples harsh syntax from the
+                  friendly social reality.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #7a6890;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a6890;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Scalar Rejection
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a6890;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                The Let Alone Frame
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;I wouldn&rsquo;t trust him with a calculator, let alone a
+                production server.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a6890;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Profile
+                </div>
+                <div
+                  style="
+                    background: #f0edf5;
+                    border-radius: 6px;
+                    padding: 12px 14px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #3a2860;
+                    line-height: 1.8;
+                  "
+                >
+                  epistemic_stance: ABSOLUTE_REJECTION<br />
+                  pragmatic_polarity: AGGRAVATED
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a6890;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Speech Act
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px">
+                  <code
+                    style="
+                      background: #e0d8eb;
+                      padding: 5px 10px;
+                      border-radius: 999px;
+                      font-size: 12px;
+                      color: #3a2860;
+                      font-weight: 600;
+                    "
+                    >Scalar Destruction</code
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a6890;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Entailment
+                </div>
+                <div
+                  style="
+                    background: #f0edf5;
+                    border-left: 3px solid #7a6890;
+                    padding: 8px 12px;
+                    font-size: 13px;
+                    color: #3a2860;
+                    line-height: 1.55;
+                    border-radius: 0 6px 6px 0;
+                  "
+                >
+                  Trust at any level is negated &mdash; not just the extreme
+                  case
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a6890;
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The database tags this as a specific rhetorical maneuver
+                  &mdash; building a scale of probability to aggressively
+                  destroy it &mdash; rather than a standard negative statement.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Pragmatic Intent & Speech Act Profile — Utility -->
+    <div class="slide-container" id="slidePragmaticIntent3">
+      <h2 class="slide-title">
+        Pragmatic Intent &amp; Speech Act &mdash; Utility
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Syntax-Pragmatics Asymmetry -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #8a7050;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #8a7050;
+                  margin-bottom: 10px;
+                "
+              >
+                Syntax-Pragmatics Asymmetry
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 14px">
+                Form and Function are mathematically decoupled.
+              </h3>
+
+              <div style="margin-bottom: 18px">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  The salt problem
+                </div>
+                <div
+                  style="
+                    font-size: 16px;
+                    line-height: 1.55;
+                    color: #4a4a4a;
+                    margin-bottom: 12px;
+                  "
+                >
+                  &ldquo;Can you pass the salt?&rdquo; uses the physical
+                  <strong>Form</strong> of an Information Request
+                  (Interrogative) but its <strong>Function</strong> is a Command
+                  (Directive).
+                </div>
+                <div
+                  style="
+                    background: #f5f0e8;
+                    border-radius: 8px;
+                    padding: 14px 16px;
+                    font-size: 14px;
+                    color: #4a3820;
+                    line-height: 1.6;
+                  "
+                >
+                  By explicitly separating the Topological Matrix from the
+                  Speech Act Profile, the database
+                  <strong>mathematically models</strong> how languages repurpose
+                  physical structures for entirely different social goals.
+                </div>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #f0eee9;
+                    color: #4a4a4a;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  Form: INTERROGATIVE
+                </div>
+                <i class="fa-solid fa-arrow-right" style="color: #c8c0b8"></i>
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #8a7050;
+                    color: #ffffff;
+                    font-size: 13px;
+                    font-weight: 600;
+                  "
+                >
+                  Function: DIRECTIVE
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Relational querying -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 10px;
+                "
+              >
+                Cross-Linguistic Social Mapping
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 18px">
+                Query by intent, not by syntax.
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Forms are language-specific&hellip;
+                  </div>
+                  <div
+                    style="font-size: 15px; color: #4a4a4a; line-height: 1.55"
+                  >
+                    An English Interrogative, a Dutch Imperative+particles, and
+                    a Farsi social formula are three different syntactic
+                    objects.
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    &hellip;but social intents are universal
+                  </div>
+                  <div
+                    style="
+                      font-size: 14px;
+                      color: #4a4a4a;
+                      line-height: 1.55;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    To generate polite requests across all languages, query by
+                    social intent, not syntax:
+                  </div>
+                  <div
+                    style="
+                      background: #ede7d8;
+                      border-radius: 6px;
+                      padding: 12px 14px;
+                      font-family: monospace;
+                      font-size: 12px;
+                      color: #4a3820;
+                      line-height: 1.8;
+                    "
+                  >
+                    illocutionary_force = DIRECTIVE<br />
+                    AND pragmatic_polarity = DEFERENTIAL
+                  </div>
+                  <div
+                    style="
+                      margin-top: 10px;
+                      font-size: 14px;
+                      color: #4a4a4a;
+                      line-height: 1.55;
+                    "
+                  >
+                    This feature turns social behavior into a
+                    <strong>searchable, relational index</strong>.
                   </div>
                 </div>
               </div>
