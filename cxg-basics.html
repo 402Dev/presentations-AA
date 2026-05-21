@@ -1109,7 +1109,7 @@
               <span class="sidebar-section-title">The Anatomy</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">26</span>
+              <span class="sidebar-count">32</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1222,7 +1222,7 @@
                   <span class="sidebar-subsection-title">Meaning</span>
                 </span>
                 <span class="sidebar-summary-right">
-                  <span class="sidebar-count">4</span>
+                <span class="sidebar-count">10</span>
                   <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
                 </span>
               </summary>
@@ -1243,6 +1243,24 @@
                   type="button"
                 >
                   Semantic Frame Anchor
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="42"
+                  data-slides="42,43,44"
+                  onclick="goToSlide(42)"
+                  type="button"
+                >
+                  Event Shape Profile
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="45"
+                  data-slides="45,46,47"
+                  onclick="goToSlide(45)"
+                  type="button"
+                >
+                  Macro-Event Proposition
                 </button>
               </div>
             </details>
@@ -10386,6 +10404,2013 @@
                 Traditional parsers treat these as unrelated sentences. The
                 Semantic Frame Anchor recognizes them as the same transaction
                 seen from opposite sides of the deal.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Event Shape Profile — Feature Definition -->
+    <div class="slide-container" id="slideEventShape1">
+      <h2 class="slide-title" style="font-size: 38px; margin-bottom: 10px">
+        Feature: The Event Shape Profile
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 14px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #b07050;
+            padding: 14px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            border-radius: 0 8px 8px 0;
+          "
+        >
+          <h3 style="font-size: 20px; margin-bottom: 4px; color: #1a1a1a">
+            The Temporal Bounding Box &amp; Playback Engine
+          </h3>
+          <p
+            style="
+              font-size: 15px;
+              margin: 0;
+              color: #4a4a4a;
+              line-height: 1.45;
+            "
+          >
+            Schema location: <strong>Whole Construction</strong> (can interact
+            with the Lexical Anchor). Acts as the temporal bounding box and
+            playback engine for the cognitive scene &mdash; encoding the finish
+            line and the physics of how an event unfolds.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 20px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Database data types -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #b07050;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                boundary_state
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Defines the <em>finish line</em>. Does the event have a natural
+                endpoint?
+              </div>
+            </div>
+            <div
+              style="
+                border-left: 2px solid #f5ede4;
+                padding-left: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  BOUNDED
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Has a distinct, coded endpoint.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  UNBOUNDED
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Open-ended duration; no finish line.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  REACHED
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Post-completion state; the finish line has been crossed.
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 1px; background: #f0eee9"></div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                internal_rhythm
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Defines the <em>playback physics</em>. How does the event move
+                through time?
+              </div>
+            </div>
+            <div
+              style="
+                border-left: 2px solid #f5ede4;
+                padding-left: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  PUNCTUAL
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Instantaneous flash; no internal duration.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  CONTINUOUS
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Smooth, uninterrupted duration.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  ITERATIVE
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Looping or stuttering sequence.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  HABITUAL
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Historical pattern; routine over time.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #fdf8f4;
+                border: 1px solid rgba(176, 112, 80, 0.14);
+                border-radius: 8px;
+                padding: 12px 14px;
+                font-size: 14px;
+                color: #7a4a2a;
+                line-height: 1.5;
+              "
+            >
+              Together the two fields encode the full temporal geometry: where
+              the clock stops and how it ticks.
+            </div>
+          </div>
+
+          <!-- RIGHT column -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #fdf8f4 0%, #f5ede4 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #b07050;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #b07050;
+                  margin-bottom: 6px;
+                "
+              >
+                The Finish Line
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Did the event reach its natural end?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0">
+                <code
+                  style="
+                    background: #f5ede4;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >boundary_state</code
+                >
+                answers whether the system should log a completed result, an
+                ongoing process, or a post-completion outcome.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 6px;
+                "
+              >
+                The Playback
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                How does time tick inside the event?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0 0 10px 0">
+                <code
+                  style="
+                    background: #f5ede4;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >internal_rhythm</code
+                >
+                specifies the temporal texture &mdash; a single flash, a smooth
+                stream, a looping GIF, or a historical pattern.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #f5ede4;
+                    color: #7a4a2a;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  PUNCTUAL
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #eef5f7;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  CONTINUOUS
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #f1ecf5;
+                    color: #5a3d66;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  ITERATIVE
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #edf3ed;
+                    color: #3a5c3e;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  HABITUAL
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 14px 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #b07050;
+              "
+            >
+              <div style="font-size: 14px; line-height: 1.5; color: #4a4a4a">
+                A dictionary entry describes what a verb means. The Event Shape
+                Profile describes how time itself is packaged inside the
+                construction.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Event Shape Profile — Multilingual -->
+    <div class="slide-container" id="slideEventShape2">
+      <h2 class="slide-title">
+        Event Shape Profile &mdash; Multilingual
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- ENGLISH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #b07050;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #b07050;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Iterative Coercion
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #b07050;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                The Progressive
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;The engine is coughing.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #b07050;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Profile
+                </div>
+                <div style="font-size: 14px; color: #1a1a1a; line-height: 1.55">
+                  <code
+                    style="
+                      background: #f5ede4;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                    "
+                    >boundary_state: UNBOUNDED</code
+                  ><br />
+                  <code
+                    style="
+                      background: #f5ede4;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                      margin-top: 4px;
+                      display: inline-block;
+                    "
+                    >internal_rhythm: CONTINUOUS</code
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #b07050;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The dictionary defines <em>cough</em> as mathematically
+                  PUNCTUAL. Because a punctual event cannot be stretched, the
+                  construction forces a cognitive override: the parser maps the
+                  output as an ITERATIVE sequence &mdash; a looping GIF. The
+                  syntax coerces the semantics.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUTCH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Spatial-Temporal Lock
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a9e7e;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Aan Het Construction
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;De server is aan het herstarten.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Profile
+                </div>
+                <div style="font-size: 14px; color: #1a1a1a; line-height: 1.55">
+                  <code
+                    style="
+                      background: #edf3ed;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                    "
+                    >boundary_state: ACTIVE_MIDPOINT</code
+                  ><br />
+                  <code
+                    style="
+                      background: #edf3ed;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                      margin-top: 4px;
+                      display: inline-block;
+                    "
+                    >internal_rhythm: FOCUSED_DURATION</code
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  Traditional parsers mistake <em>aan</em> for a physical
+                  spatial preposition. The Event Shape explicitly flags this as
+                  a temporal freeze-frame: the event is trapped in motion and
+                  the finish line has not yet been crossed.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FARSI -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Imperfective Split
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #9b7daa;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Mi- Prefix
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;Ali Python mi-nevesht.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Profile
+                </div>
+                <div style="font-size: 14px; color: #1a1a1a; line-height: 1.55">
+                  <code
+                    style="
+                      background: #f1ecf5;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                    "
+                    >boundary_state: UNBOUNDED</code
+                  ><br />
+                  <code
+                    style="
+                      background: #f1ecf5;
+                      padding: 2px 6px;
+                      border-radius: 4px;
+                      font-family: monospace;
+                      margin-top: 4px;
+                      display: inline-block;
+                    "
+                    >internal_rhythm: CONTINUOUS <em>or</em> HABITUAL</code
+                  >
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The morphology maps to two distinct temporal realities:
+                  <em>was writing</em> (continuous past) or <em>used to
+                  write</em> (habitual routine). The schema forces downstream
+                  NLP tasks to query pragmatic context to resolve the exact
+                  shape of the timeline.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Event Shape Profile — Utility -->
+    <div class="slide-container" id="slideEventShape3">
+      <h2 class="slide-title">
+        Event Shape Profile &mdash; Utility
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Cross-linguistic joining -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #b07050;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #b07050;
+                  margin-bottom: 10px;
+                "
+              >
+                Cross-Linguistic Joining
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 14px">
+                Form is local. Time is universal.
+              </h3>
+
+              <div style="margin-bottom: 18px">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  The pivot
+                </div>
+                <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                  Physical grammar varies wildly across languages, but time is a
+                  universal constant. A database organised by Event Shape allows
+                  a single query to bridge disparate forms via shared temporal
+                  geometry.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #fdf8f4;
+                  border-radius: 8px;
+                  padding: 14px 16px;
+                  margin-bottom: 16px;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  line-height: 1.55;
+                "
+              >
+                <code
+                  style="
+                    background: #f5ede4;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >WHERE internal_rhythm = &apos;HABITUAL&apos;</code
+                >
+                instantly returns&hellip;
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #f5ede4;
+                    color: #6b4f35;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  English &ldquo;used to&rdquo;
+                </div>
+                <i class="fa-solid fa-plus" style="color: #c8c0b8"></i>
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #f1ecf5;
+                    color: #5a3d66;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  Farsi mi- + past stem
+                </div>
+                <i class="fa-solid fa-plus" style="color: #c8c0b8"></i>
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #eef5f7;
+                    color: #35566a;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  French Imparfait
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: LLM logic -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 10px;
+                "
+              >
+                LLM Parsing &amp; Temporal Reasoning
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 18px">
+                One field, two safeguards.
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <!-- Hallucination prevention -->
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Preventing state/action hallucinations
+                  </div>
+                  <div
+                    style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
+                  >
+                    <strong>&ldquo;The system built the
+                    database&rdquo;</strong>&nbsp;
+                    <code
+                      style="
+                        background: #edf3ed;
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        font-family: monospace;
+                        font-size: 12px;
+                      "
+                      >boundary_state: REACHED</code
+                    >
+                    &rarr; product exists.<br />
+                    <strong>&ldquo;The system was building the
+                    database&rdquo;</strong>&nbsp;
+                    <code
+                      style="
+                        background: #f5ede4;
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        font-family: monospace;
+                        font-size: 12px;
+                      "
+                      >boundary_state: UNBOUNDED</code
+                    >
+                    &rarr; product incomplete.
+                  </div>
+                </div>
+
+                <!-- Type-error checking -->
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    Type-error checking
+                  </div>
+                  <div
+                    style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
+                  >
+                    If a model attempts to generate
+                    <em>&ldquo;The data is knowing the answer,&rdquo;</em> the
+                    schema identifies a fatal collision: <em>know</em> is a
+                    STATE (no internal rhythm), but the Progressive demands a
+                    DYNAMIC_ACTION. The schema provides the mathematical proof
+                    for why the sentence is conceptually invalid.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Macro-Event Proposition — Feature Definition -->
+    <div class="slide-container" id="slideMacroEvent1">
+      <h2 class="slide-title" style="font-size: 38px; margin-bottom: 10px">
+        Feature: The Macro-Event Proposition
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 14px;
+        "
+      >
+        <div
+          style="
+            background: #ffffff;
+            border-left: 4px solid #6b7faa;
+            padding: 14px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            border-radius: 0 8px 8px 0;
+          "
+        >
+          <h3 style="font-size: 20px; margin-bottom: 4px; color: #1a1a1a">
+            The Semantic Equation
+          </h3>
+          <p
+            style="
+              font-size: 15px;
+              margin: 0;
+              color: #4a4a4a;
+              line-height: 1.45;
+            "
+          >
+            Schema location: <strong>Whole Construction</strong>. Acts as the
+            logical wrapper that consumes the individual Constituent Slots as
+            its variables &mdash; a formalized equation encoding who does what
+            to whom, and what follows.
+          </p>
+        </div>
+
+        <div
+          class="two-column"
+          style="gap: 20px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Database data types -->
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #6b7faa;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <!-- proposition_template -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                proposition_template
+                <span style="font-weight: 400; color: #7a7a7a">[String]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                A formalized string using uppercase variables that match the
+                slot roles.
+              </div>
+            </div>
+            <div
+              style="
+                background: #f0f2f8;
+                border-radius: 8px;
+                padding: 12px 14px;
+                font-family: monospace;
+                font-size: 13px;
+                color: #3a4a7a;
+                line-height: 1.7;
+              "
+            >
+              ACTOR applies FORCE to PATIENT<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;causing RESULT
+            </div>
+
+            <div style="height: 1px; background: #f0eee9"></div>
+
+            <!-- causal_direction -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                causal_direction
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                The flow of energy in the equation.
+              </div>
+            </div>
+            <div
+              style="
+                border-left: 2px solid #dde2f0;
+                padding-left: 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  A_CAUSES_B
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Force flows from actor to patient.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  A_EXPERIENCES_B
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Actor is the passive site of a state.
+                </div>
+              </div>
+              <div>
+                <div style="font-weight: 500; font-size: 14px; color: #1a1a1a">
+                  A_EQUALS_B
+                </div>
+                <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
+                  Equative / predication; no energy transfer.
+                </div>
+              </div>
+            </div>
+
+            <div style="height: 1px; background: #f0eee9"></div>
+
+            <!-- entailments -->
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                entailments
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Array of Strings]</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Guaranteed logical consequences when the equation fires.
+              </div>
+            </div>
+            <div
+              style="
+                background: #f0f2f8;
+                border-radius: 8px;
+                padding: 12px 14px;
+                font-size: 13px;
+                color: #3a4a7a;
+                line-height: 1.65;
+              "
+            >
+              Ditransitive fires &rarr;<br />
+              &nbsp;&nbsp;RECIPIENT now POSSESSES &AElig;FFECTED
+            </div>
+
+            <div
+              style="
+                margin-top: auto;
+                background: #f4f5fb;
+                border: 1px solid rgba(107, 127, 170, 0.15);
+                border-radius: 8px;
+                padding: 12px 14px;
+                font-size: 14px;
+                color: #3a4a7a;
+                line-height: 1.5;
+              "
+            >
+              The proposition is not a description. It is the logical contract
+              the construction signs when it fires.
+            </div>
+          </div>
+
+          <!-- RIGHT column -->
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #f4f5fb 0%, #e8ebf5 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #6b7faa;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #6b7faa;
+                  margin-bottom: 6px;
+                "
+              >
+                The Equation
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                What is the construction asserting is true?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0">
+                The
+                <code
+                  style="
+                    background: #dde2f0;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
+                  "
+                  >proposition_template</code
+                >
+                is the final output payload template. It converts a raw
+                sentence into a structured logical statement.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 6px;
+                "
+              >
+                The Entailment Chain
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                What must be true if the equation fires?
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0 0 10px 0">
+                Entailments are guaranteed consequences baked into the
+                construction &mdash; logical facts an AI can assert without
+                reading the sentence twice.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  flex-wrap: wrap;
+                  align-items: center;
+                "
+              >
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #dde2f0;
+                    color: #3a4a7a;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  A_CAUSES_B
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #eef5f7;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  A_EXPERIENCES_B
+                </div>
+                <div
+                  style="
+                    padding: 7px 12px;
+                    border-radius: 999px;
+                    background: #f5ede4;
+                    color: #6b4f35;
+                    font-size: 12px;
+                    font-weight: 500;
+                  "
+                >
+                  A_EQUALS_B
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 14px 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #6b7faa;
+              "
+            >
+              <div style="font-size: 14px; line-height: 1.5; color: #4a4a4a">
+                A dictionary entry tells you what a word might mean. The
+                Macro-Event Proposition tells you what the construction
+                guarantees is happening.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Macro-Event Proposition — Multilingual -->
+    <div class="slide-container" id="slideMacroEvent2">
+      <h2 class="slide-title">
+        Macro-Event Proposition &mdash; Multilingual
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <!-- ENGLISH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #6b7faa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #6b7faa;
+                  margin-bottom: 4px;
+                "
+              >
+                English
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                The Ditransitive
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #6b7faa;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Causal transfer equation
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;She asked him to come to the meeting.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #6b7faa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Proposition
+                </div>
+                <div
+                  style="
+                    background: #f0f2f8;
+                    border-radius: 6px;
+                    padding: 10px 12px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #3a4a7a;
+                    line-height: 1.65;
+                  "
+                >
+                  &AElig;FFECTOR makes RECIPIENT<br />carry out
+                  &AElig;FFECTED-ACTION
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #6b7faa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The LLM uses this equation as its output payload template:
+                  extract raw text, drop it into the variables, and return a
+                  complete, logically sound summary of the event.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DUTCH -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #7a9e7e;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 4px;
+                "
+              >
+                Dutch
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Way-Construction
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #7a9e7e;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Spatial traversal override
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;Hij baant zich een weg door de menigte.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Proposition
+                </div>
+                <div
+                  style="
+                    background: #edf3ed;
+                    border-radius: 6px;
+                    padding: 10px 12px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #2e4a32;
+                    line-height: 1.65;
+                  "
+                >
+                  ACTOR creates PATH through<br />OBSTACLE via ACTION
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  The dictionary definition of <em>banen</em> is merely a
+                  physical clearing action. The overarching equation forces the
+                  LLM to log a spatial traversal. The equation dictates the
+                  reality.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FARSI -->
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 10px;
+              padding: 24px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              border-top: 3px solid #9b7daa;
+            "
+          >
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 9px;
+                  font-weight: 600;
+                  letter-spacing: 3px;
+                  text-transform: uppercase;
+                  color: #9b7daa;
+                  margin-bottom: 4px;
+                "
+              >
+                Farsi
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                "
+              >
+                Light Verb Causative
+              </div>
+              <div
+                style="
+                  font-size: 12px;
+                  font-style: italic;
+                  color: #9b7daa;
+                  margin-top: 2px;
+                  font-weight: 500;
+                "
+              >
+                Kardan state-change
+              </div>
+              <div
+                style="
+                  font-size: 13px;
+                  font-style: italic;
+                  color: #7a7a7a;
+                  margin-top: 4px;
+                "
+              >
+                &ldquo;Ali mashin ro kharab kard.&rdquo;
+              </div>
+            </div>
+            <div style="height: 1px; background: #f0eee9"></div>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Proposition
+                </div>
+                <div
+                  style="
+                    background: #f1ecf5;
+                    border-radius: 6px;
+                    padding: 10px 12px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #4a2d66;
+                    line-height: 1.65;
+                  "
+                >
+                  ACTOR causes PATIENT<br />to enter STATE
+                </div>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-size: 11px;
+                    letter-spacing: 1.8px;
+                    text-transform: uppercase;
+                    color: #9b7daa;
+                    font-weight: 600;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Data impact
+                </div>
+                <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
+                  Farsi relies heavily on <em>kardan</em> (to do) combined with
+                  adjectives to form verbs. The proposition prevents the parser
+                  from reading &ldquo;Ali did a broken car&rdquo; and forces the
+                  causal translation: Ali initiated a state change in the car.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Macro-Event Proposition — Utility -->
+    <div class="slide-container" id="slideMacroEvent3">
+      <h2 class="slide-title">
+        Macro-Event Proposition &mdash; Utility
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 24px;
+        "
+      >
+        <div
+          class="two-column"
+          style="gap: 30px; flex-grow: 1; align-items: stretch"
+        >
+          <!-- LEFT: Zero-shot extraction -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #6b7faa;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #6b7faa;
+                  margin-bottom: 10px;
+                "
+              >
+                Zero-Shot Extraction
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 14px">
+                The database feature becomes the prompt.
+              </h3>
+
+              <div style="margin-bottom: 18px">
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: #1a1a1a;
+                    margin-bottom: 6px;
+                  "
+                >
+                  No custom training required
+                </div>
+                <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
+                  You don&rsquo;t need to fine-tune a massive model to
+                  understand Construction Grammar. Pass the
+                  <code
+                    style="
+                      background: #dde2f0;
+                      padding: 2px 5px;
+                      border-radius: 3px;
+                      font-family: monospace;
+                    "
+                    >proposition_template</code
+                  >
+                  directly into your prompt.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f4f5fb;
+                  border-radius: 8px;
+                  padding: 16px 18px;
+                  font-size: 14px;
+                  color: #3a4a7a;
+                  line-height: 1.65;
+                  font-style: italic;
+                "
+              >
+                &ldquo;Read this sentence. Identify the variables and return a
+                JSON object populated according to this exact equation:
+                <strong>ACTOR causes PATIENT to enter STATE</strong>.&rdquo;
+              </div>
+
+              <div
+                style="
+                  margin-top: 18px;
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #dde2f0;
+                    color: #3a4a7a;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  proposition_template
+                </div>
+                <i class="fa-solid fa-arrow-right" style="color: #c8c0b8"></i>
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #6b7faa;
+                    color: #ffffff;
+                    font-size: 13px;
+                    font-weight: 600;
+                  "
+                >
+                  LLM prompt
+                </div>
+                <i class="fa-solid fa-arrow-right" style="color: #c8c0b8"></i>
+                <div
+                  style="
+                    padding: 10px 14px;
+                    border-radius: 999px;
+                    background: #edf3ed;
+                    color: #2e4a32;
+                    font-size: 13px;
+                    font-weight: 500;
+                  "
+                >
+                  structured JSON
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Entailment / RAG -->
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div
+              style="
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                flex-grow: 1;
+                border-top: 3px solid #a38a70;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 10px;
+                "
+              >
+                Logical Reasoning &mdash; RAG Entailment
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 18px">
+                Answer questions without re-reading the text.
+              </h3>
+
+              <div style="display: flex; flex-direction: column; gap: 16px">
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    The corpus says&hellip;
+                  </div>
+                  <div
+                    style="
+                      font-size: 16px;
+                      font-style: italic;
+                      color: #4a4a4a;
+                      line-height: 1.55;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    &ldquo;She baked him a cake.&rdquo;
+                  </div>
+                  <div
+                    style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
+                  >
+                    User query: <strong>&ldquo;Does he have a cake?&rdquo;</strong>
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    background: #f9f8f6;
+                    border-radius: 8px;
+                    padding: 16px 18px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Playfair Display&quot;, serif;
+                      font-size: 18px;
+                      color: #1a1a1a;
+                      margin-bottom: 8px;
+                    "
+                  >
+                    The AI queries the entailment
+                  </div>
+                  <div
+                    style="font-size: 14px; color: #4a4a4a; line-height: 1.55"
+                  >
+                    Ditransitive fires &rarr;
+                    <code
+                      style="
+                        background: #dde2f0;
+                        padding: 2px 5px;
+                        border-radius: 3px;
+                        font-family: monospace;
+                        font-size: 12px;
+                      "
+                      >RECIPIENT now POSSESSES &AElig;FFECTED</code
+                    ><br /><br />
+                    Answer: <strong style="color: #3a4a7a">Yes.</strong> The
+                    schema provides the logical proof without requiring the
+                    model to infer it.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
