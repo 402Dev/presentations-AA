@@ -70,6 +70,41 @@
         right: 20px;
       }
 
+      .pdf-export-btn {
+        align-items: center;
+        appearance: none;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(163, 138, 112, 0.26);
+        border-radius: 999px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        color: #7a5c42;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        gap: 8px;
+        line-height: 1;
+        padding: 12px 16px;
+        position: fixed;
+        right: 24px;
+        top: 24px;
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          border-color 0.18s ease,
+          background 0.18s ease;
+        user-select: none;
+        z-index: 110;
+      }
+
+      .pdf-export-btn:hover {
+        background: #ffffff;
+        border-color: rgba(163, 138, 112, 0.38);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        transform: translateY(-1px);
+      }
+
       /* Minimalist & Elegant Theme Base */
       .slide-container {
         align-items: center;
@@ -828,6 +863,463 @@
         opacity: 0.05;
       }
 
+      .paradigm-cluster-stage {
+        background: linear-gradient(145deg, #f9fbf9 0%, #edf4ed 100%);
+      }
+
+      .paradigm-cluster-shell {
+        background: radial-gradient(
+          circle at 30% 28%,
+          rgba(122, 158, 126, 0.18) 0%,
+          rgba(122, 158, 126, 0.08) 48%,
+          rgba(122, 158, 126, 0.03) 100%
+        );
+        border: 2px dashed rgba(122, 158, 126, 0.38);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.52);
+        height: 62%;
+        left: 19%;
+        opacity: 0.18;
+        position: absolute;
+        top: 18%;
+        transition:
+          opacity 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+        width: 62%;
+        z-index: 0;
+      }
+
+      .paradigm-cluster-shell.is-active {
+        border-color: rgba(122, 158, 126, 0.7);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.75),
+          0 0 0 10px rgba(122, 158, 126, 0.07);
+        opacity: 1;
+        transform: scale(1.01);
+      }
+
+      .paradigm-cluster-shell-label {
+        left: 34%;
+        opacity: 0.18;
+        position: absolute;
+        text-align: center;
+        top: 23%;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+        width: 32%;
+        z-index: 1;
+      }
+
+      .paradigm-cluster-shell-label.is-active {
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+
+      .paradigm-cluster-shell-kicker {
+        color: #5a7160;
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+      }
+
+      .paradigm-cluster-shell-name {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        line-height: 1.06;
+        margin-bottom: 8px;
+      }
+
+      .paradigm-cluster-shell-copy {
+        color: #4a4a4a;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .paradigm-parent-node {
+        background: rgba(247, 249, 251, 0.96);
+        border-color: rgba(95, 109, 122, 0.16);
+      }
+
+      .paradigm-member-node {
+        background: rgba(255, 255, 255, 0.98);
+        border-color: rgba(26, 26, 26, 0.08);
+      }
+
+      .paradigm-node--be .relation-node-kicker,
+      .paradigm-edge--be {
+        color: #7a9e7e;
+        stroke: #7a9e7e;
+      }
+
+      .paradigm-node--get .relation-node-kicker,
+      .paradigm-edge--get {
+        color: #a38a70;
+        stroke: #a38a70;
+      }
+
+      .paradigm-node--concealed .relation-node-kicker,
+      .paradigm-edge--concealed {
+        color: #6b8ea3;
+        stroke: #6b8ea3;
+      }
+
+      .paradigm-cluster-role {
+        align-self: flex-start;
+        background: rgba(122, 158, 126, 0.08);
+        border-radius: 999px;
+        color: #44614a;
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.1px;
+        margin-top: 8px;
+        padding: 5px 8px;
+        text-transform: uppercase;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-edge {
+        opacity: 0.08;
+        stroke-dasharray: 10 8;
+        stroke-width: 3.5;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-edge.is-active {
+        stroke-width: 4.5;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-node {
+        padding: 10px 12px;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-node-label {
+        font-size: 17px;
+        line-height: 1.08;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-node-copy {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-node:not(.is-active) {
+        box-shadow: none;
+        opacity: 0.08;
+      }
+
+      #slideParadigmClusterMatrix2 .relation-edge:not(.is-active) {
+        opacity: 0.04;
+      }
+
+      .node-mass-stage {
+        background: linear-gradient(
+          155deg,
+          #f9fbfc 0%,
+          #eef5ef 58%,
+          #f8f6f2 100%
+        );
+      }
+
+      .node-mass-board {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: minmax(0, 1.12fr) repeat(2, minmax(0, 0.94fr));
+        min-height: 0;
+        padding: 18px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .node-mass-panel {
+        --panel-rgb: 122, 158, 126;
+        --panel-color: #7a9e7e;
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(26, 26, 26, 0.06);
+        border-radius: 22px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 0;
+        opacity: 0.16;
+        overflow: hidden;
+        padding: 16px 16px 14px;
+        position: relative;
+        transform: translateY(0);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .node-mass-panel::before {
+        background: rgba(var(--panel-rgb), 0.08);
+        border-radius: 50%;
+        content: "";
+        height: 128px;
+        position: absolute;
+        right: -34px;
+        top: -34px;
+        width: 128px;
+      }
+
+      .node-mass-panel.is-active {
+        border-color: rgba(var(--panel-rgb), 0.22);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
+        opacity: 1;
+        transform: translateY(-2px);
+      }
+
+      .node-mass-panel > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .node-mass-panel--locked {
+        --panel-rgb: 111, 99, 86;
+        --panel-color: #6f6356;
+      }
+
+      .node-mass-panel--way {
+        --panel-rgb: 90, 132, 93;
+        --panel-color: #5a845d;
+      }
+
+      .node-mass-panel--kardan {
+        --panel-rgb: 77, 114, 136;
+        --panel-color: #4d7288;
+      }
+
+      .node-mass-panel-kicker {
+        color: var(--panel-color);
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+      }
+
+      .node-mass-panel-copy {
+        color: #5f5953;
+        font-family: "Inter", sans-serif;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .node-mass-core-wrap {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: center;
+        min-height: 0;
+        padding: 2px 0;
+      }
+
+      .node-mass-core {
+        align-items: center;
+        aspect-ratio: 1 / 1;
+        background: radial-gradient(
+          circle at 36% 30%,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(var(--panel-rgb), 0.14) 74%,
+          rgba(var(--panel-rgb), 0.22) 100%
+        );
+        border: 7px solid var(--panel-color);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        justify-content: center;
+        max-width: 100%;
+        padding: 18px;
+        position: relative;
+        text-align: center;
+        width: var(--core-size);
+      }
+
+      .node-mass-panel--way .node-mass-core,
+      .node-mass-panel--kardan .node-mass-core {
+        border-style: dashed;
+      }
+
+      .node-mass-panel--way .node-mass-core::after,
+      .node-mass-panel--kardan .node-mass-core::after {
+        border: 2px dashed currentColor;
+        border-radius: 50%;
+        content: "";
+        inset: -12px;
+        opacity: 0;
+        position: absolute;
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .node-mass-panel--way.is-active .node-mass-core::after,
+      .node-mass-panel--kardan.is-active .node-mass-core::after {
+        opacity: 0.42;
+        transform: scale(1.04);
+      }
+
+      .node-mass-panel--locked .node-mass-core {
+        border-width: 8px;
+      }
+
+      .node-mass-core--heavy {
+        --core-size: min(100%, 214px);
+      }
+
+      .node-mass-core--medium {
+        --core-size: min(100%, 176px);
+      }
+
+      .node-mass-core--small {
+        --core-size: min(100%, 162px);
+      }
+
+      .node-mass-core-title {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        line-height: 1.05;
+      }
+
+      .node-mass-core--heavy .node-mass-core-title {
+        font-size: 22px;
+      }
+
+      .node-mass-core-copy {
+        color: rgba(26, 26, 26, 0.78);
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        line-height: 1.38;
+        max-width: 19ch;
+      }
+
+      .node-mass-core-metric {
+        background: rgba(255, 255, 255, 0.76);
+        border-radius: 999px;
+        color: rgba(26, 26, 26, 0.78);
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1;
+        padding: 7px 10px;
+        text-transform: uppercase;
+      }
+
+      .node-mass-stats {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .node-mass-stat {
+        background: rgba(255, 255, 255, 0.86);
+        border: 1px solid rgba(var(--panel-rgb), 0.16);
+        border-radius: 14px;
+        padding: 10px 11px;
+      }
+
+      .node-mass-stat-label {
+        color: var(--panel-color);
+        font-family: "Inter", sans-serif;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 1.8px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+      }
+
+      .node-mass-stat-value {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        line-height: 1.08;
+      }
+
+      .node-mass-chip-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .node-mass-chip {
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(var(--panel-rgb), 0.2);
+        border-radius: 999px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
+        color: #4a4a4a;
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1px;
+        line-height: 1;
+        opacity: 0.14;
+        padding: 8px 10px;
+        transform: translateY(0);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .node-mass-chip.is-active {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        opacity: 1;
+        transform: translateY(-1px);
+      }
+
+      .node-mass-chip--sealed {
+        background: rgba(248, 243, 239, 0.96);
+        color: #5a4c3d;
+      }
+
+      @media (max-width: 1200px) {
+        .node-mass-board {
+          gap: 12px;
+          padding: 14px;
+        }
+
+        .node-mass-panel {
+          padding: 14px 14px 12px;
+        }
+
+        .node-mass-core--heavy {
+          --core-size: min(100%, 196px);
+        }
+
+        .node-mass-core--medium {
+          --core-size: min(100%, 164px);
+        }
+
+        .node-mass-core--small {
+          --core-size: min(100%, 150px);
+        }
+      }
+
+      @keyframes node-mass-radiate {
+        0% {
+          opacity: 0.56;
+          transform: scale(0.94);
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(1.18);
+        }
+      }
+
       @keyframes relation-pulse {
         from {
           stroke-dashoffset: 0;
@@ -1560,6 +2052,79 @@
         z-index: 100;
         user-select: none;
       }
+
+      body.pdf-exporting {
+        align-items: flex-start;
+        background: #ffffff;
+        display: block;
+        height: auto;
+        justify-content: flex-start;
+        overflow: visible;
+        padding: 0.35in 0;
+      }
+
+      body.pdf-exporting .slide-container {
+        box-shadow: none;
+        break-after: page;
+        display: flex !important;
+        margin: 0 auto 0.35in;
+        page-break-after: always;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      body.pdf-exporting .slide-container.last-slide {
+        break-after: auto;
+        margin-bottom: 0;
+        page-break-after: auto;
+      }
+
+      body.pdf-exporting .sidebar-nav,
+      body.pdf-exporting .nav-btn,
+      body.pdf-exporting .slide-counter,
+      body.pdf-exporting .pdf-export-btn {
+        display: none !important;
+      }
+
+      @page {
+        margin: 0.35in;
+        size: landscape;
+      }
+
+      @media print {
+        body {
+          align-items: flex-start;
+          background: #ffffff;
+          display: block;
+          height: auto;
+          justify-content: flex-start;
+          overflow: visible;
+          padding: 0.35in 0;
+        }
+
+        .slide-container {
+          box-shadow: none;
+          break-after: page;
+          display: flex !important;
+          margin: 0 auto 0.35in;
+          page-break-after: always;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .slide-container.last-slide {
+          break-after: auto;
+          margin-bottom: 0;
+          page-break-after: auto;
+        }
+
+        .sidebar-nav,
+        .nav-btn,
+        .slide-counter,
+        .pdf-export-btn {
+          display: none !important;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1783,7 +2348,7 @@
               <span class="sidebar-section-title">The Anatomy</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">48</span>
+              <span class="sidebar-count">63</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1979,7 +2544,7 @@
                   <span class="sidebar-subsection-title">Relational</span>
                 </span>
                 <span class="sidebar-summary-right">
-                  <span class="sidebar-count">8</span>
+                  <span class="sidebar-count">18</span>
                   <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
                 </span>
               </summary>
@@ -1995,11 +2560,91 @@
                 <button
                   class="sidebar-item subitem"
                   data-slide="57"
-                  data-slides="57,58,59,60,61,62,63"
                   onclick="goToSlide(57)"
                   type="button"
                 >
+                  Relational roadmap
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="58"
+                  data-slides="58,59,60,61,62,63,64"
+                  onclick="goToSlide(58)"
+                  type="button"
+                >
                   Taxonomic Inheritance Matrix
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="65"
+                  data-slides="65,66,67,68"
+                  onclick="goToSlide(65)"
+                  type="button"
+                >
+                  Paradigm Cluster Matrix
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="69"
+                  data-slides="69,70,71,72,73"
+                  onclick="goToSlide(69)"
+                  type="button"
+                >
+                  Entrenchment &amp; Productivity Matrix
+                </button>
+              </div>
+            </details>
+
+            <details class="sidebar-subsection" data-section-title="Meta">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Meta</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count">5</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items">
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="74"
+                  onclick="goToSlide(74)"
+                  type="button"
+                >
+                  Meta primer
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="75"
+                  onclick="goToSlide(75)"
+                  type="button"
+                >
+                  Core Administrative Identity
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="76"
+                  onclick="goToSlide(76)"
+                  type="button"
+                >
+                  Stratum Vector
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="77"
+                  onclick="goToSlide(77)"
+                  type="button"
+                >
+                  Canonical Exemplar Array
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="78"
+                  onclick="goToSlide(78)"
+                  type="button"
+                >
+                  Provenance &amp; Curation
                 </button>
               </div>
             </details>
@@ -2013,6 +2658,17 @@
         aria-label="Toggle table of contents"
       ></button>
     </nav>
+
+    <button
+      class="pdf-export-btn"
+      id="pdfExportBtn"
+      type="button"
+      onclick="exportPresentationToPDF()"
+      aria-label="Export presentation as PDF"
+    >
+      <i class="fa-solid fa-file-pdf"></i>
+      Export PDF
+    </button>
 
     <!-- Title Page -->
     <div class="slide-container" id="slide0">
@@ -3224,7 +3880,7 @@
       <div
         style="
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 0.6fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
           gap: 16px;
           width: 100%;
           flex-grow: 1;
@@ -3721,6 +4377,54 @@
                   border-radius: 50%;
                 "
               ></span>
+              Paradigm Cluster Matrix
+            </li>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 7px;
+                  width: 5px;
+                  height: 5px;
+                  background: #7a9e7e;
+                  border-radius: 50%;
+                "
+              ></span>
+              Entrenchment &amp; Productivity Matrix
+            </li>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 16px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 7px;
+                  width: 5px;
+                  height: 5px;
+                  background: #7a9e7e;
+                  border-radius: 50%;
+                "
+              ></span>
               Polysemy &amp; metaphorical links
             </li>
             <li
@@ -3775,49 +4479,153 @@
           </ul>
         </div>
 
-        <!-- PLACEHOLDER -->
+        <!-- META -->
         <div
           style="
-            background: transparent;
-            border: 2px dashed #d4ccbf;
+            background: #ffffff;
             border-radius: 8px;
-            padding: 22px 18px;
+            padding: 22px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
+            gap: 12px;
+            border-top: 3px solid #8a7b66;
           "
         >
-          <div
+          <div>
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 9px;
+                font-weight: 600;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: #8a7b66;
+                margin-bottom: 5px;
+              "
+            >
+              Category 04
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 28px;
+                font-weight: 600;
+                color: #1a1a1a;
+                line-height: 1;
+              "
+            >
+              Meta
+            </div>
+          </div>
+          <div style="height: 1px; background: #f0eee9"></div>
+          <ul
             style="
-              width: 38px;
-              height: 38px;
-              border: 2px dashed #c8c0b8;
-              border-radius: 50%;
+              list-style: none;
+              margin: 0;
+              padding: 0;
               display: flex;
-              align-items: center;
-              justify-content: center;
+              flex-direction: column;
+              gap: 9px;
             "
           >
-            <i
-              class="fa-solid fa-plus"
-              style="font-size: 13px; color: #c0b8ae"
-            ></i>
-          </div>
-          <div
-            style="
-              font-family: &quot;Inter&quot;, sans-serif;
-              font-size: 13px;
-              font-weight: 400;
-              color: #c0b8ae;
-              text-align: center;
-              line-height: 1.6;
-              letter-spacing: 0.5px;
-            "
-          >
-            To be<br />defined
-          </div>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 6px;
+                  width: 5px;
+                  height: 5px;
+                  background: #8a7b66;
+                  border-radius: 50%;
+                "
+              ></span>
+              Core administrative identity
+            </li>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 6px;
+                  width: 5px;
+                  height: 5px;
+                  background: #8a7b66;
+                  border-radius: 50%;
+                "
+              ></span>
+              Stratum vector
+            </li>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 6px;
+                  width: 5px;
+                  height: 5px;
+                  background: #8a7b66;
+                  border-radius: 50%;
+                "
+              ></span>
+              Canonical exemplar array
+            </li>
+            <li
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: #4a4a4a;
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.4;
+              "
+            >
+              <span
+                style="
+                  position: absolute;
+                  left: 0;
+                  top: 6px;
+                  width: 5px;
+                  height: 5px;
+                  background: #8a7b66;
+                  border-radius: 50%;
+                "
+              ></span>
+              Provenance &amp; curation
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -15814,6 +16622,129 @@
       </div>
     </div>
 
+    <!-- Slide: Relational Roadmap -->
+    <div
+      class="slide-container form-summary-slide"
+      id="slideRelationalSummary"
+      style="
+        --summary-accent: #7a9e7e;
+        --summary-accent-rgb: 122, 158, 126;
+        --summary-surface: #eef5ef;
+        --summary-surface-strong: #e7f0e8;
+        --summary-accent-text: #44614a;
+        --summary-secondary-rgb: 107, 142, 163;
+      "
+    >
+      <div class="form-summary-header">
+        <div>
+          <div class="form-summary-eyebrow">Relational Primer</div>
+          <div class="form-summary-title">How to read the Relational stack</div>
+          <div class="form-summary-lead">
+            The next three features turn isolated entries into a networked
+            system: inheritance compresses repeated structure, family clusters
+            group sibling constructions, and node mass explains default force
+            and future growth.
+          </div>
+        </div>
+        <div class="form-summary-stat">
+          <div class="form-summary-stat-label">What follows</div>
+          <div class="form-summary-stat-value">3 lenses</div>
+          <div class="form-summary-stat-copy">
+            hierarchy, constructional families, and weighted productivity
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="form-summary-layout"
+        style="grid-template-columns: 0.88fr 1.12fr"
+      >
+        <div class="form-summary-hero">
+          <div>
+            <div class="form-summary-panel-label">Working definition</div>
+            <div
+              class="form-summary-hero-title"
+              style="font-size: 24px; line-height: 1.08"
+            >
+              Relational structure is the edge logic of the constructicon.
+            </div>
+            <p class="form-summary-hero-copy">
+              The relational layer stores ancestry, family resemblance, and
+              statistical pressure so grammar can reuse patterns, cluster
+              siblings, and rank competing paths.
+            </p>
+          </div>
+
+          <div class="form-summary-rail">
+            <span>INHERITS_FROM</span>
+            <span>FAMILY_CLUSTER</span>
+            <span>TOKEN_MASS</span>
+            <span>TYPE_GROWTH</span>
+          </div>
+        </div>
+
+        <div class="form-summary-grid">
+          <div class="form-summary-card">
+            <div class="form-summary-card-top">
+              <div class="form-summary-card-number">01</div>
+              <div class="form-summary-card-kicker">Hierarchy</div>
+            </div>
+            <div class="form-summary-card-title">
+              Taxonomic Inheritance Matrix
+            </div>
+            <div class="form-summary-card-copy">
+              Abstract parents store durable syntax and semantics once so child
+              constructions inherit the rule instead of duplicating it.
+            </div>
+          </div>
+
+          <div class="form-summary-card">
+            <div class="form-summary-card-top">
+              <div class="form-summary-card-number">02</div>
+              <div class="form-summary-card-kicker">Families</div>
+            </div>
+            <div class="form-summary-card-title">Paradigm Cluster Matrix</div>
+            <div class="form-summary-card-copy">
+              Sibling constructions occupy the same shell while redistributing
+              information structure, focus, and rhetorical stance.
+            </div>
+          </div>
+
+          <div class="form-summary-card">
+            <div class="form-summary-card-top">
+              <div class="form-summary-card-number">03</div>
+              <div class="form-summary-card-kicker">Weight</div>
+            </div>
+            <div class="form-summary-card-title">
+              Entrenchment &amp; Productivity Matrix
+            </div>
+            <div class="form-summary-card-copy">
+              Token frequency stabilizes default behavior while type frequency
+              shows which schemas stay open to new lexical material.
+            </div>
+          </div>
+
+          <div class="form-summary-card form-summary-card--full">
+            <div class="form-summary-card-top">
+              <div class="form-summary-card-number">04</div>
+              <div class="form-summary-card-kicker">System payoff</div>
+            </div>
+            <div>
+              <div class="form-summary-card-title">
+                The database can now compress, cluster, and predict.
+              </div>
+              <div class="form-summary-card-copy">
+                Across these three features, the graph stops acting like a row
+                store of disconnected facts and starts acting like an
+                architecture with reusable parents, family neighborhoods, and
+                weighted competition between alternative paths.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Slide: Taxonomic Inheritance Matrix — Feature Definition -->
     <div
       class="slide-container feature-intro-slide"
@@ -17841,6 +18772,3995 @@
       </div>
     </div>
 
+    <!-- Slide: Paradigm Cluster Matrix — Feature Definition -->
+    <div
+      class="slide-container feature-intro-slide"
+      id="slideParadigmClusterMatrix1"
+      style="--feature-accent: #7a9e7e"
+    >
+      <div class="feature-intro-header">
+        <div>
+          <div class="feature-intro-eyebrow">
+            RELATIONAL FEATURE &bull; SCHEMA: CONSTRUCTIONAL FAMILIES
+          </div>
+          <div class="feature-intro-title">The Paradigm Cluster Matrix</div>
+          <div class="feature-intro-lead">
+            A lateral junction layer above the inheritance tree that groups
+            distant constructions into one functional grammatical neighborhood.
+          </div>
+        </div>
+        <div class="feature-intro-focus">
+          <div class="feature-intro-focus-label">Central Question</div>
+          <div class="feature-intro-focus-text">
+            How do we model one grammatical system when its members live on
+            different branches of the vertical taxonomy?
+          </div>
+        </div>
+      </div>
+      <div class="content-area feature-intro-content">
+        <div class="two-column feature-intro-grid" style="gap: 22px !important">
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #7a9e7e;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Why Vertical Inheritance Is Not Enough
+            </h4>
+
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 10px;
+                padding: 16px 18px;
+                border: 1px solid rgba(122, 158, 126, 0.16);
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 25px;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                  margin-bottom: 8px;
+                "
+              >
+                A pure tree is structurally blind to whole grammatical systems.
+              </div>
+              <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                If the database only stores vertical parents, it organizes
+                everything by physical shape. That scatters one functional
+                system across multiple branches whenever the members do not
+                share the same topology.
+              </div>
+            </div>
+
+            <div>
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.3px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                  margin-bottom: 8px;
+                "
+              >
+                The English future tense problem
+              </div>
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 8px;
+                  margin-bottom: 10px;
+                "
+              >
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #eef5ef;
+                    color: #44614a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Will + Infinitive
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #f5ede4;
+                    color: #6b4f35;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Going to + Infinitive
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #eef5f7;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Present Progressive
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #f3f1ee;
+                    color: #4a4a4a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Simple Present
+                </div>
+              </div>
+              <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                An expert linguist sees these as one future-tense system, while
+                a vertical-only taxonomy scatters them by physical ancestry.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #7a9e7e;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 6px;
+                "
+              >
+                Schema Location
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                A horizontal macro-network sitting on top of the tree.
+              </div>
+              <p style="font-size: 15px; line-height: 1.52; margin: 0">
+                Instead of replacing inheritance, the matrix overlays it. The
+                tree still explains vertical DNA; the family table explains
+                which nodes belong to the same functional system.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #a38a70;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                "
+              >
+                Database Data Types
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  family_id
+                  <span style="font-weight: 400; color: #7a7a7a"
+                    >[String / UUID]</span
+                  >
+                </div>
+                <div style="font-size: 13px; line-height: 1.48; color: #4a4a4a">
+                  Names the grammatical system, such as
+                  <em>English_Passive_Network</em>.
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  member_node_ids
+                  <span style="font-weight: 400; color: #7a7a7a"
+                    >[Array of UUIDs]</span
+                  >
+                </div>
+                <div style="font-size: 13px; line-height: 1.48; color: #4a4a4a">
+                  Lists the constructions in the family, regardless of where
+                  they sit in the inheritance tree.
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  intra_family_role
+                  <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+                </div>
+                <div style="font-size: 13px; line-height: 1.48; color: #4a4a4a">
+                  Captures the member's role, such as <em>DEFAULT</em> or
+                  <em>FORMAL_REGISTER</em>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Paradigm Cluster Matrix — Cluster Graph -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideParadigmClusterMatrix2"
+    >
+      <h2 class="slide-title">Paradigm Cluster Matrix &mdash; Cluster Graph</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          data-relational-graph
+          data-active-relation="cluster"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="relational-graph-card" style="padding: 20px 22px 22px">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 300px;
+                gap: 18px;
+                align-items: end;
+                margin-bottom: 4px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Interactive family shell
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 30px;
+                    color: #1a1a1a;
+                    line-height: 1.08;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Horizontal families override structural distance.
+                </div>
+                <div style="font-size: 15px; color: #5f5953; line-height: 1.56">
+                  The passive network holds together three constructions whose
+                  vertical parents pull them toward incompatible regions of the
+                  database. The shell is what makes them one neighborhood.
+                </div>
+              </div>
+              <div
+                style="
+                  background: #f8fbf8;
+                  border: 1px solid rgba(122, 158, 126, 0.16);
+                  border-radius: 14px;
+                  padding: 14px 16px;
+                "
+              >
+                <div
+                  data-relation-kicker
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.2px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Family shell
+                </div>
+                <div
+                  data-relation-title
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Horizontal boundaries create one functional neighborhood.
+                </div>
+                <div
+                  data-relation-copy
+                  style="font-size: 13px; line-height: 1.55; color: #44614a"
+                >
+                  The family wrapper groups distant nodes into one voice system
+                  without pretending they inherit from the same abstract parent.
+                </div>
+                <div
+                  data-relation-example
+                  style="
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 10px 12px;
+                    font-size: 12px;
+                    line-height: 1.55;
+                    color: #4a4a4a;
+                  "
+                >
+                  Be-Passive, Get-Passive, and Concealed Passive remain one
+                  family because they solve the same voice problem.
+                </div>
+              </div>
+            </div>
+
+            <div class="relational-graph-toolbar" style="margin-bottom: 4px">
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="cluster"
+                type="button"
+              >
+                Whole family
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="be"
+                type="button"
+              >
+                Be-Passive
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="get"
+                type="button"
+              >
+                Get-Passive
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="concealed"
+                type="button"
+              >
+                Concealed Passive
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="overlay"
+                type="button"
+              >
+                All pulls
+              </button>
+            </div>
+
+            <div
+              class="relational-graph-stage paradigm-cluster-stage"
+              style="min-height: 540px"
+            >
+              <svg
+                class="relational-graph-svg"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <line
+                  class="relation-edge paradigm-edge--be"
+                  data-relations="be overlay"
+                  x1="37"
+                  y1="49"
+                  x2="17"
+                  y2="20"
+                ></line>
+                <line
+                  class="relation-edge paradigm-edge--get"
+                  data-relations="get overlay"
+                  x1="64"
+                  y1="45"
+                  x2="84"
+                  y2="24"
+                ></line>
+                <line
+                  class="relation-edge paradigm-edge--concealed"
+                  data-relations="concealed overlay"
+                  x1="54"
+                  y1="70"
+                  x2="83"
+                  y2="82"
+                ></line>
+              </svg>
+
+              <div
+                class="paradigm-cluster-shell"
+                data-relations="cluster be get concealed overlay"
+              ></div>
+
+              <div
+                class="paradigm-cluster-shell-label"
+                data-relations="cluster be get concealed overlay"
+              >
+                <div class="paradigm-cluster-shell-kicker">
+                  family_id boundary
+                </div>
+                <div class="paradigm-cluster-shell-name">
+                  English_Passive_Network
+                </div>
+                <div class="paradigm-cluster-shell-copy">
+                  The shell groups three structurally different passives into
+                  one closed voice system.
+                </div>
+              </div>
+
+              <div
+                class="relation-node paradigm-parent-node paradigm-node--be"
+                data-relations="be overlay"
+                style="left: 5%; top: 8%; width: 19%"
+              >
+                <div class="relation-node-kicker">External parent</div>
+                <div class="relation-node-label">Be + Participle Frame</div>
+                <div class="relation-node-copy">
+                  Auxiliary passive branch outside the family shell.
+                </div>
+              </div>
+
+              <div
+                class="relation-node paradigm-parent-node paradigm-node--get"
+                data-relations="get overlay"
+                style="left: 76%; top: 12%; width: 18%"
+              >
+                <div class="relation-node-kicker">External parent</div>
+                <div class="relation-node-label">Inchoative Verb Frame</div>
+                <div class="relation-node-copy">
+                  Eventful change-of-state branch.
+                </div>
+              </div>
+
+              <div
+                class="relation-node paradigm-parent-node paradigm-node--concealed"
+                data-relations="concealed overlay"
+                style="left: 75%; top: 76%; width: 19%"
+              >
+                <div class="relation-node-kicker">External parent</div>
+                <div class="relation-node-label">Transitive Verb Frame</div>
+                <div class="relation-node-copy">
+                  Active lexical branch with no passive morphology.
+                </div>
+              </div>
+
+              <div
+                class="relation-node paradigm-member-node paradigm-node--be"
+                data-relations="cluster be overlay"
+                style="left: 27%; top: 39%; width: 18%"
+              >
+                <div class="relation-node-kicker">Family member</div>
+                <div class="relation-node-label">Be-Passive</div>
+                <div class="relation-node-copy">
+                  &ldquo;The code was written.&rdquo;
+                </div>
+                <div class="paradigm-cluster-role">DEFAULT</div>
+              </div>
+
+              <div
+                class="relation-node paradigm-member-node paradigm-node--get"
+                data-relations="cluster get overlay"
+                style="left: 55%; top: 35%; width: 18%"
+              >
+                <div class="relation-node-kicker">Family member</div>
+                <div class="relation-node-label">Get-Passive</div>
+                <div class="relation-node-copy">
+                  &ldquo;The server got hacked.&rdquo;
+                </div>
+                <div class="paradigm-cluster-role">EVENTFUL</div>
+              </div>
+
+              <div
+                class="relation-node paradigm-member-node paradigm-node--concealed"
+                data-relations="cluster concealed overlay"
+                style="left: 40%; top: 61%; width: 22%"
+              >
+                <div class="relation-node-kicker">Family member</div>
+                <div class="relation-node-label">Concealed Passive</div>
+                <div class="relation-node-copy">
+                  &ldquo;This car needs washing.&rdquo;
+                </div>
+                <div class="paradigm-cluster-role">COVERT</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Paradigm Cluster Matrix — Mapping the Systems -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideParadigmClusterMatrix3"
+    >
+      <h2 class="slide-title">
+        Paradigm Cluster Matrix &mdash; Mapping the Systems
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div
+            style="
+              background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+              border: 1px solid rgba(122, 158, 126, 0.18);
+              border-radius: 16px;
+              box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+              padding: 18px 22px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2.4px;
+                text-transform: uppercase;
+                color: #7a9e7e;
+                margin-bottom: 6px;
+              "
+            >
+              Monolingual execution
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 29px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Families turn dispersed forms into one queryable system.
+            </div>
+            <div style="font-size: 15px; color: #4a4a4a; line-height: 1.58">
+              The same schema operation can bind together English voice variants
+              or Dutch diminutives. The point is not shared shape. The point is
+              shared grammatical function.
+            </div>
+          </div>
+
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #7a9e7e;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  English &bull; Passive Network
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 26px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 8px;
+                  "
+                >
+                  The passive voice is not one construction.
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  Be-passives, get-passives, and concealed passives use
+                  different physical packaging, so vertical inheritance alone
+                  does not put them in the same neighborhood.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f8fbf8;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  border: 1px solid rgba(122, 158, 126, 0.16);
+                "
+              >
+                <div
+                  style="
+                    font-family: monospace;
+                    font-size: 13px;
+                    color: #44614a;
+                    line-height: 1.7;
+                  "
+                >
+                  family_id = English_Passive_Network
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: 10px;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 7px 11px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #44614a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    Be-Passive
+                  </div>
+                  <div
+                    style="
+                      padding: 7px 11px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #6b4f35;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    Get-Passive
+                  </div>
+                  <div
+                    style="
+                      padding: 7px 11px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    Concealed Passive
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  line-height: 1.58;
+                "
+              >
+                <strong>Data impact:</strong> the concealed passive shares zero
+                vertical inheritance with the be-passive, yet the matrix forces
+                both into one horizontal sibling relation inside the English
+                voice system.
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #a38a70;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #a38a70;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Dutch &bull; Diminutive System
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 26px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 8px;
+                  "
+                >
+                  The diminutive is a language-wide paradigm, not just a noun
+                  modifier.
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  Dutch attaches diminutive behavior across parts of speech. The
+                  family table proves that the suffixal system spans the whole
+                  constructicon laterally.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #fffaf4;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  border: 1px solid rgba(163, 138, 112, 0.16);
+                "
+              >
+                <div
+                  style="
+                    font-family: monospace;
+                    font-size: 13px;
+                    color: #6b4f35;
+                    line-height: 1.7;
+                  "
+                >
+                  family_id = Dutch_Diminutive_System
+                </div>
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                    gap: 8px;
+                    margin-top: 10px;
+                  "
+                >
+                  <div
+                    style="
+                      background: #ffffff;
+                      border-radius: 10px;
+                      padding: 10px 11px;
+                      font-size: 12px;
+                      line-height: 1.45;
+                      color: #6b4f35;
+                    "
+                  >
+                    Noun-based<br />-tje forms
+                  </div>
+                  <div
+                    style="
+                      background: #ffffff;
+                      border-radius: 10px;
+                      padding: 10px 11px;
+                      font-size: 12px;
+                      line-height: 1.45;
+                      color: #6b4f35;
+                    "
+                  >
+                    Adjective-based<br />stilletjes
+                  </div>
+                  <div
+                    style="
+                      background: #ffffff;
+                      border-radius: 10px;
+                      padding: 10px 11px;
+                      font-size: 12px;
+                      line-height: 1.45;
+                      color: #6b4f35;
+                    "
+                  >
+                    Verb-based<br />diminutives
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  line-height: 1.58;
+                "
+              >
+                <strong>Data impact:</strong> instead of isolating these nodes
+                on noun, adjective, and verb branches, the database treats the
+                diminutive as one pervasive paradigm cluster.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 14px;
+              padding: 16px 18px;
+              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+              border-left: 4px solid #7a9e7e;
+            "
+          >
+            <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+              Paradigm clusters are language-specific modules. Each language can
+              build its own lateral family graph without pretending that all
+              members descend from the same vertical ancestor.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Paradigm Cluster Matrix — Network Organization -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideParadigmClusterMatrix4"
+    >
+      <h2 class="slide-title">
+        Paradigm Cluster Matrix &mdash; Network Organization &amp; Query Utility
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 16px;
+                padding: 20px 22px;
+                box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(122, 158, 126, 0.18);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                "
+              >
+                Network of networks
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                "
+              >
+                Families carve a 10,000-node graph into enclosed grammatical
+                modules.
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; line-height: 1.58">
+                A constructicon is unnavigable if it is only one massive web.
+                The Paradigm Cluster Matrix introduces sub-graphs: bounded
+                neighborhoods such as interrogatives, passives, relative
+                clauses, or future-tense systems.
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 16px;
+                padding: 20px 22px;
+                box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                border-left: 4px solid #a38a70;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                "
+              >
+                Future-tense example
+              </div>
+              <div style="font-size: 15px; line-height: 1.58; color: #4a4a4a">
+                One family can bind together <strong>Will + INF</strong>,
+                <strong>Going to + INF</strong>,
+                <strong>Present Progressive</strong>, and
+                <strong>Simple Present</strong> when they all function as an
+                English future-tense system.
+              </div>
+              <div
+                style="
+                  background: #fffaf4;
+                  border-radius: 12px;
+                  padding: 12px 14px;
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #6b4f35;
+                  line-height: 1.75;
+                "
+              >
+                family_id = English_Future_Tense_System<br />
+                topology_match = FALSE<br />
+                functional_neighborhood = TRUE
+              </div>
+            </div>
+          </div>
+
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #5f6d7a;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #5f6d7a;
+                "
+              >
+                Without the matrix
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 26px;
+                  color: #1a1a1a;
+                  line-height: 1.1;
+                "
+              >
+                The linguist has to manually stitch the system together.
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <div
+                  style="
+                    background: #f7f9fb;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    line-height: 1.55;
+                    color: #44505b;
+                  "
+                >
+                  1. Search Subject-Aux Inversion.
+                </div>
+                <div
+                  style="
+                    background: #f7f9fb;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    line-height: 1.55;
+                    color: #44505b;
+                  "
+                >
+                  2. Search Wh-question patterns and clefts separately.
+                </div>
+                <div
+                  style="
+                    background: #f7f9fb;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    line-height: 1.55;
+                    color: #44505b;
+                  "
+                >
+                  3. Manually combine the results into one question system.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #7a9e7e;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                "
+              >
+                With the matrix
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 26px;
+                  color: #1a1a1a;
+                  line-height: 1.1;
+                "
+              >
+                The database returns a closed grammatical environment.
+              </div>
+              <div
+                style="
+                  background: #eef5ef;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #44614a;
+                  line-height: 1.75;
+                "
+              >
+                SELECT member_node_id, intra_family_role<br />
+                FROM paradigm_cluster_members<br />
+                WHERE family_id = 'English_Interrogative_System';
+              </div>
+              <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                The result is an isolated sub-graph of question-forming nodes,
+                ready for immediate comparison inside one bounded grammatical
+                system.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #f9fbf9;
+              border-radius: 16px;
+              padding: 18px 22px;
+              border: 1px solid rgba(122, 158, 126, 0.14);
+              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 28px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Vertical inheritance explains structure. The Paradigm Cluster
+              Matrix explains systems.
+            </div>
+            <div style="font-size: 15px; line-height: 1.6; color: #4a4a4a">
+              The taxonomy tells us where a construction comes from. The family
+              matrix tells us which grammatical neighborhood it belongs to. A
+              mature Construct-i-con needs both views at once.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Entrenchment & Productivity Matrix — Feature Definition -->
+    <div
+      class="slide-container feature-intro-slide"
+      id="slideEntrenchmentProductivityMatrix1"
+      style="--feature-accent: #7a9e7e"
+    >
+      <div class="feature-intro-header">
+        <div>
+          <div class="feature-intro-eyebrow">
+            RELATIONAL FEATURE &bull; SCHEMA: STATISTICAL PRIOR MATRIX
+          </div>
+          <div class="feature-intro-title">
+            The Entrenchment &amp; Productivity Matrix
+          </div>
+          <div class="feature-intro-lead">
+            The node-mass layer assigns every construction a statistical weight
+            and an extensibility score.
+          </div>
+        </div>
+        <div class="feature-intro-focus">
+          <div class="feature-intro-focus-label">Central Question</div>
+          <div class="feature-intro-focus-text">
+            When does a construction fossilize, and when does it remain a live
+            algorithm?
+          </div>
+        </div>
+      </div>
+      <div class="content-area feature-intro-content">
+        <div class="two-column feature-intro-grid" style="gap: 22px !important">
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #7a9e7e;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              The Definition
+            </h4>
+
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 10px;
+                padding: 16px 18px;
+                border: 1px solid rgba(122, 158, 126, 0.16);
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 25px;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                  margin-bottom: 8px;
+                "
+              >
+                Cognitive weight has two distinct statistical vectors.
+              </div>
+              <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                Frequent repetition thickens a construction into an entrenched
+                habit. Broad slot-compatibility keeps it alive as an active
+                algorithm that can absorb new lexical material.
+              </div>
+            </div>
+
+            <div class="two-column" style="gap: 12px; align-items: stretch">
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.2px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                  "
+                >
+                  Token Frequency = Entrenchment
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 23px;
+                    line-height: 1.08;
+                    color: #1a1a1a;
+                  "
+                >
+                  How often does this exact node recur?
+                </div>
+                <div style="font-size: 14px; line-height: 1.52; color: #4a4a4a">
+                  High token frequency fossilizes a pattern into a rigid,
+                  defaulted habit.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 8px;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.2px;
+                    text-transform: uppercase;
+                    color: #a38a70;
+                  "
+                >
+                  Type Frequency = Productivity
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 23px;
+                    line-height: 1.08;
+                    color: #1a1a1a;
+                  "
+                >
+                  How many different words can dock into it?
+                </div>
+                <div style="font-size: 14px; line-height: 1.52; color: #4a4a4a">
+                  High type frequency means the construction remains an open,
+                  generalized algorithm.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #7a9e7e;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                  margin-bottom: 6px;
+                "
+              >
+                Schema Location
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Applies to the whole construction as its statistical footprint.
+              </div>
+              <p style="font-size: 15px; line-height: 1.52; margin: 0">
+                The matrix does not describe form or meaning directly. It logs
+                how entrenched the node is and how much algorithmic vitality it
+                still has inside the language.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #a38a70;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                "
+              >
+                Database Data Types
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  token_frequency_score
+                  <span style="font-weight: 400; color: #7a7a7a"
+                    >[Float / Integer]</span
+                  >
+                </div>
+                <div style="font-size: 13px; line-height: 1.48; color: #4a4a4a">
+                  Corpus hit-count or Bayesian prior for this exact node.
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  type_frequency_score
+                  <span style="font-weight: 400; color: #7a7a7a"
+                    >[Float / Integer]</span
+                  >
+                </div>
+                <div style="font-size: 13px; line-height: 1.48; color: #4a4a4a">
+                  Number of distinct lexical items proven to occupy its open
+                  slots.
+                </div>
+              </div>
+
+              <div>
+                <div style="font-weight: 600; font-size: 16px; color: #1a1a1a">
+                  productivity_status
+                  <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                    margin-top: 8px;
+                  "
+                >
+                  <div
+                    style="font-size: 13px; line-height: 1.45; color: #4a4a4a"
+                  >
+                    <strong>DEAD_PATTERN:</strong> no new words can enter.
+                  </div>
+                  <div
+                    style="font-size: 13px; line-height: 1.45; color: #4a4a4a"
+                  >
+                    <strong>DEFECTIVE:</strong> only a closed list of words can
+                    enter.
+                  </div>
+                  <div
+                    style="font-size: 13px; line-height: 1.45; color: #4a4a4a"
+                  >
+                    <strong>HIGHLY_PRODUCTIVE:</strong> the schema freely
+                    accepts novel vocabulary.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Entrenchment & Productivity Matrix — Gravity Graph -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideEntrenchmentProductivityMatrix2"
+    >
+      <h2 class="slide-title">
+        Entrenchment &amp; Productivity Matrix &mdash; Gravity Graph
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          data-relational-graph
+          data-active-relation="masslandscape"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="relational-graph-card" style="padding: 20px 22px 22px">
+            <div
+              style="
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 300px;
+                gap: 18px;
+                align-items: end;
+                margin-bottom: 6px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Interactive mass board
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 30px;
+                    color: #1a1a1a;
+                    line-height: 1.08;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Disc size shows entrenchment. Rings show openness.
+                </div>
+                <div style="font-size: 15px; color: #5f5953; line-height: 1.56">
+                  High token frequency makes a construction visually heavy.
+                  Productive constructions keep a permeable ring and a live
+                  lexical frontier instead of collapsing into a sealed fossil.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f8fbf8;
+                  border: 1px solid rgba(122, 158, 126, 0.16);
+                  border-radius: 14px;
+                  padding: 14px 16px;
+                "
+              >
+                <div
+                  data-relation-kicker
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.2px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Statistical prior field
+                </div>
+                <div
+                  data-relation-title
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 22px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Node mass is weight plus extensibility.
+                </div>
+                <div
+                  data-relation-copy
+                  style="font-size: 13px; line-height: 1.55; color: #44614a"
+                >
+                  The graph contrasts entrenched fossils against productive
+                  gateways. Radius tracks repetition; border behavior tracks how
+                  much new vocabulary the construction can still ingest.
+                </div>
+                <div
+                  data-relation-example
+                  style="
+                    margin-top: 10px;
+                    border-radius: 10px;
+                    background: rgba(255, 255, 255, 0.9);
+                    padding: 10px 12px;
+                    font-size: 12px;
+                    line-height: 1.55;
+                    color: #4a4a4a;
+                  "
+                >
+                  Dutch strong verbs are huge because repetition entrenches
+                  them; the Way Construction and Kardan radiate because they
+                  remain open algorithms.
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                align-items: center;
+                margin-bottom: 10px;
+              "
+            >
+              <div
+                style="
+                  padding: 7px 10px;
+                  border-radius: 999px;
+                  background: #eef5ef;
+                  color: #44614a;
+                  font-size: 12px;
+                  font-weight: 600;
+                "
+              >
+                Disc size = Token Frequency
+              </div>
+              <div
+                style="
+                  padding: 7px 10px;
+                  border-radius: 999px;
+                  background: #eef5f7;
+                  color: #35566a;
+                  font-size: 12px;
+                  font-weight: 600;
+                "
+              >
+                Border / halo = Productivity Status
+              </div>
+            </div>
+
+            <div class="relational-graph-toolbar" style="margin-bottom: 4px">
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="masslandscape"
+                type="button"
+              >
+                Mass landscape
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="wayengine"
+                type="button"
+              >
+                Way engine
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="dutchfossil"
+                type="button"
+              >
+                Dutch fossil
+              </button>
+              <button
+                class="relational-graph-filter"
+                data-relation-filter="kardangateway"
+                type="button"
+              >
+                Kardan gateway
+              </button>
+            </div>
+
+            <div
+              class="relational-graph-stage node-mass-stage"
+              style="min-height: 390px"
+            >
+              <div class="node-mass-board">
+                <div
+                  class="node-mass-panel node-mass-panel--locked"
+                  data-relations="masslandscape dutchfossil"
+                >
+                  <div class="node-mass-panel-kicker">Entrenched fossil</div>
+                  <div class="node-mass-panel-copy">
+                    Repetition keeps the pattern heavy even after it stops
+                    accepting new verbs.
+                  </div>
+                  <div class="node-mass-core-wrap">
+                    <div class="node-mass-core node-mass-core--heavy">
+                      <div class="node-mass-core-title">Dutch Strong Past</div>
+                      <div class="node-mass-core-copy">
+                        Irregular survivors preserved by memory.
+                      </div>
+                      <div class="node-mass-core-metric">DEAD_PATTERN</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-stats">
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Token mass</div>
+                      <div class="node-mass-stat-value">Very high</div>
+                    </div>
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Type range</div>
+                      <div class="node-mass-stat-value">Closed list</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-chip-cloud">
+                    <div
+                      class="node-mass-chip node-mass-chip--sealed"
+                      data-relations="masslandscape dutchfossil"
+                    >
+                      ging
+                    </div>
+                    <div
+                      class="node-mass-chip node-mass-chip--sealed"
+                      data-relations="masslandscape dutchfossil"
+                    >
+                      kwam
+                    </div>
+                    <div
+                      class="node-mass-chip node-mass-chip--sealed"
+                      data-relations="masslandscape dutchfossil"
+                    >
+                      bleef
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="node-mass-panel node-mass-panel--way"
+                  data-relations="masslandscape wayengine"
+                >
+                  <div class="node-mass-panel-kicker">Productive engine</div>
+                  <div class="node-mass-panel-copy">
+                    Type frequency keeps the schema open to fresh traversal
+                    verbs.
+                  </div>
+                  <div class="node-mass-core-wrap">
+                    <div class="node-mass-core node-mass-core--medium">
+                      <div class="node-mass-core-title">Way Construction</div>
+                      <div class="node-mass-core-copy">
+                        Light enough to keep expanding.
+                      </div>
+                      <div class="node-mass-core-metric">HIGHLY_PRODUCTIVE</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-stats">
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Token mass</div>
+                      <div class="node-mass-stat-value">Medium</div>
+                    </div>
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Type range</div>
+                      <div class="node-mass-stat-value">Open</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-chip-cloud">
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape wayengine"
+                    >
+                      hacked
+                    </div>
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape wayengine"
+                    >
+                      MacGyver
+                    </div>
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape wayengine"
+                    >
+                      speedrun
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="node-mass-panel node-mass-panel--kardan"
+                  data-relations="masslandscape kardangateway"
+                >
+                  <div class="node-mass-panel-kicker">Gateway schema</div>
+                  <div class="node-mass-panel-copy">
+                    A light-verb dock that keeps absorbing imported vocabulary.
+                  </div>
+                  <div class="node-mass-core-wrap">
+                    <div class="node-mass-core node-mass-core--small">
+                      <div class="node-mass-core-title">Kardan</div>
+                      <div class="node-mass-core-copy">
+                        Loanword ingestion engine.
+                      </div>
+                      <div class="node-mass-core-metric">HIGHLY_PRODUCTIVE</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-stats">
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Token mass</div>
+                      <div class="node-mass-stat-value">Moderate</div>
+                    </div>
+                    <div class="node-mass-stat">
+                      <div class="node-mass-stat-label">Type range</div>
+                      <div class="node-mass-stat-value">Very open</div>
+                    </div>
+                  </div>
+                  <div class="node-mass-chip-cloud">
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape kardangateway"
+                    >
+                      Google
+                    </div>
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape kardangateway"
+                    >
+                      Zoom
+                    </div>
+                    <div
+                      class="node-mass-chip"
+                      data-relations="masslandscape kardangateway"
+                    >
+                      Download
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Entrenchment & Productivity Matrix — Mapping the Mass -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideEntrenchmentProductivityMatrix3"
+    >
+      <h2 class="slide-title">
+        Entrenchment &amp; Productivity Matrix &mdash; Mapping the Mass
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div
+            style="
+              background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+              border: 1px solid rgba(122, 158, 126, 0.18);
+              border-radius: 16px;
+              box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+              padding: 18px 22px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2.4px;
+                text-transform: uppercase;
+                color: #7a9e7e;
+                margin-bottom: 6px;
+              "
+            >
+              Monolingual execution
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 29px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Productive engines and fossilized irregularities leave opposite
+              statistical signatures.
+            </div>
+            <div style="font-size: 15px; color: #4a4a4a; line-height: 1.58">
+              The matrix distinguishes patterns that stay open for new lexical
+              input from patterns that only survive because repetition has made
+              them too heavy to delete.
+            </div>
+          </div>
+
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #7a9e7e;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 6px;
+                  "
+                >
+                  English &bull; The Way Construction
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 26px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 8px;
+                  "
+                >
+                  A live algorithm can verbify novel material on demand.
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  &ldquo;He hacked his way into the mainframe.&rdquo; /
+                  &ldquo;She MacGyvered her way out of the escape room.&rdquo;
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #f8fbf8;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  border: 1px solid rgba(122, 158, 126, 0.16);
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #44614a;
+                  line-height: 1.75;
+                "
+              >
+                productivity_status = HIGHLY_PRODUCTIVE<br />
+                type_frequency_score = MASSIVE
+              </div>
+
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  line-height: 1.58;
+                "
+              >
+                <strong>Data impact:</strong> the database proves that English
+                speakers use this spatial-traversal form as an open-source
+                algorithm for converting novel actions into traversal events.
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #6f6356;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+              "
+            >
+              <div>
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #6f6356;
+                    margin-bottom: 6px;
+                  "
+                >
+                  Dutch &bull; Strong Verb Past
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 26px;
+                    color: #1a1a1a;
+                    line-height: 1.1;
+                    margin-bottom: 8px;
+                  "
+                >
+                  A dead algorithm can survive if repetition makes it massive.
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  <strong>Kopen &rarr; kocht</strong> versus
+                  <strong>lopen &rarr; liep</strong>: irregular vowel shift is
+                  still stored, but it no longer accepts new technical verbs.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #fbf8f4;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  border: 1px solid rgba(111, 99, 86, 0.14);
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #5a4c40;
+                  line-height: 1.75;
+                "
+              >
+                productivity_status = DEAD_PATTERN<br />
+                token_frequency_score = MASSIVE
+              </div>
+
+              <div
+                style="
+                  background: #f9f8f6;
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  line-height: 1.58;
+                "
+              >
+                <strong>Data impact:</strong> usage-based models explain why the
+                irregular survives. It is not productive anymore; it is simply
+                too entrenched to disappear.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #ffffff;
+              border-radius: 14px;
+              padding: 16px 18px;
+              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+              border-left: 4px solid #7a9e7e;
+            "
+          >
+            <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+              The contrast is the engineering core:
+              <strong>type frequency</strong> predicts innovation, while
+              <strong>token frequency</strong>
+              explains statistical inertia.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Entrenchment & Productivity Matrix — Extensibility Gateway -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideEntrenchmentProductivityMatrix4"
+    >
+      <h2 class="slide-title">
+        Entrenchment &amp; Productivity Matrix &mdash; Extensibility Gateway
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbfc 0%, #eef5f7 100%);
+                border-radius: 16px;
+                padding: 22px 24px;
+                box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(107, 142, 163, 0.18);
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #6b8ea3;
+                "
+              >
+                Farsi &bull; Light Verb Extensibility
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                "
+              >
+                Kardan becomes a gateway for technological vocabulary.
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; line-height: 1.6">
+                Speakers can say <strong>Google Kardan</strong> instead of
+                inventing a brand-new simplex verb. The construction stays open
+                by docking foreign nouns into the existing light-verb schema.
+              </div>
+
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.82);
+                  border-radius: 14px;
+                  padding: 14px 16px;
+                  border: 1px solid rgba(107, 142, 163, 0.14);
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #35566a;
+                  line-height: 1.75;
+                "
+              >
+                productivity_status = HIGHLY_PRODUCTIVE<br />
+                gateway_verb = Kardan<br />
+                example = Google_Kardan
+              </div>
+
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #ffffff;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Google
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #ffffff;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Download
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #ffffff;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Zoom
+                </div>
+                <div
+                  style="
+                    padding: 8px 12px;
+                    border-radius: 999px;
+                    background: #ffffff;
+                    color: #35566a;
+                    font-size: 12px;
+                    font-weight: 600;
+                  "
+                >
+                  Email
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: rgba(255, 255, 255, 0.86);
+                  border-radius: 12px;
+                  padding: 14px 16px;
+                  font-size: 14px;
+                  line-height: 1.58;
+                  color: #4a4a4a;
+                "
+              >
+                <strong>Data impact:</strong> the constructicon records Kardan
+                as a privileged algorithmic inlet for language change rather
+                than treating each imported verb as an isolated exception.
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-top: 3px solid #a38a70;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #a38a70;
+                  "
+                >
+                  Productivity Status Ladder
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <div
+                    style="
+                      background: #fbf8f4;
+                      border-radius: 12px;
+                      padding: 12px 14px;
+                      border-left: 4px solid #6f6356;
+                      font-size: 13px;
+                      line-height: 1.55;
+                      color: #4a4a4a;
+                    "
+                  >
+                    <strong>DEAD_PATTERN</strong>: Dutch irregular pasts survive
+                    as fossilized mass.
+                  </div>
+                  <div
+                    style="
+                      background: #f9f8f6;
+                      border-radius: 12px;
+                      padding: 12px 14px;
+                      border-left: 4px solid #a38a70;
+                      font-size: 13px;
+                      line-height: 1.55;
+                      color: #4a4a4a;
+                    "
+                  >
+                    <strong>DEFECTIVE</strong>: only a restricted list of words
+                    can enter.
+                  </div>
+                  <div
+                    style="
+                      background: #eef5ef;
+                      border-radius: 12px;
+                      padding: 12px 14px;
+                      border-left: 4px solid #7a9e7e;
+                      font-size: 13px;
+                      line-height: 1.55;
+                      color: #44614a;
+                    "
+                  >
+                    <strong>HIGHLY_PRODUCTIVE</strong>: the English Way
+                    Construction and Farsi Kardan continue to absorb novel data.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-left: 4px solid #6b8ea3;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #6b8ea3;
+                    margin-bottom: 8px;
+                  "
+                >
+                  Database query utility
+                </div>
+                <div
+                  style="
+                    background: #eef5f7;
+                    border-radius: 10px;
+                    padding: 14px 16px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #35566a;
+                    line-height: 1.75;
+                    margin-bottom: 10px;
+                  "
+                >
+                  FIND constructions<br />
+                  WHERE gateway_verb = Kardan<br />
+                  AND productivity_status = HIGHLY_PRODUCTIVE
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  The constructicon can query where the language is still open
+                  to incoming concepts instead of only storing what is already
+                  frozen.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Entrenchment & Productivity Matrix — Engineering Case -->
+    <div
+      class="slide-container primer-fit-slide"
+      id="slideEntrenchmentProductivityMatrix5"
+    >
+      <h2 class="slide-title">
+        Entrenchment &amp; Productivity Matrix &mdash; The Engineering Case
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div
+            style="
+              background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+              border: 1px solid rgba(122, 158, 126, 0.18);
+              border-radius: 16px;
+              box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+              padding: 18px 22px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2.4px;
+                text-transform: uppercase;
+                color: #7a9e7e;
+                margin-bottom: 6px;
+              "
+            >
+              Why SOTA systems build this
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 29px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Statistical priors resolve competition and let the graph predict
+              change.
+            </div>
+            <div style="font-size: 15px; color: #4a4a4a; line-height: 1.58">
+              Without node mass, the constructicon is only a static atlas. With
+              node mass, it becomes a weighted system that can default, compete,
+              and forecast where language is moving.
+            </div>
+          </div>
+
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #7a9e7e;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                "
+              >
+                Resolving competition via probability
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 26px;
+                  color: #1a1a1a;
+                  line-height: 1.1;
+                "
+              >
+                Entrenchment supplies the default weight when two paths compete.
+              </div>
+              <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                When two constructions are both well-formed, token frequency
+                acts as the baseline prior. The system defaults to the more
+                entrenched path unless a strong structural constraint overrides
+                it.
+              </div>
+              <div
+                style="
+                  background: #eef5ef;
+                  border-radius: 10px;
+                  padding: 14px 16px;
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #44614a;
+                  line-height: 1.75;
+                "
+              >
+                ORDER candidate_paths BY token_frequency_score DESC<br />
+                APPLY constraint_penalties<br />
+                RETURN highest_weighted_path
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #6b8ea3;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #6b8ea3;
+                "
+              >
+                Tracking language physics
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 26px;
+                  color: #1a1a1a;
+                  line-height: 1.1;
+                "
+              >
+                Productivity metrics reveal which algorithms are expanding and
+                which ones are dying.
+              </div>
+              <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                A constructicon without productivity is a snapshot of a dead
+                language. Type frequency lets the architect ask where novel
+                lexical material is still entering the grammar.
+              </div>
+              <div
+                style="
+                  background: #eef5f7;
+                  border-radius: 10px;
+                  padding: 14px 16px;
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #35566a;
+                  line-height: 1.75;
+                "
+              >
+                SELECT node_id, type_frequency_score<br />
+                FROM construction_nodes<br />
+                WHERE productivity_status = 'HIGHLY_PRODUCTIVE'
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #f9fbf9;
+              border-radius: 16px;
+              padding: 18px 22px;
+              border: 1px solid rgba(122, 158, 126, 0.14);
+              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 28px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Node mass turns the constructicon from a static catalog into a
+              weighted physical system.
+            </div>
+            <div style="font-size: 15px; line-height: 1.6; color: #4a4a4a">
+              Token frequency explains default force. Type frequency explains
+              future growth. Together they give the graph both memory and
+              forward motion.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Meta Primer -->
+    <div class="slide-container primer-fit-slide" id="slideMetaPrimer">
+      <h2 class="slide-title" style="margin-bottom: 10px">Meta</h2>
+      <div
+        class="content-area"
+        style="justify-content: flex-start; align-items: stretch; gap: 18px"
+      >
+        <div
+          class="two-column"
+          style="
+            grid-template-columns: 1.08fr 0.92fr;
+            gap: 22px;
+            align-items: stretch;
+          "
+        >
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <div
+              style="
+                position: relative;
+                overflow: hidden;
+                background: linear-gradient(145deg, #fbfaf8 0%, #f2ede6 100%);
+                border: 1px solid rgba(138, 123, 102, 0.18);
+                border-radius: 18px;
+                padding: 30px 34px;
+                box-shadow: 0 16px 40px rgba(86, 74, 61, 0.08);
+                min-height: 0;
+                flex-grow: 1;
+              "
+            >
+              <div
+                style="
+                  position: absolute;
+                  width: 180px;
+                  height: 180px;
+                  right: -50px;
+                  top: -65px;
+                  border-radius: 50%;
+                  background: rgba(138, 123, 102, 0.1);
+                "
+              ></div>
+              <div
+                style="
+                  position: absolute;
+                  width: 120px;
+                  height: 120px;
+                  left: -25px;
+                  bottom: -35px;
+                  border-radius: 50%;
+                  background: rgba(107, 142, 163, 0.08);
+                "
+              ></div>
+
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2.8px;
+                  text-transform: uppercase;
+                  color: #8a7b66;
+                  margin-bottom: 12px;
+                "
+              >
+                Category IV &bull; The Administrative Layer
+              </div>
+
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 12px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #6c6258;
+                  margin-bottom: 14px;
+                "
+              >
+                The tags that make the construct-i-con usable for humans
+              </div>
+
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 42px;
+                  font-weight: 600;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                  letter-spacing: -1px;
+                  margin-bottom: 14px;
+                  max-width: 560px;
+                "
+              >
+                Meta-tags do not change sentence physics, but they make the
+                database navigable, testable, and trustworthy.
+              </div>
+
+              <p
+                style="
+                  font-size: 19px;
+                  line-height: 1.62;
+                  color: #4a4a4a;
+                  margin: 0;
+                  max-width: 560px;
+                "
+              >
+                The Meta layer gives every construction a stable identity, a
+                scale, gold-standard exemplars, and a provenance trail. It is
+                the difference between a brilliant theory and a maintainable
+                scientific platform.
+              </p>
+
+              <div
+                style="
+                  margin-top: 22px;
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 14px;
+                  padding: 12px 16px;
+                  border-radius: 999px;
+                  background: rgba(255, 255, 255, 0.78);
+                  border: 1px solid rgba(138, 123, 102, 0.18);
+                  color: #5f5448;
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 16px;
+                  font-weight: 400;
+                "
+              >
+                <i class="fa-solid fa-sliders" style="font-size: 15px"></i>
+                Search handles, zoom layers, exemplars, and citations are what
+                let engineers actually operate the system.
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 18px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-left: 4px solid #8a7b66;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 11px;
+                  font-weight: 600;
+                  letter-spacing: 2.2px;
+                  text-transform: uppercase;
+                  color: #8a7b66;
+                  margin-bottom: 8px;
+                "
+              >
+                Why it matters for the database
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                These tags do not alter cognition. They make cognition
+                inspectable.
+              </div>
+              <p style="font-size: 16px; line-height: 1.55; margin: 0">
+                UUIDs, strata, exemplars, and citations are the search and
+                governance layer that lets linguists query the construct-i-con
+                as a scientific instrument instead of a rumor archive.
+              </p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #8a7b66;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #8a7b66;
+                "
+              >
+                Identity
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  line-height: 1.15;
+                  color: #1a1a1a;
+                "
+              >
+                Stable handles for humans and machines.
+              </div>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0">
+                UUIDs, canonical names, language silos, and abstracts keep the
+                namespace queryable.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #6b8ea3;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #6b8ea3;
+                "
+              >
+                Granularity
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  line-height: 1.15;
+                  color: #1a1a1a;
+                "
+              >
+                Zoomable strata from morpheme to macro-frame.
+              </div>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0">
+                Engineers can filter the architecture by physical scope instead
+                of mixing suffixes with sentence-level frames.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #7a9e7e;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                "
+              >
+                Exemplars
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  line-height: 1.15;
+                  color: #1a1a1a;
+                "
+              >
+                Gold-standard sentences as unit tests.
+              </div>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0">
+                Prototypical examples and annotated exemplars bridge theory to
+                human intuition.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #a38a70;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #a38a70;
+                "
+              >
+                Provenance
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  line-height: 1.15;
+                  color: #1a1a1a;
+                "
+              >
+                Curation, citations, and audit trails.
+              </div>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0">
+                Scientific trust depends on knowing who added the construction,
+                why, and whether it has community backing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Meta — Core Administrative Identity -->
+    <div
+      class="slide-container feature-intro-slide"
+      id="slideMetaIdentity"
+      style="--feature-accent: #8a7b66"
+    >
+      <div class="feature-intro-header">
+        <div>
+          <div class="feature-intro-eyebrow">
+            META FEATURE &bull; HANDLES, KEYS, AND SILOS
+          </div>
+          <div class="feature-intro-title">
+            The Core Administrative Identity
+          </div>
+          <div class="feature-intro-lead">
+            Every construction needs a machine-stable key and a human-readable
+            handle so linguists can search the system without typing the whole
+            theoretical analysis.
+          </div>
+        </div>
+        <div class="feature-intro-focus">
+          <div class="feature-intro-focus-label">Central Question</div>
+          <div class="feature-intro-focus-text">
+            How do we uniquely name, retrieve, and silo a construction inside a
+            large multilingual ecosystem?
+          </div>
+        </div>
+      </div>
+      <div class="content-area feature-intro-content">
+        <div class="two-column feature-intro-grid" style="gap: 22px !important">
+          <div
+            style="
+              background: #ffffff;
+              padding: 22px 24px;
+              border-radius: 10px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+            "
+          >
+            <h4
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 13px;
+                text-transform: uppercase;
+                color: #8a7b66;
+                margin: 0;
+                letter-spacing: 2px;
+              "
+            >
+              Database Data Types
+            </h4>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                uuid
+                <span style="font-weight: 400; color: #7a7a7a"
+                  >[Primary Key]</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                The immutable machine identifier. Nothing else in the admin
+                layer works if this anchor is unstable.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                cxn_name
+                <span style="font-weight: 400; color: #7a7a7a">[String]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                The human mnemonic, such as <em>The_Ditransitive</em>,
+                <em>Dutch_V2_Subordinate</em>, or <em>Farsi_Ezafe_Chain</em>.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                language_silo
+                <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                Enforces monolingual namespace integrity with tags such as
+                <em>nl-NL</em>, <em>en-US</em>, or <em>fa-IR</em>.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-weight: 600; font-size: 17px; color: #1a1a1a">
+                description_abstract
+                <span style="font-weight: 400; color: #7a7a7a">[Text]</span>
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #4a4a4a;
+                  margin-top: 4px;
+                  line-height: 1.5;
+                "
+              >
+                A two-sentence tooltip summary for the UI so a user can grasp
+                the construction before opening the full record.
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              height: 100%;
+            "
+          >
+            <div
+              style="
+                background: linear-gradient(145deg, #fbfaf8 0%, #f2ede6 100%);
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #8a7b66;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #8a7b66;
+                  margin-bottom: 6px;
+                "
+              >
+                The Definition
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 24px;
+                  color: #1a1a1a;
+                  margin-bottom: 6px;
+                "
+              >
+                Search handles are what make theory operational.
+              </div>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0">
+                An expert linguist does not want to query the full semantic
+                description every time. They want a recognized name, a stable
+                key, and a clean language namespace.
+              </p>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 18px 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-top: 3px solid #6b8ea3;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                  letter-spacing: 2px;
+                  text-transform: uppercase;
+                  color: #6b8ea3;
+                  margin-bottom: 6px;
+                "
+              >
+                Query impact
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 12px;
+                  color: #35566a;
+                  line-height: 1.75;
+                  background: #eef5f7;
+                  border-radius: 10px;
+                  padding: 12px 14px;
+                  margin-bottom: 10px;
+                "
+              >
+                FIND cxn WHERE cxn_name = 'The_Ditransitive'<br />
+                AND language_silo = 'en-US'
+              </div>
+              <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
+                Handles let researchers retrieve constructions by conventional
+                labels while the UUID keeps the underlying storage stable.
+              </div>
+            </div>
+
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 10px;
+                padding: 14px 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                border-left: 4px solid #8a7b66;
+              "
+            >
+              <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
+                This identity layer is also what keeps a future cross-database
+                analytics system from merging unrelated English, Dutch, and
+                Farsi constructions into one namespace collision.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Meta — Stratum Vector -->
+    <div class="slide-container primer-fit-slide" id="slideMetaStratum">
+      <h2 class="slide-title">The Stratum Vector (Granularity)</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div
+            style="
+              background: linear-gradient(145deg, #fbfaf8 0%, #f2ede6 100%);
+              border: 1px solid rgba(138, 123, 102, 0.18);
+              border-radius: 16px;
+              box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+              padding: 18px 22px;
+            "
+          >
+            <div
+              style="
+                font-family: &quot;Inter&quot;, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2.4px;
+                text-transform: uppercase;
+                color: #8a7b66;
+                margin-bottom: 6px;
+              "
+            >
+              The Definition
+            </div>
+            <div
+              style="
+                font-family: &quot;Playfair Display&quot;, serif;
+                font-size: 29px;
+                color: #1a1a1a;
+                line-height: 1.1;
+                margin-bottom: 8px;
+              "
+            >
+              Not all constructions live at the same physical scale.
+            </div>
+            <div style="font-size: 15px; color: #4a4a4a; line-height: 1.58">
+              If a linguist is researching sentence structure, the interface
+              must be able to filter out microscopic morphological entries. The
+              granularity tag is the zoom control for the whole construct-i-con.
+            </div>
+          </div>
+
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: #ffffff;
+                border-radius: 14px;
+                padding: 20px 22px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                border-top: 3px solid #8a7b66;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #8a7b66;
+                "
+              >
+                granularity_level [Enum]
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <div
+                  style="
+                    background: #fbfaf8;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    line-height: 1.5;
+                  "
+                >
+                  <strong>MORPHEME</strong>: the Dutch diminutive <em>-je</em>.
+                </div>
+                <div
+                  style="
+                    background: #fbfaf8;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    line-height: 1.5;
+                  "
+                >
+                  <strong>LEXICAL</strong>: a specific idiom such as
+                  <em>kick the bucket</em>.
+                </div>
+                <div
+                  style="
+                    background: #fbfaf8;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    line-height: 1.5;
+                  "
+                >
+                  <strong>PHRASAL</strong>: the Noun Phrase or another mid-level
+                  template.
+                </div>
+                <div
+                  style="
+                    background: #fbfaf8;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    line-height: 1.5;
+                  "
+                >
+                  <strong>CLAUSAL</strong>: the Subject-Verb-Object topological
+                  box.
+                </div>
+                <div
+                  style="
+                    background: #fbfaf8;
+                    border-radius: 10px;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                    line-height: 1.5;
+                  "
+                >
+                  <strong>COMPLEX_MACRO</strong>: If/Then conditional frames and
+                  multi-clause scaffolds.
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-left: 4px solid #6b8ea3;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 24px;
+                    color: #1a1a1a;
+                    margin-bottom: 8px;
+                  "
+                >
+                  A scalable front-end can literally zoom through the language.
+                </div>
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  Morphological micro-entries, phrase templates, clause frames,
+                  and macro constructions no longer compete for one
+                  undifferentiated list.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: linear-gradient(145deg, #f8fbfc 0%, #eef5f7 100%);
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  border: 1px solid rgba(107, 142, 163, 0.14);
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.2px;
+                    text-transform: uppercase;
+                    color: #6b8ea3;
+                    margin-bottom: 10px;
+                  "
+                >
+                  UI Filter Widget
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 8px 12px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    MORPHEME
+                  </div>
+                  <div
+                    style="
+                      padding: 8px 12px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    LEXICAL
+                  </div>
+                  <div
+                    style="
+                      padding: 8px 12px;
+                      border-radius: 999px;
+                      background: #dfeef4;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 700;
+                    "
+                  >
+                    CLAUSAL
+                  </div>
+                  <div
+                    style="
+                      padding: 8px 12px;
+                      border-radius: 999px;
+                      background: #ffffff;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    COMPLEX_MACRO
+                  </div>
+                </div>
+                <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
+                  The stratum vector is what lets an architect isolate
+                  sentence-scale constructions without being buried under
+                  suffixes and idioms.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Meta — Canonical Exemplar Array -->
+    <div class="slide-container primer-fit-slide" id="slideMetaExemplars">
+      <h2 class="slide-title">The Canonical Exemplar Array</h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div
+              style="
+                background: linear-gradient(145deg, #f8fbf8 0%, #eef5ef 100%);
+                border-radius: 16px;
+                padding: 22px 24px;
+                box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                border: 1px solid rgba(122, 158, 126, 0.18);
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Inter&quot;, sans-serif;
+                  font-size: 10px;
+                  font-weight: 700;
+                  letter-spacing: 2.4px;
+                  text-transform: uppercase;
+                  color: #7a9e7e;
+                "
+              >
+                The Definition
+              </div>
+              <div
+                style="
+                  font-family: &quot;Playfair Display&quot;, serif;
+                  font-size: 30px;
+                  color: #1a1a1a;
+                  line-height: 1.08;
+                "
+              >
+                Abstract schemas are useless without gold-standard unit tests.
+              </div>
+              <div style="font-size: 15px; color: #4a4a4a; line-height: 1.6">
+                Prototypical examples prove that the construction exists in real
+                language. They are the empirical bridge between theoretical math
+                and what a new linguist can instantly recognize.
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.84);
+                    border-radius: 12px;
+                    padding: 13px 14px;
+                    font-size: 14px;
+                    color: #44614a;
+                    line-height: 1.55;
+                  "
+                >
+                  <strong>prototypical_examples [Array of Strings]</strong
+                  ><br />
+                  3 to 5 flawless sentences that demonstrate the rule in its
+                  most natural form.
+                </div>
+                <div
+                  style="
+                    background: rgba(255, 255, 255, 0.84);
+                    border-radius: 12px;
+                    padding: 13px 14px;
+                    font-size: 14px;
+                    color: #44614a;
+                    line-height: 1.55;
+                  "
+                >
+                  <strong>annotated_exemplar [JSON]</strong><br />
+                  One sentence with exact string spans mapped directly to the
+                  open slots in the component registry.
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-top: 3px solid #7a9e7e;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #7a9e7e;
+                    margin-bottom: 8px;
+                  "
+                >
+                  Example Bank: The Ditransitive
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px">
+                  <div
+                    style="
+                      background: #f9fbf9;
+                      border-radius: 10px;
+                      padding: 11px 13px;
+                      font-size: 14px;
+                      line-height: 1.55;
+                      color: #4a4a4a;
+                    "
+                  >
+                    John gave Mary the book.
+                  </div>
+                  <div
+                    style="
+                      background: #f9fbf9;
+                      border-radius: 10px;
+                      padding: 11px 13px;
+                      font-size: 14px;
+                      line-height: 1.55;
+                      color: #4a4a4a;
+                    "
+                  >
+                    She sent him a postcard.
+                  </div>
+                  <div
+                    style="
+                      background: #f9fbf9;
+                      border-radius: 10px;
+                      padding: 11px 13px;
+                      font-size: 14px;
+                      line-height: 1.55;
+                      color: #4a4a4a;
+                    "
+                  >
+                    The teacher baked the class a cake.
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-top: 3px solid #6b8ea3;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #6b8ea3;
+                    margin-bottom: 8px;
+                  "
+                >
+                  annotated_exemplar [JSON]
+                </div>
+                <div
+                  style="
+                    background: #eef5f7;
+                    border-radius: 10px;
+                    padding: 14px 16px;
+                    font-family: monospace;
+                    font-size: 12px;
+                    color: #35566a;
+                    line-height: 1.72;
+                  "
+                >
+                  {<br />
+                  &nbsp;&nbsp;&quot;sentence&quot;: &quot;John gave Mary the
+                  book.&quot;,<br />
+                  &nbsp;&nbsp;&quot;slots&quot;: {<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&quot;AGENT&quot;:
+                  &quot;John&quot;,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&quot;TRANSFER_VERB&quot;:
+                  &quot;gave&quot;,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&quot;RECIPIENT&quot;:
+                  &quot;Mary&quot;,<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&quot;THEME&quot;: &quot;the
+                  book&quot;<br />
+                  &nbsp;&nbsp;}<br />
+                  }
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 16px 18px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-left: 4px solid #a38a70;
+                "
+              >
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  A new linguist might not parse a force matrix immediately, but
+                  they will understand three canonical examples in seconds. That
+                  is why the exemplar array is a core admin feature, not a
+                  nice-to-have.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide: Meta — Provenance & Curation -->
+    <div class="slide-container primer-fit-slide" id="slideMetaProvenance">
+      <h2 class="slide-title">
+        The Epistemological Tag (Provenance &amp; Curation)
+      </h2>
+      <div
+        class="content-area"
+        style="
+          align-items: stretch;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 18px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            flex-grow: 1;
+          "
+        >
+          <div class="two-column" style="gap: 18px; align-items: stretch">
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  background: linear-gradient(145deg, #fbfaf8 0%, #f2ede6 100%);
+                  border-radius: 16px;
+                  padding: 22px 24px;
+                  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                  border: 1px solid rgba(138, 123, 102, 0.18);
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #8a7b66;
+                    margin-bottom: 6px;
+                  "
+                >
+                  The Definition
+                </div>
+                <div
+                  style="
+                    font-family: &quot;Playfair Display&quot;, serif;
+                    font-size: 28px;
+                    color: #1a1a1a;
+                    line-height: 1.08;
+                    margin-bottom: 8px;
+                  "
+                >
+                  A scientific database without citations is just a collection
+                  of rumors.
+                </div>
+                <div style="font-size: 15px; color: #4a4a4a; line-height: 1.6">
+                  The provenance layer records who declared that a construction
+                  exists, where the evidence came from, and whether the admin
+                  system currently treats that claim as validated or disputed.
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 18px 20px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-top: 3px solid #8a7b66;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <div
+                  style="
+                    font-family: &quot;Inter&quot;, sans-serif;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 2.4px;
+                    text-transform: uppercase;
+                    color: #8a7b66;
+                  "
+                >
+                  Database Data Types
+                </div>
+                <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                  <strong>source_citation [String]</strong>: Goldberg 1995, a
+                  dependency treebank, or a published constructicon entry.
+                </div>
+                <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                  <strong>curation_status [Enum]</strong>: <em>DRAFT</em>,
+                  <em>VALIDATED</em>, <em>DISPUTED</em>.
+                </div>
+                <div style="font-size: 14px; line-height: 1.56; color: #4a4a4a">
+                  <strong>created_by / updated_at</strong>: standard DBA audit
+                  trails for accountability.
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 16px">
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 16px;
+                  padding: 18px 20px;
+                  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05);
+                  border: 1px solid rgba(107, 142, 163, 0.14);
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      font-family: &quot;Inter&quot;, sans-serif;
+                      font-size: 10px;
+                      font-weight: 700;
+                      letter-spacing: 2.4px;
+                      text-transform: uppercase;
+                      color: #6b8ea3;
+                    "
+                  >
+                    Administrative dashboard widget
+                  </div>
+                  <div
+                    style="
+                      font-family: &quot;Inter&quot;, sans-serif;
+                      font-size: 11px;
+                      color: #7a7a7a;
+                    "
+                  >
+                    Search &amp; filter surface
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: minmax(0, 1fr) auto;
+                    gap: 10px;
+                    margin-bottom: 12px;
+                  "
+                >
+                  <div
+                    style="
+                      background: #f7f9fb;
+                      border-radius: 10px;
+                      padding: 11px 13px;
+                      font-size: 13px;
+                      color: #44505b;
+                    "
+                  >
+                    Search construction name, UUID, citation...
+                  </div>
+                  <div
+                    style="
+                      background: #eef5f7;
+                      border-radius: 10px;
+                      padding: 11px 13px;
+                      font-size: 13px;
+                      color: #35566a;
+                      font-weight: 600;
+                    "
+                  >
+                    Filter
+                  </div>
+                </div>
+
+                <div
+                  style="
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    margin-bottom: 14px;
+                  "
+                >
+                  <div
+                    style="
+                      padding: 7px 10px;
+                      border-radius: 999px;
+                      background: #f5ede4;
+                      color: #6b4f35;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    en-US
+                  </div>
+                  <div
+                    style="
+                      padding: 7px 10px;
+                      border-radius: 999px;
+                      background: #eef5ef;
+                      color: #44614a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    CLAUSAL
+                  </div>
+                  <div
+                    style="
+                      padding: 7px 10px;
+                      border-radius: 999px;
+                      background: #eef5f7;
+                      color: #35566a;
+                      font-size: 12px;
+                      font-weight: 600;
+                    "
+                  >
+                    VALIDATED
+                  </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <div
+                    style="
+                      background: #fbfbfb;
+                      border-radius: 12px;
+                      padding: 12px 14px;
+                      border: 1px solid rgba(26, 26, 26, 0.05);
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 12px;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      <div
+                        style="
+                          font-family: &quot;Playfair Display&quot;, serif;
+                          font-size: 21px;
+                          color: #1a1a1a;
+                        "
+                      >
+                        The_Ditransitive
+                      </div>
+                      <div
+                        style="
+                          padding: 5px 9px;
+                          border-radius: 999px;
+                          background: #eef5ef;
+                          color: #44614a;
+                          font-size: 10px;
+                          font-weight: 700;
+                          letter-spacing: 1.2px;
+                        "
+                      >
+                        VALIDATED
+                      </div>
+                    </div>
+                    <div
+                      style="font-size: 12px; color: #5f5953; line-height: 1.5"
+                    >
+                      Goldberg 1995 &middot; en-US &middot; CLAUSAL
+                    </div>
+                  </div>
+
+                  <div
+                    style="
+                      background: #fbfbfb;
+                      border-radius: 12px;
+                      padding: 12px 14px;
+                      border: 1px solid rgba(26, 26, 26, 0.05);
+                    "
+                  >
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 12px;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      <div
+                        style="
+                          font-family: &quot;Playfair Display&quot;, serif;
+                          font-size: 21px;
+                          color: #1a1a1a;
+                        "
+                      >
+                        Dutch_V2_Subordinate
+                      </div>
+                      <div
+                        style="
+                          padding: 5px 9px;
+                          border-radius: 999px;
+                          background: #fff3e6;
+                          color: #8a5e2b;
+                          font-size: 10px;
+                          font-weight: 700;
+                          letter-spacing: 1.2px;
+                        "
+                      >
+                        DISPUTED
+                      </div>
+                    </div>
+                    <div
+                      style="font-size: 12px; color: #5f5953; line-height: 1.5"
+                    >
+                      Prague-style corpus note &middot; nl-NL &middot; CLAUSAL
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #ffffff;
+                  border-radius: 14px;
+                  padding: 16px 18px;
+                  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+                  border-left: 4px solid #a38a70;
+                "
+              >
+                <div style="font-size: 14px; line-height: 1.58; color: #4a4a4a">
+                  These tags do not change the cognitive physics of the
+                  sentence, but they are what make the construct-i-con usable
+                  for human engineers, admins, and reviewers.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
     <div class="slide-counter" id="slide-counter"></div>
 
@@ -17866,6 +22786,8 @@
         ".feature-intro-slide, .form-summary-slide, .primer-fit-slide",
       );
       let current = 0;
+
+      slides[slides.length - 1]?.classList.add("last-slide");
 
       featureIntroSlides.forEach((slide) => {
         if (slide.querySelector(".feature-intro-scale-frame")) {
@@ -17917,6 +22839,69 @@
           copy: "Some constructions are amalgams: they borrow one component from one parent and another component from a different parent. They are overlaps, not single-branch descendants.",
           example:
             "old enough + enough to know better -> You are old enough to know better. One output, two parents.",
+        },
+        cluster: {
+          kicker: "Family shell",
+          title: "Horizontal boundaries create one functional neighborhood.",
+          copy: "The Paradigm Cluster Matrix wraps physically different constructions inside one family_id so the database can recognize a grammatical system that the inheritance tree alone would miss.",
+          example:
+            "Be-Passive, Get-Passive, and Concealed Passive stay together because they solve the same voice problem, even though their parent frames diverge.",
+        },
+        be: {
+          kicker: "Default member",
+          title: "Be-Passive anchors the family's canonical voice pattern.",
+          copy: "This node inherits from the auxiliary passive branch, but the matrix places it beside other passive realizations rather than letting the tree define the whole system.",
+          example:
+            "The code was written. Vertical inheritance explains its form; the family shell explains why it belongs with the other passives.",
+        },
+        get: {
+          kicker: "Eventful member",
+          title: "Get-Passive pulls toward an inchoative branch.",
+          copy: "Its vertical DNA emphasizes change of state and eventfulness. Without the family matrix, it drifts away from the passive neighborhood despite serving the same larger voice system.",
+          example:
+            "The server got hacked. The matrix keeps that eventive packaging inside the English passive family.",
+        },
+        concealed: {
+          kicker: "Covert member",
+          title: "Concealed Passive proves function can outrun form ancestry.",
+          copy: "This node often looks active on the surface and inherits from a transitive verb frame, yet speakers still treat it as part of the passive system.",
+          example:
+            "This car needs washing. The family boundary recovers its passive role even though the tree alone would not.",
+        },
+        overlay: {
+          kicker: "All pulls visible",
+          title: "Vertical DNA diverges while the family shell holds.",
+          copy: "Once every inheritance pull is visible at once, the engineering claim becomes explicit: the tree explains structural ancestry, but the cluster matrix explains functional systemhood.",
+          example:
+            "One passive neighborhood spans auxiliary syntax, inchoative behavior, and active-verb packaging without collapsing them into one parent.",
+        },
+        masslandscape: {
+          kicker: "Statistical prior field",
+          title: "Node mass is weight plus extensibility.",
+          copy: "The board contrasts entrenched fossils against productive gateways. Disc scale tracks repetition; ring treatment tracks how much new vocabulary the construction can still ingest.",
+          example:
+            "Dutch strong verbs are huge because repetition entrenches them; the Way Construction and Kardan radiate because they remain open algorithms.",
+        },
+        wayengine: {
+          kicker: "Productive engine",
+          title: "The Way Construction stays light enough to expand.",
+          copy: "Its value is not just repetition. Its real mass comes from high type frequency: speakers keep proving that new lexical material can plug into the traversal schema.",
+          example:
+            "hack, MacGyver, speedrun: the construction keeps accepting fresh verbs because it remains a live algorithm.",
+        },
+        dutchfossil: {
+          kicker: "Entrenched fossil",
+          title: "Dutch irregular pasts survive through brute repetition.",
+          copy: "This pattern is no longer productive, but its token frequency is so high that the system continues to store it as a heavy, rigid default.",
+          example:
+            "You do not extend the vowel shift to new tech verbs. The pattern is preserved by memory, not by algorithmic openness.",
+        },
+        kardangateway: {
+          kicker: "Gateway schema",
+          title: "Kardan remains porous to imported vocabulary.",
+          copy: "Farsi uses the light verb as a stable grammatical docking bay for foreign nouns. High productivity makes it a primary inlet for language evolution.",
+          example:
+            "Google Kardan shows how the schema ingests new concepts without needing a new simplex verb every time.",
         },
       };
 
@@ -18041,6 +23026,35 @@
         fitFeatureIntroSlide(slides[current]);
       }
 
+      function fitAllFeatureIntroSlides() {
+        featureIntroSlides.forEach((slide) => {
+          fitFeatureIntroSlide(slide);
+        });
+      }
+
+      function enterPdfExportMode() {
+        document.body.classList.add("pdf-exporting");
+      }
+
+      function exitPdfExportMode() {
+        document.body.classList.remove("pdf-exporting");
+        fitActiveFeatureIntroSlide();
+      }
+
+      function exportPresentationToPDF() {
+        enterPdfExportMode();
+
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            fitAllFeatureIntroSlides();
+
+            window.requestAnimationFrame(() => {
+              window.print();
+            });
+          });
+        });
+      }
+
       function updateCounter() {
         counter.textContent = current + 1 + " / " + slides.length;
       }
@@ -18147,6 +23161,17 @@
         if (!sidebarNav.contains(e.target)) {
           setSidebarPinned(false);
         }
+      });
+
+      window.addEventListener("beforeprint", () => {
+        enterPdfExportMode();
+        window.requestAnimationFrame(() => {
+          fitAllFeatureIntroSlides();
+        });
+      });
+
+      window.addEventListener("afterprint", () => {
+        exitPdfExportMode();
       });
 
       window.addEventListener("resize", () => {
