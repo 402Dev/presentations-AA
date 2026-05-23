@@ -33,7 +33,6 @@
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        transition: background-color 0.24s ease;
       }
 
       .slide-container {
@@ -112,27 +111,20 @@
       }
 
       .history-back-btn {
-        right: 276px;
+        right: 220px;
       }
 
       .home-btn {
         justify-content: center;
         min-width: 44px;
         padding: 12px;
-        right: 220px;
+        right: 164px;
       }
 
       .pdf-export-btn {
         gap: 8px;
         padding: 12px 16px;
         right: 24px;
-      }
-
-      .theme-toggle-btn {
-        justify-content: center;
-        min-width: 44px;
-        padding: 12px;
-        right: 164px;
       }
 
       .slide-container {
@@ -146,9 +138,6 @@
         overflow: hidden;
         padding: 60px 80px;
         position: relative;
-        transition:
-          box-shadow 0.24s ease,
-          filter 0.24s ease;
         width: 1280px;
       }
 
@@ -607,9 +596,6 @@
         box-shadow: 4px 0 20px rgba(0, 0, 0, 0.07);
         display: flex;
         flex-direction: column;
-        transition:
-          box-shadow 0.24s ease,
-          filter 0.24s ease;
       }
 
       .sidebar-content::-webkit-scrollbar {
@@ -936,65 +922,6 @@
         display: none !important;
       }
 
-      body[data-theme="dark"] {
-        background-color: #11161c;
-      }
-
-      body[data-theme="dark"] .nav-btn {
-        background: rgba(215, 196, 170, 0.16);
-        color: #d7c4aa;
-      }
-
-      body[data-theme="dark"] .nav-btn:hover {
-        background: rgba(215, 196, 170, 0.28);
-      }
-
-      body[data-theme="dark"] .top-action-btn {
-        background: rgba(16, 21, 28, 0.92);
-        border-color: rgba(215, 196, 170, 0.22);
-        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
-        color: #f5e9db;
-      }
-
-      body[data-theme="dark"] .top-action-btn:hover {
-        background: rgba(24, 30, 39, 0.96);
-        border-color: rgba(215, 196, 170, 0.38);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.38);
-      }
-
-      body[data-theme="dark"] .slide-container {
-        box-shadow: 0 22px 56px rgba(0, 0, 0, 0.34);
-        filter: invert(1) hue-rotate(180deg);
-      }
-
-      body[data-theme="dark"] .slide-container.theme-preserve-dark {
-        filter: none;
-      }
-
-      body[data-theme="dark"] .slide-container img,
-      body[data-theme="dark"] .slide-container video,
-      body[data-theme="dark"] .slide-container canvas,
-      body[data-theme="dark"] .slide-container iframe,
-      body[data-theme="dark"] .slide-container svg image {
-        filter: invert(1) hue-rotate(180deg);
-      }
-
-      body[data-theme="dark"] .sidebar-content {
-        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.28);
-        filter: invert(1) hue-rotate(180deg);
-      }
-
-      body[data-theme="dark"] .sidebar-handle::before {
-        background: rgba(215, 196, 170, 0.22);
-      }
-
-      body[data-theme="dark"] .slide-counter {
-        background: rgba(16, 21, 28, 0.78);
-        border: 1px solid rgba(215, 196, 170, 0.2);
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
-        color: #f5e9db;
-      }
-
       @page {
         margin: 0.35in;
         size: landscape;
@@ -1144,18 +1071,6 @@
     </button>
 
     <button
-      class="top-action-btn theme-toggle-btn"
-      id="themeToggleBtn"
-      type="button"
-      onclick="toggleTheme()"
-      aria-label="Switch to dark theme"
-      aria-pressed="false"
-      title="Switch to dark theme"
-    >
-      <i class="fa-solid fa-moon"></i>
-    </button>
-
-    <button
       class="top-action-btn pdf-export-btn"
       id="pdfExportBtn"
       type="button"
@@ -1202,8 +1117,8 @@
               This starter deck keeps the same presentation shell as the current deck.
             </p>
             <ul class="template-note-list">
-              <li>Same 1280 x 720 canvas, typography, sidebar, slide counter, theme toggle, and top action buttons.</li>
-              <li>Home, Back, arrow-key navigation, light/dark mode, and PDF export are already wired up.</li>
+              <li>Same 1280 x 720 canvas, typography, colors, sidebar, slide counter, and top action buttons.</li>
+              <li>Home, Back, arrow-key navigation, and PDF export are already wired up.</li>
               <li>Duplicate any <strong>.slide-container</strong> block to add a new slide.</li>
               <li>Update the sidebar buttons so the table of contents matches your new slide order.</li>
             </ul>
@@ -1261,12 +1176,6 @@
         "sidebar-current-title",
       );
       const historyBackBtn = document.getElementById("historyBackBtn");
-      const themeToggleBtn = document.getElementById("themeToggleBtn");
-      const themeQuery =
-        typeof window.matchMedia === "function"
-          ? window.matchMedia("(prefers-color-scheme: dark)")
-          : null;
-      const THEME_STORAGE_KEY = "presentation-theme";
       const featureIntroSlides = document.querySelectorAll(
         ".feature-intro-slide, .form-summary-slide, .primer-fit-slide",
       );
@@ -1349,60 +1258,6 @@
         featureIntroSlides.forEach((slide) => {
           fitFeatureIntroSlide(slide);
         });
-      }
-
-      function getStoredTheme() {
-        try {
-          const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-          return storedTheme === "dark" || storedTheme === "light"
-            ? storedTheme
-            : null;
-        } catch (error) {
-          return null;
-        }
-      }
-
-      function setStoredTheme(theme) {
-        try {
-          window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-        } catch (error) {
-          return;
-        }
-      }
-
-      function updateThemeToggleButton(theme) {
-        if (!themeToggleBtn) {
-          return;
-        }
-
-        const nextActionLabel =
-          theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
-
-        themeToggleBtn.setAttribute("aria-label", nextActionLabel);
-        themeToggleBtn.setAttribute("title", nextActionLabel);
-        themeToggleBtn.setAttribute("aria-pressed", String(theme === "dark"));
-
-        const icon = themeToggleBtn.querySelector("i");
-        if (icon) {
-          icon.className =
-            theme === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
-        }
-      }
-
-      function applyTheme(theme) {
-        const nextTheme = theme === "dark" ? "dark" : "light";
-
-        document.body.dataset.theme = nextTheme;
-        document.documentElement.style.colorScheme = nextTheme;
-        updateThemeToggleButton(nextTheme);
-      }
-
-      function toggleTheme() {
-        const nextTheme =
-          document.body.dataset.theme === "dark" ? "light" : "dark";
-
-        setStoredTheme(nextTheme);
-        applyTheme(nextTheme);
       }
 
       function enterPdfExportMode() {
@@ -1539,7 +1394,6 @@
         setActiveSlide((current + dir + slides.length) % slides.length);
       }
 
-      applyTheme(getStoredTheme() || (themeQuery?.matches ? "dark" : "light"));
       slides[current].classList.add("active");
       updateCounter();
       updateSidebar();
@@ -1579,14 +1433,6 @@
 
       window.addEventListener("resize", () => {
         fitActiveFeatureIntroSlide();
-      });
-
-      themeQuery?.addEventListener("change", (event) => {
-        if (getStoredTheme()) {
-          return;
-        }
-
-        applyTheme(event.matches ? "dark" : "light");
       });
     </script>
   </body>

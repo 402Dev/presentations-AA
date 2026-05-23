@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presentation Template</title>
+    <title>Construct-i-con in Action: a simple example</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -494,6 +494,195 @@
         font-weight: 300;
         color: #a38a70;
         letter-spacing: 1px;
+      }
+
+      .construct-icon-cover-slide::before {
+        background: none;
+      }
+
+      .construct-icon-cover {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        justify-content: center;
+        max-width: 1080px;
+        min-height: 100%;
+        padding: 24px 36px 12px;
+        position: relative;
+        text-align: left;
+        width: 100%;
+      }
+
+      .construct-icon-cover::after {
+        display: none;
+      }
+
+      .construct-icon-cover .template-cover-eyebrow {
+        color: #8d877f;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        margin-bottom: 72px;
+      }
+
+      .construct-icon-title {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 0;
+        max-width: 620px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .construct-icon-main {
+        color: #1a1a1a;
+        display: block;
+        font-family: "Playfair Display", serif;
+        font-size: 108px;
+        letter-spacing: -3px;
+        line-height: 0.92;
+      }
+
+      .construct-icon-rest {
+        color: #1a1a1a;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 7px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+
+      .construct-icon-tail {
+        color: #6c665f;
+        font-family: "Playfair Display", serif;
+        font-size: 30px;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+        line-height: 1;
+      }
+
+      .constructicon-field {
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        gap: 11px;
+        pointer-events: none;
+        position: absolute;
+        right: 48px;
+        top: 138px;
+        width: 320px;
+        z-index: 0;
+      }
+
+      .constructicon-field::before {
+        background: linear-gradient(
+          90deg,
+          rgba(249, 248, 246, 1) 0%,
+          rgba(249, 248, 246, 0.84) 24%,
+          rgba(249, 248, 246, 0) 100%
+        );
+        content: "";
+        inset: -44px 48px -44px -180px;
+        position: absolute;
+      }
+
+      .constructicon-marker {
+        align-items: baseline;
+        background: rgba(255, 255, 255, 0.34);
+        border: 1px solid rgba(26, 26, 26, 0.04);
+        border-radius: 999px;
+        display: flex;
+        gap: 10px;
+        min-width: 0;
+        opacity: 0.32;
+        padding: 10px 12px;
+        position: relative;
+      }
+
+      .constructicon-marker.active {
+        background: rgba(255, 255, 255, 0.78);
+        border-color: rgba(163, 138, 112, 0.22);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+        opacity: 0.9;
+        transform: translateX(-18px);
+      }
+
+      .constructicon-marker-id {
+        color: #8d877f;
+        flex-shrink: 0;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1.4px;
+        line-height: 1.4;
+      }
+
+      .constructicon-marker-line {
+        background: rgba(26, 26, 26, 0.12);
+        flex: 1;
+        height: 1px;
+        min-width: 0;
+        margin-bottom: 4px;
+      }
+
+      .constructicon-marker.active .constructicon-marker-line {
+        background: rgba(163, 138, 112, 0.48);
+      }
+
+      .constructicon-marker-name {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        line-height: 1.2;
+      }
+
+      .example-sentence {
+        color: #1a1a1a;
+        font-size: 26px;
+        line-height: 1.45;
+      }
+
+      .example-sentence strong {
+        color: #6b4f35;
+        font-weight: 600;
+      }
+
+      .concept-map {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .concept-map-row {
+        background: #f8f5ef;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 18px 18px 16px;
+      }
+
+      .concept-map-label {
+        color: #a38a70;
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .concept-map-copy {
+        color: #1a1a1a;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        line-height: 1.45;
       }
 
       .template-note-list {
@@ -1064,18 +1253,18 @@
             </button>
           </div>
           <div class="sidebar-current-section" id="sidebar-current-section">
-            Starter Deck
+            Construct-i-con in Action
           </div>
           <div class="sidebar-current-title" id="sidebar-current-title">
             Cover
           </div>
         </div>
 
-        <details class="sidebar-section" data-section-title="Starter Deck" open>
+        <details class="sidebar-section" data-section-title="Construct-i-con in Action" open>
           <summary class="sidebar-section-summary">
             <span class="sidebar-section-meta">
-              <span class="sidebar-section-kicker">Template</span>
-              <span class="sidebar-section-title">Starter Deck</span>
+              <span class="sidebar-section-kicker">402dev</span>
+              <span class="sidebar-section-title">Construct-i-con in Action</span>
             </span>
             <span class="sidebar-summary-right">
               <span class="sidebar-count">3</span>
@@ -1097,7 +1286,7 @@
               onclick="goToSlide(1)"
               type="button"
             >
-              Template notes
+              Analytic frame
             </button>
             <button
               class="sidebar-item"
@@ -1105,7 +1294,7 @@
               onclick="goToSlide(2)"
               type="button"
             >
-              First content placeholder
+              Simple example
             </button>
           </div>
         </details>
@@ -1168,44 +1357,75 @@
 
     <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>
 
-    <div class="slide-container" id="slide0">
-      <div class="template-cover">
-        <div class="template-cover-eyebrow">Presentation Template</div>
-        <h1 class="template-cover-title">Title Placeholder</h1>
-        <div class="template-cover-rule"></div>
-        <p class="template-cover-subtitle">
-          Subtitle, framing question, or one-line promise goes here.
-        </p>
-        <div class="template-chip-row">
-          <span class="template-chip">Speaker name</span>
-          <span class="template-chip">Team or institution</span>
-          <span class="template-chip">Month Year</span>
+    <div class="slide-container construct-icon-cover-slide" id="slide0">
+      <div class="template-cover construct-icon-cover">
+        <div class="template-cover-eyebrow">402dev / May 2026</div>
+        <h1
+          class="template-cover-title construct-icon-title"
+          aria-label="Construct-i-con in Action: a simple example"
+        >
+          <span class="construct-icon-main">Construct-i-con</span>
+          <span class="construct-icon-rest">in Action</span>
+          <span class="construct-icon-tail">a simple example</span>
+        </h1>
+        <div class="constructicon-field" aria-hidden="true">
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">001</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">008</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">015</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">023</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker active">
+            <span class="constructicon-marker-id">047</span>
+            <span class="constructicon-marker-line"></span>
+            <span class="constructicon-marker-name">What's X doing Y?</span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">052</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">061</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
+          <div class="constructicon-marker">
+            <span class="constructicon-marker-id">074</span>
+            <span class="constructicon-marker-line"></span>
+          </div>
         </div>
-        <div class="template-cover-meta">Replace this cover with your own title page</div>
       </div>
     </div>
 
     <div class="slide-container" id="slide1">
-      <h2 class="slide-title">Template Notes</h2>
+      <h2 class="slide-title">Analytic Frame</h2>
       <div class="content-area" style="align-items: flex-start; justify-content: flex-start">
-        <div class="callout-box">
-          <i class="fa-solid fa-compass decorative-icon"></i>
-          <div style="max-width: 960px">
-            <p
-              style="
-                font-size: 20px;
-                margin: 0 0 12px 0;
-                color: #1a1a1a;
-                font-weight: 600;
-              "
-            >
-              This starter deck keeps the same presentation shell as the current deck.
+        <div class="two-column template-grid">
+          <div class="template-card template-card-accent">
+            <div class="template-kicker">Why This Example</div>
+            <h3 class="template-heading">
+              The point is to show that meaning can live in the pairing itself, not only in the individual words.
+            </h3>
+            <p class="template-copy">
+              A strong introductory construction keeps the form easy to spot, the inference easy to paraphrase, and the constructional payoff hard to miss.
             </p>
-            <ul class="template-note-list">
-              <li>Same 1280 x 720 canvas, typography, sidebar, slide counter, theme toggle, and top action buttons.</li>
-              <li>Home, Back, arrow-key navigation, light/dark mode, and PDF export are already wired up.</li>
-              <li>Duplicate any <strong>.slide-container</strong> block to add a new slide.</li>
-              <li>Update the sidebar buttons so the table of contents matches your new slide order.</li>
+          </div>
+
+          <div class="template-card">
+            <div class="template-kicker">What To Track</div>
+            <ul class="template-note-list compact">
+              <li>One recognizable formal shape that recurs.</li>
+              <li>One stable stance or interpretation that the shape invites.</li>
+              <li>One contrast showing that the inference is not reducible to the words alone.</li>
             </ul>
           </div>
         </div>
@@ -1213,27 +1433,36 @@
     </div>
 
     <div class="slide-container" id="slide2">
-      <h2 class="slide-title">First Content Placeholder</h2>
+      <h2 class="slide-title">Simple Example</h2>
       <div class="content-area" style="align-items: stretch; justify-content: flex-start">
         <div class="two-column template-grid">
           <div class="template-card template-card-accent">
-            <div class="template-kicker">Section Placeholder</div>
-            <h3 class="template-heading">
-              Replace this with your opening claim, roadmap, or section setup.
-            </h3>
+            <div class="template-kicker">Construction</div>
+            <h3 class="template-heading">What's X doing Y?</h3>
+            <p class="template-copy example-sentence">
+              <strong>"What's this fly doing in my soup?"</strong>
+            </p>
             <p class="template-copy">
-              This is a neutral starter slide in the same deck aesthetic. Use it
-              as a quick copy source while you build the new presentation.
+              The speaker is not mainly requesting a literal activity report. The form packages surprise, objection, and a sense that the situation is out of place.
             </p>
           </div>
 
           <div class="template-card">
-            <div class="template-kicker">Possible Structure</div>
-            <ul class="template-note-list compact">
-              <li>One clear claim or question</li>
-              <li>Two or three support points</li>
-              <li>A short example, contrast, or takeaway</li>
-            </ul>
+            <div class="template-kicker">Constructional Payoff</div>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Form Cue</span>
+                <span class="concept-map-copy">An interrogative shell plus <strong>doing</strong> frames the scene as a mismatch worth remarking on.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Readout</span>
+                <span class="concept-map-copy">The hearer infers something like: <strong>X should not be in Y</strong>.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Why It Matters</span>
+                <span class="concept-map-copy">That extra stance is contributed by the construction itself, which is exactly why a constructicon is worth storing.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
