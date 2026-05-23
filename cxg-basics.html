@@ -105,6 +105,14 @@
         transform: translateY(-1px);
       }
 
+      .top-action-btn[hidden] {
+        display: none !important;
+      }
+
+      .history-back-btn {
+        right: 220px;
+      }
+
       .home-btn {
         justify-content: center;
         min-width: 44px;
@@ -116,6 +124,27 @@
         gap: 8px;
         padding: 12px 16px;
         right: 24px;
+      }
+
+      .feature-jump-item {
+        border-radius: 6px;
+        cursor: pointer;
+        transition:
+          background 0.18s ease,
+          box-shadow 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      .feature-jump-item:hover {
+        background: rgba(163, 138, 112, 0.08);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        transform: translateX(2px);
+      }
+
+      .feature-jump-item:focus-visible {
+        background: rgba(163, 138, 112, 0.12);
+        box-shadow: 0 0 0 2px rgba(163, 138, 112, 0.22);
+        outline: none;
       }
 
       /* Minimalist & Elegant Theme Base */
@@ -2095,8 +2124,7 @@
       body.pdf-exporting .sidebar-nav,
       body.pdf-exporting .nav-btn,
       body.pdf-exporting .slide-counter,
-      body.pdf-exporting .home-btn,
-      body.pdf-exporting .pdf-export-btn {
+      body.pdf-exporting .top-action-btn {
         display: none !important;
       }
 
@@ -2135,8 +2163,7 @@
         .sidebar-nav,
         .nav-btn,
         .slide-counter,
-        .home-btn,
-        .pdf-export-btn {
+        .top-action-btn {
           display: none !important;
         }
       }
@@ -2734,6 +2761,19 @@
         aria-label="Toggle table of contents"
       ></button>
     </nav>
+
+    <button
+      class="top-action-btn history-back-btn"
+      id="historyBackBtn"
+      type="button"
+      onclick="goBackInHistory()"
+      aria-label="Go back to the previous jump source"
+      title="Go back to the previous jump source"
+      hidden
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </button>
 
     <button
       class="top-action-btn home-btn"
@@ -26168,9 +26208,40 @@
       const sidebarCurrentTitle = document.getElementById(
         "sidebar-current-title",
       );
+      const historyBackBtn = document.getElementById("historyBackBtn");
       const featureIntroSlides = document.querySelectorAll(
         ".feature-intro-slide, .form-summary-slide, .primer-fit-slide",
       );
+      const slideIndexById = new Map(
+        Array.from(slides).map((slide, index) => [slide.id, index]),
+      );
+      const anatomyFeatureTargets = {
+        "Component Registry": "slideCompReg1",
+        "Topological Mapping": "slideTopoMap1",
+        "Intonation & Stress": "slideIntonation1",
+        "Nesting & Recursion": "slideNesting1",
+        "Morphosyntactic Flexibility": "slideFlexibility1",
+        "Collostructional Gravity": "slideGravity1",
+        Elision: "slideElisionProfile",
+        "Semantic Frame Anchor": "slideSemanticAnchor1",
+        "Event Shape Profile": "slideEventShape1",
+        "Macro-Event Proposition": "slideMacroEvent1",
+        "Pragmatic Intent": "slidePragmaticIntent1",
+        "Force Dynamics Matrix": "slideForceDynamics1",
+        "Taxonomic Inheritance Matrix": "slideTaxonomicMatrix1",
+        "Paradigm Cluster Matrix": "slideParadigmClusterMatrix1",
+        "Entrenchment & Productivity Matrix":
+          "slideEntrenchmentProductivityMatrix1",
+        "Core Administrative Identity": "slideMetaIdentity",
+        "Stratum Vector": "slideMetaStratum",
+        "Canonical Exemplar Array": "slideMetaExemplars",
+        "Epistemological Tag": "slideMetaProvenance",
+        "Processability Index": "slideProcessabilityIntro",
+        "Typological Transfer Vector": "slideTransferVectorIntro",
+        "Fossilization Risk Index": "slideFossilizationIntro",
+        "CEFR Profiling": "slideCEFRIntro",
+      };
+      const navigationHistory = [];
       let current = 0;
 
       slides[slides.length - 1]?.classList.add("last-slide");
@@ -26189,6 +26260,24 @@
 
         slide.appendChild(frame);
       });
+
+      document
+        .querySelectorAll("#slideAnatomyCategories li")
+        .forEach((item) => {
+          const label = item.textContent.replace(/\s+/g, " ").trim();
+          const targetId = anatomyFeatureTargets[label];
+
+          if (!targetId) {
+            return;
+          }
+
+          item.classList.add("feature-jump-item");
+          item.dataset.navSlideId = targetId;
+          item.setAttribute("role", "button");
+          item.setAttribute("tabindex", "0");
+          item.setAttribute("aria-label", `Go to ${label}`);
+          item.title = `Go to ${label}`;
+        });
 
       const relationalGraphCopy = {
         all: {
@@ -26357,6 +26446,15 @@
         setRelationalGraphMode(container, button.dataset.relationFilter);
       });
 
+      document.addEventListener("click", (event) => {
+        const featureItem = event.target.closest("[data-nav-slide-id]");
+        if (!featureItem) {
+          return;
+        }
+
+        goToSlideById(featureItem.dataset.navSlideId);
+      });
+
       function fitFeatureIntroSlide(slide) {
         if (
           !slide ||
@@ -26445,6 +26543,20 @@
         counter.textContent = current + 1 + " / " + slides.length;
       }
 
+      function updateHistoryBackButton() {
+        const hasHistory = navigationHistory.length > 0;
+        historyBackBtn.hidden = !hasHistory;
+      }
+
+      function goToSlideById(slideId, options = {}) {
+        const index = slideIndexById.get(slideId);
+        if (typeof index !== "number") {
+          return;
+        }
+
+        goToSlide(index, options);
+      }
+
       function setSidebarPinned(isPinned) {
         sidebarNav.classList.toggle("pinned", isPinned);
         sidebarPinBtn.classList.toggle("active", isPinned);
@@ -26504,9 +26616,20 @@
         sidebarCurrentTitle.textContent = activeNode.textContent.trim();
       }
 
-      function setActiveSlide(index) {
+      function setActiveSlide(index, options = {}) {
+        const { recordHistory = false } = options;
+
         if (index < 0 || index >= slides.length) {
           return;
+        }
+
+        if (index === current) {
+          updateHistoryBackButton();
+          return;
+        }
+
+        if (recordHistory) {
+          navigationHistory.push(current);
         }
 
         slides[current].classList.remove("active");
@@ -26514,16 +26637,29 @@
         slides[current].classList.add("active");
         updateCounter();
         updateSidebar();
+        updateHistoryBackButton();
         fitActiveFeatureIntroSlide();
       }
 
-      function goToSlide(index) {
-        setActiveSlide(index);
+      function goToSlide(index, options = {}) {
+        setActiveSlide(index, { recordHistory: true, ...options });
+      }
+
+      function goBackInHistory() {
+        const previousSlide = navigationHistory.pop();
+
+        if (typeof previousSlide !== "number") {
+          updateHistoryBackButton();
+          return;
+        }
+
+        setActiveSlide(previousSlide);
       }
 
       slides[current].classList.add("active");
       updateCounter();
       updateSidebar();
+      updateHistoryBackButton();
       fitActiveFeatureIntroSlide();
 
       function changeSlide(dir) {
@@ -26531,6 +26667,21 @@
       }
 
       document.addEventListener("keydown", (e) => {
+        const featureItem =
+          e.target instanceof Element
+            ? e.target.closest("[data-nav-slide-id]")
+            : null;
+
+        if (
+          featureItem &&
+          (e.key === "Enter" || e.key === " ") &&
+          featureItem.dataset.navSlideId
+        ) {
+          e.preventDefault();
+          goToSlideById(featureItem.dataset.navSlideId);
+          return;
+        }
+
         if (e.key === "Escape" && sidebarNav.classList.contains("pinned")) {
           setSidebarPinned(false);
         }
