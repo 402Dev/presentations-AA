@@ -70,7 +70,7 @@
         right: 20px;
       }
 
-      .pdf-export-btn {
+      .top-action-btn {
         align-items: center;
         appearance: none;
         background: rgba(255, 255, 255, 0.94);
@@ -98,11 +98,24 @@
         z-index: 110;
       }
 
-      .pdf-export-btn:hover {
+      .top-action-btn:hover {
         background: #ffffff;
         border-color: rgba(163, 138, 112, 0.38);
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
         transform: translateY(-1px);
+      }
+
+      .home-btn {
+        justify-content: center;
+        min-width: 44px;
+        padding: 12px;
+        right: 164px;
+      }
+
+      .pdf-export-btn {
+        gap: 8px;
+        padding: 12px 16px;
+        right: 24px;
       }
 
       /* Minimalist & Elegant Theme Base */
@@ -2082,6 +2095,7 @@
       body.pdf-exporting .sidebar-nav,
       body.pdf-exporting .nav-btn,
       body.pdf-exporting .slide-counter,
+      body.pdf-exporting .home-btn,
       body.pdf-exporting .pdf-export-btn {
         display: none !important;
       }
@@ -2121,6 +2135,7 @@
         .sidebar-nav,
         .nav-btn,
         .slide-counter,
+        .home-btn,
         .pdf-export-btn {
           display: none !important;
         }
@@ -2721,7 +2736,18 @@
     </nav>
 
     <button
-      class="pdf-export-btn"
+      class="top-action-btn home-btn"
+      id="homeBtn"
+      type="button"
+      onclick="goToSlide(0)"
+      aria-label="Go to first slide"
+      title="Go to first slide (Home)"
+    >
+      <i class="fa-solid fa-house"></i>
+    </button>
+
+    <button
+      class="top-action-btn pdf-export-btn"
       id="pdfExportBtn"
       type="button"
       onclick="exportPresentationToPDF()"
@@ -5670,6 +5696,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj_NP V_Action Poss_Pron way Obl_Path]
+              </div>
+              <div
+                style="
                   font-size: 13px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -5836,6 +5874,18 @@
                 "
               >
                 Evaluative Frame
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj_NP zien er Adj uit]
               </div>
               <div
                 style="
@@ -6007,6 +6057,18 @@
                 "
               >
                 Specific Accusative
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj_NP Obj_NP ra V_Trans]
               </div>
               <div
                 style="
@@ -6686,6 +6748,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V Obj_Rec Obj_Thm]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -6861,6 +6935,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Comp Subj Obj Adv V]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -7007,6 +7093,18 @@
                 "
               >
                 Terminal Anchoring
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj Obj_NP ra PP V_Trans]
               </div>
               <div
                 style="
@@ -7667,6 +7765,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V]↗ (Interrogative)
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -7802,6 +7912,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V Obl for THAT]!
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -7917,6 +8039,18 @@
                 "
               >
                 Contrastive Focus
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V_aux Dem_Pron Obl_PP V_part]!
               </div>
               <div
                 style="
@@ -9151,6 +9285,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj kick the bucket]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -9310,6 +9456,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [N_dast V_andakhtan]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -9405,6 +9563,18 @@
                 "
               >
                 Lexical Integrity
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [op hete kolen zitten]
               </div>
               <div
                 style="
@@ -9971,6 +10141,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [V_set Obj on fire]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -10125,6 +10307,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [zich Adv vergissen]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -10237,6 +10431,18 @@
                 "
               >
                 Support Verb Collocations
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Noun + Light Verb]
               </div>
               <div
                 style="
@@ -11734,6 +11940,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V Obj_Ben Obj_Thm]
+              </div>
+              <div
+                style="
                   font-size: 13px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -11858,6 +12076,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Adj - Pron_Enclitic - copula]
+              </div>
+              <div
+                style="
                   font-size: 13px;
                   font-style: italic;
                   color: #7a7a7a;
@@ -11969,6 +12199,18 @@
                 "
               >
                 The Extreme Zoom
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [er V_aux V_part]
               </div>
               <div
                 style="
@@ -12728,6 +12970,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj be V-ing]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #b07050;
@@ -12849,6 +13103,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj be aan het V-inf]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a9e7e;
@@ -12966,6 +13232,18 @@
                 "
               >
                 The Imperfective Split
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj mi-V_past]
               </div>
               <div
                 style="
@@ -13719,6 +13997,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V Obj_Rec Obj_Thm]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #6b7faa;
@@ -13888,6 +14178,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V zich een weg door Obl]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #7a9e7e;
@@ -14054,6 +14356,18 @@
                 "
               >
                 Light Verb Causative
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj Obj_NP Adj kard]
               </div>
               <div
                 style="
@@ -14926,6 +15240,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Ghorbunet beram]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #8a6050;
@@ -15089,6 +15415,18 @@
                 "
               >
                 The Command Mitigator
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [V_imp eens even naar NP]
               </div>
               <div
                 style="
@@ -15267,6 +15605,18 @@
                 "
               >
                 Scalar Rejection
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Negative Clause, let alone NP]
               </div>
               <div
                 style="
@@ -15943,6 +16293,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #6b8ea3;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj laten Obj V_inf]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #6f8768;
@@ -16022,6 +16384,18 @@
               </div>
               <div
                 style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #a38a70;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj must V_inf]
+              </div>
+              <div
+                style="
                   font-size: 12px;
                   font-style: italic;
                   color: #6b8ea3;
@@ -16094,6 +16468,18 @@
                 "
               >
                 Tavanestan
+              </div>
+              <div
+                style="
+                  font-family: monospace;
+                  font-size: 13px;
+                  color: #769273;
+                  margin-top: 4px;
+                  margin-bottom: 4px;
+                  font-weight: 500;
+                "
+              >
+                [Subj V-andan-SUFFIX]
               </div>
               <div
                 style="
@@ -23519,7 +23905,19 @@
                 line-height: 1.3;
               "
             >
-              The [Plural Quantifier + Plural Count Noun] Agreement Schema
+              Plural Agreement Schema
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Plural Quantifier + Plural Count Noun]
             </div>
             <div
               style="
@@ -23623,8 +24021,19 @@
                 line-height: 1.3;
               "
             >
-              The [Subject NP + (Intervening Material) + Verb-Suffix] Agreement
-              Schema
+              Non-Adjacent Subject-Verb Agreement
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Subject NP + (Intervening Material) + Verb-Suffix] Schema
             </div>
             <div
               style="
@@ -23727,8 +24136,19 @@
                 line-height: 1.3;
               "
             >
-              The [Complementizer + Subject + Object + Verb] Subordinate Clause
-              Schema
+              SOV Subordinate Clause Schema
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Complementizer + Subject + Object + Verb] Schema
             </div>
             <div
               style="
@@ -24084,7 +24504,19 @@
                 line-height: 1.3;
               "
             >
-              The [Adverbial + Verb + Subject] V2 Inversion Schema
+              V2 Inversion Schema
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Adverbial + Verb + Subject]
             </div>
             <div
               style="
@@ -24192,7 +24624,19 @@
                 line-height: 1.3;
               "
             >
-              The [Dummy 'It' + Weather Verb] Schema
+              Dummy Subject Weather Frame
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Dummy 'It' + Weather Verb]
             </div>
             <div
               style="
@@ -24302,7 +24746,19 @@
                 line-height: 1.3;
               "
             >
-              The [Copula 'Be' + Verb-ing] Progressive Aspect Schema
+              Progressive Aspect Schema
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Copula 'Be' + Verb-ing]
             </div>
             <div
               style="
@@ -24667,7 +25123,19 @@
                 line-height: 1.3;
               "
             >
-              The [3rd Person Singular + Verb-s] Morphology Schema
+              3rd-Person Singular Morphology
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [3rd Person Singular + Verb-s]
             </div>
             <div
               style="
@@ -24777,7 +25245,19 @@
                 line-height: 1.3;
               "
             >
-              The [Head Noun + Enclitic '-e' + Modifier] Ezafe Schema
+              Ezafe Modification Schema
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Head Noun + Enclitic '-e' + Modifier]
             </div>
             <div
               style="
@@ -24888,7 +25368,19 @@
                 line-height: 1.3;
               "
             >
-              The [Dummy 'Er' + Passive Verb + Agents] Impersonal Passive Schema
+              Impersonal Passive Topology
+            </div>
+            <div
+              style="
+                font-family: monospace;
+                font-size: 13px;
+                color: #9b7eb8;
+                margin-top: 4px;
+                margin-bottom: 4px;
+                font-weight: 500;
+              "
+            >
+              [Dummy 'Er' + Passive Verb + Agents]
             </div>
             <div
               style="
@@ -26043,6 +26535,7 @@
           setSidebarPinned(false);
         }
 
+        if (e.key === "Home") goToSlide(0);
         if (e.key === "ArrowRight" || e.key === "ArrowDown") changeSlide(1);
         if (e.key === "ArrowLeft" || e.key === "ArrowUp") changeSlide(-1);
       });
