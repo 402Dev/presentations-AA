@@ -767,6 +767,66 @@
         margin: 0;
       }
 
+      .learner-entry-grid {
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      }
+
+      .learner-profile-card {
+        justify-content: space-between;
+        min-height: 100%;
+        padding: 34px 36px 32px;
+      }
+
+      .learner-profile-id {
+        color: #8d877f;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1.8px;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .learner-profile-name {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 68px;
+        font-weight: 600;
+        letter-spacing: -2.4px;
+        line-height: 0.96;
+        margin: 0 0 22px 0;
+      }
+
+      .learner-profile-lead {
+        color: #2c2c2c;
+        font-family: "Inter", sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: -0.4px;
+        line-height: 1.22;
+        margin: 0;
+        max-width: 520px;
+      }
+
+      .learner-chip-row {
+        justify-content: flex-start;
+        margin-bottom: 0;
+        margin-top: 30px;
+      }
+
+      .learner-chip-row .template-chip {
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .learner-conditions-card {
+        gap: 18px;
+        padding-top: 30px;
+      }
+
+      .learner-context-map .concept-map-row {
+        gap: 10px;
+      }
+
       .sidebar-nav {
         position: fixed;
         left: -272px;
@@ -1286,7 +1346,7 @@
               onclick="goToSlide(1)"
               type="button"
             >
-              Analytic frame
+                Start with the learner
             </button>
             <button
               class="sidebar-item"
@@ -1407,26 +1467,48 @@
     </div>
 
     <div class="slide-container" id="slide1">
-      <h2 class="slide-title">Analytic Frame</h2>
-      <div class="content-area" style="align-items: flex-start; justify-content: flex-start">
-        <div class="two-column template-grid">
-          <div class="template-card template-card-accent">
-            <div class="template-kicker">Why This Example</div>
-            <h3 class="template-heading">
-              The point is to show that meaning can live in the pairing itself, not only in the individual words.
-            </h3>
-            <p class="template-copy">
-              A strong introductory construction keeps the form easy to spot, the inference easy to paraphrase, and the constructional payoff hard to miss.
-            </p>
+      <h2 class="slide-title">Start with the learner</h2>
+      <div class="content-area" style="align-items: stretch; justify-content: flex-start">
+        <div class="two-column template-grid learner-entry-grid">
+          <div class="template-card template-card-accent learner-profile-card">
+            <div>
+              <div class="template-kicker">Learner First</div>
+              <div class="learner-profile-id">Case 001</div>
+              <h3 class="learner-profile-name">Pejman</h3>
+              <p class="learner-profile-lead">
+                He is not learning German for work yet. He wants it so life in Switzerland feels less foreign and more shared.
+              </p>
+            </div>
+
+            <div class="template-chip-row learner-chip-row">
+              <span class="template-chip">Switzerland</span>
+              <span class="template-chip">German</span>
+              <span class="template-chip">social integration</span>
+              <span class="template-chip">absolute beginner</span>
+              <span class="template-chip">Persian / Farsi</span>
+            </div>
           </div>
 
-          <div class="template-card">
-            <div class="template-kicker">What To Track</div>
-            <ul class="template-note-list compact">
-              <li>One recognizable formal shape that recurs.</li>
-              <li>One stable stance or interpretation that the shape invites.</li>
-              <li>One contrast showing that the inference is not reducible to the words alone.</li>
-            </ul>
+          <div class="template-card learner-conditions-card">
+            <div class="template-kicker">Starting Conditions</div>
+            <div class="concept-map learner-context-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">01 Setting</span>
+                <span class="concept-map-copy">Pejman lives in Switzerland.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">02 Immediate Aim</span>
+                <span class="concept-map-copy">He wants German for better integration into the society around him, not for work yet.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">03 Starting Level</span>
+                <span class="concept-map-copy">He is an absolute beginner.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">04 Linguistic Base</span>
+                <span class="concept-map-copy">His first language is Persian, or Farsi.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
