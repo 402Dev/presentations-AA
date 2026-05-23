@@ -533,6 +533,7 @@
       .feature-intro-slide {
         align-items: stretch;
         justify-content: flex-start;
+        padding: 38px 46px 42px;
       }
 
       .primer-fit-slide {
@@ -553,39 +554,39 @@
         align-items: stretch;
         border-bottom: 1px solid #e6dfd6;
         display: grid;
-        gap: 24px;
-        grid-template-columns: minmax(0, 1fr) 290px;
-        margin-bottom: 18px;
-        padding-bottom: 18px;
+        gap: 14px;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
         width: 100%;
       }
 
       .feature-intro-eyebrow {
         color: var(--feature-accent, #a38a70);
         font-family: "Inter", sans-serif;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 700;
-        letter-spacing: 2.6px;
-        margin-bottom: 10px;
+        letter-spacing: 2.4px;
+        margin-bottom: 8px;
         text-transform: uppercase;
       }
 
       .feature-intro-title {
         color: #171717;
         font-family: "Playfair Display", serif;
-        font-size: 32px;
+        font-size: 36px;
         font-weight: 600;
-        letter-spacing: -0.7px;
-        line-height: 1.08;
-        margin: 0 0 10px 0;
+        letter-spacing: -0.9px;
+        line-height: 1.02;
+        margin: 0 0 8px 0;
       }
 
       .feature-intro-lead {
         color: #5f5953;
         font-family: "Inter", sans-serif;
-        font-size: 15px;
-        line-height: 1.55;
-        max-width: 760px;
+        font-size: 16px;
+        line-height: 1.4;
+        max-width: 860px;
       }
 
       .feature-intro-focus {
@@ -596,31 +597,31 @@
           #f2ede6 100%
         );
         border: 1px solid rgba(26, 26, 26, 0.06);
-        border-radius: 14px;
-        border-top: 4px solid var(--feature-accent, #a38a70);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+        border-radius: 15px;
+        border-top: 3px solid var(--feature-accent, #a38a70);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
         justify-content: center;
         min-height: 100%;
-        padding: 16px 18px;
+        padding: 12px 14px;
       }
 
       .feature-intro-focus-label {
         color: var(--feature-accent, #a38a70);
         font-family: "Inter", sans-serif;
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 700;
-        letter-spacing: 2px;
+        letter-spacing: 2.2px;
         text-transform: uppercase;
       }
 
       .feature-intro-focus-text {
         color: #1f1f1f;
         font-family: "Playfair Display", serif;
-        font-size: 22px;
-        line-height: 1.15;
+        font-size: 24px;
+        line-height: 1.08;
       }
 
       .feature-intro-content {
@@ -633,13 +634,19 @@
       .feature-intro-grid {
         align-items: stretch !important;
         flex-grow: 1;
-        gap: 28px !important;
+        gap: 14px !important;
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
       }
 
       .feature-intro-grid > div:first-child {
         border: 1px solid rgba(26, 26, 26, 0.05);
         border-radius: 16px;
+        display: grid !important;
+        gap: 10px 14px !important;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        align-content: start;
         overflow: hidden;
+        padding: 16px 18px !important;
         position: relative;
       }
 
@@ -651,14 +658,32 @@
         width: 4px;
       }
 
+      .feature-intro-grid > div:first-child > h4 {
+        grid-column: 1 / -1;
+      }
+
+      .feature-intro-grid > div:first-child > div {
+        min-width: 0;
+      }
+
+      .feature-intro-grid > div:first-child > div:last-child {
+        grid-column: 1 / -1;
+      }
+
       .feature-intro-grid > div:last-child {
         display: flex;
         flex-direction: column;
-        gap: 14px;
-        justify-content: center;
+        gap: 8px !important;
+        justify-content: flex-start;
+        min-width: 0;
       }
 
-      @media (max-width: 1180px) {
+      .feature-intro-grid > div:last-child > div {
+        min-width: 0;
+        padding: 12px 14px !important;
+      }
+
+      @media (max-width: 900px) {
         .feature-intro-header {
           grid-template-columns: minmax(0, 1fr);
         }
@@ -3691,8 +3716,8 @@
               <ul class="qa-card-detail">
                 <li>A structured network of constructions</li>
                 <li>
-                  Better than a flat pool &mdash; it encodes relationships
-                  between constructions
+                  Better than a flat pool. It encodes relationships between
+                  constructions.
                 </li>
               </ul>
             </div>
@@ -4923,10 +4948,10 @@
                   max-width: 520px;
                 "
               >
-                In CxG, Form is not just surface grammar. It is a
-                multi-dimensional fingerprint &mdash; slot order, syllable
-                stress, morphological shape, and degree of abstraction &mdash;
-                each tracked as its own structured field.
+                In CxG, Form is not just surface grammar. It is a set of
+                measurable features. The database tracks slot order, syllable
+                stress, morphological shape, and degree of abstraction in
+                separate fields.
               </p>
 
               <div
@@ -4983,9 +5008,9 @@
                 Every formal dimension becomes a column.
               </div>
               <p style="font-size: 16px; line-height: 1.55; margin: 0">
-                On the Form side of CxG, the goal is to decompose the physical
-                blueprint of a construction into discrete, queryable fields
-                &mdash; topology, phonology, morphology, and schematicity.
+                On the Form side of CxG, the goal is to break the physical
+                blueprint of a construction into queryable fields. Those fields
+                cover topology, phonology, morphology, and schematicity.
               </p>
             </div>
           </div>
@@ -5066,8 +5091,8 @@
                 Form is a blueprint, unique to each construction.
               </div>
               <p style="font-size: 15px; line-height: 1.55; margin: 0">
-                The shape is a holistic specification &mdash; topology,
-                phonology, morphology, and schematicity working together.
+                The shape is a full specification. Topology, phonology,
+                morphology, and schematicity work together.
               </p>
             </div>
 
@@ -5293,8 +5318,8 @@
 
               <p style="font-size: 16px; line-height: 1.58; margin: 0">
                 The slot order is the form. Moving the recipient changes the
-                topological profile &mdash; and with it, the subtle pragmatic
-                signal of how directly the transfer was completed.
+                topological profile. It also changes the pragmatic signal of how
+                direct the transfer feels.
               </p>
             </div>
           </div>
@@ -5439,8 +5464,8 @@
           </div>
           <div class="feature-intro-title">The Component Registry</div>
           <div class="feature-intro-lead">
-            A declarative list of every node required by the construction
-            &mdash; defined before any word-order template is applied.
+            A declarative list of every node required by the construction. It is
+            defined before any word-order template is applied.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -5533,9 +5558,9 @@
                   <span style="font-weight: 400; color: #7a7a7a">[String]</span>
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a; margin-top: 2px">
-                  Anchor: literal lemma&nbsp;&mdash;&nbsp;e.g.
-                  <em>&ldquo;zien&rdquo;</em>. Slot: syntactic
-                  category&nbsp;&mdash;&nbsp;e.g. <em>Noun_Phrase</em>.
+                  Anchor: literal lemma, for example
+                  <em>&ldquo;zien&rdquo;</em>. Slot: syntactic category, for
+                  example <em>Noun_Phrase</em>.
                 </div>
               </div>
 
@@ -6281,8 +6306,8 @@
                 Establishes the exact arity (node count) of the construction,
                 allowing the database to index and sort the entire
                 Construct-i-con by structural complexity. Every construction
-                becomes sortable and filterable on its dimensionality &mdash; no
-                bespoke column needed.
+                becomes sortable and filterable by dimensionality. No bespoke
+                column is needed.
               </div>
             </div>
 
@@ -6340,8 +6365,8 @@
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
                 The same registry can be inherited by different word-order
-                templates&nbsp;&mdash; Main Clause, Subordinate,
-                Question&nbsp;&mdash; without duplicating lexical data.
+                templates. For example: Main Clause, Subordinate, and Question.
+                This avoids duplicating lexical data.
               </div>
             </div>
           </div>
@@ -6389,8 +6414,8 @@
                 The front-end reads the Component Registry and dynamically
                 renders exactly the right number of drag-and-drop blanks and
                 pre-filled text blocks for&nbsp;&ldquo;Flash
-                Card&nbsp;2.0&rdquo; exercises &mdash; straight from the schema,
-                with zero hardcoding.
+                Card&nbsp;2.0&rdquo; exercises. It builds them straight from the
+                schema, with no hardcoding.
               </div>
             </div>
 
@@ -6489,8 +6514,8 @@
           </div>
           <div class="feature-intro-title">The Topological Mapping Matrix</div>
           <div class="feature-intro-lead">
-            Governs where each node may legally exist in the linear sequence
-            &mdash; decoupling position from existence.
+            Defines where each node may legally appear in the sequence. It
+            separates position from existence.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -6536,8 +6561,8 @@
                 >
               </div>
               <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
-                The designated spatial field — e.g.
-                <em>Pre-Verbal</em>, <em>Mittelfeld</em>,
+                The designated spatial field. For example:
+                <em>Pre-Verbal</em>, <em>Mittelfeld</em>, or
                 <em>Terminal_Anchor</em>.
               </div>
             </div>
@@ -6567,8 +6592,8 @@
                     "
                     >ABSOLUTE</code
                   >
-                  &mdash; node occupies an exact, hard-indexed position (e.g.,
-                  English subject).
+                  : the node occupies an exact, hard-indexed position, such as
+                  the English subject.
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a">
                   <code
@@ -6580,8 +6605,8 @@
                     "
                     >FLEXIBLE_INTRA_ZONE</code
                   >
-                  &mdash; node can scramble with others inside the same zone
-                  (e.g., Dutch Mittelfeld).
+                  : the node can move within the same zone, such as the Dutch
+                  Mittelfeld.
                 </div>
               </div>
             </div>
@@ -6594,7 +6619,8 @@
                 >
               </div>
               <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
-                Optional. Forces physical adjacency regardless of zone — e.g.
+                Optional. Forces physical adjacency regardless of zone. For
+                example:
                 <code
                   style="
                     font-family: monospace;
@@ -7303,10 +7329,9 @@
                 Dimensionality Reduction
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
-                Abstract topological templates&nbsp;&mdash; e.g., the Dutch V2
-                rule&nbsp;&mdash; are stored exactly once and inherited by
-                thousands of distinct lexical frames, creating a highly
-                normalised relational structure.
+                Abstract topological templates are stored once. For example, the
+                Dutch V2 rule can be inherited by thousands of lexical frames.
+                This keeps the relational structure highly normalised.
               </div>
             </div>
           </div>
@@ -7365,7 +7390,7 @@
                 >
                 constructions across multiple languages, querying exactly how
                 different cultures manipulate 1D physical space to encode social
-                focus or topicalization &mdash; completely independently of the
+                focus or topicalization. They can do this independently of the
                 vocabulary used.
               </div>
             </div>
@@ -7440,8 +7465,8 @@
             The Intonation &amp; Stress Profile
           </div>
           <div class="feature-intro-lead">
-            Pitch and stress are not decoration &mdash; they are grammatically
-            contrastive features that operate at both global and local levels.
+            Pitch and stress are not decoration. They are grammatical features.
+            They matter at both global and local levels.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -7485,8 +7510,8 @@
                 <span style="font-weight: 400; color: #7a7a7a">[Enum]</span>
               </div>
               <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
-                Overarching acoustic melody for the whole construction &mdash;
-                e.g.
+                Overarching acoustic melody for the whole construction. For
+                example:
                 <code
                   style="
                     background: #f3f0ea;
@@ -7558,7 +7583,7 @@
                     "
                     >DEFAULT</code
                   >
-                  &mdash; neutral, unremarkable prosody.
+                  : neutral, unremarkable prosody.
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a">
                   <code
@@ -7570,7 +7595,7 @@
                     "
                     >CONTRASTIVE</code
                   >
-                  &mdash; sets up an A&nbsp;vs.&nbsp;B comparison.
+                  : sets up an A&nbsp;vs.&nbsp;B comparison.
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a">
                   <code
@@ -7582,7 +7607,7 @@
                     "
                     >EMPHATIC</code
                   >
-                  &mdash; emotional intensity; overrides literal semantics.
+                  : emotional intensity. It can override literal semantics.
                 </div>
               </div>
             </div>
@@ -7823,8 +7848,8 @@
                   margin-top: 2px;
                 "
               >
-                &ldquo;Ali raft.&rdquo; &mdash; identical text, two
-                constructions
+                &ldquo;Ali raft.&rdquo; The text is identical, but the
+                construction is different.
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
@@ -8148,8 +8173,8 @@
                   line-height: 1.5;
                 "
               >
-                CONTRASTIVE stress acts as a grammatical override &mdash; makes
-                an otherwise illegal word order perfectly valid.
+                CONTRASTIVE stress acts as a grammatical override. It makes the
+                otherwise illegal word order valid.
               </div>
             </div>
           </div>
@@ -8214,9 +8239,9 @@
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
                 Without this feature, saving a Farsi statement and question
-                side-by-side throws a Duplicate Entry error &mdash; their
-                vocabulary and topology are 100% identical. The Intonation
-                Profile acts as part of the
+                side-by-side throws a Duplicate Entry error. Their vocabulary
+                and topology are 100% identical. The Intonation Profile acts as
+                part of the
                 <strong>Composite Primary Key</strong>, ensuring distinct
                 cognitive templates remain distinct in the database.
               </div>
@@ -8235,10 +8260,10 @@
                 Abstract Inheritance
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
-                A &ldquo;Rising Pitch&rdquo; is itself a construction &mdash; an
+                A &ldquo;Rising Pitch&rdquo; is itself a construction. It is an
                 abstract Form&ndash;Meaning pair that means &ldquo;Information
-                Request.&rdquo; Thousands of distinct textual constructions can
-                draw a single inheritance edge up to this one acoustic node.
+                Request.&rdquo; Thousands of textual constructions can inherit
+                from this single acoustic node.
               </div>
             </div>
           </div>
@@ -8283,12 +8308,12 @@
                 Acoustic-Semantic Resolving (The Homograph Key)
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
-                Acts as a mandatory field in the Composite Primary Key. Ensures
-                that textually identical strings &mdash; a Declarative Statement
-                vs. a Polar Question in Farsi &mdash; are indexed as distinctly
-                separate cognitive nodes. It transforms invisible acoustic
-                frequencies into a queryable column for retrieving emotional or
-                contrastive data.
+                Acts as a mandatory field in the Composite Primary Key. It
+                ensures that textually identical strings are indexed as
+                different cognitive nodes. For example, a declarative statement
+                and a polar question in Farsi use the same words but different
+                pitch patterns. The feature turns those acoustic differences
+                into queryable data.
               </div>
             </div>
 
@@ -8386,8 +8411,8 @@
           </div>
           <div class="feature-intro-title">Nesting &amp; Recursion Profile</div>
           <div class="feature-intro-lead">
-            Governs how a construction connects to the dependency graph &mdash;
-            as root, embedded inside another node, or recursive.
+            Defines how a construction connects to the dependency graph. It can
+            be root, embedded inside another node, or recursive.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -8442,8 +8467,8 @@
                   "
                   >TRUE</code
                 >, this construction can only exist at the absolute top of the
-                dependency graph. It cannot be a child node &mdash; e.g.,
-                English direct questions, Dutch V2&nbsp;clauses.
+                dependency graph. It cannot be a child node. Examples include
+                English direct questions and Dutch V2&nbsp;clauses.
               </div>
             </div>
 
@@ -8466,7 +8491,7 @@
                   "
                   >is_root_only: FALSE</code
                 >, lists the slot types this construction is legally permitted
-                to fill &mdash; e.g.
+                to fill. For example:
                 <code
                   style="
                     background: #f3f0ea;
@@ -8673,8 +8698,8 @@
                   "
                 >
                   The same construction template can appear inside one of its
-                  own slots &mdash; genitive chains, nested relative clauses,
-                  centre-embedding.
+                  own slots. This covers genitive chains, nested relative
+                  clauses, and centre-embedding.
                 </div>
               </div>
             </div>
@@ -8837,8 +8862,8 @@
                 Defines the strict structural limits of the network&rsquo;s
                 edges. Backend data pipelines can validate the integrity of
                 deeply nested data structures (like Abstract Syntax Trees). The
-                database natively rejects illegal structural inserts &mdash;
-                e.g., embedding a
+                database natively rejects illegal structural inserts. For
+                example, it blocks a
                 <code
                   style="
                     font-family: monospace;
@@ -8849,7 +8874,7 @@
                   "
                   >ROOT-ONLY</code
                 >
-                node into a subordinate slot &mdash; before it ever reaches an
+                node in a subordinate slot before the data reaches the
                 application layer.
               </div>
             </div>
@@ -8983,8 +9008,7 @@
           </div>
           <div class="feature-intro-lead">
             Defines which syntactic operations are mathematically permitted or
-            blocked &mdash; mapping the exact mutation limits of this
-            construction.
+            blocked. It maps the exact mutation limits of this construction.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -9038,7 +9062,7 @@
                     font-size: 13px;
                   "
                   >TRUE</code
-                >, the construction is an absolute invariant string &mdash; no
+                >, the construction is an absolute invariant string. No
                 morphological changes permitted at all (e.g.,
                 <em>&ldquo;by and large&rdquo;</em>).
               </div>
@@ -9053,7 +9077,7 @@
               </div>
               <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
                 When partially frozen, lists the specific operations that
-                destroy meaning &mdash; e.g.
+                destroy meaning. For example:
                 <code
                   style="
                     background: #f3f0ea;
@@ -9075,7 +9099,7 @@
                 >
               </div>
               <div style="font-size: 15px; color: #4a4a4a; margin-top: 4px">
-                Operations that remain legally safe &mdash; e.g.
+                Operations that remain legally safe. For example:
                 <code
                   style="
                     background: #f3f0ea;
@@ -9514,7 +9538,7 @@
                   margin-top: 2px;
                 "
               >
-                &ldquo;Dast andakhtan&rdquo; &mdash; to tease
+                &ldquo;Dast andakhtan&rdquo; means &ldquo;to tease.&rdquo;
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
@@ -9624,7 +9648,8 @@
                   margin-top: 2px;
                 "
               >
-                &ldquo;Op hete kolen zitten&rdquo; &mdash; to be anxious
+                &ldquo;Op hete kolen zitten&rdquo; means &ldquo;to be
+                anxious.&rdquo;
               </div>
             </div>
             <div style="height: 1px; background: #f0eee9"></div>
@@ -9736,10 +9761,10 @@
               </div>
               <div style="font-size: 16px; line-height: 1.55; color: #4a4a4a">
                 Many strings look identical but have different abstract parents
-                &mdash; Literal vs. Idiomatic. By tracking which transformations
-                are blocked, the database gives the parser a
+                . Some are literal. Some are idiomatic. By tracking which
+                transformations are blocked, the database gives the parser a
                 <strong>mathematical key</strong> to distinguish meaning based
-                purely on syntactic environment.
+                on syntactic environment alone.
               </div>
             </div>
           </div>
@@ -9885,8 +9910,8 @@
           </div>
           <div class="feature-intro-title">Collostructional Gravity Vector</div>
           <div class="feature-intro-lead">
-            Maps Bayesian probability of specific vocabulary filling a slot
-            &mdash; turning binary grammar into a probabilistic graph.
+            Maps Bayesian probability of specific vocabulary filling a slot . It
+            turns binary grammar into a probabilistic graph.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -9955,7 +9980,7 @@
                     "
                     >lemma_id</code
                   >
-                  &mdash; UUID pointer to the lexical entry.
+                  : UUID pointer to the lexical entry.
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a">
                   <code
@@ -9968,7 +9993,7 @@
                     "
                     >log_likelihood_score</code
                   >
-                  &mdash; Float; higher = stronger gravitational pull.
+                  : float value. A higher score means a stronger pull.
                 </div>
               </div>
             </div>
@@ -10016,7 +10041,7 @@
                   margin-bottom: 10px;
                 "
               >
-                Attracted &mdash; high likelihood
+                Attracted: high likelihood
               </div>
               <div style="display: flex; flex-direction: column; gap: 6px">
                 <div style="display: flex; align-items: center; gap: 10px">
@@ -10086,7 +10111,7 @@
                   margin-bottom: 10px;
                 "
               >
-                Repelled &mdash; statistically banned
+                Repelled: statistically banned
               </div>
               <div style="display: flex; align-items: center; gap: 10px">
                 <div
@@ -10429,8 +10454,8 @@
               "
             >
               A learner says
-              <em>&ldquo;zich slecht vergissen&rdquo;</em> &mdash; syntactically
-              perfect, but the gravity vector flags the adverb as a
+              <em>&ldquo;zich slecht vergissen&rdquo;</em>. It is syntactically
+              correct, but the gravity vector flags the adverb as a
               low-probability mismatch for this slot.
             </div>
           </div>
@@ -10763,8 +10788,8 @@
           </div>
           <div class="feature-intro-title">Slot Elision Profile</div>
           <div class="feature-intro-lead">
-            Each individual slot defines its own null instantiation rules
-            &mdash; this is not a global feature of the construction.
+            Each individual slot defines its own null instantiation rules . This
+            is not a global feature of the construction.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -11647,8 +11672,8 @@
           </div>
           <div class="feature-intro-title">The Semantic Frame Anchor</div>
           <div class="feature-intro-lead">
-            The root conceptual node naming the real-world event &mdash; where
-            the speaker points the lens.
+            The root conceptual node that names the real-world event. It shows
+            where the speaker points the lens.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -12601,8 +12626,8 @@
           </div>
           <div class="feature-intro-title">The Event Shape Profile</div>
           <div class="feature-intro-lead">
-            The temporal bounding box and playback engine &mdash; encoding the
-            finish line and physics of how an event unfolds.
+            The temporal box and playback pattern of an event. It shows where
+            the event ends and how it unfolds.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -12868,8 +12893,8 @@
                   "
                   >internal_rhythm</code
                 >
-                specifies the temporal texture &mdash; a single flash, a smooth
-                stream, a looping GIF, or a historical pattern.
+                specifies the temporal texture. It can be a single flash, a
+                smooth stream, a looping GIF, or a historical pattern.
               </p>
               <div
                 style="
@@ -13097,8 +13122,8 @@
                   The dictionary defines <em>cough</em> as mathematically
                   PUNCTUAL. Because a punctual event cannot be stretched, the
                   construction forces a cognitive override: the parser maps the
-                  output as an ITERATIVE sequence &mdash; a looping GIF. The
-                  syntax coerces the semantics.
+                  output as an ITERATIVE sequence. Think of it as a looping GIF.
+                  The syntax coerces the semantics.
                 </div>
               </div>
             </div>
@@ -13614,9 +13639,9 @@
                   >
                     If a STATE verb (<em>know</em>) is inserted into a
                     DYNAMIC_ACTION slot (Progressive), the schema surfaces a
-                    hard type collision at the database level &mdash; the
-                    mathematical proof that the structure is cognitively
-                    invalid, enforced before any application layer.
+                    hard type collision at the database level. That is formal
+                    proof that the structure is cognitively invalid. The check
+                    happens before any application layer.
                   </div>
                 </div>
               </div>
@@ -13639,7 +13664,7 @@
           </div>
           <div class="feature-intro-title">The Macro-Event Proposition</div>
           <div class="feature-intro-lead">
-            The logical wrapper formalizing who does what to whom &mdash; a
+            The logical wrapper that formalizes who does what to whom. It is a
             computable semantic equation.
           </div>
         </div>
@@ -13907,7 +13932,7 @@
               </div>
               <p style="font-size: 15px; line-height: 1.5; margin: 0 0 10px 0">
                 Entailments are guaranteed consequences baked into the
-                construction &mdash; logical facts an AI can assert without
+                construction. These are logical facts an AI can assert without
                 reading the sentence twice.
               </p>
               <div
@@ -14353,8 +14378,8 @@
                 <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
                   The dictionary definition of <em>banen</em> is merely a
                   physical clearing action. The overarching equation forces the
-                  database to log a spatial traversal &mdash; the structural
-                  truth of the event &mdash; not just a lexical label.
+                  database to log a spatial traversal. That is the structural
+                  truth of the event. It is not just a lexical label.
                 </div>
               </div>
             </div>
@@ -14612,9 +14637,9 @@
                     "
                     >proposition_template</code
                   >
-                  becomes an indexable, sortable field in the graph database
-                  &mdash; enabling direct structural comparisons across
-                  thousands of constructions from any language.
+                  becomes an indexable, sortable field in the graph database.
+                  This enables direct structural comparisons across thousands of
+                  constructions from any language.
                 </div>
               </div>
 
@@ -14640,7 +14665,7 @@
                   >causal_direction = &apos;A_CAUSES_B&apos;</code
                 >
                 retrieves every causative construction across English, Dutch,
-                and Farsi &mdash; without re-parsing a single sentence.
+                and Farsi without re-parsing a single sentence.
               </div>
 
               <div
@@ -14757,9 +14782,8 @@
                         font-size: 12px;
                       "
                       >RECIPIENT now POSSESSES &AElig;FFECTED</code
-                    >
-                    &mdash; generating structural truths without external NLP
-                    inference.
+                    >. The database generates that structural truth without
+                    external NLP inference.
                   </div>
                 </div>
 
@@ -14827,8 +14851,8 @@
             The Pragmatic Intent &amp; Speech Act Profile
           </div>
           <div class="feature-intro-lead">
-            Behavioral metadata &mdash; logging not what happened, but what the
-            speaker was socially doing by uttering the sentence.
+            Behavioral metadata. It logs not what happened, but what the speaker
+            was doing socially by uttering the sentence.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -14896,7 +14920,7 @@
                   DIRECTIVE
                 </div>
                 <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
-                  Command &mdash; speaker wants the listener to act.
+                  Command. The speaker wants the listener to act.
                 </div>
               </div>
               <div>
@@ -14904,7 +14928,7 @@
                   COMMISSIVE
                 </div>
                 <div style="font-size: 12px; color: #4a4a4a; margin-top: 1px">
-                  Promise &mdash; speaker commits to a future action.
+                  Promise. The speaker commits to a future action.
                 </div>
               </div>
               <div>
@@ -15393,7 +15417,7 @@
                     border-radius: 0 6px 6px 0;
                   "
                 >
-                  NOT a physical proposition &mdash; a hardcoded social ritual
+                  Not a physical proposition. It is a hardcoded social ritual.
                 </div>
               </div>
               <div>
@@ -15762,8 +15786,7 @@
                     border-radius: 0 6px 6px 0;
                   "
                 >
-                  Trust at any level is negated &mdash; not just the extreme
-                  case
+                  Trust is negated at every level, not just the extreme case.
                 </div>
               </div>
               <div>
@@ -15780,9 +15803,9 @@
                   Data impact
                 </div>
                 <div style="font-size: 14px; color: #4a4a4a; line-height: 1.55">
-                  The database tags this as a specific rhetorical maneuver
-                  &mdash; building a scale of probability to aggressively
-                  destroy it &mdash; rather than a standard negative statement.
+                  The database tags this as a specific rhetorical maneuver. It
+                  builds a scale of probability and then knocks it down. This is
+                  not a standard negative statement.
                 </div>
               </div>
             </div>
@@ -16125,7 +16148,7 @@
                     line-height: 1.45;
                   "
                 >
-                  The opposing pressure or release condition &mdash; e.g.
+                  The opposing pressure or release condition. For example:
                   <em>STRONGER_THAN_AGONIST</em>, <em>BARRIER_REMOVED</em>,
                   <em>CONTINUOUS_APPLICATION</em>, <em>ZERO</em>, or
                   <em>INTERNAL_DIFFICULTY</em>.
@@ -16145,7 +16168,7 @@
                     line-height: 1.45;
                   "
                 >
-                  The final physical or cognitive reality &mdash; e.g.
+                  The final physical or cognitive reality. For example:
                   <em>ACTION_OCCURS</em>, <em>ACTION_PREVENTED</em>, or
                   <em>STATE_MAINTAINED</em>.
                 </div>
@@ -23431,8 +23454,8 @@
               >
                 The Acquisitional layer attaches a cognitive cost estimate, an
                 L1 friction profile, a fossilization risk, and a proficiency
-                benchmark to every construction — turning linguistic theory into
-                a pedagogical decision engine.
+                benchmark to every construction. This turns linguistic theory
+                into a pedagogical decision engine.
               </p>
               <div
                 style="
@@ -23531,9 +23554,8 @@
                 The cognitive tier the brain must reach first.
               </div>
               <p style="font-size: 14px; line-height: 1.55; margin: 0">
-                Pienemann's hierarchy mapped to a database field — the system
-                will not schedule a construction the learner's CPU cannot yet
-                process.
+                Pienemann's hierarchy is mapped to a database field. The system
+                will not schedule a construction the learner cannot yet process.
               </p>
             </div>
             <div
@@ -23610,9 +23632,9 @@
                 Which errors become permanent without intervention.
               </div>
               <p style="font-size: 14px; line-height: 1.55; margin: 0">
-                Two axes — probability of the error becoming permanent, and how
-                badly it disrupts communication — determine pedagogical
-                priority.
+                Two axes determine pedagogical priority. One is the chance that
+                the error becomes permanent. The other is how badly it disrupts
+                communication.
               </p>
             </div>
             <div
@@ -23674,15 +23696,15 @@
           <div class="feature-intro-lead">
             Before a construction can be taught, the learner's brain must be
             able to run the underlying algorithm. The Processability Index maps
-            each construction to a mandatory cognitive prerequisite tier — and
-            gates the syllabus accordingly.
+            each construction to a required cognitive tier. The syllabus is
+            gated accordingly.
           </div>
         </div>
         <div class="feature-intro-focus">
           <div class="feature-intro-focus-label">Central Question</div>
           <div class="feature-intro-focus-text">
             At what stage of cognitive development does the brain become capable
-            of executing this construction — and what must already be entrenched
+            of executing this construction? What must already be entrenched
             before it can unlock?
           </div>
         </div>
@@ -23794,10 +23816,9 @@
                 it has not yet compiled.
               </div>
               <p style="font-size: 15px; line-height: 1.5; margin: 0">
-                Pienemann's hierarchy is not metaphorical — it describes actual
-                sequential dependencies in the language acquisition device.
-                Teaching out of sequence does not accelerate learning; it wastes
-                instruction cycles.
+                Pienemann's hierarchy is not a metaphor. It describes real
+                sequential dependencies in language learning. Teaching out of
+                sequence does not speed learning up. It wastes instruction time.
               </p>
             </div>
             <div
@@ -23989,7 +24010,7 @@
                 "Many books"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                vs. "Much water" — mass nouns occupy a different tier
+                vs. "Much water." Mass nouns occupy a different tier.
               </div>
             </div>
             <div
@@ -24105,7 +24126,8 @@
                 "Anha oomad-<strong>and</strong>"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                They came — plural suffix must survive the full sentence span
+                They came. The plural suffix must survive the full sentence
+                span.
               </div>
             </div>
             <div
@@ -24220,7 +24242,7 @@
                 "...dat ik de code <strong>schrijf</strong>"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                ...that I the code write — verb-final topology
+                ...that I the code write. The verb sits at the end.
               </div>
             </div>
             <div
@@ -24233,7 +24255,7 @@
             >
               The learner must hold the V2 main-clause algorithm in their head,
               completely suppress it, and execute an entirely different
-              topological matrix — the database flags this as maximum cognitive
+              topological matrix. The database flags this as maximum cognitive
               load.
             </div>
           </div>
@@ -24256,16 +24278,16 @@
           <div class="feature-intro-lead">
             Every learner arrives with an existing language operating system.
             The Transfer Vector is the database field that predicts exactly how
-            the L1 will interact with each target construction — and which
-            specific schema the learner will incorrectly default to when
-            production breaks down.
+            the L1 will interact with each target construction. It also predicts
+            which schema the learner will incorrectly default to when production
+            breaks down.
           </div>
         </div>
         <div class="feature-intro-focus">
           <div class="feature-intro-focus-label">Central Question</div>
           <div class="feature-intro-focus-text">
             Does the learner's native grammar make this construction easier to
-            acquire, harder, or completely neutral — and if harder, which exact
+            acquire, harder, or completely neutral? If it is harder, which exact
             L1 pattern will produce the predicted error?
           </div>
         </div>
@@ -24328,14 +24350,14 @@
                   line-height: 1.5;
                 "
               >
-                <strong>POSITIVE_FACILITATION</strong> — the L1 schema maps
+                <strong>POSITIVE_FACILITATION</strong>: the L1 schema maps
                 cleanly to the target.<br /><strong
                   >NEGATIVE_INTERFERENCE</strong
                 >
-                — the L1 schema actively fires the wrong pattern.<br /><strong
+                : the L1 schema actively fires the wrong pattern.<br /><strong
                   >ZERO_RELATION</strong
                 >
-                — no L1 analogue exists; acquisition starts from scratch.
+                : no L1 analogue exists. Acquisition starts from scratch.
               </div>
             </div>
             <div>
@@ -24395,8 +24417,8 @@
                   margin-bottom: 6px;
                 "
               >
-                The learner's brain does not start from zero — it starts from
-                the L1 grammar it has already compiled.
+                The learner's brain does not start from zero. It starts from the
+                L1 grammar it has already compiled.
               </div>
               <p style="font-size: 15px; line-height: 1.5; margin: 0">
                 Whether that prior grammar is an asset or a liability depends
@@ -24444,7 +24466,8 @@
               </div>
               <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
                 Yields a ranked list of the highest-risk interference points for
-                a specific learner profile — their predictable failure map.
+                a specific learner profile. It becomes their predictable failure
+                map.
               </div>
             </div>
             <div
@@ -24458,8 +24481,8 @@
             >
               <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
                 The fallback node UUID is retrievable: when a student makes an
-                error, the system already knows which L1 construction fired —
-                and can generate targeted contrastive exercises for that exact
+                error, the system already knows which L1 construction fired. It
+                can then generate targeted contrastive exercises for that exact
                 pattern.
               </div>
             </div>
@@ -24588,7 +24611,7 @@
                 "Gisteren ging ik"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                Yesterday went I — English SVO firewall actively blocks this
+                Yesterday went I. English SVO blocks this pattern.
               </div>
             </div>
             <div
@@ -24600,8 +24623,8 @@
               "
             >
               English speakers possess an impenetrable SVO firewall. The
-              database predicts the exact error: <em>"Gisteren ik ging"</em> —
-              the student reverts to L1 topology under production pressure.
+              database predicts the exact error: <em>"Gisteren ik ging"</em>.
+              The student reverts to L1 topology under production pressure.
             </div>
             <div
               style="
@@ -24708,8 +24731,8 @@
                 "It is raining."
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                Farsi maps weather events directly to the verb — no dummy
-                subject
+                Farsi maps weather events directly to the verb. There is no
+                dummy subject.
               </div>
             </div>
             <div
@@ -24722,8 +24745,7 @@
             >
               Farsi's pro-drop grammar maps weather events directly to the verb
               with no physical subject. The system predicts consistent output of
-              <em>"Is raining"</em> — bypassing the English dummy subject
-              requirement.
+              <em>"Is raining"</em>. The dummy subject is missing.
             </div>
             <div
               style="
@@ -24830,8 +24852,8 @@
                 "I am reading."
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                Dutch analogue: "Ik ben aan het lezen" — near-identical
-                structure
+                Dutch analogue: "Ik ben aan het lezen." The structure is almost
+                identical.
               </div>
             </div>
             <div
@@ -24844,7 +24866,7 @@
             >
               Dutch possesses a highly analogous continuous schema. The system
               flags this English construction as requiring almost zero
-              pedagogical friction for a Dutch speaker — the L1 is an active
+              pedagogical friction for a Dutch speaker. The L1 is an active
               acquisition asset.
             </div>
             <div
@@ -24856,7 +24878,7 @@
                 color: #2e6a42;
               "
             >
-              No fallback node needed — L1 schema facilitates acquisition
+              No fallback node needed. The L1 schema facilitates acquisition.
             </div>
           </div>
         </div>
@@ -24879,8 +24901,8 @@
             Some errors self-correct. Others become permanent neurological
             habits that no amount of later instruction can undo. The
             Fossilization Risk Index identifies which constructions carry that
-            permanent failure risk — and whether the error is merely cosmetic or
-            catastrophically breaks communication.
+            permanent failure risk. It also marks whether the error is merely
+            cosmetic or whether it breaks communication.
           </div>
         </div>
         <div class="feature-intro-focus">
@@ -24888,7 +24910,7 @@
           <div class="feature-intro-focus-text">
             If a learner makes an error on this construction and is not
             immediately corrected, how likely is that error to become permanent
-            — and does the listener still understand the intent?
+            ? Does the listener still understand the intent?
           </div>
         </div>
       </div>
@@ -24930,13 +24952,13 @@
                   line-height: 1.5;
                 "
               >
-                <strong>LOW</strong> — errors are unlikely to stabilize.<br /><strong
+                <strong>LOW</strong>: errors are unlikely to stabilize.<br /><strong
                   >MODERATE</strong
                 >
-                — error stabilization is possible without intervention.<br /><strong
+                : error stabilization is possible without intervention.<br /><strong
                   >SEVERE</strong
                 >
-                — the error will almost certainly become a permanent cognitive
+                : the error will almost certainly become a permanent cognitive
                 defect if reinforcement input is absent.
               </div>
             </div>
@@ -24953,12 +24975,12 @@
                   line-height: 1.5;
                 "
               >
-                <strong>COSMETIC</strong> — the listener understands; the error
-                is merely non-native.<br /><strong>DISTRACTING</strong> —
+                <strong>COSMETIC</strong>: the listener understands. The error
+                is merely non-native.<br /><strong>DISTRACTING</strong>:
                 communication succeeds but with perceptible friction.<br /><strong
                   >FATAL_BREAKDOWN</strong
                 >
-                — the sentence becomes unparsable; communication fails.
+                : the sentence becomes unparsable. Communication fails.
               </div>
             </div>
           </div>
@@ -25049,9 +25071,9 @@
                 pt_hierarchy_level ASC
               </div>
               <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
-                Surfaces the constructions most likely to permanently break —
-                exactly because they feel harmless — and ranks them by the
-                cognitive tier at which intervention should begin.
+                Surfaces the constructions most likely to break permanently
+                because they feel harmless. It then ranks them by the cognitive
+                tier at which intervention should begin.
               </div>
             </div>
             <div
@@ -25126,7 +25148,7 @@
                   margin-bottom: 6px;
                 "
               >
-                English — High Risk, Low Gravity
+                English: High Risk, Low Gravity
               </div>
               <div style="display: flex; gap: 6px; flex-wrap: wrap">
                 <div
@@ -25220,7 +25242,7 @@
             >
               If a student says "He run," communication is 100% successful. The
               brain stops trying to fix it. This is the archetypal SEVERE /
-              COSMETIC trap — it requires massive, artificial pedagogical
+              COSMETIC trap. It requires strong, artificial pedagogical
               intervention to prevent permanent fossilization.
             </div>
           </div>
@@ -25248,7 +25270,7 @@
                   margin-bottom: 6px;
                 "
               >
-                Farsi — The Invisible Bridge
+                Farsi: The Invisible Bridge
               </div>
               <div style="display: flex; gap: 6px; flex-wrap: wrap">
                 <div
@@ -25329,8 +25351,8 @@
                 "Ketab<strong>-e</strong> Ali"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                Ali's book — the -e is acoustically tiny and unwritten in
-                standard script
+                Ali's book. The -e is acoustically tiny and unwritten in
+                standard script.
               </div>
             </div>
             <div
@@ -25343,8 +25365,8 @@
             >
               Learners from word-order languages continually drop the -e suffix,
               producing a choppy, disjointed accent that fossilizes rapidly.
-              Communication succeeds — but with noticeable friction that marks
-              the learner as permanently non-native.
+              Communication succeeds, but with noticeable friction. The learner
+              still sounds permanently non-native.
             </div>
           </div>
           <div
@@ -25371,7 +25393,7 @@
                   margin-bottom: 6px;
                 "
               >
-                Dutch — The Topology Collapse
+                Dutch: The Topology Collapse
               </div>
               <div style="display: flex; gap: 6px; flex-wrap: wrap">
                 <div
@@ -25452,8 +25474,7 @@
                 "<strong>Er</strong> wordt gebouwd"
               </div>
               <div style="font-size: 12px; color: #6a6a6a; margin-top: 4px">
-                There is being built — drop "Er" and the sentence collapses
-                entirely
+                There is being built. Drop "Er" and the sentence collapses.
               </div>
             </div>
             <div
@@ -25465,7 +25486,7 @@
               "
             >
               Dropping the dummy "Er" makes the sentence unparsable to a native
-              speaker. This error <em>cannot</em> fossilize — the speaker is
+              speaker. This error <em>cannot</em> fossilize. The speaker is
               forced to self-correct immediately in order to be understood.
               FATAL errors are self-healing.
             </div>
@@ -25488,16 +25509,16 @@
           <div class="feature-intro-title">CEFR Profiling</div>
           <div class="feature-intro-lead">
             The Common European Framework of Reference maps each construction to
-            a standardised proficiency tier and an official Can-Do statement —
-            giving the database the metadata it needs to auto-generate curricula
-            that are aligned to institutional accreditation standards.
+            a standardised proficiency tier and an official Can-Do statement.
+            This gives the database the metadata it needs to auto-generate
+            curricula aligned to institutional accreditation standards.
           </div>
         </div>
         <div class="feature-intro-focus">
           <div class="feature-intro-focus-label">Central Question</div>
           <div class="feature-intro-focus-text">
             At which CEFR band does a learner gain the cognitive and pragmatic
-            resources needed to master this construction — and what functional
+            resources needed to master this construction? What functional
             outcome does acquiring it unlock?
           </div>
         </div>
@@ -25560,8 +25581,8 @@
               >
                 The official Council of Europe functional descriptor this
                 construction fulfils. Provides the institutional bridge between
-                grammatical theory and curriculum delivery — e.g., "Can describe
-                hypothetical situations in the past."
+                grammatical theory and curriculum delivery. For example: "Can
+                describe hypothetical situations in the past."
               </div>
             </div>
           </div>
@@ -25667,8 +25688,8 @@
             >
               <div style="font-size: 14px; line-height: 1.55; color: #4a4a4a">
                 CEFR tags are the key that connects the theoretical
-                construct-i-con to institutional assessment frameworks — the
-                bridge between cognitive science and classroom accreditation.
+                construct-i-con to institutional assessment frameworks. They
+                bridge cognitive science and classroom accreditation.
               </div>
             </div>
           </div>
