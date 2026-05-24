@@ -1263,6 +1263,81 @@
         margin-bottom: 16px;
       }
 
+      .query-focus-panel {
+        align-self: center;
+        background: linear-gradient(145deg, #fdfcf9 0%, #efe5d7 100%);
+        border: 1px solid rgba(163, 138, 112, 0.18);
+        border-top: 4px solid #a38a70;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-width: 980px;
+        padding: 24px 26px 22px;
+        width: 100%;
+      }
+
+      .query-focus-header {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .query-focus-title {
+        color: #1a1a1a;
+        font-family: "Playfair Display", serif;
+        font-size: 32px;
+        letter-spacing: -0.9px;
+        line-height: 1.04;
+        margin: 0;
+      }
+
+      .query-focus-lead {
+        color: #4c463f;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        line-height: 1.42;
+        margin: 0;
+        max-width: 760px;
+      }
+
+      .query-focus-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .query-focus-block {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(163, 138, 112, 0.14);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 15px 13px;
+      }
+
+      .query-focus-block .concept-map-label {
+        font-size: 10px;
+        letter-spacing: 1.8px;
+      }
+
+      .query-focus-copy {
+        color: #3f3a35;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .query-focus-panel .query-feature-box {
+        margin-top: 0;
+      }
+
+      .query-focus-panel .query-result-card {
+        margin-top: 0;
+      }
+
       .query-grid {
         align-items: stretch;
         gap: 12px;
@@ -2328,99 +2403,62 @@
     <div class="slide-container query-slide" id="slide5">
       <h2 class="slide-title">Query for slot 1</h2>
       <div class="content-area" style="align-items: stretch; justify-content: flex-start">
-        <div class="template-card query-intro-card">
-          <div class="template-kicker">The handoff</div>
-          <p class="query-intro-copy">
-            We search for a short phrase for the first empty slot: handing over the ticket.
-          </p>
-        </div>
+        <div class="query-focus-panel">
+          <div class="query-focus-header">
+            <div class="template-kicker">The handoff</div>
+            <h3 class="query-focus-title">Search for a handoff phrase</h3>
+            <p class="query-focus-lead">A short learner-safe chunk for giving over the ticket when the checker asks.</p>
+          </div>
 
-        <div class="two-column template-grid query-grid">
-          <div class="template-card template-card-accent query-card">
-            <div class="template-kicker">What we ask for</div>
-            <h3 class="template-heading">Search for a handoff phrase</h3>
-            <div class="concept-map">
-              <div class="concept-map-row">
-                <span class="concept-map-label">Situation</span>
-                <span class="concept-map-copy">A person gives something to another person. Here, it is the ticket.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Speaker move</span>
-                <span class="concept-map-copy">The learner is following the checker's request and showing the object.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Phrase type</span>
-                <span class="concept-map-copy">We want a fixed phrase: a ready-made block you do not build from scratch.</span>
+          <div class="query-focus-grid">
+            <div class="query-focus-block">
+              <span class="concept-map-label">Situation</span>
+              <span class="query-focus-copy">A person gives something to another person. Here, it is the ticket.</span>
+            </div>
+            <div class="query-focus-block">
+              <span class="concept-map-label">Speaker move</span>
+              <span class="query-focus-copy">The learner complies and shows the object.</span>
+            </div>
+            <div class="query-focus-block">
+              <span class="concept-map-label">Constraint</span>
+              <span class="query-focus-copy">Keep it A1 and easy to retrieve as one chunk.</span>
+            </div>
+          </div>
+
+          <div class="query-feature-box">
+            <div class="template-kicker">Feature keywords</div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Scene</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">semantic_frame_anchor</span>
+                <span class="query-feature-pill">Transfer_Scenario</span>
               </div>
             </div>
-            <div class="query-feature-box">
-              <div class="template-kicker">Feature keywords</div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Scene</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">semantic_frame_anchor</span>
-                  <span class="query-feature-pill">Transfer_Scenario</span>
-                </div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Move</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">pragmatic_intent</span>
+                <span class="query-feature-pill">Compliance</span>
+                <span class="query-feature-pill">Deictic_Presentation</span>
               </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Speaker move</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">pragmatic_intent</span>
-                  <span class="query-feature-pill">Compliance</span>
-                  <span class="query-feature-pill">Deictic_Presentation</span>
-                </div>
-              </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Phrase type</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">stratum_vector</span>
-                  <span class="query-feature-pill">Fixed_Idiom</span>
-                </div>
+            </div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Fit</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">processability_index</span>
+                <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
+                <span class="query-feature-pill key">cefr</span>
+                <span class="query-feature-pill">A1</span>
               </div>
             </div>
           </div>
 
-          <div class="template-card query-card">
-            <div class="template-kicker">In plain words</div>
-            <h3 class="template-heading">Keep it easy</h3>
-            <div class="concept-map">
-              <div class="concept-map-row">
-                <span class="concept-map-label">Effort level</span>
-                <span class="concept-map-copy">Easy to pull from memory as one chunk.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Learner level</span>
-                <span class="concept-map-copy">Fits A1, the first beginner level.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Why this matters</span>
-                <span class="concept-map-copy">Useful now and manageable now.</span>
-              </div>
-            </div>
-            <div class="query-feature-box">
-              <div class="template-kicker">More feature keywords</div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Effort</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">processability_index</span>
-                  <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
-                </div>
-              </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Learner level</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">cefr</span>
-                  <span class="query-feature-pill">A1</span>
-                </div>
-              </div>
-            </div>
-            <div class="query-result-card">
-              <div class="template-kicker">Possible matches</div>
-              <div class="query-result-list">
-                <span class="query-result-pill">Bitte.</span>
-                <span class="query-result-pill">Da.</span>
-                <span class="query-result-pill primary">Hier bitte.</span>
-              </div>
+          <div class="query-result-card">
+            <div class="template-kicker">Possible matches</div>
+            <div class="query-result-list">
+              <span class="query-result-pill">Bitte.</span>
+              <span class="query-result-pill">Da.</span>
+              <span class="query-result-pill primary">Hier bitte.</span>
             </div>
           </div>
         </div>
@@ -2430,99 +2468,64 @@
     <div class="slide-container query-slide" id="slide6">
       <h2 class="slide-title">Query for slot 2</h2>
       <div class="content-area" style="align-items: stretch; justify-content: flex-start">
-        <div class="template-card query-intro-card">
-          <div class="template-kicker">The polite close</div>
-          <p class="query-intro-copy">
-            We now search for a short phrase for the second empty slot: closing the exchange politely.
-          </p>
-        </div>
+        <div class="query-focus-panel">
+          <div class="query-focus-header">
+            <div class="template-kicker">The polite close</div>
+            <h3 class="query-focus-title">Search for a closing phrase</h3>
+            <p class="query-focus-lead">A tiny reply that returns the polite gesture and closes the exchange naturally.</p>
+          </div>
 
-        <div class="two-column template-grid query-grid">
-          <div class="template-card template-card-accent query-card">
-            <div class="template-kicker">What we ask for</div>
-            <h3 class="template-heading">Search for a closing phrase</h3>
-            <div class="concept-map">
-              <div class="concept-map-row">
-                <span class="concept-map-label">Situation</span>
-                <span class="concept-map-copy">The checker ends politely, and the learner answers in the same spirit.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Speaker move</span>
-                <span class="concept-map-copy">The learner returns the polite gesture and closes the exchange without sounding rude.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Phrase type</span>
-                <span class="concept-map-copy">We want a very small phrase, not a full sentence like "I also wish you a nice day."</span>
+          <div class="query-focus-grid">
+            <div class="query-focus-block">
+              <span class="concept-map-label">Situation</span>
+              <span class="query-focus-copy">The checker ends politely, and the learner answers in the same spirit.</span>
+            </div>
+            <div class="query-focus-block">
+              <span class="concept-map-label">Speaker move</span>
+              <span class="query-focus-copy">Return the gesture without sounding rude or overbuilding.</span>
+            </div>
+            <div class="query-focus-block">
+              <span class="concept-map-label">Constraint</span>
+              <span class="query-focus-copy">Keep it very short, A1, and easy to retrieve as one chunk.</span>
+            </div>
+          </div>
+
+          <div class="query-feature-box">
+            <div class="template-kicker">Feature keywords</div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Scene</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">semantic_frame_anchor</span>
+                <span class="query-feature-pill">Social_Ritual_Closure</span>
               </div>
             </div>
-            <div class="query-feature-box">
-              <div class="template-kicker">Feature keywords</div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Scene</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">semantic_frame_anchor</span>
-                  <span class="query-feature-pill">Social_Ritual_Closure</span>
-                </div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Move</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">pragmatic_intent</span>
+                <span class="query-feature-pill">Reciprocity</span>
+                <span class="query-feature-pill">Terminal_Politeness</span>
               </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Speaker move</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">pragmatic_intent</span>
-                  <span class="query-feature-pill">Reciprocity</span>
-                  <span class="query-feature-pill">Terminal_Politeness</span>
-                </div>
-              </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Phrase type</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">stratum_vector</span>
-                  <span class="query-feature-pill">Bare_Adverbial</span>
-                </div>
+            </div>
+            <div class="query-feature-row">
+              <span class="query-feature-label">Fit</span>
+              <div class="query-feature-pills">
+                <span class="query-feature-pill key">stratum_vector</span>
+                <span class="query-feature-pill">Bare_Adverbial</span>
+                <span class="query-feature-pill key">processability_index</span>
+                <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
+                <span class="query-feature-pill key">cefr</span>
+                <span class="query-feature-pill">A1</span>
               </div>
             </div>
           </div>
 
-          <div class="template-card query-card">
-            <div class="template-kicker">In plain words</div>
-            <h3 class="template-heading">Keep it light</h3>
-            <div class="concept-map">
-              <div class="concept-map-row">
-                <span class="concept-map-label">Effort level</span>
-                <span class="concept-map-copy">Still easy to pull from memory as one chunk.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Learner level</span>
-                <span class="concept-map-copy">Still fits A1, the first beginner level.</span>
-              </div>
-              <div class="concept-map-row">
-                <span class="concept-map-label">Why this matters</span>
-                <span class="concept-map-copy">The learner can be polite without building a longer sentence.</span>
-              </div>
-            </div>
-            <div class="query-feature-box">
-              <div class="template-kicker">More feature keywords</div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Effort</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">processability_index</span>
-                  <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
-                </div>
-              </div>
-              <div class="query-feature-row">
-                <span class="query-feature-label">Learner level</span>
-                <div class="query-feature-pills">
-                  <span class="query-feature-pill key">cefr</span>
-                  <span class="query-feature-pill">A1</span>
-                </div>
-              </div>
-            </div>
-            <div class="query-result-card">
-              <div class="template-kicker">Possible matches</div>
-              <div class="query-result-list">
-                <span class="query-result-pill">Danke gleichfalls.</span>
-                <span class="query-result-pill">Ebenso.</span>
-                <span class="query-result-pill primary">Ihne au.</span>
-              </div>
+          <div class="query-result-card">
+            <div class="template-kicker">Possible matches</div>
+            <div class="query-result-list">
+              <span class="query-result-pill">Danke gleichfalls.</span>
+              <span class="query-result-pill">Ebenso.</span>
+              <span class="query-result-pill primary">Ihne au.</span>
             </div>
           </div>
         </div>
