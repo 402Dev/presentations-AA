@@ -1383,6 +1383,57 @@
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
       }
 
+      .challenge-invite-card {
+        align-items: center;
+        align-self: center;
+        background: rgba(255, 255, 255, 0.64);
+        border: 1px solid rgba(163, 138, 112, 0.14);
+        border-radius: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 18px;
+        padding: 14px 18px 16px;
+        box-shadow: none;
+        max-width: 520px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .challenge-invite-kicker {
+        color: #a38a70;
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .challenge-invite-copy {
+        color: #5a554f;
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 1.12;
+        margin: 0;
+      }
+
+      .challenge-placeholder {
+        background: rgba(249, 248, 246, 0.96);
+        border: 1px dashed rgba(122, 92, 66, 0.24);
+        border-radius: 999px;
+        color: #7f776f;
+        flex-shrink: 0;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.1px;
+        line-height: 1;
+        padding: 10px 16px;
+      }
+
       .sidebar-nav {
         position: fixed;
         left: -272px;
@@ -2501,6 +2552,12 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="template-card challenge-invite-card">
+          <div class="challenge-invite-kicker">Open prompt</div>
+          <p class="challenge-invite-copy">Another challenge worth naming?</p>
+          <div class="challenge-placeholder">[Construct?]</div>
         </div>
       </div>
     </div>
