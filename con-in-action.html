@@ -1720,7 +1720,7 @@
               <span class="sidebar-section-title">Construct-i-con in Action</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">7</span>
+              <span class="sidebar-count">8</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1780,6 +1780,14 @@
               type="button"
             >
               Query for slot 2
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="7"
+              onclick="goToSlide(7)"
+              type="button"
+            >
+              Challenges
             </button>
           </div>
         </details>
@@ -2300,6 +2308,41 @@
                 <span class="query-result-pill">Ebenso.</span>
                 <span class="query-result-pill primary">Ihne au.</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide7">
+      <h2 class="slide-title">Some challenges worth keeping in mind.</h2>
+      <div class="content-area" style="align-items: stretch; justify-content: flex-start">
+        <div class="template-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; align-items: stretch;">
+          <div class="template-card template-card-accent">
+            <div class="template-kicker">Coverage</div>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Frequency & LLM</span>
+                <span class="concept-map-copy">Do we have all the most frequent phrases in our con-cn? Or do we rely on LLM if query didn't find anything?</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card">
+            <div class="template-kicker">Building</div>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Composition</span>
+                <span class="concept-map-copy">How do we build a construct that is made of more than one constructions? How does such a query look like?</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card" style="grid-column: 1 / span 2; width: 44%; justify-self: center; background: rgba(255, 255, 255, 0.5); border: 1.5px dashed rgba(163, 138, 112, 0.3); margin-top: 12px;">
+            <div class="template-kicker">Your turn</div>
+            <h3 class="template-heading" style="font-size: 24px; color: #a38a70; margin-bottom: 20px;">Other challenges?</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; min-height: 100px;">
+              <span style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace; font-size: 28px; opacity: 0.3; letter-spacing: 2px;">[construct]?</span>
             </div>
           </div>
         </div>
