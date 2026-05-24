@@ -924,26 +924,54 @@
       }
 
       .construct-question-card {
+        gap: 18px;
         justify-content: space-between;
         min-height: 100%;
+      }
+
+      .construct-question-intro {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
 
       .construct-definition {
         border-left: 3px solid rgba(163, 138, 112, 0.52);
         color: #3d3934;
         font-family: "Playfair Display", serif;
-        font-size: 23px;
-        line-height: 1.24;
+        font-size: 20px;
+        line-height: 1.22;
         margin: 0;
         padding-left: 18px;
+      }
+
+      .construct-question-hero {
+        background: linear-gradient(180deg, #fbf8f2 0%, #efe6d9 100%);
+        border: 1px solid rgba(163, 138, 112, 0.18);
+        border-top: 4px solid #a38a70;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 22px 22px 20px;
+      }
+
+      .construct-question-kicker {
+        color: #8d877f;
+        font-family: "Inter", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
       }
 
       .construct-question {
         color: #1a1a1a;
         font-family: "Playfair Display", serif;
-        font-size: 34px;
-        letter-spacing: -1px;
-        line-height: 1.08;
+        font-size: 40px;
+        letter-spacing: -1.2px;
+        line-height: 1.02;
         margin: 0;
       }
 
@@ -958,6 +986,238 @@
       .construct-question-card .concept-map-row {
         gap: 4px;
         padding: 16px 18px 14px;
+      }
+
+      .construct-question-card .concept-map {
+        gap: 12px;
+      }
+
+      .route-context-card {
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 18px 20px 16px;
+      }
+
+      .route-context-copy {
+        color: #3f3a35;
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        letter-spacing: -0.4px;
+        line-height: 1.14;
+        margin: 0;
+        max-width: 980px;
+      }
+
+      .route-grid {
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .route-card {
+        gap: 12px;
+        min-height: 100%;
+        padding: 22px 24px;
+      }
+
+      .route-card .template-heading {
+        font-size: 28px;
+        line-height: 1.04;
+      }
+
+      .route-choice-badge {
+        align-self: flex-start;
+        background: rgba(163, 138, 112, 0.12);
+        border: 1px solid rgba(163, 138, 112, 0.2);
+        border-radius: 999px;
+        color: #7a5c42;
+        font-family: "Inter", sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: 7px 11px;
+        text-transform: uppercase;
+      }
+
+      .route-card-selected {
+        background: linear-gradient(145deg, #fdfcf9 0%, #efe5d7 100%);
+        border-top: 4px solid #a38a70;
+      }
+
+      .route-card .concept-map {
+        gap: 8px;
+      }
+
+      .route-card .concept-map-row {
+        gap: 4px;
+        padding: 12px 14px 11px;
+      }
+
+      .route-card .concept-map-label {
+        font-size: 10px;
+        letter-spacing: 1.8px;
+      }
+
+      .route-card .concept-map-copy {
+        font-size: 16px;
+        line-height: 1.34;
+      }
+
+      .route-followup-card {
+        gap: 0;
+        margin-top: 12px;
+        padding: 12px 16px 11px;
+      }
+
+      .route-followup-card .template-copy {
+        font-size: 15px;
+        line-height: 1.38;
+      }
+
+      .query-intro-card {
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 10px;
+        padding: 14px 16px 12px;
+      }
+
+      .query-intro-copy {
+        color: #3f3a35;
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        letter-spacing: -0.4px;
+        line-height: 1.12;
+        margin: 0;
+        max-width: 980px;
+      }
+
+      .query-slide {
+        padding: 46px 60px 44px;
+      }
+
+      .query-slide .slide-title {
+        font-size: 38px;
+        margin-bottom: 16px;
+      }
+
+      .query-grid {
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .query-card {
+        gap: 12px;
+        min-height: 100%;
+        padding: 20px 22px;
+      }
+
+      .query-card .template-heading {
+        font-size: 24px;
+        line-height: 1.04;
+      }
+
+      .query-card .concept-map {
+        gap: 8px;
+      }
+
+      .query-card .concept-map-row {
+        gap: 5px;
+        padding: 10px 12px 9px;
+      }
+
+      .query-card .concept-map-copy {
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .query-feature-box {
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid rgba(163, 138, 112, 0.16);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 4px;
+        padding: 10px 12px 9px;
+      }
+
+      .query-feature-box .template-kicker {
+        font-size: 10px;
+        letter-spacing: 1.8px;
+      }
+
+      .query-feature-row {
+        align-items: start;
+        display: grid;
+        gap: 6px;
+        grid-template-columns: 96px minmax(0, 1fr);
+      }
+
+      .query-feature-row + .query-feature-row {
+        border-top: 1px dashed rgba(163, 138, 112, 0.22);
+        padding-top: 6px;
+      }
+
+      .query-feature-label {
+        color: #5b564f;
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+
+      .query-feature-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .query-feature-pill {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid rgba(163, 138, 112, 0.18);
+        border-radius: 999px;
+        color: #4f4538;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 11px;
+        line-height: 1;
+        padding: 6px 8px;
+      }
+
+      .query-feature-pill.key {
+        background: rgba(163, 138, 112, 0.1);
+        color: #7a5c42;
+      }
+
+      .query-result-card {
+        background: linear-gradient(145deg, #fdfcf9 0%, #efe5d7 100%);
+        border: 1px solid rgba(163, 138, 112, 0.18);
+        border-radius: 14px;
+        gap: 6px;
+        margin-top: 6px;
+        padding: 11px 13px 9px;
+      }
+
+      .query-result-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .query-result-pill {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(163, 138, 112, 0.18);
+        border-radius: 999px;
+        color: #1f1f1f;
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        line-height: 1;
+        padding: 8px 11px;
+      }
+
+      .query-result-pill.primary {
+        background: linear-gradient(145deg, #fdfcf9 0%, #efe5d7 100%);
+        border-color: rgba(163, 138, 112, 0.34);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
       }
 
       .sidebar-nav {
@@ -1460,7 +1720,7 @@
               <span class="sidebar-section-title">Construct-i-con in Action</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">4</span>
+              <span class="sidebar-count">7</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
@@ -1496,6 +1756,30 @@
               type="button"
             >
               Which constructs?
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="4"
+              onclick="goToSlide(4)"
+              type="button"
+            >
+              Choosing the route
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="5"
+              onclick="goToSlide(5)"
+              type="button"
+            >
+              Query for slot 1
+            </button>
+            <button
+              class="sidebar-item"
+              data-slide="6"
+              onclick="goToSlide(6)"
+              type="button"
+            >
+              Query for slot 2
             </button>
           </div>
         </details>
@@ -1739,21 +2023,282 @@
           </div>
 
           <div class="template-card construct-question-card">
-            <div>
+            <div class="construct-question-intro">
               <div class="template-kicker">Scientific phrasing</div>
               <p class="construct-definition">
                 A sentence is a construct instantiated by the simultaneous activation and integration of multiple constructions.
               </p>
             </div>
 
+            <div class="construct-question-hero">
+              <div class="construct-question-kicker">Main question</div>
+              <p class="construct-question">Which constructions should be instantiated to produce those sentences (constructs)?</p>
+            </div>
+
             <div class="concept-map">
               <div class="concept-map-row">
-                <span class="concept-map-label">Question</span>
-                <p class="construct-question">Which constructions should be instantiated to produce those sentences?</p>
+                <span class="concept-map-label">Focus</span>
+                <p class="construct-question-note">The empty turns are not just missing words. They are missing constructs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+      <h2 class="slide-title">Choosing the route</h2>
+      <div class="content-area" style="align-items: stretch; justify-content: flex-start">
+        <div class="template-card route-context-card">
+          <div class="template-kicker">Context again</div>
+          <p class="route-context-copy">
+            Pejman is an absolute beginner. He is using the app for the first time.
+          </p>
+        </div>
+
+        <div class="two-column template-grid route-grid">
+          <div class="template-card route-card">
+            <div class="template-kicker">Option 1</div>
+            <h3 class="template-heading">Let the LLM do it all</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Generate</span>
+                <span class="concept-map-copy">Generate suitable constructs directly.</span>
               </div>
               <div class="concept-map-row">
-                <span class="concept-map-label">Focus</span>
-                <p class="construct-question-note">The blanks are not just missing words. They are missing constructs.</p>
+                <span class="concept-map-label">Reverse engineer</span>
+                <span class="concept-map-copy">Then infer which constructions were used.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Reason</span>
+                <span class="concept-map-copy">Do this so we can still track learner exposure.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card route-card route-card-selected">
+            <div class="route-choice-badge">We choose this</div>
+            <div class="template-kicker">Option 2</div>
+            <h3 class="template-heading">Build a partial construct-i-con</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Query</span>
+                <span class="concept-map-copy">Query it for learner-appropriate constructions.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Instantiate</span>
+                <span class="concept-map-copy">Instantiate them to build the constructs.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="template-card route-followup-card">
+          <p class="template-copy">
+            It is worth asking: why not let an LLM do this without a construct-i-con?
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="slide-container query-slide" id="slide5">
+      <h2 class="slide-title">Query for slot 1</h2>
+      <div class="content-area" style="align-items: stretch; justify-content: flex-start">
+        <div class="template-card query-intro-card">
+          <div class="template-kicker">The handoff</div>
+          <p class="query-intro-copy">
+            We search for a short phrase for the first empty slot: handing over the ticket.
+          </p>
+        </div>
+
+        <div class="two-column template-grid query-grid">
+          <div class="template-card template-card-accent query-card">
+            <div class="template-kicker">What we ask for</div>
+            <h3 class="template-heading">Search for a handoff phrase</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Situation</span>
+                <span class="concept-map-copy">A person gives something to another person. Here, it is the ticket.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Speaker move</span>
+                <span class="concept-map-copy">The learner is following the checker's request and showing the object.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Phrase type</span>
+                <span class="concept-map-copy">We want a fixed phrase: a ready-made block you do not build from scratch.</span>
+              </div>
+            </div>
+            <div class="query-feature-box">
+              <div class="template-kicker">Feature keywords</div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Scene</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">semantic_frame_anchor</span>
+                  <span class="query-feature-pill">Transfer_Scenario</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Speaker move</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">pragmatic_intent</span>
+                  <span class="query-feature-pill">Compliance</span>
+                  <span class="query-feature-pill">Deictic_Presentation</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Phrase type</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">stratum_vector</span>
+                  <span class="query-feature-pill">Fixed_Idiom</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card query-card">
+            <div class="template-kicker">In plain words</div>
+            <h3 class="template-heading">Keep it easy</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Effort level</span>
+                <span class="concept-map-copy">Easy to pull from memory as one chunk.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Learner level</span>
+                <span class="concept-map-copy">Fits A1, the first beginner level.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Why this matters</span>
+                <span class="concept-map-copy">Useful now and manageable now.</span>
+              </div>
+            </div>
+            <div class="query-feature-box">
+              <div class="template-kicker">More feature keywords</div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Effort</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">processability_index</span>
+                  <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Learner level</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">cefr</span>
+                  <span class="query-feature-pill">A1</span>
+                </div>
+              </div>
+            </div>
+            <div class="query-result-card">
+              <div class="template-kicker">Possible matches</div>
+              <div class="query-result-list">
+                <span class="query-result-pill">Bitte.</span>
+                <span class="query-result-pill">Da.</span>
+                <span class="query-result-pill primary">Hier bitte.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container query-slide" id="slide6">
+      <h2 class="slide-title">Query for slot 2</h2>
+      <div class="content-area" style="align-items: stretch; justify-content: flex-start">
+        <div class="template-card query-intro-card">
+          <div class="template-kicker">The polite close</div>
+          <p class="query-intro-copy">
+            We now search for a short phrase for the second empty slot: closing the exchange politely.
+          </p>
+        </div>
+
+        <div class="two-column template-grid query-grid">
+          <div class="template-card template-card-accent query-card">
+            <div class="template-kicker">What we ask for</div>
+            <h3 class="template-heading">Search for a closing phrase</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Situation</span>
+                <span class="concept-map-copy">The checker ends politely, and the learner answers in the same spirit.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Speaker move</span>
+                <span class="concept-map-copy">The learner returns the polite gesture and closes the exchange without sounding rude.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Phrase type</span>
+                <span class="concept-map-copy">We want a very small phrase, not a full sentence like "I also wish you a nice day."</span>
+              </div>
+            </div>
+            <div class="query-feature-box">
+              <div class="template-kicker">Feature keywords</div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Scene</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">semantic_frame_anchor</span>
+                  <span class="query-feature-pill">Social_Ritual_Closure</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Speaker move</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">pragmatic_intent</span>
+                  <span class="query-feature-pill">Reciprocity</span>
+                  <span class="query-feature-pill">Terminal_Politeness</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Phrase type</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">stratum_vector</span>
+                  <span class="query-feature-pill">Bare_Adverbial</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="template-card query-card">
+            <div class="template-kicker">In plain words</div>
+            <h3 class="template-heading">Keep it light</h3>
+            <div class="concept-map">
+              <div class="concept-map-row">
+                <span class="concept-map-label">Effort level</span>
+                <span class="concept-map-copy">Still easy to pull from memory as one chunk.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Learner level</span>
+                <span class="concept-map-copy">Still fits A1, the first beginner level.</span>
+              </div>
+              <div class="concept-map-row">
+                <span class="concept-map-label">Why this matters</span>
+                <span class="concept-map-copy">The learner can be polite without building a longer sentence.</span>
+              </div>
+            </div>
+            <div class="query-feature-box">
+              <div class="template-kicker">More feature keywords</div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Effort</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">processability_index</span>
+                  <span class="query-feature-pill">Level_1_Unanalyzed_Chunk</span>
+                </div>
+              </div>
+              <div class="query-feature-row">
+                <span class="query-feature-label">Learner level</span>
+                <div class="query-feature-pills">
+                  <span class="query-feature-pill key">cefr</span>
+                  <span class="query-feature-pill">A1</span>
+                </div>
+              </div>
+            </div>
+            <div class="query-result-card">
+              <div class="template-kicker">Possible matches</div>
+              <div class="query-result-list">
+                <span class="query-result-pill">Danke gleichfalls.</span>
+                <span class="query-result-pill">Ebenso.</span>
+                <span class="query-result-pill primary">Ihne au.</span>
               </div>
             </div>
           </div>
