@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructicon Feature Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="presentation-feedback-base.css" />
+
+    <style>
+      body.template-signal[data-theme="light"] {
+        --font-display: "Sora", sans-serif;
+        --font-body: "IBM Plex Sans", sans-serif;
+        --font-ui: "IBM Plex Mono", monospace;
+        --page-bg: #dfe9e9;
+        --page-backdrop:
+          radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.78), transparent 24%),
+          radial-gradient(circle at 84% 18%, rgba(240, 108, 73, 0.14), transparent 22%),
+          linear-gradient(135deg, #edf4f3 0%, #bfd4d0 46%, #aec8c3 100%);
+        --page-grid:
+          linear-gradient(rgba(15, 42, 49, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(15, 42, 49, 0.06) 1px, transparent 1px);
+        --page-grid-size: 30px 30px;
+        --slide-bg: #f7fbfb;
+        --slide-border: rgba(11, 48, 56, 0.16);
+        --slide-shadow: 0 34px 94px rgba(17, 35, 40, 0.14);
+        --slide-overlay:
+          linear-gradient(130deg, rgba(14, 138, 124, 0.08), transparent 34%),
+          radial-gradient(circle at 84% 14%, rgba(240, 108, 73, 0.12), transparent 22%);
+        --panel-bg: rgba(255, 255, 255, 0.76);
+        --panel-bg-muted: rgba(255, 255, 255, 0.58);
+        --panel-border: rgba(11, 48, 56, 0.1);
+        --panel-shadow: 0 18px 40px rgba(17, 35, 40, 0.08);
+        --text-primary: #10232a;
+        --text-secondary: #38545d;
+        --text-muted: #56727a;
+        --accent: #0d8578;
+        --accent-strong: #0a5950;
+        --accent-soft: #d8f0eb;
+        --control-bg: rgba(255, 255, 255, 0.92);
+        --control-border: rgba(11, 48, 56, 0.12);
+        --control-text: #114249;
+        --control-shadow: 0 18px 38px rgba(17, 35, 40, 0.12);
+        --control-hover-bg: #ffffff;
+        --choice-bg: rgba(255, 255, 255, 0.82);
+        --choice-border: rgba(11, 48, 56, 0.1);
+        --choice-active-bg: rgba(216, 240, 235, 0.76);
+        --choice-active-border: rgba(13, 133, 120, 0.42);
+        --choice-active-shadow: 0 14px 30px rgba(13, 133, 120, 0.12);
+        --input-bg: rgba(255, 255, 255, 0.92);
+        --input-border: rgba(11, 48, 56, 0.12);
+        --table-header-bg: rgba(216, 240, 235, 0.6);
+        --table-row-border: rgba(11, 48, 56, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.4);
+        --lane-bg: rgba(255, 255, 255, 0.58);
+        --lane-border: rgba(11, 48, 56, 0.08);
+        --status-valuable-bg: rgba(13, 133, 120, 0.16);
+        --status-valuable-border: rgba(13, 133, 120, 0.26);
+        --status-valuable-text: #0d5f55;
+        --status-not-sure-bg: rgba(220, 152, 78, 0.16);
+        --status-not-sure-border: rgba(220, 152, 78, 0.24);
+        --status-not-sure-text: #8c5414;
+        --status-not-useful-bg: rgba(213, 96, 75, 0.16);
+        --status-not-useful-border: rgba(213, 96, 75, 0.24);
+        --status-not-useful-text: #8a3021;
+      }
+
+      body.template-signal[data-theme="dark"] {
+        --font-display: "Sora", sans-serif;
+        --font-body: "IBM Plex Sans", sans-serif;
+        --font-ui: "IBM Plex Mono", monospace;
+        --page-bg: #0b1417;
+        --page-backdrop:
+          radial-gradient(circle at 18% 16%, rgba(17, 189, 167, 0.12), transparent 22%),
+          radial-gradient(circle at 86% 18%, rgba(240, 108, 73, 0.1), transparent 20%),
+          linear-gradient(135deg, #091114 0%, #122126 54%, #162f33 100%);
+        --page-grid:
+          linear-gradient(rgba(196, 233, 230, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(196, 233, 230, 0.05) 1px, transparent 1px);
+        --slide-bg: #101a1e;
+        --slide-border: rgba(190, 234, 227, 0.12);
+        --slide-shadow: 0 32px 96px rgba(0, 0, 0, 0.46);
+        --slide-overlay:
+          linear-gradient(130deg, rgba(17, 189, 167, 0.1), transparent 34%),
+          radial-gradient(circle at 84% 14%, rgba(240, 108, 73, 0.1), transparent 22%);
+        --panel-bg: rgba(20, 32, 36, 0.82);
+        --panel-bg-muted: rgba(16, 26, 30, 0.74);
+        --panel-border: rgba(190, 234, 227, 0.1);
+        --panel-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+        --text-primary: #edf7f6;
+        --text-secondary: #b8d1cd;
+        --text-muted: #86a7a2;
+        --accent: #31d2c0;
+        --accent-strong: #7de8dc;
+        --accent-soft: rgba(49, 210, 192, 0.14);
+        --control-bg: rgba(14, 24, 28, 0.92);
+        --control-border: rgba(190, 234, 227, 0.14);
+        --control-text: #def5f2;
+        --control-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+        --control-hover-bg: rgba(21, 34, 38, 0.96);
+        --choice-bg: rgba(14, 24, 28, 0.88);
+        --choice-border: rgba(190, 234, 227, 0.12);
+        --choice-active-bg: rgba(16, 57, 61, 0.82);
+        --choice-active-border: rgba(49, 210, 192, 0.42);
+        --choice-active-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
+        --input-bg: rgba(11, 20, 23, 0.92);
+        --input-border: rgba(190, 234, 227, 0.12);
+        --table-header-bg: rgba(16, 57, 61, 0.52);
+        --table-row-border: rgba(190, 234, 227, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.02);
+        --lane-bg: rgba(18, 29, 33, 0.82);
+        --lane-border: rgba(190, 234, 227, 0.08);
+        --status-valuable-bg: rgba(49, 210, 192, 0.18);
+        --status-valuable-border: rgba(49, 210, 192, 0.28);
+        --status-valuable-text: #bff4ed;
+        --status-not-sure-bg: rgba(220, 152, 78, 0.18);
+        --status-not-sure-border: rgba(220, 152, 78, 0.28);
+        --status-not-sure-text: #f4ddb9;
+        --status-not-useful-bg: rgba(213, 96, 75, 0.18);
+        --status-not-useful-border: rgba(213, 96, 75, 0.28);
+        --status-not-useful-text: #f4c2b8;
+        --status-pending-bg: rgba(134, 167, 162, 0.14);
+        --status-pending-border: rgba(134, 167, 162, 0.2);
+        --status-pending-text: #c3d9d5;
+      }
+
+      .template-signal .slide-container {
+        border-radius: 24px;
+      }
+
+      .template-signal .panel,
+      .template-signal .sidebar-content {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .template-signal .cover-title {
+        font-size: 76px;
+        max-width: 760px;
+      }
+
+      .template-signal .cover-copy {
+        font-size: 21px;
+        max-width: 740px;
+      }
+
+      .template-signal .cover-main {
+        gap: 20px;
+      }
+
+      .template-signal .cover-pill,
+      .template-signal .tag,
+      .template-signal .feedback-status-pill,
+      .template-signal .feedback-jump-btn,
+      .template-signal .inline-action-btn {
+        letter-spacing: 0.18em;
+      }
+
+      .template-signal .roadmap-card {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .template-signal .roadmap-card::after {
+        background: linear-gradient(135deg, transparent 0%, rgba(13, 133, 120, 0.12) 100%);
+        border-radius: 50%;
+        content: "";
+        height: 140px;
+        inset: auto -28px -28px auto;
+        position: absolute;
+        width: 140px;
+      }
+
+      .template-signal .feedback-board-lane--valuable {
+        background: linear-gradient(180deg, rgba(13, 133, 120, 0.16), transparent 100%), var(--lane-bg);
+      }
+
+      .template-signal .feedback-board-lane--not-sure {
+        background: linear-gradient(180deg, rgba(220, 152, 78, 0.16), transparent 100%), var(--lane-bg);
+      }
+
+      .template-signal .feedback-board-lane--not-useful {
+        background: linear-gradient(180deg, rgba(213, 96, 75, 0.16), transparent 100%), var(--lane-bg);
+      }
+
+      .overview-slide {
+        gap: 30px;
+      }
+
+      .specimen-shell {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .specimen-label {
+        color: var(--text-muted);
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+      }
+
+      .specimen-chip {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--panel-border);
+        border-radius: 12px;
+        box-shadow: var(--panel-shadow);
+        color: var(--text-primary);
+        font-family: var(--font-display);
+        font-size: 42px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        padding: 22px 44px;
+        position: relative;
+      }
+
+      .specimen-chip::before,
+      .specimen-chip::after {
+        color: rgba(138, 102, 69, 0.7);
+        font-size: 54px;
+        font-weight: 600;
+        line-height: 1;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .specimen-chip::before {
+        content: "[";
+        left: 18px;
+      }
+
+      .specimen-chip::after {
+        content: "]";
+        right: 18px;
+      }
+
+      .overview-divider {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .overview-divider::before,
+      .overview-divider::after {
+        background: var(--panel-border);
+        content: "";
+        flex: 1;
+        height: 1px;
+      }
+
+      .overview-badge {
+        background: rgba(255, 255, 255, 0.76);
+        border: 1px solid var(--panel-border);
+        border-radius: 999px;
+        color: var(--text-muted);
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        padding: 8px 16px;
+        text-transform: uppercase;
+      }
+
+      .overview-categories {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .overview-card {
+        --overview-accent: var(--accent);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid var(--panel-border);
+        border-radius: 20px;
+        border-top: 3px solid var(--overview-accent);
+        box-shadow: var(--panel-shadow);
+        min-width: 0;
+        padding: 18px 18px 20px;
+      }
+
+      .overview-card .eyebrow {
+        color: var(--overview-accent);
+      }
+
+      .overview-card--form {
+        --overview-accent: #a47a54;
+      }
+
+      .overview-card--meaning {
+        --overview-accent: #6b93af;
+      }
+
+      .overview-card--relational {
+        --overview-accent: #6c9d7c;
+      }
+
+      .overview-card--meta {
+        --overview-accent: #9b8663;
+      }
+
+      .overview-card--acquisitional {
+        --overview-accent: #9b7bd2;
+      }
+
+      .overview-card-title {
+        border-bottom: 1px solid var(--panel-border);
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+        margin: 10px 0 12px;
+        padding-bottom: 10px;
+      }
+
+      .overview-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .overview-list li {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.35;
+        padding-left: 14px;
+        position: relative;
+      }
+
+      .overview-list li::before {
+        background: var(--overview-accent);
+        border-radius: 50%;
+        content: "";
+        height: 5px;
+        left: 0;
+        position: absolute;
+        top: 7px;
+        width: 5px;
+      }
+
+      .component-focus-grid {
+        display: grid;
+        flex: 1;
+        gap: 20px;
+        grid-template-columns: minmax(0, 1.06fr) minmax(320px, 0.94fr);
+        min-height: 0;
+      }
+
+      .focus-question-card {
+        background: rgba(255, 255, 255, 0.74);
+        border: 1px solid var(--panel-border);
+        border-radius: 18px;
+        border-top: 3px solid rgba(164, 122, 84, 0.75);
+        box-shadow: var(--panel-shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px;
+      }
+
+      .focus-question {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.06;
+      }
+
+      .component-type-card {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--panel-border);
+        border-left: 4px solid var(--type-accent, var(--accent));
+        border-radius: 16px;
+        box-shadow: var(--panel-shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 18px;
+      }
+
+      .component-type-card--anchor {
+        --type-accent: #a47a54;
+      }
+
+      .component-type-card--open {
+        --type-accent: #6b93af;
+      }
+
+      .component-type-label {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--panel-border);
+        border-radius: 999px;
+        color: var(--type-accent, var(--accent));
+        display: inline-flex;
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        padding: 7px 11px;
+        text-transform: uppercase;
+        width: fit-content;
+      }
+
+      .component-type-title {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.06;
+      }
+
+      .multilingual-grid {
+        display: grid;
+        flex: 1;
+        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        min-height: 0;
+      }
+
+      .schema-card {
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid var(--panel-border);
+        border-radius: 20px;
+        border-top: 3px solid var(--schema-accent, var(--accent));
+        box-shadow: var(--panel-shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-width: 0;
+        padding: 18px 18px 20px;
+      }
+
+      .schema-card--english {
+        --schema-accent: #a47a54;
+      }
+
+      .schema-card--dutch {
+        --schema-accent: #6c9d7c;
+      }
+
+      .schema-card--farsi {
+        --schema-accent: #9b7bd2;
+      }
+
+      .schema-language {
+        color: var(--schema-accent, var(--accent));
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .schema-name {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+      }
+
+      .schema-code {
+        color: var(--text-muted);
+        font-family: var(--font-ui);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .schema-example {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-style: italic;
+        line-height: 1.45;
+      }
+
+      .schema-token-list {
+        border-top: 1px solid var(--panel-border);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        list-style: none;
+        margin: 4px 0 0;
+        padding: 12px 0 0;
+      }
+
+      .schema-token-row {
+        align-items: flex-start;
+        display: flex;
+        gap: 10px;
+      }
+
+      .schema-token-kind {
+        align-items: center;
+        border-radius: 6px;
+        display: inline-flex;
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        min-width: 58px;
+        padding: 6px 8px;
+        text-transform: uppercase;
+      }
+
+      .schema-token-kind--open {
+        background: rgba(107, 147, 175, 0.18);
+        color: #2a627d;
+      }
+
+      .schema-token-kind--anchor {
+        background: rgba(164, 122, 84, 0.18);
+        color: #7c5637;
+      }
+
+      .schema-token-text {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.35;
+      }
+
+      .utility-grid {
+        display: grid;
+        flex: 1;
+        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .utility-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .utility-list li {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .utility-list strong {
+        color: var(--text-primary);
+        display: block;
+        font-family: var(--font-display);
+        font-size: 25px;
+        font-weight: 600;
+        letter-spacing: -0.04em;
+        line-height: 1.08;
+        margin-bottom: 6px;
+      }
+
+      .query-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .query-chip {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--panel-border);
+        border-radius: 999px;
+        color: var(--accent-strong);
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        padding: 9px 12px;
+        text-transform: uppercase;
+      }
+
+      .template-signal #slide2,
+      .template-signal #slide3,
+      .template-signal #slide4 {
+        gap: 18px;
+      }
+
+      .template-signal #slide2 .slide-title,
+      .template-signal #slide3 .slide-title {
+        font-size: 48px;
+      }
+
+      .template-signal #slide2 .slide-lead,
+      .template-signal #slide3 .slide-lead {
+        font-size: 19px;
+        line-height: 1.42;
+        max-width: 860px;
+      }
+
+      .template-signal #slide2 .feature-header {
+        gap: 18px;
+      }
+
+      .template-signal #slide2 .stack {
+        gap: 12px;
+      }
+
+      .template-signal #slide2 .component-focus-grid {
+        gap: 16px;
+      }
+
+      .template-signal #slide2 .panel,
+      .template-signal #slide2 .focus-question-card,
+      .template-signal #slide2 .component-type-card,
+      .template-signal #slide4 .panel,
+      .template-signal #slide5 .panel {
+        gap: 12px;
+        padding: 18px;
+      }
+
+      .template-signal #slide2 .definition-statement {
+        font-size: 28px;
+        line-height: 1.14;
+      }
+
+      .template-signal #slide2 .example-quote {
+        font-size: 30px;
+      }
+
+      .template-signal #slide2 .focus-question,
+      .template-signal #slide2 .component-type-title {
+        font-size: 24px;
+      }
+
+      .template-signal #slide2 .body-copy,
+      .template-signal #slide2 .example-caption {
+        font-size: 15px;
+        line-height: 1.42;
+      }
+
+      .template-signal #slide3 .multilingual-grid {
+        gap: 16px;
+      }
+
+      .template-signal #slide3 .schema-card {
+        gap: 10px;
+        padding: 16px 16px 18px;
+      }
+
+      .template-signal #slide3 .schema-name {
+        font-size: 20px;
+      }
+
+      .template-signal #slide3 .schema-code {
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .template-signal #slide3 .schema-example {
+        font-size: 14px;
+        line-height: 1.36;
+      }
+
+      .examples-utility-shell {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 0;
+      }
+
+      .schema-role-lines {
+        border-top: 1px solid var(--panel-border);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 10px;
+      }
+
+      .schema-role-line {
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: 14px;
+        line-height: 1.38;
+      }
+
+      .schema-role-line strong {
+        color: var(--text-primary);
+        font-family: var(--font-ui);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        margin-right: 6px;
+        text-transform: uppercase;
+      }
+
+      .utility-strip {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .utility-strip .panel {
+        gap: 10px;
+        padding: 16px 18px;
+      }
+
+      .utility-strip .body-copy {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .template-signal #slide3 .query-chip {
+        font-size: 10px;
+        padding: 8px 11px;
+      }
+
+      .template-signal #slide4 .feedback-layout {
+        gap: 16px;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+
+      .template-signal #slide4 .stack {
+        gap: 12px;
+      }
+
+      .template-signal #slide4 .feedback-question {
+        font-size: 36px;
+        line-height: 1.02;
+      }
+
+      .template-signal #slide4 .feedback-prompt-quote {
+        font-size: 24px;
+        line-height: 1.16;
+      }
+
+      .template-signal #slide4 .body-copy,
+      .template-signal #slide4 .feedback-choice-copy,
+      .template-signal #slide4 .feedback-choice-foot,
+      .template-signal #slide4 .feedback-caption {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .template-signal #slide4 .note-strip {
+        gap: 10px;
+        padding: 12px 14px;
+      }
+
+      .template-signal #slide4 .feature-review-form {
+        gap: 14px;
+      }
+
+      .template-signal #slide4 .feedback-options {
+        gap: 12px;
+      }
+
+      .template-signal #slide4 .feedback-choice-card {
+        gap: 8px;
+        min-height: 128px;
+        padding: 14px;
+      }
+
+      .template-signal #slide4 .feedback-choice-title {
+        font-size: 24px;
+      }
+
+      .template-signal #slide4 .feedback-comment-area {
+        min-height: 112px;
+      }
+
+      .template-signal #slide4 .feedback-form-footer {
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body
+    class="template-signal"
+    data-theme-storage-key="constructicon-feature-review-theme"
+    data-feedback-storage-key="constructicon-feature-review-feedback"
+  >
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-content">
+        <div class="sidebar-top">
+          <div class="sidebar-top-row">
+            <div class="sidebar-eyebrow">Contents</div>
+            <button
+              class="sidebar-pin-btn"
+              id="sidebarPinBtn"
+              type="button"
+              onclick="toggleSidebarPin()"
+              aria-label="Pin table of contents"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-thumbtack"></i>
+            </button>
+          </div>
+          <div class="sidebar-current-section" id="sidebar-current-section">Overview</div>
+          <div class="sidebar-current-title" id="sidebar-current-title">Cover</div>
+        </div>
+
+        <details class="sidebar-section" data-section-title="Overview" open>
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Set-up</span>
+              <span class="sidebar-section-title">Overview</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="0" onclick="goToSlide(0)" type="button">
+              Cover
+            </button>
+            <button class="sidebar-item" data-slide="1" onclick="goToSlide(1)" type="button">
+              Feature overview
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Feature 01">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Feature block</span>
+              <span class="sidebar-section-title">Component Registry</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">3</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="2" onclick="goToSlide(2)" type="button">
+              Component registry
+            </button>
+            <button class="sidebar-item" data-slide="3" onclick="goToSlide(3)" type="button">
+              Examples and utility
+            </button>
+            <button class="sidebar-item" data-slide="4" onclick="goToSlide(4)" type="button">
+              Review prompt
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Summary">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Wrap-up</span>
+              <span class="sidebar-section-title">Decision summary</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="5" onclick="goToSlide(5)" type="button">
+              Table summary
+            </button>
+            <button class="sidebar-item" data-slide="6" onclick="goToSlide(6)" type="button">
+              Decision board
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <button
+        class="sidebar-handle"
+        type="button"
+        onclick="toggleSidebarPin()"
+        aria-label="Toggle table of contents"
+      ></button>
+    </nav>
+
+    <button
+      class="top-action-btn history-back-btn"
+      id="historyBackBtn"
+      type="button"
+      onclick="goBackInHistory()"
+      aria-label="Go back to the previous jump source"
+      title="Go back to the previous jump source"
+      hidden
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </button>
+
+    <button
+      class="top-action-btn home-btn"
+      id="homeBtn"
+      type="button"
+      onclick="goToSlide(0)"
+      aria-label="Go to first slide"
+      title="Go to first slide"
+    >
+      <i class="fa-solid fa-house"></i>
+    </button>
+
+    <button
+      class="top-action-btn theme-toggle-btn"
+      id="themeToggleBtn"
+      type="button"
+      onclick="toggleTheme()"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
+      title="Switch to dark theme"
+    >
+      <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <button
+      class="top-action-btn pdf-export-btn"
+      id="pdfExportBtn"
+      type="button"
+      onclick="exportPresentationToPDF()"
+      aria-label="Export presentation as PDF"
+    >
+      <i class="fa-solid fa-file-pdf"></i>
+      Export PDF
+    </button>
+
+    <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>
+
+    <div class="slide-container" id="slide0">
+      <div class="slide-kicker">Constructicon Review</div>
+      <div class="cover-shell">
+        <div class="cover-main">
+          <div class="stack" style="gap: 22px">
+            <div class="tag-row">
+              <span class="tag">Working review document</span>
+              <span class="tag">Feature 01: Component Registry</span>
+              <span class="tag">Decision-focused pass</span>
+            </div>
+            <h1 class="cover-title">Constructicon feature review</h1>
+            <p class="cover-copy">
+              This review document opens with the current feature landscape, then tests
+              Component Registry as a candidate core form feature through a definition,
+              cross-linguistic examples, practical utility, and one decision prompt.
+            </p>
+          </div>
+        </div>
+
+        <div class="cover-side">
+          <div class="metric-grid">
+            <div class="panel metric-card">
+              <div class="metric-label">Review scope</div>
+              <div class="metric-value">05</div>
+              <div class="body-copy">
+                Five feature families are in scope: Form, Meaning, Relational, Meta, and
+                Acquisitional.
+              </div>
+            </div>
+            <div class="panel metric-card">
+              <div class="metric-label">Current focus</div>
+              <div class="metric-value">01</div>
+              <div class="body-copy">Component Registry is the first feature block under review.</div>
+            </div>
+            <div class="panel metric-card span-2">
+              <div class="metric-label">Decision test</div>
+              <div class="body-copy">
+                Does this feature give us a reusable schema layer for comparison and structural
+                query?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container overview-slide" id="slide1">
+      <div class="specimen-shell">
+        <div class="specimen-label">Specimen</div>
+        <div class="specimen-chip">a construction</div>
+      </div>
+
+      <div class="overview-divider">
+        <div class="overview-badge">Feature Categories</div>
+      </div>
+
+      <div class="overview-categories">
+        <section class="overview-card overview-card--form">
+          <div class="eyebrow">Category 01</div>
+          <h2 class="overview-card-title">Form</h2>
+          <ul class="overview-list">
+            <li>Component Registry</li>
+            <li>Topological Mapping</li>
+            <li>Intonation &amp; Stress</li>
+            <li>Nesting &amp; Recursion</li>
+            <li>Morphosyntactic Flexibility</li>
+            <li>Collostructional Gravity</li>
+            <li>Elision</li>
+          </ul>
+        </section>
+
+        <section class="overview-card overview-card--meaning">
+          <div class="eyebrow">Category 02</div>
+          <h2 class="overview-card-title">Meaning</h2>
+          <ul class="overview-list">
+            <li>Semantic Frame Anchor</li>
+            <li>Event Shape Profile</li>
+            <li>Macro-Event Proposition</li>
+            <li>Pragmatic Intent</li>
+            <li>Force Dynamics Matrix</li>
+          </ul>
+        </section>
+
+        <section class="overview-card overview-card--relational">
+          <div class="eyebrow">Category 03</div>
+          <h2 class="overview-card-title">Relational</h2>
+          <ul class="overview-list">
+            <li>Taxonomic Inheritance Matrix</li>
+            <li>Paradigm Cluster Matrix</li>
+            <li>Entrenchment &amp; Productivity Matrix</li>
+          </ul>
+        </section>
+
+        <section class="overview-card overview-card--meta">
+          <div class="eyebrow">Category 04</div>
+          <h2 class="overview-card-title">Meta</h2>
+          <ul class="overview-list">
+            <li>Core Administrative Identity</li>
+            <li>Stratum Vector</li>
+            <li>Canonical Exemplar Array</li>
+            <li>Epistemological Tag</li>
+          </ul>
+        </section>
+
+        <section class="overview-card overview-card--acquisitional">
+          <div class="eyebrow">Category 05</div>
+          <h2 class="overview-card-title">Acquisitional</h2>
+          <ul class="overview-list">
+            <li>Processability Index</li>
+            <li>Typological Transfer Vector</li>
+            <li>Fossilization Risk Index</li>
+            <li>CEFR Profiling</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide2">
+      <div class="slide-kicker">Feature 01 / Form</div>
+      <div class="feature-header">
+        <div class="feature-title-wrap stack" style="gap: 14px">
+          <h2 class="slide-title">The Component Registry</h2>
+          <p class="slide-lead">
+            A declarative list of the components a construction needs before any word-order
+            template is applied.
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Category: Form</span>
+        </div>
+      </div>
+
+      <div class="component-focus-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Clear definition</div>
+            <div class="definition-statement">
+              The Component Registry asks one first question: which parts must be present before
+              we decide how they are arranged on the surface?
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">One compact example</div>
+            <div class="example-quote">[Subj_NP] [Verb_Action] [Poss_Pron] [way] [Obl_Path]</div>
+            <div class="example-caption">
+              Name the parts first; decide clause type and word order later.
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="focus-question-card">
+            <div class="eyebrow">Central question</div>
+            <div class="focus-question">Which components exist before ordering begins?</div>
+          </div>
+
+          <div class="component-type-card component-type-card--anchor">
+            <div class="component-type-label">Fixed anchor</div>
+            <div class="component-type-title">A hardcoded word</div>
+            <div class="body-copy">
+              Its lexical form is fixed across instantiations, such as <strong>way</strong>,
+              <strong>er</strong>, or <strong>ra</strong>.
+            </div>
+          </div>
+
+          <div class="component-type-card component-type-card--open">
+            <div class="component-type-label">Open slot</div>
+            <div class="component-type-title">A variable blank</div>
+            <div class="body-copy">
+              It accepts material constrained by labels such as Subject_NP, Object_NP, or Verb.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+      <div class="slide-kicker">Feature 01 / Examples + Utility</div>
+      <h2 class="slide-title">Same feature across constructions</h2>
+      <p class="slide-lead">
+        The component inventory stays stable even when each language uses a different surface
+        pattern.
+      </p>
+
+      <div class="examples-utility-shell">
+        <div class="multilingual-grid">
+          <section class="schema-card schema-card--english">
+            <div class="schema-language">English</div>
+            <div class="schema-name">The Way-Construction</div>
+            <div class="schema-code">[Subj_NP V_Action Poss_Pron way Obl_Path]</div>
+            <div class="schema-example">“He hacked his way through.”</div>
+            <div class="schema-role-lines">
+              <div class="schema-role-line"><strong>Anchor</strong> way</div>
+              <div class="schema-role-line"><strong>Open slots</strong> Subject, Verb, Poss, Path</div>
+            </div>
+          </section>
+
+          <section class="schema-card schema-card--dutch">
+            <div class="schema-language">Dutch</div>
+            <div class="schema-name">Evaluative Frame</div>
+            <div class="schema-code">[Subj_NP zien er Adj uit]</div>
+            <div class="schema-example">“Het ziet er goed uit.”</div>
+            <div class="schema-role-lines">
+              <div class="schema-role-line"><strong>Anchors</strong> zien, er, uit</div>
+              <div class="schema-role-line"><strong>Open slots</strong> Subject, Adjective phrase</div>
+            </div>
+          </section>
+
+          <section class="schema-card schema-card--farsi">
+            <div class="schema-language">Farsi</div>
+            <div class="schema-name">Specific Accusative</div>
+            <div class="schema-code">[Subj_NP Obj_NP ra V_Trans]</div>
+            <div class="schema-example">“Ali ketab ra khund.”</div>
+            <div class="schema-role-lines">
+              <div class="schema-role-line"><strong>Anchor</strong> ra</div>
+              <div class="schema-role-line"><strong>Open slots</strong> Subject, Object, Verb</div>
+            </div>
+          </section>
+        </div>
+
+        <div class="utility-strip">
+          <div class="panel">
+            <div class="eyebrow">Constructicon payoff</div>
+            <div class="body-copy">
+              Store the component inventory once, then compare constructions by required parts
+              rather than only by surface order.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">Query payoff</div>
+            <div class="body-copy">
+              Search by schema signature first, then ask how each construction linearizes that
+              component set.
+            </div>
+            <div class="query-chip-row">
+              <span class="query-chip">components = 5</span>
+              <span class="query-chip">anchors include way</span>
+              <span class="query-chip">open slots &gt;= 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+      <div class="slide-kicker">Feature 01 / Review</div>
+      <div class="feedback-layout">
+        <div class="panel feedback-prompt">
+          <div class="stack">
+            <div class="eyebrow">Decision prompt</div>
+            <div class="feedback-question">Should Component Registry stay in the core form feature set?</div>
+            <div class="body-copy">
+              Judge it by one practical standard: does it improve comparison and structural query,
+              or does it only rename structure we already capture?
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="feedback-prompt-quote">
+              “Would we actually compare or query constructions through this schema layer?”
+            </div>
+            <div class="note-strip">
+              <i class="fa-solid fa-diagram-project"></i>
+              <div class="body-copy">
+                Use the note for one missing example, one query case, or one reason the feature
+                still feels redundant.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          class="panel feature-review-form"
+          data-feedback-form
+          data-feature-key="component-registry"
+          data-feature-title="Component Registry"
+          data-feature-category="Form"
+          data-feature-definition="Declarative list of components required before word-order rules apply"
+          data-feature-utility="Creates a stable schema layer for constructicon building and structural query"
+        >
+          <div class="feedback-options">
+            <div class="feedback-option">
+              <input id="component-registry-valuable" type="radio" name="component-registry" value="valuable" />
+              <label class="feedback-choice-card" for="component-registry-valuable">
+                <span class="feedback-choice-title">Valuable</span>
+                <span class="feedback-choice-copy">Keep it. It gives the constructicon a reusable schema layer.</span>
+                <span class="feedback-choice-foot">Use when it clearly improves comparison and query.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="component-registry-not-useful" type="radio" name="component-registry" value="not useful" />
+              <label class="feedback-choice-card" for="component-registry-not-useful">
+                <span class="feedback-choice-title">Not useful</span>
+                <span class="feedback-choice-copy">Drop or merge it. It adds little beyond a normal schema description.</span>
+                <span class="feedback-choice-foot">Use when the same work is already covered elsewhere.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="component-registry-not-sure" type="radio" name="component-registry" value="not sure" />
+              <label class="feedback-choice-card" for="component-registry-not-sure">
+                <span class="feedback-choice-title">Not sure</span>
+                <span class="feedback-choice-copy">Keep testing. The idea is plausible, but the payoff is still vague.</span>
+                <span class="feedback-choice-foot">Use when the scope or use-case still needs sharpening.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <label class="feedback-comment-label" for="component-registry-comment">Comment</label>
+            <textarea
+              class="feedback-comment-area"
+              id="component-registry-comment"
+              data-feedback-comment
+              placeholder="Add one concern, one query case, or one tighter use definition."
+            ></textarea>
+          </div>
+
+          <div class="feedback-form-footer">
+            <div class="feedback-live-status">
+              <span class="feedback-status-pill feedback-live-pill">
+                <span data-feedback-choice-output>Pending</span>
+              </span>
+              <span class="feedback-caption" data-feedback-comment-output>No comment yet</span>
+            </div>
+            <span class="feedback-caption">Saved locally while the page stays open or reloads.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide5">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Table</div>
+          <h2 class="slide-title">Review log so far</h2>
+        </div>
+
+        <div class="feedback-mini-stats" data-feedback-stats></div>
+
+        <button class="inline-action-btn" type="button" onclick="resetFeatureFeedback()">
+          <i class="fa-solid fa-rotate-left"></i>
+          Reset notes
+        </button>
+      </div>
+
+      <div class="feedback-summary-table-shell">
+        <table class="feedback-summary-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Category</th>
+              <th>Opinion</th>
+              <th>Comment</th>
+              <th>Jump</th>
+            </tr>
+          </thead>
+          <tbody data-feedback-table-body></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide6">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Board</div>
+          <h2 class="slide-title">Current decision board</h2>
+        </div>
+
+        <div class="cover-meta">
+          This summary is ready for the next feature blocks once you extend the deck.
+        </div>
+      </div>
+
+      <div class="feedback-board" data-feedback-board></div>
+    </div>
+
+    <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
+    <div class="slide-counter" id="slide-counter"></div>
+
+    <script src="presentation-feedback-engine.js" defer></script>
+  </body>
+</html>

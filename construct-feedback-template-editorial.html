@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Construct Feedback Template Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="presentation-feedback-base.css" />
+
+    <style>
+      body.template-editorial[data-theme="light"] {
+        --font-display: "Newsreader", serif;
+        --font-body: "Manrope", sans-serif;
+        --font-ui: "Manrope", sans-serif;
+        --page-bg: #e7ddd0;
+        --page-backdrop:
+          radial-gradient(circle at 14% 14%, rgba(255, 255, 255, 0.72), transparent 28%),
+          radial-gradient(circle at 88% 16%, rgba(171, 140, 102, 0.18), transparent 24%),
+          linear-gradient(135deg, #efe7db 0%, #d5c3af 100%);
+        --page-grid:
+          linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+        --page-grid-size: 56px 56px;
+        --slide-bg: #f8f3eb;
+        --slide-border: rgba(92, 67, 44, 0.16);
+        --slide-shadow: 0 34px 96px rgba(44, 31, 20, 0.16);
+        --slide-overlay:
+          radial-gradient(circle at top right, rgba(255, 255, 255, 0.82), transparent 34%),
+          linear-gradient(180deg, rgba(170, 140, 110, 0.08), transparent 42%);
+        --panel-bg: rgba(255, 255, 255, 0.64);
+        --panel-bg-muted: rgba(255, 255, 255, 0.5);
+        --panel-border: rgba(92, 67, 44, 0.1);
+        --panel-shadow: 0 18px 40px rgba(44, 31, 20, 0.08);
+        --text-primary: #21170f;
+        --text-secondary: #5f4c3f;
+        --text-muted: #8b725c;
+        --accent: #9b6841;
+        --accent-strong: #6f4829;
+        --accent-soft: #ebdbc8;
+        --control-bg: rgba(255, 255, 255, 0.92);
+        --control-border: rgba(92, 67, 44, 0.12);
+        --control-text: #5d432a;
+        --control-shadow: 0 18px 38px rgba(44, 31, 20, 0.12);
+        --control-hover-bg: #ffffff;
+        --choice-bg: rgba(255, 255, 255, 0.78);
+        --choice-border: rgba(92, 67, 44, 0.1);
+        --choice-active-bg: rgba(235, 219, 200, 0.7);
+        --choice-active-border: rgba(155, 104, 65, 0.42);
+        --choice-active-shadow: 0 14px 30px rgba(155, 104, 65, 0.14);
+        --input-bg: rgba(255, 255, 255, 0.86);
+        --input-border: rgba(92, 67, 44, 0.12);
+        --table-header-bg: rgba(235, 219, 200, 0.5);
+        --table-row-border: rgba(92, 67, 44, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.32);
+        --lane-bg: rgba(255, 255, 255, 0.54);
+        --lane-border: rgba(92, 67, 44, 0.08);
+      }
+
+      body.template-editorial[data-theme="dark"] {
+        --font-display: "Newsreader", serif;
+        --font-body: "Manrope", sans-serif;
+        --font-ui: "Manrope", sans-serif;
+        --page-bg: #181310;
+        --page-backdrop:
+          radial-gradient(circle at 18% 14%, rgba(214, 170, 123, 0.12), transparent 26%),
+          radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.04), transparent 18%),
+          linear-gradient(135deg, #171210 0%, #251b16 100%);
+        --page-grid:
+          linear-gradient(rgba(255, 244, 231, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 244, 231, 0.05) 1px, transparent 1px);
+        --slide-bg: #211915;
+        --slide-border: rgba(236, 209, 175, 0.12);
+        --slide-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+        --slide-overlay:
+          radial-gradient(circle at top right, rgba(236, 209, 175, 0.1), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 42%);
+        --panel-bg: rgba(48, 37, 30, 0.76);
+        --panel-bg-muted: rgba(40, 31, 26, 0.72);
+        --panel-border: rgba(236, 209, 175, 0.1);
+        --panel-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+        --text-primary: #f6eadc;
+        --text-secondary: #d3c0ad;
+        --text-muted: #a88f79;
+        --accent: #e0b788;
+        --accent-strong: #f3cc9f;
+        --accent-soft: rgba(224, 183, 136, 0.14);
+        --control-bg: rgba(36, 28, 23, 0.92);
+        --control-border: rgba(236, 209, 175, 0.14);
+        --control-text: #f2ddc6;
+        --control-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+        --control-hover-bg: rgba(44, 35, 29, 0.96);
+        --choice-bg: rgba(36, 28, 23, 0.88);
+        --choice-border: rgba(236, 209, 175, 0.12);
+        --choice-active-bg: rgba(79, 58, 40, 0.78);
+        --choice-active-border: rgba(224, 183, 136, 0.44);
+        --choice-active-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+        --input-bg: rgba(32, 25, 21, 0.92);
+        --input-border: rgba(236, 209, 175, 0.12);
+        --table-header-bg: rgba(79, 58, 40, 0.42);
+        --table-row-border: rgba(236, 209, 175, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.02);
+        --lane-bg: rgba(43, 33, 28, 0.78);
+        --lane-border: rgba(236, 209, 175, 0.08);
+        --status-valuable-bg: rgba(124, 182, 106, 0.18);
+        --status-valuable-border: rgba(124, 182, 106, 0.3);
+        --status-valuable-text: #c4efba;
+        --status-not-sure-bg: rgba(217, 171, 89, 0.18);
+        --status-not-sure-border: rgba(217, 171, 89, 0.28);
+        --status-not-sure-text: #f7deb2;
+        --status-not-useful-bg: rgba(196, 108, 108, 0.18);
+        --status-not-useful-border: rgba(196, 108, 108, 0.28);
+        --status-not-useful-text: #f4c2c2;
+        --status-pending-bg: rgba(179, 165, 154, 0.14);
+        --status-pending-border: rgba(179, 165, 154, 0.22);
+        --status-pending-text: #dac9b9;
+      }
+
+      .template-editorial .slide-container {
+        border-radius: 30px;
+      }
+
+      .template-editorial .panel,
+      .template-editorial .sidebar-content {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .template-editorial .cover-main {
+        padding-right: 24px;
+      }
+
+      .template-editorial .cover-title {
+        max-width: 760px;
+      }
+
+      .template-editorial .feature-title-wrap .slide-title {
+        font-size: 50px;
+      }
+
+      .template-editorial .feature-review-grid .panel {
+        padding: 20px;
+      }
+
+      .template-editorial .feature-review-grid .definition-statement {
+        font-size: 28px;
+        line-height: 1.14;
+      }
+
+      .template-editorial .feature-review-grid .example-quote {
+        font-size: 30px;
+        line-height: 1.14;
+      }
+
+      .template-editorial .roadmap-card:nth-child(1),
+      .template-editorial .roadmap-card:nth-child(4) {
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .template-editorial .feedback-board-lane--valuable {
+        background: linear-gradient(180deg, rgba(116, 147, 95, 0.14), transparent 100%), var(--lane-bg);
+      }
+
+      .template-editorial .feedback-board-lane--not-sure {
+        background: linear-gradient(180deg, rgba(191, 140, 48, 0.14), transparent 100%), var(--lane-bg);
+      }
+
+      .template-editorial .feedback-board-lane--not-useful {
+        background: linear-gradient(180deg, rgba(165, 89, 89, 0.14), transparent 100%), var(--lane-bg);
+      }
+    </style>
+  </head>
+  <body
+    class="template-editorial"
+    data-theme-storage-key="presentation-theme-editorial"
+    data-feedback-storage-key="construct-feedback-editorial"
+  >
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-content">
+        <div class="sidebar-top">
+          <div class="sidebar-top-row">
+            <div class="sidebar-eyebrow">Contents</div>
+            <button
+              class="sidebar-pin-btn"
+              id="sidebarPinBtn"
+              type="button"
+              onclick="toggleSidebarPin()"
+              aria-label="Pin table of contents"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-thumbtack"></i>
+            </button>
+          </div>
+          <div class="sidebar-current-section" id="sidebar-current-section">
+            Overview
+          </div>
+          <div class="sidebar-current-title" id="sidebar-current-title">Cover</div>
+        </div>
+
+        <details class="sidebar-section" data-section-title="Overview" open>
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Set-up</span>
+              <span class="sidebar-section-title">Overview</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="0" onclick="goToSlide(0)" type="button">
+              Cover
+            </button>
+            <button class="sidebar-item" data-slide="1" onclick="goToSlide(1)" type="button">
+              Session flow
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Feature 01">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Feature block</span>
+              <span class="sidebar-section-title">Anchor Slot Stability</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">3</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="2" onclick="goToSlide(2)" type="button">
+              Feature frame
+            </button>
+            <button class="sidebar-item" data-slide="3" onclick="goToSlide(3)" type="button">
+              Review lens
+            </button>
+            <button class="sidebar-item" data-slide="4" onclick="goToSlide(4)" type="button">
+              Colleague input
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Feature 02">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Feature block</span>
+              <span class="sidebar-section-title">Pragmatic Pressure Gradient</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">3</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="5" onclick="goToSlide(5)" type="button">
+              Feature frame
+            </button>
+            <button class="sidebar-item" data-slide="6" onclick="goToSlide(6)" type="button">
+              Review lens
+            </button>
+            <button class="sidebar-item" data-slide="7" onclick="goToSlide(7)" type="button">
+              Colleague input
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Summary">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Wrap-up</span>
+              <span class="sidebar-section-title">Decision summary</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="8" onclick="goToSlide(8)" type="button">
+              Table summary
+            </button>
+            <button class="sidebar-item" data-slide="9" onclick="goToSlide(9)" type="button">
+              Decision board
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <button
+        class="sidebar-handle"
+        type="button"
+        onclick="toggleSidebarPin()"
+        aria-label="Toggle table of contents"
+      ></button>
+    </nav>
+
+    <button
+      class="top-action-btn history-back-btn"
+      id="historyBackBtn"
+      type="button"
+      onclick="goBackInHistory()"
+      aria-label="Go back to the previous jump source"
+      title="Go back to the previous jump source"
+      hidden
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </button>
+
+    <button
+      class="top-action-btn home-btn"
+      id="homeBtn"
+      type="button"
+      onclick="goToSlide(0)"
+      aria-label="Go to first slide"
+      title="Go to first slide"
+    >
+      <i class="fa-solid fa-house"></i>
+    </button>
+
+    <button
+      class="top-action-btn theme-toggle-btn"
+      id="themeToggleBtn"
+      type="button"
+      onclick="toggleTheme()"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
+      title="Switch to dark theme"
+    >
+      <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <button
+      class="top-action-btn pdf-export-btn"
+      id="pdfExportBtn"
+      type="button"
+      onclick="exportPresentationToPDF()"
+      aria-label="Export presentation as PDF"
+    >
+      <i class="fa-solid fa-file-pdf"></i>
+      Export PDF
+    </button>
+
+    <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>
+
+    <div class="slide-container" id="slide0">
+      <div class="slide-kicker">Editorial Construct Review</div>
+      <div class="cover-shell">
+        <div class="cover-main">
+          <div class="stack" style="gap: 22px">
+            <div class="tag-row">
+              <span class="tag">Warm editorial shell</span>
+              <span class="tag">Live colleague input</span>
+              <span class="tag">Construction grammar</span>
+            </div>
+            <h1 class="cover-title">Feature review for a single construction</h1>
+            <p class="cover-copy">
+              Present each proposed feature with a formal definition, one worked example,
+              a utility case, and a dedicated response slide. The closing summary pulls
+              every choice and comment into one view without extra editing.
+            </p>
+          </div>
+
+          <div class="stack" style="gap: 16px">
+            <div class="cover-pill-row">
+              <span class="cover-pill">Hidden table of contents</span>
+              <span class="cover-pill">Home and jump-back buttons</span>
+              <span class="cover-pill">Dark mode and PDF export</span>
+            </div>
+            <div class="cover-meta">
+              Duplicate the three-slide feature block, update the sidebar labels, and keep
+              the data attributes on each input slide in sync.
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-side">
+          <div class="panel panel-muted">
+            <div class="eyebrow">Best used when</div>
+            <div class="body-copy">
+              You want a calm, credible review deck for one-to-one discussion rather than a
+              stage presentation. The layout stays minimal while preserving enough structure
+              to compare features quickly.
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="panel metric-card">
+              <div class="metric-label">Sample features</div>
+              <div class="metric-value">02</div>
+              <div class="body-copy">Two feature blocks to copy and extend.</div>
+            </div>
+
+            <div class="panel metric-card">
+              <div class="metric-label">Summary modes</div>
+              <div class="metric-value">02</div>
+              <div class="body-copy">Table plus decision board.</div>
+            </div>
+
+            <div class="panel metric-card span-2">
+              <div class="metric-label">Feature inputs expected</div>
+              <div class="body-copy">
+                Category, definition, example, utility, and one final judgment from the
+                colleague with room for a note.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide1">
+      <div class="slide-kicker">Session Map</div>
+      <h2 class="slide-title">A simple review rhythm</h2>
+      <p class="slide-lead">
+        Each feature gets the same conversation pattern: orient, ground with evidence,
+        record judgment, then compare all recorded judgments at the end.
+      </p>
+
+      <div class="roadmap-grid">
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">01</div>
+          <div class="stack">
+            <div class="roadmap-title">Introduce the candidate feature</div>
+            <div class="roadmap-copy">
+              Name the feature, state the category, and define what part of the construction
+              it captures.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">02</div>
+          <div class="stack">
+            <div class="roadmap-title">Show evidence and utility</div>
+            <div class="roadmap-copy">
+              Pair the definition with an example and the concrete analytic gain you expect.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">03</div>
+          <div class="stack">
+            <div class="roadmap-title">Collect a decision</div>
+            <div class="roadmap-copy">
+              Use the dedicated feedback slide to capture a binary-leaning judgment plus one
+              comment field.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">04</div>
+          <div class="stack">
+            <div class="roadmap-title">Review all decisions together</div>
+            <div class="roadmap-copy">
+              The last two slides provide a table and a grouped board so you can scan the
+              full discussion in one pass.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-strip">
+        <i class="fa-solid fa-circle-info"></i>
+        <div class="body-copy">
+          To add more features, duplicate slides 2 to 4, then update the sidebar buttons and
+          the <strong>data-feature-*</strong> values on the new feedback form.
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide2">
+      <div class="slide-kicker">Feature 01 / Form</div>
+      <div class="feature-header">
+        <div class="feature-title-wrap stack" style="gap: 14px">
+          <h2 class="slide-title">Anchor slot stability</h2>
+          <p class="slide-lead">
+            A form-side feature about whether a construction keeps one stable anchor slot
+            across related realizations.
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Category: Form</span>
+        </div>
+      </div>
+
+      <div class="feature-review-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Working definition</div>
+            <div class="definition-statement">
+              The construction preserves one privileged slot that stays stable enough to anchor
+              recognition and indexing.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">Example</div>
+            <div class="example-quote">"the X-er, the Y-er" keeps its comparative spine visible</div>
+            <div class="example-caption">
+              The lexical fillers vary, but the comparative scaffold stays recognizable.
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Why discuss it</div>
+            <div class="body-copy">
+              For review purposes, this feature only needs to earn one claim: that it helps
+              separate stable frame cues from looser paraphrase families.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">What I want to know</div>
+            <ul class="feature-review-list">
+              <li><strong>Analytic gain</strong>Does it change how you group related constructions?</li>
+              <li><strong>Boundary</strong>Would you still need it once lexical fixation is already described?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+      <div class="slide-kicker">Feature 01 / Review lens</div>
+      <h2 class="slide-title">What we actually need to decide</h2>
+      <div class="feature-review-grid">
+        <div class="panel">
+          <div class="eyebrow">Keep it if</div>
+          <ul class="feature-review-list">
+            <li><strong>Contrast</strong>It makes a visible difference in how two close patterns are compared.</li>
+            <li><strong>Retrieval</strong>It gives you one cue you would actually search or annotate for.</li>
+            <li><strong>Teaching value</strong>It helps explain why speakers still recognize the pattern across variation.</li>
+          </ul>
+        </div>
+
+        <div class="stack">
+          <div class="panel panel-muted">
+            <div class="eyebrow">Main concern</div>
+            <div class="body-copy">
+              The feature may collapse into general lexical fixation unless the anchor slot does
+              real comparative work.
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="eyebrow">Reviewer prompt</div>
+            <div class="feedback-prompt-quote">
+              “Does this feature let you see a contrast that would otherwise stay hidden?”
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+      <div class="slide-kicker">Feature 01 / Input</div>
+      <div class="feedback-layout">
+        <div class="panel feedback-prompt">
+          <div class="stack">
+            <div class="eyebrow">Discussion focus</div>
+            <div class="feedback-question">Is anchor slot stability worth keeping as a feature?</div>
+            <div class="body-copy">
+              Focus the judgment on usefulness for analysis and communication, not on final naming.
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="feedback-prompt-quote">
+              “Would this help you distinguish constructions in practice, or is it already implied elsewhere?”
+            </div>
+            <div class="note-strip">
+              <i class="fa-solid fa-pen"></i>
+              <div class="body-copy">
+                Comments can capture alternative wording, missing evidence, or a boundary case to revisit.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          class="panel feature-review-form"
+          data-feedback-form
+          data-feature-key="anchor-slot-stability"
+          data-feature-title="Anchor slot stability"
+          data-feature-category="Form"
+          data-feature-definition="Stable privileged slot across related realizations"
+          data-feature-utility="Improves recognition and indexing of formally anchored constructions"
+        >
+          <div class="feedback-options">
+            <div class="feedback-option">
+              <input id="editorial-anchor-valuable" type="radio" name="editorial-anchor" value="valuable" />
+              <label class="feedback-choice-card" for="editorial-anchor-valuable">
+                <span class="feedback-choice-title">Valuable</span>
+                <span class="feedback-choice-copy">Keep it. The feature adds a real analytic distinction.</span>
+                <span class="feedback-choice-foot">Best when the cue supports comparison and retrieval.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="editorial-anchor-not-useful" type="radio" name="editorial-anchor" value="not useful" />
+              <label class="feedback-choice-card" for="editorial-anchor-not-useful">
+                <span class="feedback-choice-title">Not useful</span>
+                <span class="feedback-choice-copy">Drop or merge it. The distinction is redundant or too weak.</span>
+                <span class="feedback-choice-foot">Best when another feature already captures the same signal.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="editorial-anchor-not-sure" type="radio" name="editorial-anchor" value="not sure" />
+              <label class="feedback-choice-card" for="editorial-anchor-not-sure">
+                <span class="feedback-choice-title">Not sure</span>
+                <span class="feedback-choice-copy">Promising, but it needs sharper evidence or phrasing.</span>
+                <span class="feedback-choice-foot">Use this when the intuition is right but the current framing is not.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <label class="feedback-comment-label" for="editorial-anchor-comment">Comment</label>
+            <textarea
+              class="feedback-comment-area"
+              id="editorial-anchor-comment"
+              data-feedback-comment
+              placeholder="Add one note, missing example, or alternative phrasing."
+            ></textarea>
+          </div>
+
+          <div class="feedback-form-footer">
+            <div class="feedback-live-status">
+              <span class="feedback-status-pill feedback-live-pill">
+                <span data-feedback-choice-output>Pending</span>
+              </span>
+              <span class="feedback-caption" data-feedback-comment-output>No comment yet</span>
+            </div>
+            <span class="feedback-caption">Saved locally while the page stays open or reloads.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide5">
+      <div class="slide-kicker">Feature 02 / Meaning</div>
+      <div class="feature-header">
+        <div class="feature-title-wrap stack" style="gap: 14px">
+          <h2 class="slide-title">Pragmatic pressure gradient</h2>
+          <p class="slide-lead">
+            A meaning-side feature about how strongly the construction invites urgency,
+            insistence, or social pressure.
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Category: Meaning</span>
+        </div>
+      </div>
+
+      <div class="feature-review-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Working definition</div>
+            <div class="definition-statement">
+              The construction encodes a graded expectation that the utterance should be taken
+              as pressure-bearing rather than neutral.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">Example</div>
+            <div class="example-quote">"You really ought to at least have told me."</div>
+            <div class="example-caption">
+              The construction frames the proposition as carrying social pressure, not only content.
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Why discuss it</div>
+            <div class="body-copy">
+              This feature is only worth keeping if it names a stable meaning contrast rather than
+              general discourse coloring.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">What I want to know</div>
+            <ul class="feature-review-list">
+              <li><strong>Stability</strong>Does the pressure component stay visible across multiple examples?</li>
+              <li><strong>Overlap</strong>Where does this stop and a speech-act or stance label begin?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide6">
+      <div class="slide-kicker">Feature 02 / Review lens</div>
+      <h2 class="slide-title">What would justify keeping it</h2>
+      <div class="feature-review-grid">
+        <div class="panel">
+          <div class="eyebrow">Keep it if</div>
+          <ul class="feature-review-list">
+            <li><strong>Meaning contrast</strong>It explains why close paraphrases still differ in felt force.</li>
+            <li><strong>Comparative gain</strong>It lets you compare sibling constructions more clearly.</li>
+            <li><strong>Repeatability</strong>You can point to stable examples rather than one-off contextual effects.</li>
+          </ul>
+        </div>
+
+        <div class="stack">
+          <div class="panel panel-muted">
+            <div class="eyebrow">Main concern</div>
+            <div class="body-copy">
+              If the definition keeps absorbing stance, modality, and speech-act language at once,
+              the feature is too broad to survive.
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="eyebrow">Reviewer prompt</div>
+            <div class="feedback-prompt-quote">
+              “Do you see stable pragmatic pressure here, or only context-specific interpretation?”
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide7">
+      <div class="slide-kicker">Feature 02 / Input</div>
+      <div class="feedback-layout">
+        <div class="panel feedback-prompt">
+          <div class="stack">
+            <div class="eyebrow">Discussion focus</div>
+            <div class="feedback-question">Is pragmatic pressure gradient worth keeping as a feature?</div>
+            <div class="body-copy">
+              Treat this as a question about analytical usefulness and definitional discipline.
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="feedback-prompt-quote">
+              “Would this feature produce repeatable judgments, or does it remain too dependent on context?”
+            </div>
+            <div class="note-strip">
+              <i class="fa-solid fa-feather"></i>
+              <div class="body-copy">
+                Use the note field for one counterexample or one better label if you have it.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          class="panel feature-review-form"
+          data-feedback-form
+          data-feature-key="pragmatic-pressure-gradient"
+          data-feature-title="Pragmatic pressure gradient"
+          data-feature-category="Meaning"
+          data-feature-definition="Graded expectation of social or interpretive pressure"
+          data-feature-utility="Distinguishes neutral description from pressure-bearing formulations"
+        >
+          <div class="feedback-options">
+            <div class="feedback-option">
+              <input id="editorial-pressure-valuable" type="radio" name="editorial-pressure" value="valuable" />
+              <label class="feedback-choice-card" for="editorial-pressure-valuable">
+                <span class="feedback-choice-title">Valuable</span>
+                <span class="feedback-choice-copy">Keep it. The feature reveals a durable meaning contrast.</span>
+                <span class="feedback-choice-foot">Best when examples consistently show pressure-bearing force.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="editorial-pressure-not-useful" type="radio" name="editorial-pressure" value="not useful" />
+              <label class="feedback-choice-card" for="editorial-pressure-not-useful">
+                <span class="feedback-choice-title">Not useful</span>
+                <span class="feedback-choice-copy">Drop or merge it. The feature duplicates discourse commentary.</span>
+                <span class="feedback-choice-foot">Best when the signal stays too context-bound to operationalize.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="editorial-pressure-not-sure" type="radio" name="editorial-pressure" value="not sure" />
+              <label class="feedback-choice-card" for="editorial-pressure-not-sure">
+                <span class="feedback-choice-title">Not sure</span>
+                <span class="feedback-choice-copy">Potentially useful, but the scope or evidence still needs work.</span>
+                <span class="feedback-choice-foot">Use this when the insight seems right but the formulation stays loose.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <label class="feedback-comment-label" for="editorial-pressure-comment">Comment</label>
+            <textarea
+              class="feedback-comment-area"
+              id="editorial-pressure-comment"
+              data-feedback-comment
+              placeholder="Add one concern, example, or revised definition."
+            ></textarea>
+          </div>
+
+          <div class="feedback-form-footer">
+            <div class="feedback-live-status">
+              <span class="feedback-status-pill feedback-live-pill">
+                <span data-feedback-choice-output>Pending</span>
+              </span>
+              <span class="feedback-caption" data-feedback-comment-output>No comment yet</span>
+            </div>
+            <span class="feedback-caption">Saved locally while the page stays open or reloads.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide8">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Table</div>
+          <h2 class="slide-title">Everything recorded in one table</h2>
+        </div>
+
+        <div class="feedback-mini-stats" data-feedback-stats></div>
+
+        <button class="inline-action-btn" type="button" onclick="resetFeatureFeedback()">
+          <i class="fa-solid fa-rotate-left"></i>
+          Reset notes
+        </button>
+      </div>
+
+      <div class="feedback-summary-table-shell">
+        <table class="feedback-summary-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Category</th>
+              <th>Opinion</th>
+              <th>Comment</th>
+              <th>Jump</th>
+            </tr>
+          </thead>
+          <tbody data-feedback-table-body></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide9">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Board</div>
+          <h2 class="slide-title">A grouped decision board for fast scanning</h2>
+        </div>
+
+        <div class="cover-meta">
+          Click any card to jump back to the original input slide, then use Back to return here.
+        </div>
+      </div>
+
+      <div class="feedback-board" data-feedback-board></div>
+    </div>
+
+    <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
+    <div class="slide-counter" id="slide-counter"></div>
+
+    <script src="presentation-feedback-engine.js" defer></script>
+  </body>
+</html>

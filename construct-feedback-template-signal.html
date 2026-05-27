@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Construct Feedback Template Signal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="presentation-feedback-base.css" />
+
+    <style>
+      body.template-signal[data-theme="light"] {
+        --font-display: "Sora", sans-serif;
+        --font-body: "IBM Plex Sans", sans-serif;
+        --font-ui: "IBM Plex Mono", monospace;
+        --page-bg: #dfe9e9;
+        --page-backdrop:
+          radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.78), transparent 24%),
+          radial-gradient(circle at 84% 18%, rgba(240, 108, 73, 0.14), transparent 22%),
+          linear-gradient(135deg, #edf4f3 0%, #bfd4d0 46%, #aec8c3 100%);
+        --page-grid:
+          linear-gradient(rgba(15, 42, 49, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(15, 42, 49, 0.06) 1px, transparent 1px);
+        --page-grid-size: 30px 30px;
+        --slide-bg: #f7fbfb;
+        --slide-border: rgba(11, 48, 56, 0.16);
+        --slide-shadow: 0 34px 94px rgba(17, 35, 40, 0.14);
+        --slide-overlay:
+          linear-gradient(130deg, rgba(14, 138, 124, 0.08), transparent 34%),
+          radial-gradient(circle at 84% 14%, rgba(240, 108, 73, 0.12), transparent 22%);
+        --panel-bg: rgba(255, 255, 255, 0.76);
+        --panel-bg-muted: rgba(255, 255, 255, 0.58);
+        --panel-border: rgba(11, 48, 56, 0.1);
+        --panel-shadow: 0 18px 40px rgba(17, 35, 40, 0.08);
+        --text-primary: #10232a;
+        --text-secondary: #38545d;
+        --text-muted: #56727a;
+        --accent: #0d8578;
+        --accent-strong: #0a5950;
+        --accent-soft: #d8f0eb;
+        --control-bg: rgba(255, 255, 255, 0.92);
+        --control-border: rgba(11, 48, 56, 0.12);
+        --control-text: #114249;
+        --control-shadow: 0 18px 38px rgba(17, 35, 40, 0.12);
+        --control-hover-bg: #ffffff;
+        --choice-bg: rgba(255, 255, 255, 0.82);
+        --choice-border: rgba(11, 48, 56, 0.1);
+        --choice-active-bg: rgba(216, 240, 235, 0.76);
+        --choice-active-border: rgba(13, 133, 120, 0.42);
+        --choice-active-shadow: 0 14px 30px rgba(13, 133, 120, 0.12);
+        --input-bg: rgba(255, 255, 255, 0.92);
+        --input-border: rgba(11, 48, 56, 0.12);
+        --table-header-bg: rgba(216, 240, 235, 0.6);
+        --table-row-border: rgba(11, 48, 56, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.4);
+        --lane-bg: rgba(255, 255, 255, 0.58);
+        --lane-border: rgba(11, 48, 56, 0.08);
+        --status-valuable-bg: rgba(13, 133, 120, 0.16);
+        --status-valuable-border: rgba(13, 133, 120, 0.26);
+        --status-valuable-text: #0d5f55;
+        --status-not-sure-bg: rgba(220, 152, 78, 0.16);
+        --status-not-sure-border: rgba(220, 152, 78, 0.24);
+        --status-not-sure-text: #8c5414;
+        --status-not-useful-bg: rgba(213, 96, 75, 0.16);
+        --status-not-useful-border: rgba(213, 96, 75, 0.24);
+        --status-not-useful-text: #8a3021;
+      }
+
+      body.template-signal[data-theme="dark"] {
+        --font-display: "Sora", sans-serif;
+        --font-body: "IBM Plex Sans", sans-serif;
+        --font-ui: "IBM Plex Mono", monospace;
+        --page-bg: #0b1417;
+        --page-backdrop:
+          radial-gradient(circle at 18% 16%, rgba(17, 189, 167, 0.12), transparent 22%),
+          radial-gradient(circle at 86% 18%, rgba(240, 108, 73, 0.1), transparent 20%),
+          linear-gradient(135deg, #091114 0%, #122126 54%, #162f33 100%);
+        --page-grid:
+          linear-gradient(rgba(196, 233, 230, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(196, 233, 230, 0.05) 1px, transparent 1px);
+        --slide-bg: #101a1e;
+        --slide-border: rgba(190, 234, 227, 0.12);
+        --slide-shadow: 0 32px 96px rgba(0, 0, 0, 0.46);
+        --slide-overlay:
+          linear-gradient(130deg, rgba(17, 189, 167, 0.1), transparent 34%),
+          radial-gradient(circle at 84% 14%, rgba(240, 108, 73, 0.1), transparent 22%);
+        --panel-bg: rgba(20, 32, 36, 0.82);
+        --panel-bg-muted: rgba(16, 26, 30, 0.74);
+        --panel-border: rgba(190, 234, 227, 0.1);
+        --panel-shadow: 0 18px 40px rgba(0, 0, 0, 0.26);
+        --text-primary: #edf7f6;
+        --text-secondary: #b8d1cd;
+        --text-muted: #86a7a2;
+        --accent: #31d2c0;
+        --accent-strong: #7de8dc;
+        --accent-soft: rgba(49, 210, 192, 0.14);
+        --control-bg: rgba(14, 24, 28, 0.92);
+        --control-border: rgba(190, 234, 227, 0.14);
+        --control-text: #def5f2;
+        --control-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+        --control-hover-bg: rgba(21, 34, 38, 0.96);
+        --choice-bg: rgba(14, 24, 28, 0.88);
+        --choice-border: rgba(190, 234, 227, 0.12);
+        --choice-active-bg: rgba(16, 57, 61, 0.82);
+        --choice-active-border: rgba(49, 210, 192, 0.42);
+        --choice-active-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
+        --input-bg: rgba(11, 20, 23, 0.92);
+        --input-border: rgba(190, 234, 227, 0.12);
+        --table-header-bg: rgba(16, 57, 61, 0.52);
+        --table-row-border: rgba(190, 234, 227, 0.08);
+        --table-row-alt: rgba(255, 255, 255, 0.02);
+        --lane-bg: rgba(18, 29, 33, 0.82);
+        --lane-border: rgba(190, 234, 227, 0.08);
+        --status-valuable-bg: rgba(49, 210, 192, 0.18);
+        --status-valuable-border: rgba(49, 210, 192, 0.28);
+        --status-valuable-text: #bff4ed;
+        --status-not-sure-bg: rgba(220, 152, 78, 0.18);
+        --status-not-sure-border: rgba(220, 152, 78, 0.28);
+        --status-not-sure-text: #f4ddb9;
+        --status-not-useful-bg: rgba(213, 96, 75, 0.18);
+        --status-not-useful-border: rgba(213, 96, 75, 0.28);
+        --status-not-useful-text: #f4c2b8;
+        --status-pending-bg: rgba(134, 167, 162, 0.14);
+        --status-pending-border: rgba(134, 167, 162, 0.2);
+        --status-pending-text: #c3d9d5;
+      }
+
+      .template-signal .slide-container {
+        border-radius: 24px;
+      }
+
+      .template-signal .panel,
+      .template-signal .sidebar-content {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+
+      .template-signal .cover-title {
+        font-size: 70px;
+        max-width: 680px;
+      }
+
+      .template-signal .cover-copy {
+        font-size: 20px;
+        max-width: 700px;
+      }
+
+      .template-signal .cover-main {
+        gap: 20px;
+      }
+
+      .template-signal .cover-pill,
+      .template-signal .tag,
+      .template-signal .feedback-status-pill,
+      .template-signal .feedback-jump-btn,
+      .template-signal .inline-action-btn {
+        letter-spacing: 0.18em;
+      }
+
+      .template-signal .roadmap-card {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .template-signal .roadmap-card::after {
+        background: linear-gradient(135deg, transparent 0%, rgba(13, 133, 120, 0.12) 100%);
+        content: "";
+        inset: auto -28px -28px auto;
+        position: absolute;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+      }
+
+      .template-signal .feature-grid {
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      }
+
+      .template-signal .feedback-board-lane--valuable {
+        background: linear-gradient(180deg, rgba(13, 133, 120, 0.16), transparent 100%), var(--lane-bg);
+      }
+
+      .template-signal .feedback-board-lane--not-sure {
+        background: linear-gradient(180deg, rgba(220, 152, 78, 0.16), transparent 100%), var(--lane-bg);
+      }
+
+      .template-signal .feedback-board-lane--not-useful {
+        background: linear-gradient(180deg, rgba(213, 96, 75, 0.16), transparent 100%), var(--lane-bg);
+      }
+    </style>
+  </head>
+  <body
+    class="template-signal"
+    data-theme-storage-key="presentation-theme-signal"
+    data-feedback-storage-key="construct-feedback-signal"
+  >
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-content">
+        <div class="sidebar-top">
+          <div class="sidebar-top-row">
+            <div class="sidebar-eyebrow">Contents</div>
+            <button
+              class="sidebar-pin-btn"
+              id="sidebarPinBtn"
+              type="button"
+              onclick="toggleSidebarPin()"
+              aria-label="Pin table of contents"
+              aria-pressed="false"
+            >
+              <i class="fa-solid fa-thumbtack"></i>
+            </button>
+          </div>
+          <div class="sidebar-current-section" id="sidebar-current-section">
+            Overview
+          </div>
+          <div class="sidebar-current-title" id="sidebar-current-title">Cover</div>
+        </div>
+
+        <details class="sidebar-section" data-section-title="Overview" open>
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Set-up</span>
+              <span class="sidebar-section-title">Overview</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="0" onclick="goToSlide(0)" type="button">
+              Cover
+            </button>
+            <button class="sidebar-item" data-slide="1" onclick="goToSlide(1)" type="button">
+              Session logic
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Feature 01">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Feature block</span>
+              <span class="sidebar-section-title">Argument Linking Transparency</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">3</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="2" onclick="goToSlide(2)" type="button">
+              Signal frame
+            </button>
+            <button class="sidebar-item" data-slide="3" onclick="goToSlide(3)" type="button">
+              Decision lens
+            </button>
+            <button class="sidebar-item" data-slide="4" onclick="goToSlide(4)" type="button">
+              Colleague input
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Feature 02">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Feature block</span>
+              <span class="sidebar-section-title">Contextual Contrast Window</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">3</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="5" onclick="goToSlide(5)" type="button">
+              Signal frame
+            </button>
+            <button class="sidebar-item" data-slide="6" onclick="goToSlide(6)" type="button">
+              Decision lens
+            </button>
+            <button class="sidebar-item" data-slide="7" onclick="goToSlide(7)" type="button">
+              Colleague input
+            </button>
+          </div>
+        </details>
+
+        <details class="sidebar-section" data-section-title="Summary">
+          <summary class="sidebar-section-summary">
+            <span class="sidebar-section-meta">
+              <span class="sidebar-section-kicker">Wrap-up</span>
+              <span class="sidebar-section-title">Decision summary</span>
+            </span>
+            <span class="sidebar-summary-right">
+              <span class="sidebar-count">2</span>
+              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+            </span>
+          </summary>
+          <div class="sidebar-section-items">
+            <button class="sidebar-item" data-slide="8" onclick="goToSlide(8)" type="button">
+              Table summary
+            </button>
+            <button class="sidebar-item" data-slide="9" onclick="goToSlide(9)" type="button">
+              Decision board
+            </button>
+          </div>
+        </details>
+      </div>
+
+      <button
+        class="sidebar-handle"
+        type="button"
+        onclick="toggleSidebarPin()"
+        aria-label="Toggle table of contents"
+      ></button>
+    </nav>
+
+    <button
+      class="top-action-btn history-back-btn"
+      id="historyBackBtn"
+      type="button"
+      onclick="goBackInHistory()"
+      aria-label="Go back to the previous jump source"
+      title="Go back to the previous jump source"
+      hidden
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+      Back
+    </button>
+
+    <button
+      class="top-action-btn home-btn"
+      id="homeBtn"
+      type="button"
+      onclick="goToSlide(0)"
+      aria-label="Go to first slide"
+      title="Go to first slide"
+    >
+      <i class="fa-solid fa-house"></i>
+    </button>
+
+    <button
+      class="top-action-btn theme-toggle-btn"
+      id="themeToggleBtn"
+      type="button"
+      onclick="toggleTheme()"
+      aria-label="Switch to dark theme"
+      aria-pressed="false"
+      title="Switch to dark theme"
+    >
+      <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <button
+      class="top-action-btn pdf-export-btn"
+      id="pdfExportBtn"
+      type="button"
+      onclick="exportPresentationToPDF()"
+      aria-label="Export presentation as PDF"
+    >
+      <i class="fa-solid fa-file-pdf"></i>
+      Export PDF
+    </button>
+
+    <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>
+
+    <div class="slide-container" id="slide0">
+      <div class="slide-kicker">Signal Construct Review</div>
+      <div class="cover-shell">
+        <div class="cover-main">
+          <div class="stack" style="gap: 22px">
+            <div class="tag-row">
+              <span class="tag">Modular grid aesthetic</span>
+              <span class="tag">Signal-first feature framing</span>
+              <span class="tag">Live summary engine</span>
+            </div>
+            <h1 class="cover-title">A sharper deck for feature decisions</h1>
+            <p class="cover-copy">
+              This version is more structural and technical: tighter grid, coded labels, higher
+              contrast. Use it when you want the discussion to feel like a design review with a
+              summary that reads like a compact decision board.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="cover-side">
+          <div class="metric-grid">
+            <div class="panel metric-card">
+              <div class="metric-label">Feature blocks</div>
+              <div class="metric-value">02</div>
+              <div class="body-copy">Each block is definition, stress test, input.</div>
+            </div>
+            <div class="panel metric-card">
+              <div class="metric-label">Decision states</div>
+              <div class="metric-value">03</div>
+              <div class="body-copy">Valuable, not useful, not sure.</div>
+            </div>
+            <div class="panel metric-card span-2">
+              <div class="metric-label">Best for</div>
+              <div class="body-copy">
+                Colleague sessions where you want a firm sense of priority, overlap, and next experiments.
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="eyebrow">Controls included</div>
+            <div class="body-copy">
+              Hidden contents rail, home jump, history back, theme toggle, local note persistence, and PDF export.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide1">
+      <div class="slide-kicker">Session Logic</div>
+      <h2 class="slide-title">A template for stricter review conversations</h2>
+      <p class="slide-lead">
+        The deck assumes each candidate feature should survive a fast but disciplined stress test:
+        signal, boundary, decision, then aggregate view.
+      </p>
+
+      <div class="roadmap-grid">
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">01</div>
+          <div class="stack">
+            <div class="roadmap-title">Define the signal</div>
+            <div class="roadmap-copy">
+              Describe what observable contrast the feature is supposed to encode.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">02</div>
+          <div class="stack">
+            <div class="roadmap-title">Stress the boundaries</div>
+            <div class="roadmap-copy">
+              State where the feature should fail so it stays operational and not ornamental.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">03</div>
+          <div class="stack">
+            <div class="roadmap-title">Record one judgment</div>
+            <div class="roadmap-copy">
+              Capture the colleague's decision and one short note in the same slide.
+            </div>
+          </div>
+        </div>
+
+        <div class="panel roadmap-card">
+          <div class="roadmap-step">04</div>
+          <div class="stack">
+            <div class="roadmap-title">Compare the whole set</div>
+            <div class="roadmap-copy">
+              The summary slides show both row-level detail and lane-level priority at the end.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-strip">
+        <i class="fa-solid fa-bolt"></i>
+        <div class="body-copy">
+          This template is intentionally more angular and coded. If the editorial deck feels too soft, use this one.
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide2">
+      <div class="slide-kicker">Feature 01 / Relational</div>
+      <div class="feature-header">
+        <div class="feature-title-wrap stack" style="gap: 14px">
+          <h2 class="slide-title">Argument linking transparency</h2>
+          <p class="slide-lead">
+            A relational feature that measures how directly the construction exposes the mapping
+            between participant roles and overt morphosyntactic positions.
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Category: Relational</span>
+        </div>
+      </div>
+
+      <div class="feature-review-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Working definition</div>
+            <div class="definition-statement">
+              The construction reveals participant-role assignment with minimal inference, making
+              the relational mapping inspectable from the overt pattern itself.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">Quick example</div>
+            <div class="example-quote">"X gave Y Z" surfaces giver, recipient, and transferred entity directly.</div>
+            <div class="example-caption">The mapping is legible without extra structural reconstruction.</div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Why it might deserve a slot</div>
+            <div class="body-copy">
+              If it survives review, this feature gives you a compact way to compare constructions
+              that distribute the same roles with different degrees of overtness.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">What I want to know</div>
+            <ul class="feature-review-list">
+              <li><strong>Signal</strong>Is mapping visibility a contrast you actually use when comparing alternations?</li>
+              <li><strong>Overlap risk</strong>Does the feature add anything beyond ordinary syntax description?</li>
+              <li><strong>Decision test</strong>If it never changes the comparison, it should probably stay out.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide3">
+      <div class="slide-kicker">Feature 01 / Decision lens</div>
+      <h2 class="slide-title">Keep it only if the contrast is real</h2>
+      <div class="feature-review-grid">
+        <div class="panel">
+          <div class="eyebrow">Keep it if</div>
+          <ul class="feature-review-list">
+            <li><strong>Comparison</strong>It sharpens a relational contrast you would otherwise describe too loosely.</li>
+            <li><strong>Compression</strong>It lets you summarize an alternation difference without re-explaining the whole pattern.</li>
+            <li><strong>Reuse</strong>You can imagine annotating or querying for it more than once.</li>
+          </ul>
+        </div>
+
+        <div class="stack">
+          <div class="panel panel-muted">
+            <div class="eyebrow">Main risk</div>
+            <div class="body-copy">
+              The label becomes decorative if it simply renames transparent syntax without adding
+              analytic leverage.
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="eyebrow">Reviewer prompt</div>
+            <div class="feedback-prompt-quote">
+              “Does this label sharpen a comparison you actually make, or only describe something already obvious?”
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide4">
+      <div class="slide-kicker">Feature 01 / Input</div>
+      <div class="feedback-layout">
+        <div class="panel feedback-prompt">
+          <div class="stack">
+            <div class="eyebrow">Decision prompt</div>
+            <div class="feedback-question">Should argument linking transparency remain in the feature set?</div>
+            <div class="body-copy">
+              Judge the feature by whether it materially improves relational comparison across constructions.
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="feedback-prompt-quote">
+              “Would you use this label when comparing alternations, or would you ignore it in real analysis?”
+            </div>
+            <div class="note-strip">
+              <i class="fa-solid fa-link"></i>
+              <div class="body-copy">Use the comment for one alternation, counterexample, or narrower reformulation.</div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          class="panel feature-review-form"
+          data-feedback-form
+          data-feature-key="argument-linking-transparency"
+          data-feature-title="Argument linking transparency"
+          data-feature-category="Relational"
+          data-feature-definition="Visibility of participant-role mapping in overt structure"
+          data-feature-utility="Creates a clean relational comparison dimension"
+        >
+          <div class="feedback-options">
+            <div class="feedback-option">
+              <input id="signal-linking-valuable" type="radio" name="signal-linking" value="valuable" />
+              <label class="feedback-choice-card" for="signal-linking-valuable">
+                <span class="feedback-choice-title">Valuable</span>
+                <span class="feedback-choice-copy">The feature delivers a real contrast and is worth preserving.</span>
+                <span class="feedback-choice-foot">Choose when overt mapping visibility genuinely matters.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="signal-linking-not-useful" type="radio" name="signal-linking" value="not useful" />
+              <label class="feedback-choice-card" for="signal-linking-not-useful">
+                <span class="feedback-choice-title">Not useful</span>
+                <span class="feedback-choice-copy">The label is redundant or not strong enough to stand alone.</span>
+                <span class="feedback-choice-foot">Choose when ordinary syntax discussion already does the work.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="signal-linking-not-sure" type="radio" name="signal-linking" value="not sure" />
+              <label class="feedback-choice-card" for="signal-linking-not-sure">
+                <span class="feedback-choice-title">Not sure</span>
+                <span class="feedback-choice-copy">The idea works, but the threshold or examples still need refining.</span>
+                <span class="feedback-choice-foot">Choose when the contrast is plausible but not yet operational.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <label class="feedback-comment-label" for="signal-linking-comment">Comment</label>
+            <textarea
+              class="feedback-comment-area"
+              id="signal-linking-comment"
+              data-feedback-comment
+              placeholder="Add one relational contrast, failure case, or naming suggestion."
+            ></textarea>
+          </div>
+
+          <div class="feedback-form-footer">
+            <div class="feedback-live-status">
+              <span class="feedback-status-pill feedback-live-pill">
+                <span data-feedback-choice-output>Pending</span>
+              </span>
+              <span class="feedback-caption" data-feedback-comment-output>No comment yet</span>
+            </div>
+            <span class="feedback-caption">Saved locally while the page stays open or reloads.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide5">
+      <div class="slide-kicker">Feature 02 / Meaning</div>
+      <div class="feature-header">
+        <div class="feature-title-wrap stack" style="gap: 14px">
+          <h2 class="slide-title">Contextual contrast window</h2>
+          <p class="slide-lead">
+            A meaning-side feature that identifies how much surrounding contrast is required for
+            the construction's intended interpretation to become stable and recoverable.
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">Category: Meaning</span>
+        </div>
+      </div>
+
+      <div class="feature-review-grid">
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Working definition</div>
+            <div class="definition-statement">
+              The construction depends on a bounded amount of contextual contrast before its intended
+              interpretation resolves consistently for speakers and analysts.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">Quick example</div>
+            <div class="example-quote">Short fragments that only read ironically once a contrastive frame is established.</div>
+            <div class="example-caption">The construction needs a small window of discourse contrast to settle its meaning.</div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="panel">
+            <div class="eyebrow">Why it might deserve a slot</div>
+            <div class="body-copy">
+              If retained, the feature gives you a compact way to talk about context dependence
+              without drifting back into general commentary.
+            </div>
+          </div>
+
+          <div class="panel panel-muted">
+            <div class="eyebrow">What I want to know</div>
+            <ul class="feature-review-list">
+              <li><strong>Threshold</strong>Can the contrast window be bounded rather than vaguely implied?</li>
+              <li><strong>Reuse</strong>Would this help compare more than one construction?</li>
+              <li><strong>Decision test</strong>If it stays fuzzy, it is probably better as a note than as a feature.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide6">
+      <div class="slide-kicker">Feature 02 / Decision lens</div>
+      <h2 class="slide-title">Keep it only if the threshold holds</h2>
+      <div class="feature-review-grid">
+        <div class="panel">
+          <div class="eyebrow">Keep it if</div>
+          <ul class="feature-review-list">
+            <li><strong>Interpretation</strong>It explains why the same form stabilizes only once contrastive context is present.</li>
+            <li><strong>Comparison</strong>It gives you a bounded way to compare context-sensitive constructions.</li>
+            <li><strong>Discipline</strong>You can imagine annotating it without relying on private intuition.</li>
+          </ul>
+        </div>
+
+        <div class="stack">
+          <div class="panel panel-muted">
+            <div class="eyebrow">Main risk</div>
+            <div class="body-copy">
+              The feature becomes too broad if it simply restates that interpretation is context-sensitive.
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="eyebrow">Reviewer prompt</div>
+            <div class="feedback-prompt-quote">
+              “Can you imagine annotating this consistently, or would the judgment stay too intuitive?”
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide7">
+      <div class="slide-kicker">Feature 02 / Input</div>
+      <div class="feedback-layout">
+        <div class="panel feedback-prompt">
+          <div class="stack">
+            <div class="eyebrow">Decision prompt</div>
+            <div class="feedback-question">Should contextual contrast window remain in the feature set?</div>
+            <div class="body-copy">
+              Judge the feature by whether it gives you a bounded, reusable way to discuss contextual dependence.
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="feedback-prompt-quote">
+              “Is this a disciplined feature, or just a good observation that belongs in the notes?”
+            </div>
+            <div class="note-strip">
+              <i class="fa-solid fa-window-maximize"></i>
+              <div class="body-copy">Use the note for one threshold idea, missing example, or counterexample.</div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          class="panel feature-review-form"
+          data-feedback-form
+          data-feature-key="contextual-contrast-window"
+          data-feature-title="Contextual contrast window"
+          data-feature-category="Meaning"
+          data-feature-definition="Bounded amount of surrounding contrast required for stable interpretation"
+          data-feature-utility="Makes context dependence comparable rather than purely descriptive"
+        >
+          <div class="feedback-options">
+            <div class="feedback-option">
+              <input id="signal-context-valuable" type="radio" name="signal-context" value="valuable" />
+              <label class="feedback-choice-card" for="signal-context-valuable">
+                <span class="feedback-choice-title">Valuable</span>
+                <span class="feedback-choice-copy">The feature adds a disciplined way to encode context dependence.</span>
+                <span class="feedback-choice-foot">Choose when the required contrast window can be identified reliably.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="signal-context-not-useful" type="radio" name="signal-context" value="not useful" />
+              <label class="feedback-choice-card" for="signal-context-not-useful">
+                <span class="feedback-choice-title">Not useful</span>
+                <span class="feedback-choice-copy">The label is too broad or too hard to operationalize.</span>
+                <span class="feedback-choice-foot">Choose when the insight is real but does not belong as a feature.</span>
+              </label>
+            </div>
+
+            <div class="feedback-option">
+              <input id="signal-context-not-sure" type="radio" name="signal-context" value="not sure" />
+              <label class="feedback-choice-card" for="signal-context-not-sure">
+                <span class="feedback-choice-title">Not sure</span>
+                <span class="feedback-choice-copy">The core idea is promising, but the threshold still needs better framing.</span>
+                <span class="feedback-choice-foot">Choose when you want another pass with stronger examples.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <label class="feedback-comment-label" for="signal-context-comment">Comment</label>
+            <textarea
+              class="feedback-comment-area"
+              id="signal-context-comment"
+              data-feedback-comment
+              placeholder="Add one threshold idea, example, or reason for doubt."
+            ></textarea>
+          </div>
+
+          <div class="feedback-form-footer">
+            <div class="feedback-live-status">
+              <span class="feedback-status-pill feedback-live-pill">
+                <span data-feedback-choice-output>Pending</span>
+              </span>
+              <span class="feedback-caption" data-feedback-comment-output>No comment yet</span>
+            </div>
+            <span class="feedback-caption">Saved locally while the page stays open or reloads.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide8">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Table</div>
+          <h2 class="slide-title">Decision log with direct jump-back links</h2>
+        </div>
+
+        <div class="feedback-mini-stats" data-feedback-stats></div>
+
+        <button class="inline-action-btn" type="button" onclick="resetFeatureFeedback()">
+          <i class="fa-solid fa-rotate-left"></i>
+          Reset notes
+        </button>
+      </div>
+
+      <div class="feedback-summary-table-shell">
+        <table class="feedback-summary-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Category</th>
+              <th>Opinion</th>
+              <th>Comment</th>
+              <th>Jump</th>
+            </tr>
+          </thead>
+          <tbody data-feedback-table-body></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="slide-container" id="slide9">
+      <div class="summary-toolbar">
+        <div class="stack" style="gap: 10px">
+          <div class="slide-kicker">Summary / Board</div>
+          <h2 class="slide-title">Lane view: what advances, what waits, what drops</h2>
+        </div>
+
+        <div class="cover-meta">
+          Cards stay clickable so the whole summary can be used like a compact review dashboard.
+        </div>
+      </div>
+
+      <div class="feedback-board" data-feedback-board></div>
+    </div>
+
+    <button class="nav-btn next" onclick="changeSlide(1)">&#8250;</button>
+    <div class="slide-counter" id="slide-counter"></div>
+
+    <script src="presentation-feedback-engine.js" defer></script>
+  </body>
+</html>
