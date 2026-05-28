@@ -137,8 +137,29 @@
     );
     const navigationHistory = [];
     let current = 0;
+    let scheduledLayoutFrame = 0;
+    let shouldFitAllVisibleSlides = false;
 
     slides[slides.length - 1]?.classList.add("last-slide");
+
+    slides.forEach((slide) => {
+      const hasScaleFrame = Array.from(slide.children).some((child) =>
+        child.classList?.contains("slide-scale-frame"),
+      );
+
+      if (hasScaleFrame) {
+        return;
+      }
+
+      const frame = document.createElement("div");
+      frame.className = "slide-scale-frame";
+
+      while (slide.firstChild) {
+        frame.appendChild(slide.firstChild);
+      }
+
+      slide.appendChild(frame);
+    });
 
     const featureEntries = feedbackForms
       .map((form) => {
@@ -223,8 +244,137 @@
 
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => {
-          window.print();
+          applyResponsiveLayout({ fitAllVisibleSlides: true });
+
+          window.requestAnimationFrame(() => {
+            window.print();
+          });
         });
+      });
+    }
+
+    function fitDeckToViewport() {
+      if (document.body.classList.contains("pdf-exporting")) {
+        document.body.style.setProperty("--deck-scale", "1");
+        return;
+      }
+
+      const bodyStyle = window.getComputedStyle(document.body);
+      const availableWidth =
+        window.innerWidth -
+        parseFloat(bodyStyle.paddingLeft || "0") -
+        parseFloat(bodyStyle.paddingRight || "0");
+      const availableHeight =
+        window.innerHeight -
+        parseFloat(bodyStyle.paddingTop || "0") -
+        parseFloat(bodyStyle.paddingBottom || "0");
+      const nextScale = Math.min(
+        1,
+        availableWidth / 1280,
+        availableHeight / 720,
+      );
+      const safeScale =
+        Number.isFinite(nextScale) && nextScale > 0 ? nextScale : 1;
+
+      document.body.style.setProperty("--deck-scale", safeScale.toFixed(4));
+    }
+
+    function fitSlideContent(slide) {
+      if (!slide) {
+        return;
+      }
+
+      const frame = Array.from(slide.children).find((child) =>
+        child.classList?.contains("slide-scale-frame"),
+      );
+
+      if (!frame) {
+        return;
+      }
+
+      slide.style.setProperty("--slide-content-scale", "1");
+
+      const slideStyle = window.getComputedStyle(slide);
+      const availableWidth =
+        slide.clientWidth -
+        parseFloat(slideStyle.paddingLeft || "0") -
+        parseFloat(slideStyle.paddingRight || "0");
+      const availableHeight =
+        slide.clientHeight -
+        parseFloat(slideStyle.paddingTop || "0") -
+        parseFloat(slideStyle.paddingBottom || "0");
+      let scale = 1;
+
+      for (let iteration = 0; iteration < 4; iteration += 1) {
+        slide.style.setProperty("--slide-content-scale", scale.toFixed(4));
+
+        const rawWidth = Math.max(frame.scrollWidth, 1);
+        const rawHeight = Math.max(frame.scrollHeight, 1);
+        const nextScale = Math.min(
+          1,
+          availableWidth / rawWidth,
+          availableHeight / rawHeight,
+        );
+
+        if (!Number.isFinite(nextScale) || nextScale <= 0) {
+          scale = 1;
+          break;
+        }
+
+        if (Math.abs(nextScale - scale) < 0.01) {
+          scale = nextScale;
+          break;
+        }
+
+        scale = nextScale;
+      }
+
+      const safeScale = Math.max(scale, 0.01);
+
+      slide.style.setProperty("--slide-content-scale", safeScale.toFixed(4));
+    }
+
+    function fitActiveSlide() {
+      fitSlideContent(slides[current]);
+    }
+
+    function fitVisibleSlides() {
+      slides.forEach((slide) => {
+        if (window.getComputedStyle(slide).display === "none") {
+          return;
+        }
+
+        fitSlideContent(slide);
+      });
+    }
+
+    function applyResponsiveLayout(options = {}) {
+      const { fitAllVisibleSlides = false } = options;
+
+      fitDeckToViewport();
+
+      if (fitAllVisibleSlides) {
+        fitVisibleSlides();
+        return;
+      }
+
+      fitActiveSlide();
+    }
+
+    function scheduleResponsiveLayout(options = {}) {
+      shouldFitAllVisibleSlides =
+        shouldFitAllVisibleSlides || Boolean(options.fitAllVisibleSlides);
+
+      if (scheduledLayoutFrame) {
+        return;
+      }
+
+      scheduledLayoutFrame = window.requestAnimationFrame(() => {
+        const fitAllVisibleSlides = shouldFitAllVisibleSlides;
+
+        scheduledLayoutFrame = 0;
+        shouldFitAllVisibleSlides = false;
+        applyResponsiveLayout({ fitAllVisibleSlides });
       });
     }
 
@@ -331,6 +481,7 @@
       }
 
       if (index === current) {
+        scheduleResponsiveLayout();
         updateHistoryBackButton();
         return;
       }
@@ -346,6 +497,7 @@
       updateCounter();
       updateSidebar();
       updateHistoryBackButton();
+      scheduleResponsiveLayout();
     }
 
     function goToSlide(index, options = {}) {
@@ -517,16 +669,8 @@
       });
     }
 
-    function renderFeedbackStats(summary) {
-      const statContainers = Array.from(
-        document.querySelectorAll("[data-feedback-stats]"),
-      );
-
-      if (!statContainers.length) {
-        return;
-      }
-
-      const counts = summary.reduce(
+    function getFeedbackCounts(summary) {
+      return summary.reduce(
         (accumulator, entry) => {
           accumulator[entry.choiceKey] += 1;
           return accumulator;
@@ -538,6 +682,364 @@
           pending: 0,
         },
       );
+    }
+
+    function getFeedbackPriority(entry) {
+      const priorityMap = {
+        "not-sure": 0,
+        pending: 1,
+        "not-useful": 2,
+        valuable: 3,
+      };
+      const commentBonus = entry.comment ? -0.25 : 0;
+
+      return (priorityMap[entry.choiceKey] ?? 4) + commentBonus;
+    }
+
+    function orderEntriesForReview(entries) {
+      return [...entries].sort((left, right) => {
+        const priorityDelta =
+          getFeedbackPriority(left) - getFeedbackPriority(right);
+
+        if (priorityDelta !== 0) {
+          return priorityDelta;
+        }
+
+        return left.slideIndex - right.slideIndex;
+      });
+    }
+
+    function groupSummaryByCategory(summary) {
+      const groups = new Map();
+
+      summary.forEach((entry) => {
+        const existing = groups.get(entry.category) || {
+          category: entry.category,
+          entries: [],
+          counts: {
+            valuable: 0,
+            "not-sure": 0,
+            "not-useful": 0,
+            pending: 0,
+          },
+        };
+
+        existing.entries.push(entry);
+        existing.counts[entry.choiceKey] += 1;
+        groups.set(entry.category, existing);
+      });
+
+      return Array.from(groups.values());
+    }
+
+    function renderSummaryStatusChips(counts, options = {}) {
+      const { hideZero = false } = options;
+      const chipOrder = [
+        { key: "valuable", label: "Valuable" },
+        { key: "not-sure", label: "Not sure" },
+        { key: "not-useful", label: "Not useful" },
+        { key: "pending", label: "Pending" },
+      ];
+
+      return chipOrder
+        .filter((chip) => !hideZero || counts[chip.key] > 0)
+        .map(
+          (chip) => `
+            <span class="summary-status-chip summary-status-chip--${chip.key}">
+              <span>${escapeHtml(chip.label)}</span>
+              <strong class="summary-status-chip-value">${counts[chip.key]}</strong>
+            </span>
+          `,
+        )
+        .join("");
+    }
+
+    function buildReviewNarrative(summary, counts) {
+      const total = summary.length;
+      const reviewedCount = total - counts.pending;
+      const actionQueue = counts.pending + counts["not-sure"];
+
+      if (!reviewedCount) {
+        return {
+          headline: "Nothing has been decided yet.",
+          copy: "This is still a first-pass review. Start with the next-decision queue and only leave notes where scope or payoff is unclear.",
+        };
+      }
+
+      if (!counts.pending && !counts["not-sure"]) {
+        return counts.valuable >= counts["not-useful"]
+          ? {
+              headline: "The feature set is close to a stable pass.",
+              copy: "Most calls are explicit. Use the family map to check whether the surviving features still cluster in a way that makes architectural sense.",
+            }
+          : {
+              headline: "The review has converged toward pruning.",
+              copy: "Most calls are explicit. Use the family map to check whether the dropped layers expose a cleaner core feature set.",
+            };
+      }
+
+      if (
+        counts["not-sure"] >= Math.max(counts.valuable, counts["not-useful"])
+      ) {
+        return {
+          headline: "Evidence is still the bottleneck.",
+          copy: "The uncertainty lane is heavier than the committed calls. Tighten examples, query cases, or boundaries before locking the schema.",
+        };
+      }
+
+      return {
+        headline: `${reviewedCount} of ${total} features now have a call.`,
+        copy: actionQueue
+          ? `The remaining action queue is ${actionQueue}. Finish those unresolved features before treating the end-state as final.`
+          : "The open queue is empty. Use the family map to inspect whether the final calls still distribute sensibly across the five feature families.",
+      };
+    }
+
+    function renderFeedbackOverview(summary) {
+      const overviewContainers = Array.from(
+        document.querySelectorAll("[data-feedback-overview]"),
+      );
+      const categoryContainers = Array.from(
+        document.querySelectorAll("[data-feedback-category-grid]"),
+      );
+      const priorityContainers = Array.from(
+        document.querySelectorAll("[data-feedback-priority-list]"),
+      );
+      const noteContainers = Array.from(
+        document.querySelectorAll("[data-feedback-comment-list]"),
+      );
+
+      if (
+        !overviewContainers.length &&
+        !categoryContainers.length &&
+        !priorityContainers.length &&
+        !noteContainers.length
+      ) {
+        return;
+      }
+
+      const counts = getFeedbackCounts(summary);
+      const total = summary.length;
+      const reviewedCount = total - counts.pending;
+      const actionQueue = counts.pending + counts["not-sure"];
+      const commentCount = summary.filter((entry) => entry.comment).length;
+      const completion = total ? Math.round((reviewedCount / total) * 100) : 0;
+      const narrative = buildReviewNarrative(summary, counts);
+      const categoryGroups = groupSummaryByCategory(summary);
+      const priorityItems = orderEntriesForReview(summary).slice(0, 3);
+      const commentItems = orderEntriesForReview(
+        summary.filter((entry) => entry.comment),
+      ).slice(0, 3);
+
+      const overviewMarkup = `
+        <div class="summary-overview-content">
+          <div class="summary-hero-grid">
+            <div class="summary-hero-card">
+              <div class="summary-hero-label">Reviewed</div>
+              <div class="summary-hero-value">${reviewedCount}<span> / ${total}</span></div>
+              <div class="summary-hero-copy">${completion}% with an explicit call.</div>
+            </div>
+            <div class="summary-hero-card">
+              <div class="summary-hero-label">Action queue</div>
+              <div class="summary-hero-value">${actionQueue}</div>
+              <div class="summary-hero-copy">Pending and not-sure features left.</div>
+            </div>
+            <div class="summary-hero-card">
+              <div class="summary-hero-label">Captured notes</div>
+              <div class="summary-hero-value">${commentCount}</div>
+              <div class="summary-hero-copy">Form comments already stored.</div>
+            </div>
+          </div>
+          <div class="summary-narrative">
+            <div class="summary-narrative-title">${escapeHtml(narrative.headline)}</div>
+            <div class="summary-narrative-copy">${escapeHtml(narrative.copy)}</div>
+          </div>
+          <div class="summary-progress-track">
+            <span class="summary-progress-fill" style="width: ${completion}%"></span>
+          </div>
+          <div class="summary-progress-caption">Completion is measured as every feature with a non-pending decision.</div>
+        </div>
+      `;
+
+      const categoryMarkup = categoryGroups
+        .map((group) => {
+          const reviewed = group.entries.length - group.counts.pending;
+          const reviewedPercent = group.entries.length
+            ? Math.round((reviewed / group.entries.length) * 100)
+            : 0;
+          const nextEntry = orderEntriesForReview(group.entries)[0];
+          const wrapperTag = nextEntry ? "button" : "div";
+          const wrapperAttributes = nextEntry
+            ? `type="button" data-jump-slide="${nextEntry.slideIndex}"`
+            : "";
+
+          return `
+            <${wrapperTag} class="summary-category-row" ${wrapperAttributes}>
+              <div class="summary-category-head">
+                <div>
+                  <div class="summary-category-title">${escapeHtml(group.category)}</div>
+                  <div class="summary-category-meta">${reviewed}/${group.entries.length} reviewed</div>
+                </div>
+                <div class="summary-category-count">${group.entries.length}</div>
+              </div>
+              <div class="summary-category-meter">
+                <span class="summary-category-meter-fill" style="width: ${reviewedPercent}%"></span>
+              </div>
+            </${wrapperTag}>
+          `;
+        })
+        .join("");
+
+      const priorityMarkup = priorityItems.length
+        ? priorityItems
+            .map(
+              (entry) => `
+                <button
+                  class="summary-priority-item"
+                  type="button"
+                  data-jump-slide="${entry.slideIndex}"
+                >
+                  <span class="summary-priority-tag summary-priority-tag--${entry.choiceKey}">
+                    ${escapeHtml(entry.choiceLabel)}
+                  </span>
+                  <span class="summary-priority-main">
+                    <span class="summary-priority-title">${escapeHtml(entry.title)}</span>
+                    <span class="summary-priority-meta">${escapeHtml(entry.category)} · ${escapeHtml(
+                      truncateText(
+                        entry.comment ||
+                          entry.utility ||
+                          entry.definition ||
+                          "Awaiting note.",
+                        74,
+                      ),
+                    )}</span>
+                  </span>
+                </button>
+              `,
+            )
+            .join("")
+        : '<div class="summary-empty-panel">No feature entries are available yet.</div>';
+
+      const noteMarkup = commentItems.length
+        ? commentItems
+            .map(
+              (entry) => `
+                <article class="summary-note-card">
+                  <div class="summary-note-head">
+                    <div>
+                      <div class="summary-note-title">${escapeHtml(entry.title)}</div>
+                      <div class="summary-note-foot">${escapeHtml(entry.category)} · ${escapeHtml(entry.choiceLabel)}</div>
+                    </div>
+                    <button
+                      class="feedback-jump-btn"
+                      type="button"
+                      data-jump-slide="${entry.slideIndex}"
+                    >
+                      Review
+                    </button>
+                  </div>
+                  <div class="summary-note-copy">${escapeHtml(truncateText(entry.comment, 170))}</div>
+                </article>
+              `,
+            )
+            .join("")
+        : '<div class="summary-empty-panel">No comments yet. Once reviewers leave notes, the strongest signals will surface here.</div>';
+
+      overviewContainers.forEach((container) => {
+        container.innerHTML = overviewMarkup;
+      });
+
+      categoryContainers.forEach((container) => {
+        container.innerHTML = categoryMarkup;
+      });
+
+      priorityContainers.forEach((container) => {
+        container.innerHTML = priorityMarkup;
+      });
+
+      noteContainers.forEach((container) => {
+        container.innerHTML = noteMarkup;
+      });
+    }
+
+    function renderFeedbackFamilyBoard(summary) {
+      const familyBoards = Array.from(
+        document.querySelectorAll("[data-feedback-family-board]"),
+      );
+
+      if (!familyBoards.length) {
+        return;
+      }
+
+      const categoryGroups = groupSummaryByCategory(summary);
+      const cardsMarkup = categoryGroups
+        .map((group) => {
+          const reviewed = group.entries.length - group.counts.pending;
+          const reviewedPercent = group.entries.length
+            ? Math.round((reviewed / group.entries.length) * 100)
+            : 0;
+          const focusEntry = orderEntriesForReview(group.entries)[0];
+          let focusMeta = "Open review slide";
+
+          if (focusEntry?.choiceKey === "pending") {
+            focusMeta = "Next unresolved";
+          } else if (focusEntry?.choiceKey === "not-sure") {
+            focusMeta = "Needs evidence";
+          } else if (focusEntry?.choiceKey === "not-useful") {
+            focusMeta = "Likely drop or reframe";
+          } else if (focusEntry?.choiceKey === "valuable") {
+            focusMeta = "Current strongest keep";
+          }
+
+          const previewMarkup = focusEntry
+            ? `
+                <button
+                  class="summary-family-feature"
+                  type="button"
+                  data-jump-slide="${focusEntry.slideIndex}"
+                >
+                  <span class="summary-family-feature-title">${escapeHtml(focusEntry.title)}</span>
+                  <span class="summary-family-feature-meta">${escapeHtml(focusMeta)}</span>
+                </button>
+              `
+            : '<div class="summary-empty-panel">No features in this family yet.</div>';
+
+          return `
+            <section class="summary-family-card">
+              <div class="summary-family-header">
+                <div>
+                  <div class="summary-family-title">${escapeHtml(group.category)}</div>
+                  <div class="summary-family-meta">${reviewed}/${group.entries.length} reviewed</div>
+                </div>
+                <div class="summary-family-count">${group.entries.length}</div>
+              </div>
+              <div class="summary-family-progress">
+                <span class="summary-family-progress-fill" style="width: ${reviewedPercent}%"></span>
+              </div>
+              <div class="summary-status-chip-row">${renderSummaryStatusChips(group.counts, { hideZero: true })}</div>
+              <div class="summary-family-feature-list">
+                ${previewMarkup}
+              </div>
+            </section>
+          `;
+        })
+        .join("");
+
+      familyBoards.forEach((container) => {
+        container.innerHTML = cardsMarkup;
+      });
+    }
+
+    function renderFeedbackStats(summary) {
+      const statContainers = Array.from(
+        document.querySelectorAll("[data-feedback-stats]"),
+      );
+
+      if (!statContainers.length) {
+        return;
+      }
+
+      const counts = getFeedbackCounts(summary);
 
       const statsMarkup = [
         { key: "valuable", label: "Valuable" },
@@ -682,8 +1184,11 @@
     function renderFeedbackSummary() {
       const summary = buildFeedbackSummary();
       renderFeedbackStats(summary);
+      renderFeedbackOverview(summary);
       renderFeedbackTable(summary);
       renderFeedbackBoard(summary);
+      renderFeedbackFamilyBoard(summary);
+      scheduleResponsiveLayout();
     }
 
     function resetFeatureFeedback() {
@@ -715,6 +1220,7 @@
     updateSidebar();
     updateHistoryBackButton();
     renderFeedbackSummary();
+    scheduleResponsiveLayout();
 
     feedbackForms.forEach((form) => {
       form.addEventListener("change", () => {
@@ -767,11 +1273,36 @@
 
     window.addEventListener("beforeprint", () => {
       enterPdfExportMode();
+      window.requestAnimationFrame(() => {
+        applyResponsiveLayout({ fitAllVisibleSlides: true });
+      });
     });
 
     window.addEventListener("afterprint", () => {
       exitPdfExportMode();
+      scheduleResponsiveLayout();
     });
+
+    window.addEventListener("resize", () => {
+      scheduleResponsiveLayout({
+        fitAllVisibleSlides: document.body.classList.contains("pdf-exporting"),
+      });
+    });
+
+    window.addEventListener("load", () => {
+      scheduleResponsiveLayout();
+    });
+
+    document.fonts?.ready
+      ?.then(() => {
+        scheduleResponsiveLayout({
+          fitAllVisibleSlides:
+            document.body.classList.contains("pdf-exporting"),
+        });
+      })
+      .catch(() => {
+        return;
+      });
 
     themeQuery?.addEventListener("change", (event) => {
       if (getStoredTheme()) {
