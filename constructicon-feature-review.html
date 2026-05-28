@@ -1353,6 +1353,15 @@
       .template-signal #slide9 .summary-family-feature-title {
         font-size: 20px;
       }
+
+      .template-signal .history-back-btn {
+        right: 620px;
+      }
+
+      .template-signal .pdf-export-review-btn {
+        right: 410px;
+        top: 24px;
+      }
     </style>
   </head>
   <body
@@ -1401,55 +1410,103 @@
           </div>
         </details>
 
-        <details class="sidebar-section" data-section-title="Feature 01">
+        <details class="sidebar-section" data-section-title="Feature review">
           <summary class="sidebar-section-summary">
             <span class="sidebar-section-meta">
-              <span class="sidebar-section-kicker">Feature block</span>
-              <span class="sidebar-section-title">Component Registry</span>
+              <span class="sidebar-section-kicker">Core pass</span>
+              <span class="sidebar-section-title">Feature review</span>
             </span>
             <span class="sidebar-summary-right">
-              <span class="sidebar-count">3</span>
+              <span class="sidebar-count" id="sidebarFeatureReviewCount">23</span>
               <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
             </span>
           </summary>
           <div class="sidebar-section-items">
-            <button class="sidebar-item" data-slide="2" onclick="goToSlide(2)" type="button">
-              Component registry
-            </button>
-            <button class="sidebar-item" data-slide="3" onclick="goToSlide(3)" type="button">
-              Examples and utility
-            </button>
-            <button class="sidebar-item" data-slide="4" onclick="goToSlide(4)" type="button">
-              Review prompt
-            </button>
+            <details class="sidebar-subsection" data-section-title="Form" open>
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Form</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count" id="sidebarFormCount">7</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items" id="sidebarFormItems">
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="2"
+                  data-slides="2,3,4"
+                  onclick="goToSlide(2)"
+                  type="button"
+                >
+                  01. Component Registry
+                </button>
+                <button
+                  class="sidebar-item subitem"
+                  data-slide="5"
+                  data-slides="5,6,7"
+                  onclick="goToSlide(5)"
+                  type="button"
+                >
+                  02. Topological Mapping
+                </button>
+              </div>
+            </details>
+
+            <details class="sidebar-subsection" data-section-title="Meaning">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Meaning</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count" id="sidebarMeaningCount">5</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items" id="sidebarMeaningItems"></div>
+            </details>
+
+            <details class="sidebar-subsection" data-section-title="Relational">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Relational</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count" id="sidebarRelationalCount">4</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items" id="sidebarRelationalItems"></div>
+            </details>
+
+            <details class="sidebar-subsection" data-section-title="Meta">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Meta</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count" id="sidebarMetaCount">3</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items" id="sidebarMetaItems"></div>
+            </details>
+
+            <details class="sidebar-subsection" data-section-title="Acquisitional">
+              <summary class="sidebar-subsection-summary">
+                <span class="sidebar-subsection-meta">
+                  <span class="sidebar-subsection-title">Acquisitional</span>
+                </span>
+                <span class="sidebar-summary-right">
+                  <span class="sidebar-count" id="sidebarAcquisitionalCount">4</span>
+                  <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
+                </span>
+              </summary>
+              <div class="sidebar-subsection-items" id="sidebarAcquisitionalItems"></div>
+            </details>
           </div>
         </details>
-
-        <details class="sidebar-section" data-section-title="Feature 02">
-          <summary class="sidebar-section-summary">
-            <span class="sidebar-section-meta">
-              <span class="sidebar-section-kicker">Feature block</span>
-              <span class="sidebar-section-title">Topological Mapping</span>
-            </span>
-            <span class="sidebar-summary-right">
-              <span class="sidebar-count">3</span>
-              <i class="fa-solid fa-chevron-down sidebar-chevron"></i>
-            </span>
-          </summary>
-          <div class="sidebar-section-items">
-            <button class="sidebar-item" data-slide="5" onclick="goToSlide(5)" type="button">
-              Topological mapping
-            </button>
-            <button class="sidebar-item" data-slide="6" onclick="goToSlide(6)" type="button">
-              Examples and utility
-            </button>
-            <button class="sidebar-item" data-slide="7" onclick="goToSlide(7)" type="button">
-              Review prompt
-            </button>
-          </div>
-        </details>
-
-        <div id="sidebarGeneratedFeatureSections"></div>
 
         <details class="sidebar-section" data-section-title="Summary">
           <summary class="sidebar-section-summary">
@@ -1549,6 +1606,18 @@
     >
       <i class="fa-solid fa-file-pdf"></i>
       Export PDF
+    </button>
+
+    <button
+      class="top-action-btn pdf-export-review-btn"
+      id="pdfExportReviewBtn"
+      type="button"
+      onclick="exportFeatureReviewDecisionPDF()"
+      aria-label="Export overview and decision-review slides as PDF"
+      title="Export overview and decision-review slides"
+    >
+      <i class="fa-solid fa-filter"></i>
+      Export review PDF
     </button>
 
     <button class="nav-btn prev" onclick="changeSlide(-1)">&#8249;</button>

@@ -1997,43 +1997,25 @@
     );
   }
 
-  function renderSidebarSection(feature, featureNumber, startSlideIndex) {
+  function renderSidebarSubitem(feature, featureNumber, startSlideIndex) {
+    const slideRange = [
+      startSlideIndex,
+      startSlideIndex + 1,
+      startSlideIndex + 2,
+    ].join(",");
+
     return (
-      '<details class="sidebar-section" data-section-title="Feature ' +
-      pad(featureNumber) +
-      '">' +
-      '<summary class="sidebar-section-summary">' +
-      '<span class="sidebar-section-meta">' +
-      '<span class="sidebar-section-kicker">Feature block</span>' +
-      '<span class="sidebar-section-title">' +
-      escapeHtml(shortTitle(feature.title)) +
-      "</span>" +
-      "</span>" +
-      '<span class="sidebar-summary-right">' +
-      '<span class="sidebar-count">3</span>' +
-      '<i class="fa-solid fa-chevron-down sidebar-chevron"></i>' +
-      "</span>" +
-      "</summary>" +
-      '<div class="sidebar-section-items">' +
-      '<button class="sidebar-item" data-slide="' +
+      '<button class="sidebar-item subitem" data-slide="' +
       startSlideIndex +
+      '" data-slides="' +
+      slideRange +
       '" onclick="goToSlide(' +
       startSlideIndex +
       ')" type="button">' +
+      pad(featureNumber) +
+      ". " +
       escapeHtml(shortTitle(feature.title)) +
-      "</button>" +
-      '<button class="sidebar-item" data-slide="' +
-      (startSlideIndex + 1) +
-      '" onclick="goToSlide(' +
-      (startSlideIndex + 1) +
-      ')" type="button">Examples and utility</button>' +
-      '<button class="sidebar-item" data-slide="' +
-      (startSlideIndex + 2) +
-      '" onclick="goToSlide(' +
-      (startSlideIndex + 2) +
-      ')" type="button">Review prompt</button>' +
-      "</div>" +
-      "</details>"
+      "</button>"
     );
   }
 
@@ -2047,11 +2029,15 @@
   }
 
   const slidesMount = document.getElementById("generatedFeatureSlides");
-  const sidebarMount = document.getElementById(
-    "sidebarGeneratedFeatureSections",
-  );
+  const sidebarMountByCategory = {
+    Form: document.getElementById("sidebarFormItems"),
+    Meaning: document.getElementById("sidebarMeaningItems"),
+    Relational: document.getElementById("sidebarRelationalItems"),
+    Meta: document.getElementById("sidebarMetaItems"),
+    Acquisitional: document.getElementById("sidebarAcquisitionalItems"),
+  };
 
-  if (!slidesMount || !sidebarMount) {
+  if (!slidesMount || !sidebarMountByCategory.Form) {
     return;
   }
 
@@ -2067,17 +2053,105 @@
     );
   }).join("");
 
-  sidebarMount.innerHTML = GENERATED_FEATURES.map((feature, index) => {
+  const generatedSidebarByCategory = {
+    Form: [],
+    Meaning: [],
+    Relational: [],
+    Meta: [],
+    Acquisitional: [],
+  };
+
+  GENERATED_FEATURES.forEach((feature, index) => {
     const featureNumber = BASE_FEATURE_COUNT + index + 1;
     const startSlideIndex = firstGeneratedSlideIndex + index * 3;
+    const category = feature.category;
 
-    return renderSidebarSection(feature, featureNumber, startSlideIndex);
-  }).join("");
+    if (!generatedSidebarByCategory[category]) {
+      generatedSidebarByCategory[category] = [];
+    }
+
+    generatedSidebarByCategory[category].push(
+      renderSidebarSubitem(feature, featureNumber, startSlideIndex),
+    );
+  });
+
+  Object.entries(sidebarMountByCategory).forEach(([category, mount]) => {
+    if (!mount) {
+      return;
+    }
+
+    const generatedItems = generatedSidebarByCategory[category] || [];
+    mount.insertAdjacentHTML("beforeend", generatedItems.join(""));
+  });
 
   const summaryTableIndex =
     firstGeneratedSlideIndex + GENERATED_FEATURES.length * 3;
   const summaryBoardIndex = summaryTableIndex + 1;
   const totalFeatureCount = BASE_FEATURE_COUNT + GENERATED_FEATURES.length;
+
+  const staticCategoryCounts = {
+    Form: BASE_FEATURE_COUNT,
+    Meaning: 0,
+    Relational: 0,
+    Meta: 0,
+    Acquisitional: 0,
+  };
+
+  const categoryCounts = {
+    Form:
+      staticCategoryCounts.Form +
+      (generatedSidebarByCategory.Form || []).length,
+    Meaning:
+      staticCategoryCounts.Meaning +
+      (generatedSidebarByCategory.Meaning || []).length,
+    Relational:
+      staticCategoryCounts.Relational +
+      (generatedSidebarByCategory.Relational || []).length,
+    Meta:
+      staticCategoryCounts.Meta +
+      (generatedSidebarByCategory.Meta || []).length,
+    Acquisitional:
+      staticCategoryCounts.Acquisitional +
+      (generatedSidebarByCategory.Acquisitional || []).length,
+  };
+
+  const sidebarFeatureReviewCount = document.getElementById(
+    "sidebarFeatureReviewCount",
+  );
+  if (sidebarFeatureReviewCount) {
+    sidebarFeatureReviewCount.textContent = String(totalFeatureCount);
+  }
+
+  const sidebarFormCount = document.getElementById("sidebarFormCount");
+  if (sidebarFormCount) {
+    sidebarFormCount.textContent = String(categoryCounts.Form);
+  }
+
+  const sidebarMeaningCount = document.getElementById("sidebarMeaningCount");
+  if (sidebarMeaningCount) {
+    sidebarMeaningCount.textContent = String(categoryCounts.Meaning);
+  }
+
+  const sidebarRelationalCount = document.getElementById(
+    "sidebarRelationalCount",
+  );
+  if (sidebarRelationalCount) {
+    sidebarRelationalCount.textContent = String(categoryCounts.Relational);
+  }
+
+  const sidebarMetaCount = document.getElementById("sidebarMetaCount");
+  if (sidebarMetaCount) {
+    sidebarMetaCount.textContent = String(categoryCounts.Meta);
+  }
+
+  const sidebarAcquisitionalCount = document.getElementById(
+    "sidebarAcquisitionalCount",
+  );
+  if (sidebarAcquisitionalCount) {
+    sidebarAcquisitionalCount.textContent = String(
+      categoryCounts.Acquisitional,
+    );
+  }
 
   setJumpButton(
     document.getElementById("summaryTableSidebarButton"),

@@ -138,6 +138,7 @@
     const navigationHistory = [];
     let current = 0;
     let scheduledLayoutFrame = 0;
+    let pdfExportSelectedSlides = null;
     let shouldFitAllVisibleSlides = false;
 
     slides[slides.length - 1]?.classList.add("last-slide");
@@ -231,17 +232,59 @@
       applyTheme(nextTheme);
     }
 
-    function enterPdfExportMode() {
+    function clearPdfExportSelection() {
+      slides.forEach((slide) => {
+        slide.classList.remove("pdf-export-excluded");
+        slide.classList.remove("pdf-export-last");
+      });
+    }
+
+    function markPdfExportSelection(selectedSlides) {
+      const selectedSet = new Set(selectedSlides);
+      let lastSelectedSlide = null;
+
+      slides.forEach((slide) => {
+        const isSelected = selectedSet.has(slide);
+
+        slide.classList.toggle("pdf-export-excluded", !isSelected);
+        slide.classList.remove("pdf-export-last");
+
+        if (isSelected) {
+          lastSelectedSlide = slide;
+        }
+      });
+
+      if (lastSelectedSlide) {
+        lastSelectedSlide.classList.add("pdf-export-last");
+      }
+    }
+
+    function enterPdfExportMode(options = {}) {
+      const selectedSlides = Object.prototype.hasOwnProperty.call(
+        options,
+        "selectedSlides",
+      )
+        ? options.selectedSlides
+        : pdfExportSelectedSlides;
+
+      if (Array.isArray(selectedSlides) && selectedSlides.length) {
+        pdfExportSelectedSlides = [...selectedSlides];
+        markPdfExportSelection(selectedSlides);
+      } else {
+        pdfExportSelectedSlides = null;
+        clearPdfExportSelection();
+      }
+
       document.body.classList.add("pdf-exporting");
     }
 
     function exitPdfExportMode() {
       document.body.classList.remove("pdf-exporting");
+      pdfExportSelectedSlides = null;
+      clearPdfExportSelection();
     }
 
-    function exportPresentationToPDF() {
-      enterPdfExportMode();
-
+    function printWithCurrentExportMode() {
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => {
           applyResponsiveLayout({ fitAllVisibleSlides: true });
@@ -251,6 +294,27 @@
           });
         });
       });
+    }
+
+    function exportPresentationToPDF() {
+      enterPdfExportMode({ selectedSlides: null });
+      printWithCurrentExportMode();
+    }
+
+    function exportFeatureReviewDecisionPDF() {
+      const slidesToPrint = slides.filter(
+        (slide) =>
+          slide.id === "slide1" ||
+          !!slide.querySelector("[data-feedback-form]"),
+      );
+
+      if (!slidesToPrint.length) {
+        exportPresentationToPDF();
+        return;
+      }
+
+      enterPdfExportMode({ selectedSlides: slidesToPrint });
+      printWithCurrentExportMode();
     }
 
     function fitDeckToViewport() {
@@ -1314,6 +1378,7 @@
 
     window.PresentationDeck = {
       changeSlide,
+      exportFeatureReviewDecisionPDF,
       exportPresentationToPDF,
       goBackInHistory,
       goToSlide,
@@ -1323,6 +1388,7 @@
     };
 
     window.changeSlide = changeSlide;
+    window.exportFeatureReviewDecisionPDF = exportFeatureReviewDecisionPDF;
     window.exportPresentationToPDF = exportPresentationToPDF;
     window.goBackInHistory = goBackInHistory;
     window.goToSlide = goToSlide;

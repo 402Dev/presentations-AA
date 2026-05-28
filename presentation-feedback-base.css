@@ -1778,6 +1778,16 @@ body.pdf-exporting .slide-container {
   -webkit-print-color-adjust: exact;
 }
 
+body.pdf-exporting .slide-container.pdf-export-excluded {
+  display: none !important;
+}
+
+body.pdf-exporting .slide-container.pdf-export-last {
+  break-after: auto;
+  margin-bottom: 0;
+  page-break-after: auto;
+}
+
 body.pdf-exporting .slide-container.last-slide {
   break-after: auto;
   margin-bottom: 0;
